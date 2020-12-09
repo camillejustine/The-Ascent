@@ -34,5 +34,5 @@ Typings för de globala variablerna relaterat till p5.sound fungerar tyvärr int
 
 ## TODO
 Lägg till ytterliggare information som är specifikt för ert projekt!
-
+l
 **LYCKA TILL!**
