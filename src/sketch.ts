@@ -1,5 +1,9 @@
 //---- GLOBAL VARIABLES ----//
 // let game: Game;
+let subImage: p5.Image | p5.Element;
+let bg: p5.Image | p5.Element; 
+let sub: Sub; 
+let angle = 0;
 
 /**
  * Built in preload function in P5
@@ -7,8 +11,8 @@
  * sound files, images etc...
  */
 function preload() {
-    // Tyvärr har jag inte fått till den globala typningen för
-    // inladdningen av ljud men fungerar bra enligt nedan..
+    subImage = loadImage('./assets/images/sub.png');
+    bg = loadImage('./assets/images/Background.png')
     // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 
@@ -19,12 +23,25 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(800, 12000);
     frameRate(60);
-    // noCursor();
+    noCursor();
     
     // game = new Game();
 }
+
+function keyPressed(){
+    console.log(angle)
+    if (keyIsDown(LEFT_ARROW)) {
+        angle = angle - 1;
+    } else if (keyIsDown(RIGHT_ARROW)){
+        angle = angle + 1;
+    } 
+}
+
+/* function mouseMoved(event) {
+    console.log(event);
+} */
 
 /**
  * Built in draw function in P5
@@ -32,20 +49,21 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-    background('blue');
-    fill('green');
-    stroke('white');
-    strokeWeight(10);
-    circle(width * .5, height * .5, width * 0.2);
+ 
+    background(bg);
+    angleMode(DEGREES)
+    push()
+    translate(mouseX, mouseY)
+    keyPressed()
+    rotate(angle);
+    image(subImage,-25, -125, 50, 250);
+    pop()
 
     // game.update();
     // game.draw();
 }
 
 
-/**
- *  Built in windowResize listener function in P5
- */
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}
+
+
+  
