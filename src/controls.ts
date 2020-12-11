@@ -1,39 +1,39 @@
-class Controls {
-    private mouse: MouseEvent;
-    private orient: KeyboardEvent;
-    private pause: KeyboardEvent;
+class Control {
+    
+    private right: number;
+    private left: number;
+    private mouseX: number;
+    private mouseY: number;
 
-    constructor(mouse: MouseEvent, orient: KeyboardEvent, pause: KeyboardEvent){
-        
-    }
+    public constructor(){
+        this.left = LEFT_ARROW;
+        this.right = RIGHT_ARROW;
+        this.mouseX = mouseX;
+        this.mouseY = mouseY;
+    } 
 
-    public orientShip(){
-        console.log(angle)
-        if (keyCode === LEFT_ARROW) {
+    public keyPress() {
+        if (keyIsDown(this.left)) {
             angle = angle - 1;
-        } else if (keyCode === RIGHT_ARROW){
+        } else if (keyIsDown(this.right)){
             angle = angle + 1;
         } 
     }
-    
-
-    public draw() {
+    public startController(){
+        this.keyPress()
         angleMode(DEGREES)
-        push()
-        translate(mouseX, mouseY)
-        mouseMoved()
-        keyPressed()
+        if(gameTimer < 3){
+            translate(width/2,height/1.5)
+        } else (
+            translate(this.mouseX, this.mouseY)
+        )
         rotate(angle);
-        image(subImage,-25, -125, 50, 250);
-        pop()
     }
-
-    public pauseGame() {
-
-    }
+    //if mouse is on left pixels of width/2 turn left
+    //if mouse is on right of pixels width turn right
 }
 
-const person = new Controls('1234434', 'David', 31);
+
 
 
 
