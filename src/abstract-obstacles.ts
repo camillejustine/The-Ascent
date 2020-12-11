@@ -13,3 +13,7 @@ abstract class Obstacles {
     private removeObstacle() {}
 
 }
+
+interface Obstacles {
+    
+}
