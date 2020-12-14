@@ -1,20 +1,13 @@
-/* let x: Number: 0;
-let y: Number: 0; */
-
 class Submarine {
-    //private startX: Number = 0;
-    //private startY: Number = 0;
-    //private hullStatus: Number = 100;
-    x: number;
-    y: number;
+    /* private sub = p5.Image | p5.Element;
     
-    constructor(){
-        this.x = -25;
-        this.y = -125;
+    
+    constructor(subImage: p5.Image | p5.Element){
+      this.sub = subImage;
     }
 
     public show(){
-        //image(subImage,-25, -125, 50, 250);
-    }
+        this.sub = image(subImage,-25, -125, 50, 250);
+    } */
 }
 
