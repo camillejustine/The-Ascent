@@ -1,6 +1,5 @@
     class MainMenu {
-        //private game: InterfaceGameState;
-        //isGameRunning: boolean;
+
         private startButton: HTMLElement;
         private aboutButton: HTMLElement;
         private isGameRunning: boolean;
@@ -19,7 +18,9 @@
             if(this.isGameRunning){
                 gameFrame.draw();
                 gameFrame.update();
-            } 
+            } else {
+                this.update();
+            }
         }
     }
     /* public constructor() {}
