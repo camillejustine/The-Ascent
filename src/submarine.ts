@@ -1,27 +1,15 @@
 class Submarine {
-
-    public constructor() {}
-
+<<<<<<< HEAD
+    /* private sub = p5.Image | p5.Element;
     
-    public draw(){}
     
-    public update(){}
+    constructor(subImage: p5.Image | p5.Element){
+      this.sub = subImage;
+    }
 
-    private mousePosition(){}
-   
-    private updateShipHullStatus(){}
-    
-    private fixHullPercentage() {}
-    
-    private quickerSonarRange() {}
-    
-    private increaseSonarRange() {}
-
-
-
-
+    public show(){
+        this.sub = image(subImage,-25, -125, 50, 250);
+    } */
 }
-
-
 
 
