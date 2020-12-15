@@ -1,0 +1,28 @@
+html,
+body,
+canvas {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: black;
+}
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  position: fixed;
+}
+
+#main-menu {
+  width: 960px;
+  height: 720px;
+  background-color: blanchedalmond;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

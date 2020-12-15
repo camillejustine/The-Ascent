@@ -1,6 +1,6 @@
-class GameFrame implements InterfaceGameState{
-   private mainMenu: MainMenu;
-   /* private pauseMenu: PauseMenu;
+class GameFrame implements InterfaceGameState {
+  private mainMenu: MainMenu;
+  /* private pauseMenu: PauseMenu;
 
    private gameWon: GameWon;
    private gameLost: GameLost;
@@ -14,32 +14,28 @@ class GameFrame implements InterfaceGameState{
 
    private headsUpDisplay: HeadsUpDisplay;
    private collisionListener: ColissionListener; */
- 
-   private canvasWidth: number;
-   private canvasHeight: number;
-   //private setDepth: number;
-   //public isGameRunning: boolean;
 
-   public constructor() {
-      this.mainMenu = new MainMenu(this);
-      this.canvasWidth = 800;
-      this.canvasHeight = windowHeight;
-      //this.isGameRunning = false;
-   }
+  private canvasWidth: number;
+  private canvasHeight: number;
+  //private setDepth: number;
+  //public isGameRunning: boolean;
 
-   public update() {
-     
-   }
-    
-   public draw() {
-      this.mainMenu.update();
-      createCanvas(this.canvasWidth, this.canvasHeight)
-      background("#001318");
-   } 
+  public constructor() {
+    this.mainMenu = new MainMenu(this);
+    this.canvasWidth = 960;
+    this.canvasHeight = 720;
+    //this.isGameRunning = false;
+  }
 
-   
+  public update() {}
 
-   /* private populateObstacles() {}
+  public draw() {
+    this.mainMenu.update();
+    createCanvas(this.canvasWidth, this.canvasHeight);
+    background("#001318");
+  }
+
+  /* private populateObstacles() {}
 
    private initializePlayer() {}
 
@@ -55,4 +51,4 @@ class GameFrame implements InterfaceGameState{
  */
 }
 
-//page loads html DOM star button. 
+//page loads html DOM star button.
