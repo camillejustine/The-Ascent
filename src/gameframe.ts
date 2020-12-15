@@ -18,32 +18,23 @@ class GameFrame implements InterfaceGameState{
    private canvasWidth: number;
    private canvasHeight: number;
    //private setDepth: number;
-   public isGameRunning: boolean;
-
-
-
+   //public isGameRunning: boolean;
 
    public constructor() {
       this.mainMenu = new MainMenu(this);
       this.canvasWidth = 800;
       this.canvasHeight = windowHeight;
-      
-      //this.mainMenu = new MainMenu();
-
+      //this.isGameRunning = false;
    }
 
    public update() {
-      if (this.isGameRunning) {
-         
-     } else {
-         this.mainMenu.update();
-     }
+     
    }
     
    public draw() {
+      this.mainMenu.update();
       createCanvas(this.canvasWidth, this.canvasHeight)
       background("#001318");
-      console.log('test')
    } 
 
    
