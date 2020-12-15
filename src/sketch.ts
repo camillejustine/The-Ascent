@@ -2,10 +2,8 @@
 let gameFrame: GameFrame;
 let mainMenu: MainMenu;
 let subImage: p5.Image | p5.Element;
-let bg: p5.Image | p5.Element; 
+let bg: p5.Image | p5.Element;
 let iceberg: p5.Image | p5.Element;
-
-
 
 /**
  * Built in preload function in P5
@@ -13,10 +11,10 @@ let iceberg: p5.Image | p5.Element;
  * sound files, images etc...
  */
 function preload() {
-    subImage = loadImage('./assets/images/sub.png');
-    bg = loadImage('./assets/images/Background.png')
-    iceberg = loadImage('./assets/images/iceberg.png')
-    // sound = (window as any).loadSound('../assets/mySound.wav');
+  subImage = loadImage("./assets/images/sub.png");
+  bg = loadImage("./assets/images/Background.png");
+  iceberg = loadImage("./assets/images/iceberg.png");
+  // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 
 /**
@@ -27,13 +25,11 @@ function preload() {
  */
 function setup() {
   gameFrame = new GameFrame();
-  mainMenu = new MainMenu()
+  mainMenu = new MainMenu();
   frameRate(60);
   cursor(CROSS);
 
-  
-    // game = new Game();
-
+  // game = new Game();
 }
 
 /**
@@ -42,18 +38,13 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-    mainMenu.update()
-    //gameFrame.update();
-    //gameFrame.draw();
+  mainMenu.update();
+  //gameFrame.update();
+  //gameFrame.draw();
 }
 
-
-
-
-
-//create circle with collision detector where if circle border overlaps 
-//with object border, objects become visible. 
-
+//create circle with collision detector where if circle border overlaps
+//with object border, objects become visible.
 
 /**
  *  Built in windowResize listener function in P5
@@ -61,4 +52,3 @@ function draw() {
 function windowResized() {
   resizeCanvas(800, windowHeight);
 }
-

@@ -5,6 +5,7 @@ canvas {
   width: 100%;
   margin: 0;
   background: black;
+  font-family: "VT323", monospace;
 }
 body {
   margin: 0;
@@ -15,14 +16,23 @@ body {
 
 button {
   position: fixed;
+  font-family: "VT323", monospace;
+  background: linear-gradient(
+    186.1deg,
+    rgba(110, 198, 65, 0.3) 13.63%,
+    rgba(110, 198, 65, 0) 95.41%
+  );
+  width: 5rem;
+  height: 2rem;
 }
 
 #main-menu {
   width: 960px;
   height: 720px;
-  background-color: blanchedalmond;
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(./assets/images/menu-background.png);
+  background-size: cover;
 }
