@@ -1,5 +1,6 @@
 //---- GLOBAL VARIABLES ----//
 let gameFrame: GameFrame;
+let mainMenu: MainMenu;
 let subImage: p5.Image | p5.Element;
 let bg: p5.Image | p5.Element; 
 let iceberg: p5.Image | p5.Element;
@@ -12,12 +13,10 @@ let iceberg: p5.Image | p5.Element;
  * sound files, images etc...
  */
 function preload() {
-
     subImage = loadImage('./assets/images/sub.png');
     bg = loadImage('./assets/images/Background.png')
     iceberg = loadImage('./assets/images/iceberg.png')
     // sound = (window as any).loadSound('../assets/mySound.wav');
-
 }
 
 /**
@@ -28,6 +27,7 @@ function preload() {
  */
 function setup() {
   gameFrame = new GameFrame();
+  mainMenu = new MainMenu()
   frameRate(60);
   cursor(CROSS);
 
@@ -42,8 +42,9 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-    gameFrame.update();
-    gameFrame.draw();
+    mainMenu.update()
+    //gameFrame.update();
+    //gameFrame.draw();
 }
 
 
