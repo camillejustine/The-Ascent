@@ -15,10 +15,12 @@ let collisions: any;
  * sound files, images etc...
  */
 function preload() {
+
     subImage = loadImage('./assets/images/sub.png');
     bg = loadImage('./assets/images/Background.png')
     iceberg = loadImage('./assets/images/iceberg.png')
     // sound = (window as any).loadSound('../assets/mySound.wav');
+
 }
 
 /**
@@ -28,7 +30,14 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(800, windowHeight);
+  
+
+  createCanvas(800, windowHeight);
+  for (let i = 0; i < 50; i++) {
+    let p: Particle = new Particle();
+    particles.push(p);
+  }
+
     frameRate(60);
     cursor(CROSS);
 
@@ -37,6 +46,7 @@ function setup() {
     collisions = new Collision();
     
     // game = new Game();
+
 }
 
 /**
@@ -46,7 +56,14 @@ function setup() {
  */
 function draw() {
 
-    background(bg);
+  for (const particle of particles) {
+    particle.draw();
+    particle.update();
+  }
+}
+
+
+
 
 
     control.move();
@@ -67,10 +84,11 @@ function draw() {
 //create circle with collision detector where if circle border overlaps 
 //with object border, objects become visible. 
 
+
 /**
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
 }
 
