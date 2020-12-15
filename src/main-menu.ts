@@ -6,7 +6,6 @@ class MainMenu {
   constructor() {
     this.isGameRunning = false;
     this.startButton = document.getElementById("start-game")!;
-    this.mainMenu = document.getElementById("main-menu")!;
   }
 
   public update() {
