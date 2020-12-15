@@ -1,5 +1,13 @@
 //---- GLOBAL VARIABLES ----//
 // let game: Game;
+let subImage: p5.Image | p5.Element;
+let bg: p5.Image | p5.Element; 
+let iceberg: p5.Image | p5.Element;
+let angle: number = 0;
+let control: any;
+let ice: any;
+let iceBergs: Array<any> = [];
+let collisions: any;
 
 /**
  * Built in preload function in P5
@@ -7,8 +15,9 @@
  * sound files, images etc...
  */
 function preload() {
-    // Tyvärr har jag inte fått till den globala typningen för
-    // inladdningen av ljud men fungerar bra enligt nedan..
+    subImage = loadImage('./assets/images/sub.png');
+    bg = loadImage('./assets/images/Background.png')
+    iceberg = loadImage('./assets/images/iceberg.png')
     // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 
@@ -19,9 +28,13 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(800, windowHeight);
     frameRate(60);
-    // noCursor();
+    cursor(CROSS);
+
+    ice = new Obstacle();
+    control = new Control();
+    collisions = new Collision();
     
     // game = new Game();
 }
@@ -32,12 +45,27 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
- 
 
+    background(bg);
+
+
+    control.move();
+    control.draw();
+    ice.randomSpawn();
+    
+    
+    //collisions.draw()
+    
     // game.update();
     // game.draw();
 }
 
+
+
+
+
+//create circle with collision detector where if circle border overlaps 
+//with object border, objects become visible. 
 
 /**
  *  Built in windowResize listener function in P5
@@ -45,3 +73,4 @@ function draw() {
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
+
