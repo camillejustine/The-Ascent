@@ -2,10 +2,11 @@
 
 class Obstacle {
     
-    private iceberg: p5.Image;
+    private iceberg: any;
     private r: number;
     private y: number;
     private x: number;
+    
 
     constructor() {
         this.r = 100;
