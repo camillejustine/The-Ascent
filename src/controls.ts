@@ -1,3 +1,4 @@
+
 class Control {
     
     private right: number;
@@ -66,3 +67,5 @@ class Control {
 }
 
  
+
+

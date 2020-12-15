@@ -45,7 +45,9 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
+
     background(bg);
+
 
     control.move();
     control.draw();
@@ -61,5 +63,14 @@ function draw() {
 
 
 
+
 //create circle with collision detector where if circle border overlaps 
 //with object border, objects become visible. 
+
+/**
+ *  Built in windowResize listener function in P5
+ */
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
