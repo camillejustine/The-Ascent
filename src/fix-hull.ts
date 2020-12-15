@@ -1,9 +1,9 @@
 class FixHull {
     
-    public constructor() {}
+    /* public constructor() {}
 
     public draw() {}
 
-    public update() {}
+    public update() {} */
 
 }

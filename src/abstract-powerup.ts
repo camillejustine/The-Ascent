@@ -1,11 +1,11 @@
 abstract class PowerUp {
 
-    public constructor() {}
+    /* public constructor() {}
 
     public update() {}
 
     public draw() {}
 
-    private applyPowerUp(submarine: ApplyPowerUp) {}
+    private applyPowerUp(submarine: ApplyPowerUp) {} */
 
 }

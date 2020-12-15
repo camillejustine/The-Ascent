@@ -1,9 +1,9 @@
 class Rock {
 
-    public constructor() {}
+    /* public constructor() {}
     
     public draw() {}
     
-    private hitRock() {}
+    private hitRock() {} */
 
 }

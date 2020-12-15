@@ -1,9 +1,9 @@
 class ShipStatus {
 
-    public constructor(){}
+    /* public constructor(){}
 
     public update(){}
 
-    private updateShipStatus() {}
+    private updateShipStatus() {} */
 
 }

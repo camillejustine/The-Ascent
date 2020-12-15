@@ -1,13 +1,13 @@
 class PauseMenu {
 
-    public constructor() {}
+    /* public constructor() {}
 
     
     private resumeGame() {}
     
     private restartGame() {}
     
-    private exitGame() {}
+    private exitGame() {} */
 }
 
 

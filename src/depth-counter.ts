@@ -1,7 +1,7 @@
 class DepthCounter {
 
-    public constructor(){}
+    /* public constructor(){}
     public update(){}
 
-    private calculateDepth(){}
+    private calculateDepth(){} */
 }

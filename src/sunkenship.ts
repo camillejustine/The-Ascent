@@ -1,8 +1,8 @@
 class SunkenShip {
-    public constructor() {}
+    /* public constructor() {}
 
     public draw() {}
 
-    private oddsOfPowerUpsIncreased() {}
+    private oddsOfPowerUpsIncreased() {} */
 
 }

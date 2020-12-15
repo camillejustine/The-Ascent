@@ -1,5 +1,5 @@
 
-
+/* 
 class Obstacle {
     
     private iceberg: any;
@@ -35,3 +35,13 @@ class Obstacle {
         }
     }
 }
+
+ice = new Obstacle();
+control = new Control();
+collisions = new Collision();
+
+let angle: number = 0;
+let control: any;
+let ice: any;
+let iceBergs: Array<any> = [];
+let collisions: any; */

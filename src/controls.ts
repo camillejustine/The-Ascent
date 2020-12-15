@@ -1,4 +1,4 @@
-
+/* 
 class Control {
     
     private right: number;
@@ -9,12 +9,12 @@ class Control {
     private leftWall: number;
     private rightWall: number;
 
-    private wallCollide: number;
+    private wallCollide: number; */
 
     /* private mouseX: number;
     private mouseY: number; */
     
-    public constructor(){
+    /* public constructor(){
         this.position = new p5.Vector(width/2, height/1.5);
         this.acceleration = new p5.Vector(0, -10);
         this.left = LEFT_ARROW;
@@ -33,23 +33,22 @@ class Control {
         };
 
     public move() {
-
+           
             this.keyPress()
             
-            // Calculate the acceleration towards the mouse position
+           
             this.acceleration = p5.Vector.sub(new p5.Vector(mouseX,mouseY), this.position);
             this.acceleration.setMag(3);
-            // Update the position with the acceleration
+          
             this.position.add(this.acceleration);
 
-            //boundary on left and right wall, why it vibrates?
+            
 
             if(mouseX < 0){
                 mouseX = 20;
             } else if (mouseX > width) {    
                 mouseX = 780;
             }
-            console.log(mouseX)
         };
     
     public draw() {
@@ -69,3 +68,4 @@ class Control {
  
 
 
+ */

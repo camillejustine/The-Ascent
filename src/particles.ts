@@ -1,4 +1,4 @@
-let particles: Particle[] = [];
+/* let particles: Particle[] = [];
 
 class Particle {
   x: number;
@@ -31,8 +31,11 @@ class Particle {
   }
 
   public draw() {
+    
     noStroke();
     fill(0, 0, this.color, this.alpha);
     ellipse(this.x, this.y, this.size);
+    
   }
 }
+ */
