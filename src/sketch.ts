@@ -7,9 +7,9 @@
  * sound files, images etc...
  */
 function preload() {
-    // Tyvärr har jag inte fått till den globala typningen för
-    // inladdningen av ljud men fungerar bra enligt nedan..
-    // sound = (window as any).loadSound('../assets/mySound.wav');
+  // Tyvärr har jag inte fått till den globala typningen för
+  // inladdningen av ljud men fungerar bra enligt nedan..
+  // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 
 /**
@@ -19,11 +19,14 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    frameRate(60);
-    // noCursor();
-    
-    // game = new Game();
+  createCanvas(windowWidth, windowHeight);
+  frameRate(60);
+  // noCursor();
+  for (let i = 0; i < 50; i++) {
+    let p: Particle = new Particle();
+    particles.push(p);
+  }
+  // game = new Game();
 }
 
 /**
@@ -32,16 +35,15 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
- 
-
-    // game.update();
-    // game.draw();
+  for (const particle of particles) {
+    particle.draw();
+    particle.update();
+  }
 }
-
 
 /**
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
 }
