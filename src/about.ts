@@ -1,6 +1,6 @@
 class About {
 
-    public constructor() {}
+    /* public constructor() {}
 
-    private mainMenu() {}
+    private mainMenu() {} */
 }

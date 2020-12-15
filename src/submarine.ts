@@ -1,5 +1,6 @@
 class Submarine {
-  /* private sub = p5.Image | p5.Element;
+
+    /* private sub = p5.Image | p5.Element;
     
     
     constructor(subImage: p5.Image | p5.Element){
@@ -10,3 +11,5 @@ class Submarine {
         this.sub = image(subImage,-25, -125, 50, 250);
     } */
 }
+
+

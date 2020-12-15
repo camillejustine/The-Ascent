@@ -1,7 +1,7 @@
 class MainMenu {
 
-    public constructor() {}
+    /* public constructor() {}
     
     private gameFrame() {}
-    private about() {}
+    private about() {} */
 }

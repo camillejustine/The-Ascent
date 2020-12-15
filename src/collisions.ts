@@ -1,6 +1,6 @@
 
 class Collision {
-    private cx: number;
+    /* private cx: number;
     private cy: number;
     private r: number;
 
@@ -28,5 +28,5 @@ class Collision {
 
     public hit() {
 
-    }
+    } */
 }

@@ -1,8 +1,8 @@
 class Background {
 
-    public constructor() {}
+  /*   public constructor() {}
 
     public draw() {}
    
-    private particles() {}
+    private particles() {} */
 }

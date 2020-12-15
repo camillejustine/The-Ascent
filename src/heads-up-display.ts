@@ -1,6 +1,6 @@
 class HeadsUpDisplay {
 
-    public constructor() {}
+    /* public constructor() {}
 
     public draw(){}
 
@@ -8,7 +8,7 @@ class HeadsUpDisplay {
 
 
 
-    private updateHudElements(){}
+    private updateHudElements(){} */
 }
 
 

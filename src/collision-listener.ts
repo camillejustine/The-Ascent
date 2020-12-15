@@ -1,6 +1,6 @@
 class CollisionListener {
     
-    public constructor() {}
+    /* public constructor() {}
     
     public update() {}
 
@@ -14,6 +14,6 @@ class CollisionListener {
     
     private checkCollisions(submarine, obstacles, powerups) {}
     
-    private applyCollisionsEffects() {}
+    private applyCollisionsEffects() {} */
 
 }

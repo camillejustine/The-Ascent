@@ -1,6 +1,6 @@
 abstract class Obstacles {
     
-    public constructor() {}
+    /* public constructor() {}
     
     public show() {}
 
@@ -10,7 +10,7 @@ abstract class Obstacles {
 
     private collisionListener() {}
 
-    private removeObstacle() {}
+    private removeObstacle() {} */
 
 }
 

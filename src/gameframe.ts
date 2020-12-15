@@ -1,12 +1,54 @@
-class Gameframe {
+class GameFrame implements InterfaceGameState{
+   private mainMenu: MainMenu;
+   /* private pauseMenu: PauseMenu;
 
-   public constructor() {}
+   private gameWon: GameWon;
+   private gameLost: GameLost;
 
-   public update() {}
+   private controls: Controls; 
+   private obstacles: Obstacle[];
+   private powerUps: PowerUp[];
+   private submarine: Submarine;
+   
+   private background: Background;
+
+   private headsUpDisplay: HeadsUpDisplay;
+   private collisionListener: ColissionListener; */
+ 
+   private canvasWidth: number;
+   private canvasHeight: number;
+   //private setDepth: number;
+   public isGameRunning: boolean;
+
+
+
+
+   public constructor() {
+      this.mainMenu = new MainMenu(this);
+      this.canvasWidth = 800;
+      this.canvasHeight = windowHeight;
+      
+      //this.mainMenu = new MainMenu();
+
+   }
+
+   public update() {
+      if (this.isGameRunning) {
+         
+     } else {
+         this.mainMenu.update();
+     }
+   }
     
-   public draw() {} 
+   public draw() {
+      createCanvas(this.canvasWidth, this.canvasHeight)
+      background("#001318");
+      console.log('test')
+   } 
 
-   private populateObstacles() {}
+   
+
+   /* private populateObstacles() {}
 
    private initializePlayer() {}
 
@@ -19,5 +61,7 @@ class Gameframe {
    private spawnPowerUp() {}
 
    private spawnObstacle() {}
-
+ */
 }
+
+//page loads html DOM star button. 

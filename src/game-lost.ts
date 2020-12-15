@@ -1,11 +1,11 @@
 class Gamelost {
 
-    public constructor() {}
+    /* public constructor() {}
 
     public update() {}
    
     private restartGame() {}
    
     private backToMain() {}
-
+ */
 }
