@@ -4,7 +4,6 @@ let subImage: p5.Image | p5.Element;
 let bg: p5.Image | p5.Element; 
 let iceberg: p5.Image | p5.Element;
 let angle: number = 0;
-let ship: any;
 let control: any;
 let ice: any;
 let iceBergs: Array<any> = [];
@@ -32,6 +31,7 @@ function setup() {
     createCanvas(800, windowHeight);
     frameRate(60);
     cursor(CROSS);
+
     ice = new Obstacle();
     control = new Control();
     collisions = new Collision();
@@ -45,19 +45,13 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-    if (random(1) < 0.01){
-        iceBergs.push(new Obstacle());
-    }
     background(bg);
+
     control.move();
     control.draw();
+    ice.randomSpawn();
     
     
-    for(let i of iceBergs){
-        i.move()
-        i.draw()
-    }
-
     //collisions.draw()
     
     // game.update();
