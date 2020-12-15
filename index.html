@@ -1,30 +1,20 @@
 <html>
-    <head>
-        <style>
-            html, body, canvas {
-                height: 100%;
-                width: 100%;
-                margin: 0;
-                background: black;
-            }
-            body {
-                margin: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            button {
-                position: fixed;
-            }
-
-        </style>
-        <script defer src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/addons/p5.sound.js"></script>
-        <script defer src="build/bundle.js"></script>
-    </head>
-    <body>
-        <button id="button">start</button> 
-        <!-- Code injected via JavaScript -->
-    </body>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/addons/p5.sound.js"
+    ></script>
+    <script defer src="build/bundle.js"></script>
+  </head>
+  <body>
+    <div id="main-menu">
+      <button id="start-game">start</button>
+    </div>
+    <!-- Code injected via JavaScript -->
+  </body>
 </html>
