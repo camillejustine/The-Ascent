@@ -31,7 +31,6 @@ class Particle {
   }
 
   public draw() {
-    background("#001318");
     noStroke();
     fill(0, 0, this.color, this.alpha);
     ellipse(this.x, this.y, this.size);
