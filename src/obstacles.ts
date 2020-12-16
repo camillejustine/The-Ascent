@@ -1,17 +1,16 @@
-
-/* 
 class Obstacle {
     
     private iceberg: any;
     private r: number;
     private y: number;
     private x: number;
-    
+    private iceArray: Array<any>;
 
     constructor() {
+        this.iceArray = [];
         this.r = 100;
         this.y = -100;
-        this.x = random([10], [780]);
+        this.x = random([10], [900]);
         this.iceberg = iceberg;
     }
 
@@ -27,21 +26,10 @@ class Obstacle {
 
     public randomSpawn() {
         if (random(1) < 0.01){
-            iceBergs.push(new Obstacle());
+            this.iceArray.push(new Obstacle());
         }
-        for(let i of iceBergs){
+        for(let i of this.iceArray){
             i.move()
             i.draw()
         }
     }
-}
-
-ice = new Obstacle();
-control = new Control();
-collisions = new Collision();
-
-let angle: number = 0;
-let control: any;
-let ice: any;
-let iceBergs: Array<any> = [];
-let collisions: any; */
