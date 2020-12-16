@@ -1,5 +1,3 @@
-/* let particles: Particle[] = [];
-
 class Particle {
   x: number;
   y: number;
@@ -13,8 +11,8 @@ class Particle {
     this.y = random(-10, height);
     this.vy = random(-0.1, 1);
     this.alpha = random(0, 10000);
-    this.size = random(1, 6);
-    this.color = random(170, 220);
+    this.size = random(1, 3);
+    this.color = random(200, 255);
   }
 
   public update() {
@@ -31,11 +29,8 @@ class Particle {
   }
 
   public draw() {
-    
     noStroke();
-    fill(0, 0, this.color, this.alpha);
+    fill(255, 255, this.color, this.alpha);
     ellipse(this.x, this.y, this.size);
-    
   }
 }
- */
