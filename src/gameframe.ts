@@ -39,13 +39,11 @@ class GameFrame implements iGameState {
 
   public draw() {
     this.mainMenu.update()
-    //console.log(this.isGameRunning)
     if(this.isGameRunning){
       document.getElementById("main-menu")!.style.display = "none";
       background("#001318");
-      frameRate(60);
       noCursor();
-
+    
       this.obstacles.draw()
       this.obstacles.move()
       this.obstacles.randomSpawn()
@@ -56,12 +54,7 @@ class GameFrame implements iGameState {
 
     } else {
       this.mainMenu.update();
-    }
-    
- 
-   
-    //this.mainMenu.draw()
-    
+    }   
   }
 
   /* private populateObstacles() {}
