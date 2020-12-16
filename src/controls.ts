@@ -2,10 +2,14 @@
 class Control {
     private angle: number = 0;
 
+    private rotateRight: number;
+    private rotateLeft: number;
     private right: number;
     private left: number;
     private forward: number;
     private back: number;
+    private subPositionX: number;
+    private subPositionY: number;
 
     /* private position: p5.Vector;
     private acceleration: p5.Vector; */
@@ -26,19 +30,30 @@ class Control {
         this.right = RIGHT_ARROW;
         this.forward = UP_ARROW;
         this.back = DOWN_ARROW;
+        this.rotateLeft = 90;
+        this.rotateRight = 88;
+        this.subPositionX = width;
+        this.subPositionY = height;
         //this.leftWall = 25;
         //this.rightWall = 600;
         //this.wallCollide = constrain(mouseX, this.leftWall, this.rightWall);
     } 
 
     public keyPressed() {
-            if (keyCode === 90) {
+            if (keyIsDown(this.rotateLeft)) {
                 this.angle -= 1;
-            } else if (keyCode === 88){
+            } else if (keyIsDown(this.rotateRight)){
                 this.angle += 1;
             } 
-            if(keyPressed(LEFT_ARROW)){
 
+            if (keyIsDown(LEFT_ARROW)) {
+                this.subPositionX -= 1
+            } else if(keyIsDown(RIGHT_ARROW)){
+                this.subPositionX += 1
+            } else if(keyIsDown(UP_ARROW)){
+                this.subPositionY -= 1
+            } else if(keyIsDown(DOWN_ARROW)){
+                this.subPositionY += 1
             }
         };
 
@@ -65,7 +80,7 @@ class Control {
     public draw() {
             angleMode(DEGREES)
             push();
-            translate(width/2, height/2);
+            translate(this.subPositionX, this.subPositionY);
             rotate(this.angle);
             image(subImage,-25, -125, 50, 250);
             fill(200,50)
