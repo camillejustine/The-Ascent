@@ -6,18 +6,20 @@ class MainMenu {
   public game: iGameState;
 
   constructor(game: iGameState) {
-    this.startButton = createButton('start');
+    //this.startButton = createButton('start');
     //this.startButton.mouseClicked(console.log('test'))
     this.game = game;
-    //this.startButton = document.getElementById("start-game")!;
+    this.startButton = document.getElementById("start-game")!;
   }
 
   public update() {
+    //console.log(this.startButton)
+    
   
-    this.startButton.mousePressed(() => {
+    /* this.startButton.mousePressed(() => {
       this.startButton.hide();
       this.game.isGameRunning = true;
-    });
+    }); */
     
   }
    public draw() { 

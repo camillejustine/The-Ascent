@@ -35,11 +35,11 @@ class GameFrame implements iGameState {
   public update() {}
 
   public draw() {
-    console.log(this.isGameRunning)
+
     this.mainMenu.update()
     //console.log(this.isGameRunning)
     if(this.isGameRunning){
-      document.getElementById("main-menu")!.style.display = "none";
+      //document.getElementById("main-menu")!.style.display = "none";
       background("#001318");
       frameRate(60);
       noCursor();
