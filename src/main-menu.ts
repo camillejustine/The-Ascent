@@ -15,10 +15,13 @@ class MainMenu {
   public update() {
     //console.log(this.startButton)
     
+    this.startButton.onclick = () => {
+      //this.startButton.hide();
+      this.game.isGameRunning = true;
+    } 
   
     /* this.startButton.mousePressed(() => {
-      this.startButton.hide();
-      this.game.isGameRunning = true;
+      
     }); */
     
   }
