@@ -49,7 +49,7 @@ class GameFrame implements iGameState {
 
       this.controls.draw();
       this.controls.move();
-      this.controls.keyPress();
+
     } else {
       this.mainMenu.update();
     }
