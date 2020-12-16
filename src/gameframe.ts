@@ -1,4 +1,8 @@
-class GameFrame implements InterfaceGameState {
+
+interface iGameState {
+  isGameRunning: boolean;
+}
+class GameFrame implements iGameState {
   private mainMenu: MainMenu;
   /* private pauseMenu: PauseMenu;
 
@@ -18,21 +22,31 @@ class GameFrame implements InterfaceGameState {
   private canvasWidth: number;
   private canvasHeight: number;
   //private setDepth: number;
-  //public isGameRunning: boolean;
+  public isGameRunning: boolean;
 
   public constructor() {
     this.mainMenu = new MainMenu(this);
     this.canvasWidth = 960;
     this.canvasHeight = 720;
-    //this.isGameRunning = false;
+    this.isGameRunning = false;
   }
 
   public update() {}
 
   public draw() {
     this.mainMenu.update();
-    createCanvas(this.canvasWidth, this.canvasHeight);
-    background("#001318");
+    //console.log(this.isGameRunning)
+    if(this.isGameRunning){
+      document.getElementById("main-menu")!.style.display = "none";
+      createCanvas(this.canvasWidth, this.canvasHeight);
+      background("#001318");
+      frameRate(60)
+      noCursor()
+    } else {
+      
+    }
+    //this.mainMenu.draw()
+    
   }
 
   /* private populateObstacles() {}

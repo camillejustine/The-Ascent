@@ -1,6 +1,6 @@
 //---- GLOBAL VARIABLES ----//
 let gameFrame: GameFrame;
-let mainMenu: MainMenu;
+//let mainMenu: MainMenu;
 let subImage: p5.Image | p5.Element;
 let bg: p5.Image | p5.Element;
 let iceberg: p5.Image | p5.Element;
@@ -25,7 +25,7 @@ function preload() {
  */
 function setup() {
   gameFrame = new GameFrame();
-  mainMenu = new MainMenu();
+  //mainMenu = new MainMenu();
   frameRate(60);
   cursor(CROSS);
 
@@ -38,9 +38,9 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-  mainMenu.update();
-  //gameFrame.update();
-  //gameFrame.draw();
+  //mainMenu.draw();
+  gameFrame.update();
+  gameFrame.draw();
 }
 
 //create circle with collision detector where if circle border overlaps
