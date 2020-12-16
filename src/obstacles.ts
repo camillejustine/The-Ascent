@@ -10,7 +10,7 @@ class Obstacle {
         this.iceArray = [];
         this.r = 100;
         this.y = -100;
-        this.x = random([10], [900]);
+        this.x = random(10, 900);
         this.iceberg = iceberg;
     }
 
@@ -33,3 +33,4 @@ class Obstacle {
             i.draw()
         }
     }
+}

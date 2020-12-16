@@ -4,7 +4,7 @@ interface iGameState {
 }
 class GameFrame implements iGameState {
   private mainMenu: MainMenu;
-  private pauseMenu: PauseMenu;
+  //private pauseMenu: PauseMenu;
 
    /* private gameWon: GameWon;
    private gameLost: GameLost;
@@ -21,8 +21,6 @@ class GameFrame implements iGameState {
    private controls: Control; 
    private obstacles: Obstacle;
 
-  private canvasWidth: number;
-  private canvasHeight: number;
   //private setDepth: number;
   public isGameRunning: boolean;
 
