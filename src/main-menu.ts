@@ -1,30 +1,36 @@
 class MainMenu {
-  private startButton: HTMLElement;
-  private aboutButton: HTMLElement;
-  private isGameRunning: boolean;
+  private startButton: any;
+  private aboutButton: any;
+  public game: iGameState;
 
-  constructor() {
-    this.isGameRunning = false;
-    this.startButton = document.getElementById("start-game")!;
+  constructor(game: iGameState) {
+    this.startButton = createButton('start');
+    
+    //this.startButton.mouseClicked(console.log('test'))
+    this.game = game;
+    //this.startButton = document.getElementById("start-game")!;
   }
 
   public update() {
-    this.startButton.onclick = this.gameState;
+    
+    if(mouseIsPressed){
+      this.game.isGameRunning = true
+    } 
+    //this.startButton.mouseClicked(this.true)
+    //this.draw();
   }
-
-  public gameState() {
-    this.isGameRunning = true;
-    document.getElementById("main-menu")!.style.display = "none";
-
-    if (this.isGameRunning) {
-      gameFrame.draw();
-      gameFrame.update();
-    } else {
-      this.update();
+   public draw() { 
+    //console.log('test')
+    //this.startButton.mouseClicked(console.log('test'))
     }
-  }
-}
+
+  public true(){
+    //can't change isGameRunning to true with mouseClicked???
+    this.game.isGameRunning = true
+    console.log('test')
+  } 
 /* public constructor() {}
     
     private gameFrame() {}
     private about() {} */
+}
