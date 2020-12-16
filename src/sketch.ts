@@ -25,6 +25,8 @@ function preload() {
  */
 function setup() {
   gameFrame = new GameFrame();
+  createCanvas(960, 720);
+  
   //mainMenu = new MainMenu();
   frameRate(60);
   cursor(CROSS);

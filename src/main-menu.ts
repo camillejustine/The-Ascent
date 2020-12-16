@@ -1,3 +1,5 @@
+
+
 class MainMenu {
   private startButton: any;
   private aboutButton: any;
@@ -5,19 +7,18 @@ class MainMenu {
 
   constructor(game: iGameState) {
     this.startButton = createButton('start');
-    
     //this.startButton.mouseClicked(console.log('test'))
     this.game = game;
     //this.startButton = document.getElementById("start-game")!;
   }
 
   public update() {
+  
+    this.startButton.mousePressed(() => {
+      this.startButton.hide();
+      this.game.isGameRunning = true;
+    });
     
-    if(mouseIsPressed){
-      this.game.isGameRunning = true
-    } 
-    //this.startButton.mouseClicked(this.true)
-    //this.draw();
   }
    public draw() { 
     //console.log('test')
@@ -26,7 +27,7 @@ class MainMenu {
 
   public true(){
     //can't change isGameRunning to true with mouseClicked???
-    this.game.isGameRunning = true
+    this.game.isGameRunning = true;
     console.log('test')
   } 
 /* public constructor() {}

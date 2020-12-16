@@ -4,20 +4,22 @@ interface iGameState {
 }
 class GameFrame implements iGameState {
   private mainMenu: MainMenu;
-  /* private pauseMenu: PauseMenu;
+  private pauseMenu: PauseMenu;
 
-   private gameWon: GameWon;
+   /* private gameWon: GameWon;
    private gameLost: GameLost;
 
    private controls: Controls; 
-   private obstacles: Obstacle[];
+  
    private powerUps: PowerUp[];
    private submarine: Submarine;
    
    private background: Background;
 
    private headsUpDisplay: HeadsUpDisplay;
-   private collisionListener: ColissionListener; */
+   private collisionListener: ColissionListener;  */
+
+   private obstacles: Obstacle;
 
   private canvasWidth: number;
   private canvasHeight: number;
@@ -26,25 +28,29 @@ class GameFrame implements iGameState {
 
   public constructor() {
     this.mainMenu = new MainMenu(this);
-    this.canvasWidth = 960;
-    this.canvasHeight = 720;
+    this.obstacles = new Obstacle();
     this.isGameRunning = false;
   }
 
   public update() {}
 
   public draw() {
-    this.mainMenu.update();
+    console.log(this.isGameRunning)
+    this.mainMenu.update()
     //console.log(this.isGameRunning)
     if(this.isGameRunning){
       document.getElementById("main-menu")!.style.display = "none";
-      createCanvas(this.canvasWidth, this.canvasHeight);
       background("#001318");
-      frameRate(60)
-      noCursor()
-    } else {
-      
-    }
+      frameRate(60);
+      noCursor();
+
+      this.obstacles.draw()
+      this.obstacles.move()
+      this.obstacles.randomSpawn()
+    } else {}
+    
+ 
+   
     //this.mainMenu.draw()
     
   }

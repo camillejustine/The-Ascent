@@ -30,7 +30,7 @@ button {
   width: 960px;
   height: 720px;
   position: fixed;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-image: url(./assets/images/menu-background.png);
