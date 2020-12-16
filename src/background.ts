@@ -12,7 +12,7 @@ class Background {
       for (let i = 0; i < 100; i++) {
         let p: Particle = new Particle();
         this.particles.push(p);
-        console.log(this.particles.length);
+        // console.log(this.particles.length);
       }
     }
   }
@@ -22,9 +22,9 @@ class Background {
   public draw() {
     background(this.color);
 
-    for (const particle of this.particles) {
-      particle.draw();
-      particle.update();
-    }
+    // for (const particle of this.particles) {
+    //   particle.draw();
+    //   particle.update();
+    // }
   }
 }

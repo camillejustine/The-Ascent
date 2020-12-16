@@ -17,15 +17,14 @@ class GameFrame implements iGameState {
 
    private headsUpDisplay: HeadsUpDisplay;
      */
-  private collisionListener: ColissionListener;
+  //   private collisionListener: ColissionListener;
   private controls: Control;
-
 
   //private setDepth: number;
   public isGameRunning: boolean;
 
   public constructor() {
-    this.collisionListener = new CollisionListener();
+    //  this.collisionListener = new CollisionListener();
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
@@ -39,27 +38,23 @@ class GameFrame implements iGameState {
   public draw() {
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
+      let obstacles: Obstacle[] = [new Iceberg()];
 
       this.background.update();
       this.background.draw();
 
       noCursor();
 
-      let obstacles: Obstacle[] = [
-        new Iceberg()
-      ]
-
-      for(const obstacle of obstacles){
-        console.log(obstacle)
+      for (const obstacle of obstacles) {
         obstacle.draw();
         obstacle.randomSpawn();
+        //   console.log(obstacle);
       }
-      
+
       this.controls.draw();
       this.controls.move();
 
-      this.collisionListener.draw() 
-
+      // this.collisionListener.draw()
     } else {
       this.mainMenu.update();
     }
