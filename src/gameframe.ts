@@ -16,7 +16,8 @@ class GameFrame implements iGameState {
    
 
    private headsUpDisplay: HeadsUpDisplay;
-   private collisionListener: ColissionListener;  */
+     */
+  private collisionListener: ColissionListener;
   private controls: Control;
 
 
@@ -24,6 +25,7 @@ class GameFrame implements iGameState {
   public isGameRunning: boolean;
 
   public constructor() {
+    this.collisionListener = new CollisionListener();
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
@@ -55,6 +57,8 @@ class GameFrame implements iGameState {
       
       this.controls.draw();
       this.controls.move();
+
+      this.collisionListener.draw() 
 
     } else {
       this.mainMenu.update();
