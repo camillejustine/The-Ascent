@@ -1,6 +1,7 @@
-/* 
+
 class Control {
-    
+    private angle: number = 0;
+
     private right: number;
     private left: number;
     private position: p5.Vector;
@@ -9,12 +10,13 @@ class Control {
     private leftWall: number;
     private rightWall: number;
 
-    private wallCollide: number; */
+    private wallCollide: number;
 
     /* private mouseX: number;
     private mouseY: number; */
     
-    /* public constructor(){
+    public constructor(){
+        this.angle = this.angle;
         this.position = new p5.Vector(width/2, height/1.5);
         this.acceleration = new p5.Vector(0, -10);
         this.left = LEFT_ARROW;
@@ -55,7 +57,7 @@ class Control {
             angleMode(DEGREES)
             push();
             translate(this.position.x, this.position.y);
-            rotate(angle);
+            rotate(this.angle);
             image(subImage,-25, -125, 50, 250);
             fill(200,50)
             rect( -25,-125, 50, 250)
@@ -68,4 +70,3 @@ class Control {
  
 
 
- */

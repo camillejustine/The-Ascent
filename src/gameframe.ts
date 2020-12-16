@@ -9,7 +9,7 @@ class GameFrame implements iGameState {
    /* private gameWon: GameWon;
    private gameLost: GameLost;
 
-   private controls: Controls; 
+  
   
    private powerUps: PowerUp[];
    private submarine: Submarine;
@@ -18,7 +18,7 @@ class GameFrame implements iGameState {
 
    private headsUpDisplay: HeadsUpDisplay;
    private collisionListener: ColissionListener;  */
-
+   private controls: Control; 
    private obstacles: Obstacle;
 
   private canvasWidth: number;
@@ -29,6 +29,7 @@ class GameFrame implements iGameState {
   public constructor() {
     this.mainMenu = new MainMenu(this);
     this.obstacles = new Obstacle();
+    this.controls = new Control();
     this.isGameRunning = false;
   }
 
@@ -48,7 +49,14 @@ class GameFrame implements iGameState {
       this.obstacles.draw()
       this.obstacles.move()
       this.obstacles.randomSpawn()
-    } else {}
+
+      this.controls.draw();
+      this.controls.move();
+      this.controls.keyPress();
+
+    } else {
+      this.mainMenu.update();
+    }
     
  
    
