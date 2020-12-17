@@ -33,6 +33,7 @@ class Control {
       this.angle += 1;
     }
 
+
     if (keyIsDown(LEFT_ARROW)) {
       this.subPositionX -= 4;
     }
@@ -50,12 +51,12 @@ class Control {
   public move() {
     this.keyPressed();
 
-    /* this.acceleration = p5.Vector.sub(new p5.Vector(mouseX,mouseY), this.position);
-            this.acceleration.setMag(3);
+
+           /* this.acceleration.setMag(3);
           
             this.position.add(this.acceleration);
-
              */
+
 
     if (this.subPositionX < 0) {
       this.subPositionX = 0;
@@ -63,6 +64,7 @@ class Control {
       this.subPositionX = 960;
     }
   }
+
 
   public draw() {
     angleMode(DEGREES);

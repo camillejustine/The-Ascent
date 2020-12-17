@@ -9,22 +9,34 @@ class GameFrame implements iGameState {
   /* private gameWon: GameWon;
    private gameLost: GameLost;
 
-  
-  
    private powerUps: PowerUp[];
    private submarine: Submarine;
-   
-
+  
    private headsUpDisplay: HeadsUpDisplay;
      */
-  //   private collisionListener: ColissionListener;
+
+  private collisionListener: CollisionListener;
   private controls: Control;
+  private obstacles: Obstacle[];
+  
 
   //private setDepth: number;
   public isGameRunning: boolean;
 
   public constructor() {
-    //  this.collisionListener = new CollisionListener();
+
+
+    
+
+    this.obstacles = [
+      new Iceberg(),
+      new Mine()
+    ]
+    
+    this.obstacles; Obstacle; 
+
+    this.collisionListener = new CollisionListener();
+
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
@@ -45,12 +57,13 @@ class GameFrame implements iGameState {
 
       noCursor();
 
-      for (const obstacle of obstacles) {
-        obstacle.draw();
-        obstacle.randomSpawn();
-        //   console.log(obstacle);
-      }
 
+      for(const obstacle of this.obstacles){
+        obstacle.move(); 
+        obstacle.randomSpawn();
+        obstacle.draw();  
+      } 
+      
       this.controls.draw();
       this.controls.move();
 

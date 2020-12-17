@@ -4,6 +4,7 @@ let gameFrame: GameFrame;
 let subImage: p5.Image | p5.Element;
 let bg: p5.Image | p5.Element;
 let iceberg: p5.Image | p5.Element;
+let mine: p5.Image | p5.Element;
 
 /**
  * Built in preload function in P5
@@ -14,6 +15,7 @@ function preload() {
   subImage = loadImage("./assets/images/sub.png");
   bg = loadImage("./assets/images/Background.png");
   iceberg = loadImage("./assets/images/iceberg.png");
+  mine = loadImage("./assets/images/mine.png");
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 

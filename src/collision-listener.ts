@@ -34,14 +34,29 @@
 //           rect(this.sx,this.sy, this.sw,this.sh);
 //         }
 
-//         public hit(cx, cy, rad, rx, ry, rw, rh){
-//         let testX = this.cx;
-//         let testY = this.cy;
-//         if (cx < rx)
-//                  {testX = rx;}      // test left edge
-//         else if (cx > rx+rw) testX = rx+rw;   // right edge
-//         if (cy < ry)         testY = ry;      // top edge
-//         else if (cy > ry+rh) testY = ry+rh;   // bottom edge
+
+        public hit(cx, cy, rad, rx, ry, rw, rh){
+        let testX = this.cx;
+        let testY = this.cy;
+        if (cx < rx)
+                 {testX = rx;}      // test left edge
+        else if (cx > rx+rw) testX = rx+rw;   // right edge
+        if (cy < ry)         testY = ry;      // top edge
+        else if (cy > ry+rh) testY = ry+rh;   // bottom edge
+  
+        let d = dist(cx, cy, testX, testY);
+  
+        if (d <= rad) {
+            return true;
+        }
+        return false;
+    }
+
+    //assign r variables to submarine circle and then call collision listener functions. 
+    /* public constructor() {}
+    
+    public update() {}
+
 
 //         let d = dist(cx, cy, testX, testY);
 
