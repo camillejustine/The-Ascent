@@ -40,8 +40,9 @@ function setup() {
  */
 function draw() {
   //mainMenu.draw();
-  gameFrame.update();
+  
   gameFrame.draw();
+  gameFrame.update();
 }
 
 //create circle with collision detector where if circle border overlaps
