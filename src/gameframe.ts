@@ -33,7 +33,6 @@ class GameFrame implements iGameState {
       new Mine()
     ]
     
-    this.obstacles; Obstacle; 
 
     //this.collisionListener = new CollisionListener();
 
@@ -48,8 +47,7 @@ class GameFrame implements iGameState {
 
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
-      let obstacles: Obstacle[] = [new Iceberg()];
-
+      
       this.background.update();
       
 
@@ -71,7 +69,6 @@ class GameFrame implements iGameState {
   public draw() {
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
-      let obstacles: Obstacle[] = [new Iceberg()];
 
       this.background.draw();
 
