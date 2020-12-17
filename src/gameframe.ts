@@ -18,15 +18,12 @@ class GameFrame implements iGameState {
   //private collisionListener: CollisionListener;
   private controls: Control;
   private obstacles: Obstacle[];
-  
+  private depthCounter: DepthCounter;
 
   //private setDepth: number;
   public isGameRunning: boolean;
 
   public constructor() {
-
-
-    
 
     this.obstacles = [
       new Iceberg(),
@@ -40,10 +37,13 @@ class GameFrame implements iGameState {
     this.controls = new Control();
     this.isGameRunning = false;
     this.background = new Background();
+    this.depthCounter = new DepthCounter();
   }
+  
 
   public update() {
     this.mainMenu.update();
+    this.depthCounter.update();
 
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
@@ -65,6 +65,9 @@ class GameFrame implements iGameState {
   }
 
   public draw() {
+    this.controls.draw();
+    this.depthCounter.draw();
+    
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
 
@@ -77,8 +80,7 @@ class GameFrame implements iGameState {
         
         obstacle.draw();  
       } 
-      
-      this.controls.draw();
+    
       
 
       // this.collisionListener.draw()
