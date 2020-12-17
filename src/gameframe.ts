@@ -58,10 +58,8 @@ class GameFrame implements iGameState {
         obstacle.move(); 
         obstacle.randomSpawn(); 
       } 
-      
-      this.controls.draw();
-      
-
+      this.controls.move();
+      this.controls.keyPressed();
       // this.collisionListener.draw()
     } 
   }
