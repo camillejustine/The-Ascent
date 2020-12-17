@@ -34,13 +34,13 @@ class Control {
                 this.angle += 1;
             } 
 
-            if (keyIsDown(LEFT_ARROW)) {
+            if (keyIsDown(this.left)) {
                 this.subPositionX -= 4
-            } else if(keyIsDown(RIGHT_ARROW)){
+            } else if(keyIsDown(this.right)){
                 this.subPositionX += 4
-            } else if(keyIsDown(UP_ARROW)){
+            } else if(keyIsDown(this.forward)){
                 this.subPositionY -= 4
-            } else if(keyIsDown(DOWN_ARROW)){
+            } else if(keyIsDown(this.back)){
                 this.subPositionY += 4
             }
         };
@@ -49,13 +49,10 @@ class Control {
            
             this.keyPressed()
             
-
-           
             /* this.acceleration = p5.Vector.sub(new p5.Vector(mouseX,mouseY), this.position);
             this.acceleration.setMag(3);
           
             this.position.add(this.acceleration);
-
              */
 
             if(this.subPositionX < 0){
@@ -68,7 +65,7 @@ class Control {
     public draw() {
             angleMode(DEGREES)
             push();
-            translate(this.subPositionX, this.subPositionY;
+            translate(this.subPositionX, this.subPositionY);
             rotate(this.angle);
             image(subImage,-25, -125, 50, 250);
             fill(200,50)
