@@ -29,6 +29,7 @@ button {
   font-size: 20px;
   color: aliceblue;
   border: none;
+  z-index: 1000;
 }
 
 button:focus {
@@ -42,7 +43,7 @@ button:focus {
 }
 
 .menu-text-frame {
-  width: 50%;
+  width: 40%;
   background: linear-gradient(
     186.1deg,
     rgba(110, 198, 65, 0.2) 13.63%,
@@ -61,8 +62,40 @@ button:focus {
 
 .menu-text {
   color: #6ec641;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  padding: 1rem;
   /* margin-top: 6rem; */
+}
+
+.button-container {
+  position: relative;
+  width: 20%;
+}
+
+.start-game-bg {
+  position: relative;
+  width: 100%;
+}
+
+.about-bg {
+  position: relative;
+  width: 100%;
+}
+
+#about {
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+#start-game {
+  position: absolute;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 #main-menu {
