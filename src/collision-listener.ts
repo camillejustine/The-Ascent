@@ -50,6 +50,8 @@ class CollisionListener {
         }
         return false;
     }
+
+    //assign r variables to submarine circle and then call collision listener functions. 
     /* public constructor() {}
     
     public update() {}
