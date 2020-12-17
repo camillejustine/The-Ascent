@@ -22,9 +22,9 @@ class Background {
   public draw() {
     background(this.color);
 
-    // for (const particle of this.particles) {
-    //   particle.draw();
-    //   particle.update();
-    // }
+    for (const particle of this.particles) {
+      particle.draw();
+      particle.update();
+    }
   }
 }
