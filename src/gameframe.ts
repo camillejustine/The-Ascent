@@ -15,7 +15,7 @@ class GameFrame implements iGameState {
    private headsUpDisplay: HeadsUpDisplay;
      */
 
-  private collisionListener: CollisionListener;
+  //private collisionListener: CollisionListener;
   private controls: Control;
   private obstacles: Obstacle[];
   
@@ -35,7 +35,7 @@ class GameFrame implements iGameState {
     
     this.obstacles; Obstacle; 
 
-    this.collisionListener = new CollisionListener();
+    //this.collisionListener = new CollisionListener();
 
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
@@ -45,6 +45,27 @@ class GameFrame implements iGameState {
 
   public update() {
     this.mainMenu.update();
+
+    if (this.isGameRunning) {
+      document.getElementById("main-menu")!.style.display = "none";
+      let obstacles: Obstacle[] = [new Iceberg()];
+
+      this.background.update();
+      
+
+      noCursor();
+
+
+      for(const obstacle of this.obstacles){
+        obstacle.move(); 
+        obstacle.randomSpawn(); 
+      } 
+      
+      this.controls.draw();
+      
+
+      // this.collisionListener.draw()
+    } 
   }
 
   public draw() {
@@ -52,25 +73,21 @@ class GameFrame implements iGameState {
       document.getElementById("main-menu")!.style.display = "none";
       let obstacles: Obstacle[] = [new Iceberg()];
 
-      this.background.update();
       this.background.draw();
 
       noCursor();
 
 
       for(const obstacle of this.obstacles){
-        obstacle.move(); 
-        obstacle.randomSpawn();
+        
         obstacle.draw();  
       } 
       
       this.controls.draw();
-      this.controls.move();
+      
 
       // this.collisionListener.draw()
-    } else {
-      this.mainMenu.update();
-    }
+    } 
   }
 
   /* private populateObstacles() {}

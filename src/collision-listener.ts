@@ -1,4 +1,4 @@
-// class CollisionListener {
+ class CollisionListener {
 //     private cx: number;
 //     private cy: number;
 //     private r: number;
@@ -35,7 +35,7 @@
 //         }
 
 
-        public hit(cx, cy, rad, rx, ry, rw, rh){
+        /* public hit(cx, cy, rad, rx, ry, rw, rh){
         let testX = this.cx;
         let testY = this.cy;
         if (cx < rx)
@@ -49,7 +49,7 @@
         if (d <= rad) {
             return true;
         }
-        return false;
+        return false; */
     }
 
     //assign r variables to submarine circle and then call collision listener functions. 
