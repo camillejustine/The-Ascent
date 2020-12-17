@@ -15,7 +15,7 @@ body {
 }
 
 button {
-  position: fixed;
+  position: relative;
   font-family: "VT323", monospace;
   background: linear-gradient(
     186.1deg,
@@ -24,6 +24,78 @@ button {
   );
   width: 5rem;
   height: 2rem;
+  border-radius: 20px;
+  border-style: none;
+  font-size: 20px;
+  color: aliceblue;
+  border: none;
+  z-index: 1000;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+  background: linear-gradient(
+    186.1deg,
+    rgba(92, 233, 22, 0.3) 13.63%,
+    rgba(35, 95, 6, 0) 95.41%
+  );
+}
+
+.menu-text-frame {
+  width: 40%;
+  background: linear-gradient(
+    186.1deg,
+    rgba(110, 198, 65, 0.2) 13.63%,
+    rgba(110, 198, 65, 0) 95.41%
+  );
+  border: 10px solid;
+  border-image: linear-gradient(
+    180deg,
+    rgba(110, 198, 65, 0.2) 13.63%,
+    rgba(110, 198, 65, 0) 95.41%
+  );
+  border-image-slice: 80;
+
+  margin-left: 2rem;
+}
+
+.menu-text {
+  color: #6ec641;
+  font-size: 1rem;
+  padding: 1rem;
+  /* margin-top: 6rem; */
+}
+
+.button-container {
+  position: relative;
+  width: 20%;
+}
+
+.start-game-bg {
+  position: relative;
+  width: 100%;
+}
+
+.about-bg {
+  position: relative;
+  width: 100%;
+}
+
+#about {
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+#start-game {
+  position: absolute;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 #main-menu {
@@ -35,4 +107,18 @@ button {
   align-items: center;
   background-image: url(./assets/images/menu-background.png);
   background-size: cover;
+}
+
+#menu-frame {
+  background-image: url(./assets/images/menu-frame.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70%;
+  width: 80%;
+  position: relative;
+  text-align: center;
 }

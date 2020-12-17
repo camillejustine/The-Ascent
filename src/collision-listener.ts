@@ -1,38 +1,39 @@
-class CollisionListener {
-    private cx: number;
-    private cy: number;
-    private r: number;
+// class CollisionListener {
+//     private cx: number;
+//     private cy: number;
+//     private r: number;
 
-    private sx: number;
-    private sy: number;
-    private sw: number; 
-    private sh: number;
+//     private sx: number;
+//     private sy: number;
+//     private sw: number;
+//     private sh: number;
 
-    constructor(){
-        this.cx = 50;
-        this.cy = 50;
-        this.r = 40;
+//     constructor(){
+//         this.cx = 50;
+//         this.cy = 50;
+//         this.r = 40;
 
-        this.sx = 200;
-        this.sy = 200;
-        this.sw = 200;
-        this.sh = 200;
-    }
+//         this.sx = 200;
+//         this.sy = 200;
+//         this.sw = 200;
+//         this.sh = 200;
+//     }
 
-    public draw() {
-        this.cx = mouseX;
-        this.cy = mouseY;
-        let hit = this.hit(this.cx,this.cy,this.r, this.sx,this.sy,this.sw,this.sh);
-        fill(0, 255, 100);
-        circle(this.cx, this.cy, this.r*2)
-        if (hit) {
-            fill(255,150,0);
-          }
-          else {
-            fill(0,150,255);
-          } 
-          rect(this.sx,this.sy, this.sw,this.sh);
-        }
+//     public draw() {
+//         this.cx = mouseX;
+//         this.cy = mouseY;
+//         let hit = this.hit(this.cx,this.cy,this.r, this.sx,this.sy,this.sw,this.sh);
+//         fill(0, 255, 100);
+//         circle(this.cx, this.cy, this.r*2)
+//         if (hit) {
+//             fill(255,150,0);
+//           }
+//           else {
+//             fill(0,150,255);
+//           }
+//           rect(this.sx,this.sy, this.sw,this.sh);
+//         }
+
 
         public hit(cx, cy, rad, rx, ry, rw, rh){
         let testX = this.cx;
@@ -56,16 +57,28 @@ class CollisionListener {
     
     public update() {}
 
-    private setShipStatus() {}
-    
-    private setObstacleIntegrity() {}
-    
-    private shipStatusDamaged() {}
-    
-    private grantPowerUp() {}
-    
-    private checkCollisions(submarine, obstacles, powerups) {}
-    
-    private applyCollisionsEffects() {} */
 
-}
+//         let d = dist(cx, cy, testX, testY);
+
+//         if (d <= rad) {
+//             return true;
+//         }
+//         return false;
+//     }
+//     /* public constructor() {}
+
+//     public update() {}
+
+//     private setShipStatus() {}
+
+//     private setObstacleIntegrity() {}
+
+//     private shipStatusDamaged() {}
+
+//     private grantPowerUp() {}
+
+//     private checkCollisions(submarine, obstacles, powerups) {}
+
+//     private applyCollisionsEffects() {} */
+
+// }
