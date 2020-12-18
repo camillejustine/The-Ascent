@@ -4,12 +4,14 @@ abstract class Obstacle {
     public abstract randomSpawn(): void;
     public rx: number;
     public ry: number;
+    public r: number;
     public y: number;
     public x: number;
 
     constructor(){
         this.rx = 100;
-        this.ry = 100;
+        this.ry = 80;
+        this.r = 100;
         this.y = 100;
         this.x = random(10, 900);
     }
@@ -36,23 +38,35 @@ class Iceberg extends Obstacle {
     }
 
     public draw(){
+
         image(this.iceberg,this.x,this.y, this.rx,this.ry)
         fill(200,50)
-        rect( this.x,this.y, this.rx,this.ry)
+        circle(this.x,this.y,this.r)
+        //ellipseMode(CENTER);
+        imageMode(CENTER);
     }
 
     public randomSpawn() {
-        if (random(1) < 0.01){
+        if (random(1) < 0.05){
             this.iceArray.push(new Iceberg());
         }
-        for(let i of this.iceArray){
-            if(i.x + i.rx >= i.rx && i.x <= i.rx + i.x){
-                //console.log(i.x)
-                i.move()
-                i.draw()
-            } else {
-
-            }  
+        
+        for(let i = 0; i < this.iceArray.length; i++){
+                this.iceArray[i].move()
+                this.iceArray[i].draw()
+               
+                /* let g = random(0,this.iceArray.length - 1); */
+                
+                /* const validPosX = random(this.iceArray[i].x + this.iceArray[i].rx/2, this.iceArray[i].x - this.iceArray[i].rx/2)
+                this.iceArray[i].x = validPosX; */
+                //console.log(validPosX);
+                /* this.iceArray[i].x = validPosX; */
+                
+                //console.log(this.iceArray.length)
+                //console.log(this.iceArray[i].rx)
+               
+            } 
+            
         }
     }
 }
@@ -80,7 +94,9 @@ class Mine extends Obstacle {
     public draw(){
         image(this.mine,this.x,this.y, this.rx,this.ry)
         fill(200,50)
-        rect( this.x,this.y, this.rx,this.ry)
+        circle(this.x,this.y,this.r)
+        //ellipseMode(CENTER);
+        imageMode(CENTER);
     }
 
     public randomSpawn() {

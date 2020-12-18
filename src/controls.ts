@@ -93,10 +93,13 @@ class Control implements SubPosition {
     push();
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
-    image(subImage, -10, -50, 20, 100);
+    image(subImage, 0, 0, 20, 100);
+    imageMode(CENTER);
+    
     fill(200, 50);
-    rect(-10, -50, 20, 100);
-    circle(0, 0, 200);
+    circle(0, 0, 20);
+    circle(0, 0, 400);
+    ellipseMode(CENTER)
     pop();
   }
 }
