@@ -9,10 +9,13 @@ abstract class Obstacle {
     public x: number;
 
     constructor() {
-        this.rx = 100;
-        this.ry = 80;
+        this.rx = random(50,150);
+        this.ry = random(50,120);
+        if(this.rx < 100){
+            this.r = 50;
+        }
         this.r = 100;
-        this.y = 100;
+        this.y = -100;
         this.x = random(10, 900);
     }
 }
@@ -75,6 +78,7 @@ class Mine extends Obstacle {
 
     private mine: any;
     private mineArray: Array<any>;
+    private r: number
 
     constructor() {
         super();
@@ -92,7 +96,7 @@ class Mine extends Obstacle {
     }
 
     public draw() {
-        image(this.mine, this.x, this.y, this.rx, this.ry)
+        image(this.mine, this.x, this.y, 100, 100)
         fill(200, 50)
         circle(this.x, this.y, this.r)
         //ellipseMode(CENTER);
@@ -100,7 +104,7 @@ class Mine extends Obstacle {
     }
 
     public randomSpawn() {
-        if (random(1) < 0.001) {
+        if (random(1) < 0.01) {
             this.mineArray.push(new Mine());
         }
         for (let i of this.mineArray) {

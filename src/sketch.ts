@@ -14,7 +14,7 @@ let mine: p5.Image | p5.Element;
 function preload() {
   subImage = loadImage("./assets/images/sub.png");
   bg = loadImage("./assets/images/Background.png");
-  iceberg = loadImage("./assets/images/iceberg.png");
+  iceberg = loadImage("./assets/images/iceberg4.png");
   mine = loadImage("./assets/images/mine.png");
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
