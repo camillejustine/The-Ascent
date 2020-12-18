@@ -1,4 +1,9 @@
-class Control {
+/* interface SubPosition {
+  subPositionX: number;
+  //subPositionY: number;
+} */
+
+class Control /* implements SubPosition */ {
   private angle: number = 0;
 
   private rotateRight: number;
@@ -7,12 +12,15 @@ class Control {
   public left: any;
   public forward: any;
   public back: any;
-  private subPositionX: number;
-  private subPositionY: number;
+  public subPositionX: number;
+  public subPositionY: number;
+
+  
   /* private position: p5.Vector;
     private acceleration: p5.Vector; */
 
   public constructor() {
+
     this.angle = this.angle;
     /* this.position = new p5.Vector(width/2, height/1.5);
         this.acceleration = new p5.Vector(0, -10); */
@@ -24,6 +32,20 @@ class Control {
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
     this.subPositionY = 720 / 2;
+
+  }
+
+  public getPositionX(){ 
+    return this.subPositionX;
+  }
+
+  public getPositionY(){ 
+    return this.subPositionY;
+  }
+
+  public update () {
+    this.keyPressed();
+    this.move();
   }
 
   public keyPressed() {
@@ -71,10 +93,13 @@ class Control {
     push();
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
-    image(subImage, -10, -50, 20, 100);
+    image(subImage, 0, 0, 20, 100);
+    imageMode(CENTER);
+    
     fill(200, 50);
-    rect(-10, -50, 20, 100);
-    circle(0, 0, 200);
+    circle(0, 0, 20);
+    circle(0, 0, 400);
+    ellipseMode(CENTER)
     pop();
   }
 }
