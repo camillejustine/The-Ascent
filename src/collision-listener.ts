@@ -24,7 +24,7 @@
      }
 
      public update() {
-
+        this.controls.draw()
      }
 
      public draw() {

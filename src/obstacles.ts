@@ -1,13 +1,15 @@
 abstract class Obstacle {
     public abstract move(): void; 
     public abstract draw(): void;
-    public abstract randomSpawn(): void; 
-    public r: number;
+    public abstract randomSpawn(): void;
+    public rx: number;
+    public ry: number;
     public y: number;
     public x: number;
     
     constructor(){
-        this.r = 100;
+        this.rx = 100;
+        this.ry = 100;
         this.y = -100;
         this.x = random(10, 900);
     }
@@ -24,14 +26,19 @@ class Iceberg extends Obstacle {
         this.iceberg = iceberg;
     }
 
+  /*   public update(){
+        this.move();
+        this.randomSpawn();
+    } */
+
     public move() {
         this.y += 2;
     }
 
     public draw(){
-        image(this.iceberg,this.x,this.y, this.r,this.r)
+        image(this.iceberg,this.x,this.y, this.rx,this.ry)
         fill(200,50)
-        rect( this.x,this.y, this.r,this.r)
+        rect( this.x,this.y, this.rx,this.ry)
     }
 
     public randomSpawn() {
@@ -39,8 +46,12 @@ class Iceberg extends Obstacle {
             this.iceArray.push(new Iceberg());
         }
         for(let i of this.iceArray){
-            i.move()
-            i.draw()
+            if(i.x + i.rx >= i.rx && i.x <= i.rx + i.x){
+                i.move()
+                i.draw()
+            } else {
+
+            }  
         }
     }
 }
@@ -56,14 +67,19 @@ class Mine extends Obstacle {
         this.mine = mine;
     }
 
+  /*   public update(){
+        this.move();
+        this.randomSpawn();
+    } */
+
     public move() {
         this.y += 2;
     }
 
     public draw(){
-        image(this.mine,this.x,this.y, this.r,this.r)
+        image(this.mine,this.x,this.y, this.rx,this.ry)
         fill(200,50)
-        rect( this.x,this.y, this.r,this.r)
+        rect( this.x,this.y, this.rx,this.ry)
     }
 
     public randomSpawn() {

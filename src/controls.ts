@@ -26,6 +26,11 @@ class Control {
     this.subPositionY = 720 / 2;
   }
 
+  public update () {
+    this.keyPressed();
+    this.move();
+  }
+
   public keyPressed() {
     if (keyIsDown(this.rotateLeft)) {
       this.angle -= 1;
@@ -76,5 +81,6 @@ class Control {
     rect(-10, -50, 20, 100);
     circle(0, 0, 200);
     pop();
+    console.log(this.subPositionX, this.subPositionY)
   }
 }

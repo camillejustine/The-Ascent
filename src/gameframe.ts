@@ -25,15 +25,11 @@ class GameFrame implements iGameState {
 
   public constructor() {
 
-
-    
-
     this.obstacles = [
       new Iceberg(),
       new Mine()
     ]
     
-
     this.collisionListener = new CollisionListener();
 
     this.mainMenu = new MainMenu(this);
@@ -50,17 +46,16 @@ class GameFrame implements iGameState {
       
       this.background.update();
       
-
       noCursor();
-
 
       for(const obstacle of this.obstacles){
         obstacle.move(); 
         obstacle.randomSpawn(); 
       } 
-      this.controls.move();
-      this.controls.keyPressed();
-      //this.collisionListener.draw()
+      this.controls.update();
+  
+      this.collisionListener.update()
+      
     } 
   }
 
@@ -72,18 +67,16 @@ class GameFrame implements iGameState {
 
       noCursor();
 
-
       for(const obstacle of this.obstacles){
-        
         obstacle.draw();  
       } 
       
       this.controls.draw();
       
-
       // this.collisionListener.draw()
     } 
   }
+}
 
   /* private populateObstacles() {}
 
@@ -99,6 +92,5 @@ class GameFrame implements iGameState {
 
    private spawnObstacle() {}
  */
-}
 
 //page loads html DOM star button.
