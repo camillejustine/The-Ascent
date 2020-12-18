@@ -6,11 +6,11 @@ abstract class Obstacle {
     public ry: number;
     public y: number;
     public x: number;
-    
+
     constructor(){
         this.rx = 100;
         this.ry = 100;
-        this.y = -100;
+        this.y = 100;
         this.x = random(10, 900);
     }
 }
@@ -47,6 +47,7 @@ class Iceberg extends Obstacle {
         }
         for(let i of this.iceArray){
             if(i.x + i.rx >= i.rx && i.x <= i.rx + i.x){
+                //console.log(i.x)
                 i.move()
                 i.draw()
             } else {

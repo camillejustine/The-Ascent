@@ -1,4 +1,6 @@
- class CollisionListener {
+
+
+class CollisionListener implements SubPosition {
      private cx: number;
      private cy: number;
      private r: number;
@@ -8,9 +10,14 @@
      private sw: number;
      private sh: number;
 
-     private controls: Control;
+    public subPositionX: SubPosition;
+    public subPositionY: SubPosition;
+     //use interface to get X Y positions of sub. 
 
-     constructor(){
+     constructor(subPositionX: SubPosition, subPositionY: SubPosition){
+            this.subPositionX = subPositionX;
+            this.subPositionY = subPositionY;
+
          this.cx = 50;
          this.cy = 50;
          this.r = 40;
@@ -20,11 +27,10 @@
          this.sw = 200;
          this.sh = 200;
 
-         this.controls = new Control();
      }
 
      public update() {
-        this.controls.draw()
+         console.log(this.subPositionX, this.subPositionY) 
      }
 
      public draw() {
