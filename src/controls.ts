@@ -1,9 +1,9 @@
-interface SubPosition {
+/* interface SubPosition {
   subPositionX: number;
   //subPositionY: number;
-}
+} */
 
-class Control implements SubPosition {
+class Control /* implements SubPosition */ {
   private angle: number = 0;
 
   private rotateRight: number;

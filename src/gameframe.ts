@@ -16,7 +16,7 @@ class GameFrame implements iGameState {
    private headsUpDisplay: HeadsUpDisplay;
      */
 
-  private collisionListener: CollisionListener;
+  //private collisionListener: CollisionListener;
   private controls: Control;
   private obstacles: Obstacle[];
   
@@ -31,7 +31,7 @@ class GameFrame implements iGameState {
       new Mine()
     ]
     
-    this.collisionListener = new CollisionListener();
+    //this.collisionListener = new CollisionListener();
 
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
@@ -55,7 +55,7 @@ class GameFrame implements iGameState {
       } 
       this.controls.update();
   
-      this.collisionListener.update()
+      //this.collisionListener.update()
       
     } 
   }
@@ -74,7 +74,7 @@ class GameFrame implements iGameState {
       
       this.controls.draw();
       
-      // this.collisionListener.draw()
+      //this.collisionListener.draw()
     } 
   }
 }
