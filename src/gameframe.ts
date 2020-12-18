@@ -4,6 +4,7 @@ interface iGameState {
 class GameFrame implements iGameState {
   private mainMenu: MainMenu;
   private background: Background;
+  private depthCounter: DepthCounter;
   //private pauseMenu: PauseMenu;
 
   /* private gameWon: GameWon;
@@ -18,7 +19,7 @@ class GameFrame implements iGameState {
   //private collisionListener: CollisionListener;
   private controls: Control;
   private obstacles: Obstacle[];
-  private depthCounter: DepthCounter;
+  // private timeValue: DepthCounter;
 
   //private setDepth: number;
   public isGameRunning: boolean;
@@ -43,9 +44,9 @@ class GameFrame implements iGameState {
 
   public update() {
     this.mainMenu.update();
-    this.depthCounter.update();
 
     if (this.isGameRunning) {
+      this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
       
       this.background.update();
@@ -66,9 +67,9 @@ class GameFrame implements iGameState {
 
   public draw() {
     this.controls.draw();
-    this.depthCounter.draw();
     
     if (this.isGameRunning) {
+      this.depthCounter.draw();
       document.getElementById("main-menu")!.style.display = "none";
 
       this.background.draw();
