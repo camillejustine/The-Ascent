@@ -1,35 +1,33 @@
 class DepthCounter {
-public abstract timeIt(): void;
-public abstract textAlign(): void;
-public timerValue: any;
+  public timerValue: number;
 
-public constructor() {
-  this.timerValue = 60;
-}
-
-public update() {
-  textAlign(CENTER);
-}
-
-public draw() {
-  setInterval(this.timeIt, 1000);
-  
-  background(220);
-   if (this.timerValue <= 60) {
-    text(this.timerValue + "SECONDS", width / 2, height / 2);
-  }
-  console.log(this.timerValue)
- 
-  if (this.timerValue == 0) {
-    text('GAME OVER', width / 2, height / 2 + 15);
-  }
-}
-
-public timeIt() {
-  if (this.timerValue > 0) {
-    this.timerValue--;
+  public constructor() {
+    this.timerValue = 4000;
   }
 
+  public update() {
+    this.timerValue -= deltaTime / 100;
+  }
+
+  public draw() {
+
+    background(220);
+    if (this.timerValue <= 60) {
+      text(this.timerValue + "SECONDS", width / 2, height / 2);
+    }
+    console.log(this.timerValue)
+
+    if (this.timerValue <= 0) {
+      text('GAME OVER', width / 2, height / 2 + 15);
+    }
+  }
+
+  public timeIt() {
+    if (this.timerValue > 0) {
+      this.timerValue--;
+    }
+
+  }
 }
 
 
@@ -41,7 +39,7 @@ public timeIt() {
     // this.game = true;
 
 //     public constructor(public counter = 90) {
-        
+
 //         let intervalId = setInterval(() => {
 //             this.counter = this.counter - 1;
 //             console.log(this.counter)
