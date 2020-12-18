@@ -1,6 +1,6 @@
 interface SubPosition {
   subPositionX: number;
-  subPositionY: number;
+  //subPositionY: number;
 }
 
 class Control implements SubPosition {
@@ -42,8 +42,6 @@ class Control implements SubPosition {
   public getPositionY(){ 
     return this.subPositionY;
   }
-
-  //use interface. 
 
   public update () {
     this.keyPressed();
@@ -100,6 +98,5 @@ class Control implements SubPosition {
     rect(-10, -50, 20, 100);
     circle(0, 0, 200);
     pop();
-    //console.log(this.subPositionX, this.subPositionY)
   }
 }

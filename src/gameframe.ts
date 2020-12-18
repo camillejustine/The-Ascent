@@ -4,7 +4,7 @@ interface iGameState {
 class GameFrame implements iGameState {
   private mainMenu: MainMenu;
   private background: Background;
-  
+
   //private pauseMenu: PauseMenu;
 
   /* private gameWon: GameWon;
