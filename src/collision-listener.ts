@@ -1,4 +1,4 @@
-
+//interfaces for all obstacles and powerups. 
   
 class CollisionListener{
      private cx: number;
@@ -17,7 +17,7 @@ class CollisionListener{
     
          this.cx = 50;
          this.cy = 50;
-         this.r = 40;
+         this.r = 250;
 
          this.sx = 200;
          this.sy = 200;
@@ -32,12 +32,18 @@ class CollisionListener{
          console.log(this.subPosition.subPositionX, this.subPosition.subPositionY)
      }
 
+     //send obstacle array here. assign each circle a value.
+
      public draw() {
          this.cx = this.subPosition.subPositionX;
          this.cy = this.subPosition.subPositionY;
          let hit = this.hit(this.cx,this.cy,this.r, this.sx,this.sy,this.sw,this.sh);
-         fill(0, 255, 100);
+         push()
+         strokeWeight(1);
+         stroke('rgba(0,255,0,0.25)');
+         noFill()
          circle(this.cx, this.cy, this.r*2)
+         pop()
          if (hit) {
              fill(255,150,0);
         }

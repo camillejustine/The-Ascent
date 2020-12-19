@@ -7,6 +7,7 @@ abstract class Obstacle {
     public r: number;
     public y: number;
     public x: number;
+    public rotation: number;
 
     constructor() {
         this.rx = random(50,150);
@@ -43,19 +44,21 @@ class Iceberg extends Obstacle {
     }
 
     public draw() {
-         fill(255, 204, 0)
-        //circle(this.x, this.y, this.r)
+        fill(200, 50)
+        circle(this.x, this.y, this.r)
         ellipseMode(CENTER);
-        image(this.iceberg, this.x, this.y, this.rx, this.ry)
+
+        
+        image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
     }
 
     public randomSpawn() {
-        if (random(1) < 0.05) {
+        if (random(1) < 0.02) {
             this.iceArray.push(new Iceberg());
         }
         
-        let overlapping = false;
+
         for (let i = 0; i < this.iceArray.length ; i++) {
                 this.iceArray[i].move()
                 this.iceArray[i].draw()
@@ -116,7 +119,7 @@ class Mine extends Obstacle {
     public draw() {
         
         fill(200, 50)
-        //circle(this.x, this.y, this.r)
+        circle(this.x, this.y, this.r)
         image(this.mine, this.x, this.y, 100, 100)
         ellipseMode(CENTER);
         imageMode(CENTER);
