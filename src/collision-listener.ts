@@ -1,7 +1,10 @@
-
-
-class CollisionListener /* implements SubPosition */ {
-     /* private cx: number;
+interface SubPosition {
+    subPositionX: number;
+    subPositionY: number;
+  }
+  
+class CollisionListener{
+     private cx: number;
      private cy: number;
      private r: number;
 
@@ -10,14 +13,11 @@ class CollisionListener /* implements SubPosition */ {
      private sw: number;
      private sh: number;
 
-    public subPositionX: SubPosition;
-    //public subPositionY: SubPosition;
-     //use interface to get X Y positions of sub. 
-
-     constructor(subPositionX: SubPosition, subPositionY: SubPosition){
-         this.subPositionX = subPositionX;
-       //this.subPositionY = subPositionY;
-            
+    public subPosition: SubPosition;
+    
+     constructor(subPosition: SubPosition){
+         this.subPosition = subPosition;
+    
          this.cx = 50;
          this.cy = 50;
          this.r = 40;
@@ -28,9 +28,11 @@ class CollisionListener /* implements SubPosition */ {
          this.sh = 200;
 
      }
+    
+    
 
      public update() {
-       // console.log(this.subPositionX, subPositionY) 
+         console.log(this.subPosition.subPositionX)
      }
 
      public draw() {
@@ -73,7 +75,7 @@ class CollisionListener /* implements SubPosition */ {
             return true;
         }
         return false;
-    } */
+    }
 }
 
     //assign r variables to submarine circle and then call collision listener functions. 

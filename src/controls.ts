@@ -1,9 +1,7 @@
-/* interface SubPosition {
-  subPositionX: number;
-  //subPositionY: number;
-} */
 
-class Control /* implements SubPosition */ {
+
+class Control implements SubPosition {
+
   private angle: number = 0;
 
   private rotateRight: number;
@@ -12,6 +10,7 @@ class Control /* implements SubPosition */ {
   public left: any;
   public forward: any;
   public back: any;
+
   public subPositionX: number;
   public subPositionY: number;
 
@@ -20,7 +19,6 @@ class Control /* implements SubPosition */ {
     private acceleration: p5.Vector; */
 
   public constructor() {
-
     this.angle = this.angle;
     /* this.position = new p5.Vector(width/2, height/1.5);
         this.acceleration = new p5.Vector(0, -10); */
@@ -33,14 +31,6 @@ class Control /* implements SubPosition */ {
     this.subPositionX = 960 / 2;
     this.subPositionY = 720 / 2;
 
-  }
-
-  public getPositionX(){ 
-    return this.subPositionX;
-  }
-
-  public getPositionY(){ 
-    return this.subPositionY;
   }
 
   public update () {
@@ -105,5 +95,7 @@ class Control /* implements SubPosition */ {
     circle(0, 0, 400);
     ellipseMode(CENTER)
     pop();
+
+    console.log(this.subPositionX, this.subPositionY)
   }
 }
