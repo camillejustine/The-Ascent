@@ -1,7 +1,7 @@
 interface iGameState {
   isGameRunning: boolean;
 }
-class GameFrame implements iGameState {
+class GameFrame implements iGameState,SubPosition {
   private mainMenu: MainMenu;
   private background: Background;
 
@@ -19,6 +19,9 @@ class GameFrame implements iGameState {
   private collisionListener: CollisionListener;
   private controls: Control;
   public obstacles: Obstacle[];
+
+  public subPositionX: number;
+  public subPositionY: number;
   
 
   //private setDepth: number;
@@ -31,11 +34,14 @@ class GameFrame implements iGameState {
       new Mine()
     ]
     
-    this.collisionListener = new CollisionListener();
+    
 
     this.mainMenu = new MainMenu(this);
+    this.collisionListener = new CollisionListener(this);
     this.controls = new Control();
     this.isGameRunning = false;
+    this.subPositionX = 960 / 2;
+    this.subPositionY = 720 / 2;
     this.background = new Background();
   }
 

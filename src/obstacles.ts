@@ -95,7 +95,7 @@ class Mine extends Obstacle {
 
     private mine: any;
     private mineArray: Array<any>;
-    private r: number
+    public r: number
 
     constructor() {
         super();

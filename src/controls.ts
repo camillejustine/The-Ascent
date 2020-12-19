@@ -1,4 +1,7 @@
-
+interface SubPosition {
+  subPositionX: Number;
+  subPositionY: Number;
+}
 
 class Control implements SubPosition {
 

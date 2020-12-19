@@ -1,7 +1,4 @@
-interface SubPosition {
-    subPositionX: number;
-    subPositionY: number;
-  }
+
   
 class CollisionListener{
      private cx: number;
@@ -15,7 +12,7 @@ class CollisionListener{
 
     public subPosition: SubPosition;
     
-     constructor(subPosition: SubPosition){
+    constructor(subPosition: SubPosition){
          this.subPosition = subPosition;
     
          this.cx = 50;
@@ -32,7 +29,7 @@ class CollisionListener{
     
 
      public update() {
-         console.log(this.subPosition.subPositionX)
+         console.log(this.subPosition.subPositionX, this.subPosition.subPositionY)
      }
 
      public draw() {
