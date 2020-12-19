@@ -1,7 +1,7 @@
 interface iGameState {
   isGameRunning: boolean;
 }
-class GameFrame implements iGameState,SubPosition {
+class GameFrame implements iGameState {
   private mainMenu: MainMenu;
   private background: Background;
 
@@ -16,13 +16,9 @@ class GameFrame implements iGameState,SubPosition {
    private headsUpDisplay: HeadsUpDisplay;
      */
 
-  private collisionListener: CollisionListener;
+
   private controls: Control;
   public obstacles: Obstacle[];
-
-  public subPositionX: number;
-  public subPositionY: number;
-  
 
   //private setDepth: number;
   public isGameRunning: boolean;
@@ -37,11 +33,8 @@ class GameFrame implements iGameState,SubPosition {
     
 
     this.mainMenu = new MainMenu(this);
-    this.collisionListener = new CollisionListener(this);
     this.controls = new Control();
     this.isGameRunning = false;
-    this.subPositionX = 960 / 2;
-    this.subPositionY = 720 / 2;
     this.background = new Background();
   }
 
@@ -61,7 +54,6 @@ class GameFrame implements iGameState,SubPosition {
       } 
       this.controls.update();
   
-      this.collisionListener.update()
       
     } 
   }
@@ -80,7 +72,7 @@ class GameFrame implements iGameState,SubPosition {
       
       this.controls.draw();
       
-      this.collisionListener.draw()
+  
     } 
   }
 }

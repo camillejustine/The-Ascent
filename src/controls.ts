@@ -1,6 +1,6 @@
 interface SubPosition {
-  subPositionX: Number;
-  subPositionY: Number;
+  subPositionX: number;
+  subPositionY: number;
 }
 
 class Control implements SubPosition {
@@ -13,6 +13,8 @@ class Control implements SubPosition {
   public left: any;
   public forward: any;
   public back: any;
+
+  public collisionListener: CollisionListener;
 
   public subPositionX: number;
   public subPositionY: number;
@@ -29,14 +31,18 @@ class Control implements SubPosition {
     this.right = RIGHT_ARROW;
     this.forward = UP_ARROW;
     this.back = DOWN_ARROW;
+    
     this.rotateLeft = 90;
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
     this.subPositionY = 720 / 2;
 
+    this.collisionListener = new CollisionListener(this);
   }
 
   public update () {
+    this.collisionListener.update();
+    this.collisionListener.draw();
     this.keyPressed();
     this.move();
   }
@@ -99,6 +105,6 @@ class Control implements SubPosition {
     ellipseMode(CENTER)
     pop();
 
-    console.log(this.subPositionX, this.subPositionY)
+    
   }
 }

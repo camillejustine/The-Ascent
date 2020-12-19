@@ -33,8 +33,8 @@ class CollisionListener{
      }
 
      public draw() {
-         this.cx = mouseX;
-         this.cy = mouseY;
+         this.cx = this.subPosition.subPositionX;
+         this.cy = this.subPosition.subPositionY;
          let hit = this.hit(this.cx,this.cy,this.r, this.sx,this.sy,this.sw,this.sh);
          fill(0, 255, 100);
          circle(this.cx, this.cy, this.r*2)
