@@ -11,12 +11,14 @@ abstract class Obstacle {
     constructor() {
         this.rx = random(50,150);
         this.ry = random(50,120);
-        if(this.rx < 100){
-            this.r = 50;
-        }
-        this.r = 100;
+        this.r = random(50,150);
         this.y = -100;
         this.x = random(10, 900);
+        if(this.rx < this.r || this.rx > this.r){
+            this.rx = this.r; 
+        } if (this.ry < this.r || this.ry > this.r){
+            this.ry = this.r;
+        }
     }
 }
 class Iceberg extends Obstacle {
@@ -41,11 +43,10 @@ class Iceberg extends Obstacle {
     }
 
     public draw() {
-
+         fill(255, 204, 0)
+        //circle(this.x, this.y, this.r)
+        ellipseMode(CENTER);
         image(this.iceberg, this.x, this.y, this.rx, this.ry)
-        fill(200, 50)
-        circle(this.x, this.y, this.r)
-        //ellipseMode(CENTER);
         imageMode(CENTER);
     }
 
@@ -53,22 +54,38 @@ class Iceberg extends Obstacle {
         if (random(1) < 0.05) {
             this.iceArray.push(new Iceberg());
         }
+        
+        let overlapping = false;
+        for (let i = 0; i < this.iceArray.length ; i++) {
+                this.iceArray[i].move()
+                this.iceArray[i].draw()
+            /* let last = this.iceArray[this.iceArray.length - 1];
+            
+            
 
-        for (let i = 0; i < this.iceArray.length; i++) {
-            this.iceArray[i].move()
-            this.iceArray[i].draw()
+            let d = dist(this.iceArray[i].x, this.iceArray[i].y, this.iceArray[i + 1].x, this.iceArray[i + 1].y) 
+            if(d < this.iceArray[i].r + this.iceArray[i+1].r){
+                
+                overlapping = true;
+            }
 
+            if(!overlapping) {
+                
+            } */
+            
+            
+            /* this.iceArray[i].x = validPosX;  */
+            //console.log(validPosX)
+            //console.log(this.iceArray[length])
+            /* let validPosX = random(this.iceArray[i].x + this.iceArray[i].r, this.iceArray[i].x - this.iceArray[i].r) */
             /* let g = random(0,this.iceArray.length - 1); */
-
-            /* const validPosX = random(this.iceArray[i].x + this.iceArray[i].rx/2, this.iceArray[i].x - this.iceArray[i].rx/2)
-            this.iceArray[i].x = validPosX; */
-            //console.log(validPosX);
-            /* this.iceArray[i].x = validPosX; */
-
-            //console.log(this.iceArray.length)
-            //console.log(this.iceArray[i].rx)
+            
+            
+            
+            
 
         }
+        
 
     }
 }
@@ -84,6 +101,7 @@ class Mine extends Obstacle {
         super();
         this.mineArray = [];
         this.mine = mine;
+        this.r = 100;
     }
 
     /*   public update(){
@@ -96,10 +114,11 @@ class Mine extends Obstacle {
     }
 
     public draw() {
-        image(this.mine, this.x, this.y, 100, 100)
+        
         fill(200, 50)
-        circle(this.x, this.y, this.r)
-        //ellipseMode(CENTER);
+        //circle(this.x, this.y, this.r)
+        image(this.mine, this.x, this.y, 100, 100)
+        ellipseMode(CENTER);
         imageMode(CENTER);
     }
 

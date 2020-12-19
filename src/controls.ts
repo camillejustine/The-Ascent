@@ -97,7 +97,11 @@ class Control /* implements SubPosition */ {
     imageMode(CENTER);
     
     fill(200, 50);
+    circle(0, -40, 20);
+    circle(0, -20, 20);
     circle(0, 0, 20);
+    circle(0, 20, 20);
+    circle(0, 40, 20);
     circle(0, 0, 400);
     ellipseMode(CENTER)
     pop();
