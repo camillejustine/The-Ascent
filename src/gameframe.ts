@@ -16,7 +16,6 @@ class GameFrame implements iGameState {
    private headsUpDisplay: HeadsUpDisplay;
      */
 
-  public collisionListener: CollisionListener;
   private controls: Control;
   public obstacles: Obstacle[];
 
@@ -34,7 +33,7 @@ class GameFrame implements iGameState {
     this.controls = new Control();
     this.isGameRunning = false;
     this.background = new Background();
-    this.collisionListener = new CollisionListener();
+    
   }
 
   public update() {
@@ -48,8 +47,9 @@ class GameFrame implements iGameState {
       noCursor();
 
       for(const obstacle of this.obstacles){
-        obstacle.move(); 
-        obstacle.randomSpawn(); 
+        obstacle.update();
+        /* obstacle.move(); 
+        obstacle.randomSpawn();  */
       } 
       this.controls.update();
   

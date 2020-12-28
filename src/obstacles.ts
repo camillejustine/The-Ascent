@@ -1,11 +1,12 @@
 
-interface obstacleArrays {
+/* interface obstacleArrays {
     obstacleArray: Array<object>;
 }
-
+ */
 abstract class Obstacle implements obstacleArrays {
-    public abstract move(): void;
-    public abstract draw(): void;
+    public abstract update(): void;
+    /* public abstract move(): void; */
+    /* public abstract draw(): void; */
     public abstract randomSpawn(): void;
     public rx: number;
     public ry: number;
@@ -13,7 +14,9 @@ abstract class Obstacle implements obstacleArrays {
     public y: number;
     public x: number;
     public obstacleArray: Array<object>;
-
+    public rotate: number;
+    
+    
     constructor() {
         this.obstacleArray = [];
         this.rx = random(50,150);
@@ -21,34 +24,46 @@ abstract class Obstacle implements obstacleArrays {
         this.r = random(50,150);
         this.y = -100;
         this.x = random(10, 900);
+        this.rotate = random(0,360)
+        
         if(this.rx < this.r || this.rx > this.r){
             this.rx = this.r; 
         } if (this.ry < this.r || this.ry > this.r){
             this.ry = this.r;
         }
     }
+
 }
 
-
+interface IcebergPositions {
+    icebergArray: Array<object>;
+}
 class Iceberg extends Obstacle{
 
     private iceberg: any;
+    public collisionListener: CollisionListener;
+    public icebergArray: Array<object>;
+    
 
     constructor() {
         super();
         this.iceberg = icebergImage;
+        this.icebergArray = []
+        this.collisionListener = new CollisionListener(this); 
     }
 
-    /*   public update(){
+      public update(){
+        this.collisionListener.draw()
           this.move();
-          this.randomSpawn();
-      } */
+          this.randomSpawn(); 
+      }
 
     public move() {
         this.y += 2;
     }
 
     public draw() {
+        this.collisionListener.draw()
         fill(200, 50)
         circle(this.x, this.y, this.r)
         ellipseMode(CENTER);
@@ -58,10 +73,10 @@ class Iceberg extends Obstacle{
 
     public randomSpawn() {
         if (random(1) < 0.02) {
-            this.obstacleArray.push(new Iceberg());
+            this.icebergArray.push(new Iceberg());
         }
         
-        for (let i of this.obstacleArray) {
+        for (let i of this.icebergArray) {
             i.move()
             i.draw()
         }              
@@ -80,10 +95,10 @@ class Mine extends Obstacle {
         this.r = 100;
     }
 
-    /*   public update(){
+      public update(){
           this.move();
           this.randomSpawn();
-      } */
+      }
 
     public move() {
         this.y += 2;
