@@ -3,12 +3,11 @@
 class CollisionListener{
      private cx: number;
      private cy: number;
-     private r: number;
+     private cr: number;
 
-     private sx: number;
-     private sy: number;
-     private sw: number;
-     private sh: number;
+     private c2x: number;
+     private c2y: number;
+     private c2r: number;
 
     public subPosition: SubPosition;
     
@@ -17,19 +16,17 @@ class CollisionListener{
     
          this.cx = 50;
          this.cy = 50;
-         this.r = 250;
+         this.cr = 250;
 
-         this.sx = 200;
-         this.sy = 200;
-         this.sw = 200;
-         this.sh = 200;
+         this.c2x = 200;
+         this.c2y = 200;
+         this.c2r = 100;
+         
 
      }
     
-    
-
      public update() {
-         console.log(this.subPosition.subPositionX, this.subPosition.subPositionY)
+         
      }
 
      //send obstacle array here. assign each circle a value.
@@ -37,12 +34,12 @@ class CollisionListener{
      public draw() {
          this.cx = this.subPosition.subPositionX;
          this.cy = this.subPosition.subPositionY;
-         let hit = this.hit(this.cx,this.cy,this.r, this.sx,this.sy,this.sw,this.sh);
+         let hit = this.sonarDetect(this.cx,this.cy,this.cr, this.c2x,this.c2y,this.c2r);
          push()
          strokeWeight(1);
          stroke('rgba(0,255,0,0.25)');
          noFill()
-         circle(this.cx, this.cy, this.r*2)
+         circle(this.cx, this.cy, this.cr*2)
          pop()
          if (hit) {
              fill(255,150,0);
@@ -50,31 +47,19 @@ class CollisionListener{
         else {
              fill(0,150,255);
         }
-           rect(this.sx,this.sy, this.sw,this.sh);
+           ellipse(this.c2x,this.c2y, this.c2r * 2, this.c2r * 2);
         }
 
+    public sonarDetect(cx, cy, cr, c2x, c2y, c2r){
+        // get distance between the circle's centers
+        // use the Pythagorean Theorem to compute the distance
+        let distX = cx - c2x;
+        let distY = cy - c2y;
+        let distance = sqrt( (distX*distX) + (distY*distY) );
 
-        public hit(cx, cy, rad, rx, ry, rw, rh){
-
-        let testX = this.cx;
-        let testY = this.cy;
-        
-        if (cx < rx){
-            testX = rx; // test left edge
-        }      
-        else if (cx > rx+rw) {
-            testX = rx+rw; // right edge
-        }   
-        if(cy < ry){
-            testY = ry; // top edge
-        }      
-        else if (cy > ry+rh) {
-            testY = ry+rh; // bottom edge
-        }   
-  
-        let d = dist(cx, cy, testX, testY);
-  
-        if (d <= rad) {
+        // if the distance is less than the sum of the circle's
+        // radii, the circles are touching!
+        if (distance <= cr+c2r) {
             return true;
         }
         return false;
