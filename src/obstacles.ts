@@ -4,9 +4,9 @@
 }
  */
 abstract class Obstacle implements obstacleArrays {
-    public abstract update(): void;
-    /* public abstract move(): void; */
-    /* public abstract draw(): void; */
+    /* public abstract update(): void; */
+    public abstract move(): void;
+    public abstract draw(): void;
     public abstract randomSpawn(): void;
     public rx: number;
     public ry: number;
@@ -53,9 +53,8 @@ class Iceberg extends Obstacle{
     }
 
       public update(){
-        this.collisionListener.draw()
-          this.move();
-          this.randomSpawn(); 
+         /*  this.move();
+          this.randomSpawn();  */
       }
 
     public move() {
@@ -63,6 +62,7 @@ class Iceberg extends Obstacle{
     }
 
     public draw() {
+        this.collisionListener.draw()
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
     }
@@ -74,7 +74,7 @@ class Iceberg extends Obstacle{
         
         for (let i of this.icebergArray) {
             i.move()
-            i.draw()
+            if(hit === true)
         }              
     }
 }

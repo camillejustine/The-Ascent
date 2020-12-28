@@ -4,6 +4,7 @@ class CollisionListener{
      private cx: number;
      private cy: number;
      private cr: number;
+     public detected: boolean;
 
     /* public subPosition: SubPosition; */
     public icebergPos: IcebergPositions;
@@ -12,7 +13,7 @@ class CollisionListener{
     constructor(/* subPosition: SubPosition, */ icebergPos: IcebergPositions){
          /* this.subPosition = subPosition; */
          this.icebergPos = icebergPos;
-         
+         this.detected = false;
          this.cx = 50;
          this.cy = 50;
          this.cr = 250;     
@@ -36,10 +37,9 @@ class CollisionListener{
             fill(200, 50)
             circle(iceberg.x,iceberg.y,iceberg.r)
             ellipseMode(CENTER);
-            let hit = this.sonarDetect(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r/2);
-            if (hit) {
+            this.detected = this.sonarDetect(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r/2);
+            if (this.detected) {
                 console.log("HIT!")
-                 fill(255,150,0); 
                 }
             else { 
                 console.log("NOPE")

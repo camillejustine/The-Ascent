@@ -47,9 +47,8 @@ class GameFrame implements iGameState {
       noCursor();
 
       for(const obstacle of this.obstacles){
-        obstacle.update();
-        /* obstacle.move(); 
-        obstacle.randomSpawn();  */
+        obstacle.move(); 
+        obstacle.randomSpawn(); 
       } 
       this.controls.update();
   
