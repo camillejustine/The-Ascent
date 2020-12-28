@@ -3,7 +3,7 @@ let gameFrame: GameFrame;
 //let mainMenu: MainMenu;
 let subImage: p5.Image | p5.Element;
 let bg: p5.Image | p5.Element;
-let iceberg: p5.Image | p5.Element;
+let icebergImage: p5.Image | p5.Element;
 let mine: p5.Image | p5.Element;
 
 /**
@@ -14,7 +14,7 @@ let mine: p5.Image | p5.Element;
 function preload() {
   subImage = loadImage("./assets/images/sub.png");
   bg = loadImage("./assets/images/Background.png");
-  iceberg = loadImage("./assets/images/iceberg5.png");
+  icebergImage = loadImage("./assets/images/iceberg5.png");
   mine = loadImage("./assets/images/mine.png");
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
