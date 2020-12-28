@@ -72,7 +72,7 @@ class Iceberg extends Obstacle{
     }
 
     public randomSpawn() {
-        if (random(1) < 0.02) {
+        if (random(1) < 0.001) {
             this.icebergArray.push(new Iceberg());
         }
         
@@ -113,7 +113,7 @@ class Mine extends Obstacle {
     }
 
     public randomSpawn() {
-        if (random(1) < 0.01) {
+        if (random(1) < 0.001) {
             this.obstacleArray.push(new Mine());
         }
         for (let i of this.obstacleArray) {

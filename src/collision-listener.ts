@@ -43,12 +43,19 @@ class CollisionListener{
          noFill()
          circle(this.cx, this.cy, this.cr*2)
          pop()
-         
+         console.log(this.icebergPos.icebergArray)
          for(const iceberg of this.icebergPos.icebergArray){
-            let hit = this.sonarDetect(this.cx,this.cy,this.cr, iceberg.rx,iceberg.ry,iceberg.r);
-            if (hit) { fill(255,150,0); }
-            else { fill(0,150,255); }
-            console.log(iceberg.rx,iceberg.ry,iceberg.r)
+             
+            let hit = this.sonarDetect(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r);
+            if (hit) {
+                console.log("HIT!")
+                 /* fill(255,150,0); */ 
+                }
+            else { 
+                console.log("Nooope")
+                /* fill(0,150,255);  */
+            }
+           
         }
            
         }
