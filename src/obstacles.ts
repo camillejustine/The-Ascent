@@ -1,4 +1,9 @@
-abstract class Obstacle {
+
+interface obstacleArrays {
+    obstacleArray: Array<object>;
+}
+
+abstract class Obstacle implements obstacleArrays {
     public abstract move(): void;
     public abstract draw(): void;
     public abstract randomSpawn(): void;
@@ -7,9 +12,10 @@ abstract class Obstacle {
     public r: number;
     public y: number;
     public x: number;
-    public rotation: number;
+    public obstacleArray: Array<object>;
 
     constructor() {
+        this.obstacleArray = [];
         this.rx = random(50,150);
         this.ry = random(50,120);
         this.r = random(50,150);
@@ -22,16 +28,15 @@ abstract class Obstacle {
         }
     }
 }
-class Iceberg extends Obstacle {
+
+
+class Iceberg extends Obstacle{
 
     private iceberg: any;
-    private iceArray: Array<any>;
 
     constructor() {
         super();
-        this.iceArray = [];
-
-        this.iceberg = iceberg;
+        this.iceberg = icebergImage;
     }
 
     /*   public update(){
@@ -47,49 +52,19 @@ class Iceberg extends Obstacle {
         fill(200, 50)
         circle(this.x, this.y, this.r)
         ellipseMode(CENTER);
-
-        
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
     }
 
     public randomSpawn() {
         if (random(1) < 0.02) {
-            this.iceArray.push(new Iceberg());
+            this.obstacleArray.push(new Iceberg());
         }
         
-
-        for (let i = 0; i < this.iceArray.length ; i++) {
-                this.iceArray[i].move()
-                this.iceArray[i].draw()
-            /* let last = this.iceArray[this.iceArray.length - 1];
-            
-            
-
-            let d = dist(this.iceArray[i].x, this.iceArray[i].y, this.iceArray[i + 1].x, this.iceArray[i + 1].y) 
-            if(d < this.iceArray[i].r + this.iceArray[i+1].r){
-                
-                overlapping = true;
-            }
-
-            if(!overlapping) {
-                
-            } */
-            
-            
-            /* this.iceArray[i].x = validPosX;  */
-            //console.log(validPosX)
-            //console.log(this.iceArray[length])
-            /* let validPosX = random(this.iceArray[i].x + this.iceArray[i].r, this.iceArray[i].x - this.iceArray[i].r) */
-            /* let g = random(0,this.iceArray.length - 1); */
-            
-            
-            
-            
-
-        }
-        
-
+        for (let i of this.obstacleArray) {
+            i.move()
+            i.draw()
+        }              
     }
 }
 
@@ -97,12 +72,10 @@ class Iceberg extends Obstacle {
 class Mine extends Obstacle {
 
     private mine: any;
-    private mineArray: Array<any>;
     public r: number
 
     constructor() {
         super();
-        this.mineArray = [];
         this.mine = mine;
         this.r = 100;
     }
@@ -117,7 +90,6 @@ class Mine extends Obstacle {
     }
 
     public draw() {
-        
         fill(200, 50)
         circle(this.x, this.y, this.r)
         image(this.mine, this.x, this.y, 100, 100)
@@ -127,9 +99,9 @@ class Mine extends Obstacle {
 
     public randomSpawn() {
         if (random(1) < 0.01) {
-            this.mineArray.push(new Mine());
+            this.obstacleArray.push(new Mine());
         }
-        for (let i of this.mineArray) {
+        for (let i of this.obstacleArray) {
             i.move()
             i.draw()
         }

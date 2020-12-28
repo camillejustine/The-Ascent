@@ -14,7 +14,7 @@ class Control implements SubPosition {
   public forward: any;
   public back: any;
 
-  public collisionListener: CollisionListener;
+  
 
   public subPositionX: number;
   public subPositionY: number;
@@ -37,12 +37,10 @@ class Control implements SubPosition {
     this.subPositionX = 960 / 2;
     this.subPositionY = 720 / 2;
 
-    this.collisionListener = new CollisionListener(this);
+    
   }
 
   public update () {
-    this.collisionListener.update();
-    this.collisionListener.draw();
     this.keyPressed();
     this.move();
   }

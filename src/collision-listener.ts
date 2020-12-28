@@ -10,9 +10,11 @@ class CollisionListener{
      private c2r: number;
 
     public subPosition: SubPosition;
+    public icebergPos: IcebergPosition;
     
-    constructor(subPosition: SubPosition){
+    constructor(subPosition: SubPosition, icebergPos: IcebergPosition){
          this.subPosition = subPosition;
+         this.icebergPos = icebergPos;
     
          this.cx = 50;
          this.cy = 50;
@@ -21,8 +23,6 @@ class CollisionListener{
          this.c2x = 200;
          this.c2y = 200;
          this.c2r = 100;
-         
-
      }
     
      public update() {
