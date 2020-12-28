@@ -5,10 +5,6 @@ class CollisionListener{
      private cy: number;
      private cr: number;
 
-    /*  private c2x: number;
-     private c2y: number;
-     private c2r: number;
- */
     /* public subPosition: SubPosition; */
     public icebergPos: IcebergPositions;
     
@@ -19,22 +15,14 @@ class CollisionListener{
          
          this.cx = 50;
          this.cy = 50;
-         this.cr = 250;
-
-         this.c2x = 200;
-         this.c2y = 200;
-         this.c2r = 100;
-         
+         this.cr = 250;     
      }
     
      public update() {
          console.log(this.icebergPos.icebergArray)
      }
 
-     //send obstacle array here. assign each circle a value.
-
      public draw() {
-         /* ellipse(this.c2x,this.c2y, this.c2r * 2, this.c2r * 2);  */
          this.cx = mouseX /* this.subPosition.subPositionX */;
          this.cy = mouseY /* this.subPosition.subPositionY */;
          push()
@@ -43,17 +31,18 @@ class CollisionListener{
          noFill()
          circle(this.cx, this.cy, this.cr*2)
          pop()
-         console.log(this.icebergPos.icebergArray)
+         
          for(const iceberg of this.icebergPos.icebergArray){
-             
-            let hit = this.sonarDetect(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r);
+            fill(200, 50)
+            circle(iceberg.x,iceberg.y,iceberg.r)
+            ellipseMode(CENTER);
+            let hit = this.sonarDetect(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r/2);
             if (hit) {
                 console.log("HIT!")
-                 /* fill(255,150,0); */ 
+                 fill(255,150,0); 
                 }
             else { 
-                console.log("Nooope")
-                /* fill(0,150,255);  */
+                console.log("NOPE")
             }
            
         }

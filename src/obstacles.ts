@@ -63,16 +63,12 @@ class Iceberg extends Obstacle{
     }
 
     public draw() {
-        this.collisionListener.draw()
-        fill(200, 50)
-        circle(this.x, this.y, this.r)
-        ellipseMode(CENTER);
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
     }
 
     public randomSpawn() {
-        if (random(1) < 0.001) {
+        if (random(1) < 0.01) {
             this.icebergArray.push(new Iceberg());
         }
         
