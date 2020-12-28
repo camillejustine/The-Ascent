@@ -1,10 +1,5 @@
 
-/* interface obstacleArrays {
-    obstacleArray: Array<object>;
-}
- */
-abstract class Obstacle implements obstacleArrays {
-    /* public abstract update(): void; */
+ abstract class Obstacle{
     public abstract move(): void;
     public abstract draw(): void;
     public abstract randomSpawn(): void;
@@ -15,9 +10,10 @@ abstract class Obstacle implements obstacleArrays {
     public x: number;
     public obstacleArray: Array<object>;
     public rotate: number;
+    public sonarDetected: SonarDetected;
     
-    
-    constructor() {
+    constructor(sonarDetected: SonarDetected) {
+        this.sonarDetected = sonarDetected;
         this.obstacleArray = [];
         this.rx = random(50,150);
         this.ry = random(50,120);
@@ -32,6 +28,7 @@ abstract class Obstacle implements obstacleArrays {
             this.ry = this.r;
         }
     }
+    
 
 }
 
@@ -62,6 +59,7 @@ class Iceberg extends Obstacle{
     }
 
     public draw() {
+        
         this.collisionListener.draw()
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
@@ -73,8 +71,10 @@ class Iceberg extends Obstacle{
         }
         
         for (let i of this.icebergArray) {
-            i.move()
-            if(hit === true)
+                i.move()
+            if(true){
+                i.draw()
+            }
         }              
     }
 }

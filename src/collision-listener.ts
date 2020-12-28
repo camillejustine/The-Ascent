@@ -1,6 +1,8 @@
+interface SonarDetected {
+    detected: boolean;//FIGURE OUT HOW TO IMPLEMENT BOOLEAN IN OBSTACLES FIRST THING
+  }
 
-
-class CollisionListener{
+class CollisionListener implements SonarDetected{
      private cx: number;
      private cy: number;
      private cr: number;
@@ -9,9 +11,7 @@ class CollisionListener{
     /* public subPosition: SubPosition; */
     public icebergPos: IcebergPositions;
     
-    
     constructor(/* subPosition: SubPosition, */ icebergPos: IcebergPositions){
-         /* this.subPosition = subPosition; */
          this.icebergPos = icebergPos;
          this.detected = false;
          this.cx = 50;
