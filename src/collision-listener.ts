@@ -7,11 +7,13 @@ class CollisionListener implements SonarDetected{
      private cy: number;
      private cr: number;
      public detected: boolean;
+     public controlXY: Control;
 
     /* public subPosition: SubPosition; */
     public icebergPos: IcebergPositions;
     
     constructor(/* subPosition: SubPosition, */ icebergPos: IcebergPositions){
+        this.controlXY = new Control();
          this.icebergPos = icebergPos;
          this.detected = false;
          this.cx = 50;
@@ -24,8 +26,8 @@ class CollisionListener implements SonarDetected{
      }
 
      public draw() {
-         this.cx = mouseX /* this.subPosition.subPositionX */;
-         this.cy = mouseY /* this.subPosition.subPositionY */;
+         this.cx = this.controlXY.getPositionX();
+         this.cy = this.controlXY.getPositionY();
          push()
          strokeWeight(1);
          stroke('rgba(0,255,0,0.25)');

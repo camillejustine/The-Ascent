@@ -40,6 +40,15 @@ class Control implements SubPosition {
     
   }
 
+  public getPositionX() {
+    return this.subPositionX
+  }
+
+  public getPositionY() {
+    return this.subPositionY
+  }
+
+
   public update () {
     this.keyPressed();
     this.move();
