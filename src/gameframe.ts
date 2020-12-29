@@ -35,6 +35,7 @@ class GameFrame implements iGameState {
   }
 
   public update() {
+    console.log(this.obstacles.length);
     this.mainMenu.update();
 
     if (this.isGameRunning) {
@@ -46,7 +47,7 @@ class GameFrame implements iGameState {
 
       for (const obstacle of this.obstacles) {
         obstacle.move();
-        obstacle.randomSpawn();
+        obstacle.randomSpawn(this.obstacles);
       }
       this.controls.update();
 
@@ -71,7 +72,6 @@ class GameFrame implements iGameState {
         );
         if (distance < 250) {
           this.obstacles[i].draw();
-          console.log("hej", i);
         }
       }
       this.controls.draw();
