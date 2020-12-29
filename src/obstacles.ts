@@ -1,111 +1,82 @@
 abstract class Obstacle {
-    public abstract move(): void;
-    public abstract draw(): void;
-    public abstract randomSpawn(): void;
-    public rx: number;
-    public ry: number;
-    public r: number;
-    public y: number;
-    public x: number;
+  public abstract move(): void;
+  public abstract draw(): void;
+  public abstract randomSpawn(obstacles: any): void;
+  public rx: number;
+  public ry: number;
+  public r: number;
+  public y: number;
+  public x: number;
 
-    constructor() {
-        this.rx = 100;
-        this.ry = 80;
-        this.r = 100;
-        this.y = 100;
-        this.x = random(10, 900);
-    }
+  constructor() {
+    this.rx = 100;
+    this.ry = 80;
+    this.r = 50;
+    this.y = -100;
+    this.x = random(10, 900);
+  }
 }
 class Iceberg extends Obstacle {
+  private iceberg: p5.Image | p5.Element;
 
-    private iceberg: any;
-    private iceArray: Array<any>;
+  constructor() {
+    super();
 
-    constructor() {
-        super();
-        this.iceArray = [];
+    this.iceberg = iceberg;
+  }
 
-        this.iceberg = iceberg;
+  public move() {
+    this.y += 2;
+  }
+
+  public draw() {
+    image(this.iceberg, this.x, this.y, this.rx, this.ry);
+    fill(200, 50);
+    circle(this.x, this.y, this.r * 2);
+    imageMode(CENTER);
+  }
+
+  public randomSpawn(obstacles: any) {
+    if (random() < 0.01 && obstacles.length < 5) {
+      obstacles.push(new Iceberg());
     }
 
-    /*   public update(){
-          this.move();
-          this.randomSpawn();
-      } */
-
-    public move() {
-        this.y += 2;
+    for (let i = 0; i < obstacles.length; i++) {
+      if (obstacles[0].y > height + 50) {
+        obstacles.shift();
+      }
     }
-
-    public draw() {
-
-        image(this.iceberg, this.x, this.y, this.rx, this.ry)
-        fill(200, 50)
-        circle(this.x, this.y, this.r)
-        //ellipseMode(CENTER);
-        imageMode(CENTER);
-    }
-
-    public randomSpawn() {
-        if (random(1) < 0.05) {
-            this.iceArray.push(new Iceberg());
-        }
-
-        for (let i = 0; i < this.iceArray.length; i++) {
-            this.iceArray[i].move()
-            this.iceArray[i].draw()
-
-            /* let g = random(0,this.iceArray.length - 1); */
-
-            /* const validPosX = random(this.iceArray[i].x + this.iceArray[i].rx/2, this.iceArray[i].x - this.iceArray[i].rx/2)
-            this.iceArray[i].x = validPosX; */
-            //console.log(validPosX);
-            /* this.iceArray[i].x = validPosX; */
-
-            //console.log(this.iceArray.length)
-            //console.log(this.iceArray[i].rx)
-
-        }
-
-    }
+  }
 }
 
-
 class Mine extends Obstacle {
+  private mine: p5.Image | p5.Element;
 
-    private mine: any;
-    private mineArray: Array<any>;
+  constructor() {
+    super();
+    this.mine = mine;
+  }
 
-    constructor() {
-        super();
-        this.mineArray = [];
-        this.mine = mine;
+  public move() {
+    this.y += 2;
+  }
+
+  public draw() {
+    image(this.mine, this.x, this.y, this.rx, this.ry);
+    fill(200, 50);
+    circle(this.x, this.y, this.r);
+    imageMode(CENTER);
+  }
+
+  public randomSpawn(obstacles: any) {
+    if (random() < 0.01 && obstacles.length < 5) {
+      obstacles.push(new Mine());
     }
 
-    /*   public update(){
-          this.move();
-          this.randomSpawn();
-      } */
-
-    public move() {
-        this.y += 2;
+    for (let i = 0; i < obstacles.length; i++) {
+      if (obstacles[0].y > height + 50) {
+        obstacles.shift();
+      }
     }
-
-    public draw() {
-        image(this.mine, this.x, this.y, this.rx, this.ry)
-        fill(200, 50)
-        circle(this.x, this.y, this.r)
-        //ellipseMode(CENTER);
-        imageMode(CENTER);
-    }
-
-    public randomSpawn() {
-        if (random(1) < 0.001) {
-            this.mineArray.push(new Mine());
-        }
-        for (let i of this.mineArray) {
-            i.move()
-            i.draw()
-        }
-    }
+  }
 }
