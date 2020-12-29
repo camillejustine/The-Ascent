@@ -18,11 +18,9 @@ abstract class Obstacle {
 }
 class Iceberg extends Obstacle {
   private iceberg: p5.Image | p5.Element;
-  private iceArray: Array<Iceberg>;
 
   constructor() {
     super();
-    this.iceArray = [];
 
     this.iceberg = iceberg;
   }
@@ -53,11 +51,9 @@ class Iceberg extends Obstacle {
 
 class Mine extends Obstacle {
   private mine: p5.Image | p5.Element;
-  private mineArray: Array<Mine>;
 
   constructor() {
     super();
-    this.mineArray = [];
     this.mine = mine;
   }
 
