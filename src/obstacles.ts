@@ -1,7 +1,7 @@
-interface ObstacleArray {
+interface collissionDetection {
     obstacleArray: Array<any>;
 }
- abstract class Obstacle implements ObstacleArray{
+ abstract class Obstacle implements collissionDetection{
     public abstract move(): void;
     public abstract draw(): void;
     public abstract randomSpawn(): void;
@@ -53,22 +53,20 @@ class Iceberg extends Obstacle{
     }
 
     public draw() {
-         
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
     }
 
     public randomSpawn() {
-        // how to get the array out of this method into collission listener?
+          
         if (random(1) < 0.01) {
             this.obstacleArray.push(new Iceberg());
         }
-        
         for (let i of this.obstacleArray) {
                 i.move()
-            if(true){
+            if(this.collissionListener.collission === true){
                 i.draw()
-            }
+            } 
         } 
         //return this.obstacleArray
     }   
@@ -85,7 +83,6 @@ class Mine extends Obstacle {
         this.mine = mine;
         this.r = 100;
     }
-
       public update(){
         this.collissionListener.update(); 
     }
@@ -94,8 +91,7 @@ class Mine extends Obstacle {
         this.y += 2;
     }
 
-    public draw() {
-        
+    public draw() { 
         image(this.mine, this.x, this.y, 100, 100)
         imageMode(CENTER);
     }

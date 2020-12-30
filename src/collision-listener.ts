@@ -1,6 +1,6 @@
 interface SonarDetected {
     collission: boolean;//FIGURE OUT HOW TO IMPLEMENT BOOLEAN IN OBSTACLES FIRST THING
-  }
+}
 
 class CollisionListener implements SonarDetected{
      private cx: number;
@@ -9,15 +9,20 @@ class CollisionListener implements SonarDetected{
      public collission: boolean;
      public controlXY: Control;
 
-    public obstacleArray: ObstacleArray;
+    public obstacleArray: collissionDetection;
     
-    constructor( obstacleArray: ObstacleArray ){
+    constructor( obstacleArray: collissionDetection ){
          this.controlXY = new Control();
          this.obstacleArray = obstacleArray;
          this.collission = false;
          this.cx = 50;
          this.cy = 50;
-         this.cr = 250;     
+         this.cr = 100;     
+     }
+
+     public hitObjc(){
+        return this.collission;
+        
      }
     
      public update() {
@@ -36,6 +41,7 @@ class CollisionListener implements SonarDetected{
            circle(obstacle.x,obstacle.y,obstacle.r)
            ellipseMode(CENTER);
            this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2); 
+           console.log(this.collission)
        }
      }
 
