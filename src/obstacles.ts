@@ -1,5 +1,7 @@
-
- abstract class Obstacle{
+interface ObstacleArray {
+    obstacleArray: Array<any>;
+}
+ abstract class Obstacle implements ObstacleArray{
     public abstract move(): void;
     public abstract draw(): void;
     public abstract randomSpawn(): void;
@@ -8,12 +10,12 @@
     public r: number;
     public y: number;
     public x: number;
-    public obstacleArray: Array<object>;
+    public obstacleArray: Array<any>;
     public rotate: number;
-    public sonarDetected: SonarDetected;
+    //public sonarDetected: SonarDetected;
     
-    constructor(sonarDetected: SonarDetected) {
-        this.sonarDetected = sonarDetected;
+    constructor(/* sonarDetected: SonarDetected */) {
+        //this.sonarDetected = sonarDetected;
         this.obstacleArray = [];
         this.rx = random(50,150);
         this.ry = random(50,120);
@@ -28,25 +30,19 @@
             this.ry = this.r;
         }
     }
-    
-
 }
 
-interface IcebergPositions {
-    icebergArray: Array<object>;
-}
+
 class Iceberg extends Obstacle{
 
     private iceberg: any;
-    public collisionListener: CollisionListener;
-    public icebergArray: Array<object>;
+    //public collisionListener: CollisionListener;
     
 
     constructor() {
         super();
         this.iceberg = icebergImage;
-        this.icebergArray = []
-        this.collisionListener = new CollisionListener(this); 
+        //this.collisionListener = new CollisionListener(this); 
     }
 
       public update(){
@@ -65,10 +61,10 @@ class Iceberg extends Obstacle{
 
     public randomSpawn() {
         if (random(1) < 0.01) {
-            this.icebergArray.push(new Iceberg());
+            this.obstacleArray.push(new Iceberg());
         }
         
-        for (let i of this.icebergArray) {
+        for (let i of this.obstacleArray) {
                 i.move()
             if(true){
                 i.draw()

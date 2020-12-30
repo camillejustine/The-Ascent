@@ -8,13 +8,16 @@ class CollisionListener implements SonarDetected{
      private cr: number;
      public collission: boolean;
      public controlXY: Control;
+     public obstacleArray: Obstacle[];
 
     /* public subPosition: SubPosition; */
-    public icebergPos: IcebergPositions;
+    /* public obstacleArray: ObstacleArray; */
     
-    constructor(/* subPosition: SubPosition, */ icebergPos: IcebergPositions){
-        this.controlXY = new Control();
-         this.icebergPos = icebergPos;
+    constructor(/* subPosition: SubPosition, */ /* obstacleArray: ObstacleArray */){
+         this.controlXY = new Control();
+         /* this.obstacleArray = obstacleArray; */
+         this.obstacleArray = [];
+
          this.collission = false;
          this.cx = 50;
          this.cy = 50;
@@ -22,11 +25,12 @@ class CollisionListener implements SonarDetected{
      }
     
      public update() {
-         
+        console.log();
      }
 
      public draw() {
          this.controlXY.keyPressed();
+         console.log(this.controlXY.subPositionX, this.controlXY.subPositionY);
          this.cx = this.controlXY.getPositionX();
          this.cy = this.controlXY.getPositionY();
          push()
@@ -36,11 +40,11 @@ class CollisionListener implements SonarDetected{
          circle(this.cx, this.cy, this.cr*2)
          pop()
          
-         for(const iceberg of this.icebergPos.icebergArray){
+         for(const obstacle of this.obstacleArray.obstacleArray){
             fill(200, 50)
-            circle(iceberg.x,iceberg.y,iceberg.r)
+            circle(obstacle.x,obstacle.y,obstacle.r)
             ellipseMode(CENTER);
-            this.collission = this.hit(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r/2);
+            this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2);
             if (this.collission) {
                 console.log("HIT!")
                 }

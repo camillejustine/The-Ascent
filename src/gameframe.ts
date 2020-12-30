@@ -52,6 +52,7 @@ class GameFrame implements iGameState {
         obstacle.randomSpawn(); 
       } 
       this.controls.update();
+      this.collissionListener.update();
 
       
     } 
