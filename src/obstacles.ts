@@ -94,12 +94,12 @@ class Mine extends Obstacle {
     }
 
     public draw() {
-        ellipseMode(CENTER);
+        image(this.mine, this.x, this.y, 100, 100)
         imageMode(CENTER);
     }
 
     public randomSpawn() {
-        if (random(1) < 0.1) {
+        if (random(1) < 0.001) {
             this.obstacleArray.push(new Mine());
         }
         for (let i of this.obstacleArray) {

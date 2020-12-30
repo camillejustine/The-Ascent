@@ -21,8 +21,7 @@ class GameFrame implements iGameState {
 
   //private setDepth: number;
   public isGameRunning: boolean;
-  public collissionListener: CollisionListener;
-
+  
   public constructor() {
 
     this.obstacles = [
