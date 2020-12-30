@@ -69,7 +69,7 @@ class GameFrame implements iGameState {
       } 
       
       this.controls.draw();
-      this.collissionListener.draw();
+      //this.collissionListener.draw();
       
   
     } 

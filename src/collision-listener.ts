@@ -8,18 +8,18 @@ class CollisionListener implements SonarDetected{
      private cr: number;
      public collission: boolean;
      public controlXY: Control;
-     public obstacleArray: Obstacle[];
 
-    /* public subPosition: SubPosition; */
-    /* public obstacleArray: ObstacleArray; */
+    public obstacleArray: ObstacleArray;
+    public icebergs: IceBergs;
     
-    constructor(/* subPosition: SubPosition, */ /* obstacleArray: ObstacleArray */){
+    constructor( /* obstacleArray: ObstacleArray */, icebergs: IceBergs){
          this.controlXY = new Control();
-         /* this.obstacleArray = obstacleArray; */
+         this.icebergs = icebergs;
+         /* this.obstacleArray = obstacleArray;
          this.obstacleArray = [
              new Iceberg(),
              new Mine()
-         ];
+         ]; */
 
          this.collission = false;
          this.cx = 50;
@@ -28,11 +28,7 @@ class CollisionListener implements SonarDetected{
      }
     
      public update() {
-         for(let i of this.obstacleArray){
-             i.update();
-             //console.log(i.obstacleArray)
-        }
-        
+        console.log(this.icebergs)
      }
 
      public draw() {

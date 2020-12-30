@@ -33,21 +33,25 @@ interface ObstacleArray {
     }
 }
 
-
+interface IceBergs {
+    obstacleArray: Array<any>;
+}
 class Iceberg extends Obstacle{
 
     private iceberg: any;
-    //public collisionListener: CollisionListener;
+    public icebergs: Array<any>
+    public collisionListener: CollisionListener;
     
 
     constructor() {
         super();
         this.iceberg = icebergImage;
-        //this.collisionListener = new CollisionListener(this); 
+        this.icebergs = [];
+        this.collisionListener = new CollisionListener(this); 
     }
 
     public update(){
-        return this.obstacleArray;            
+                 
     }
     
     public move() {
@@ -62,10 +66,10 @@ class Iceberg extends Obstacle{
     public randomSpawn() {
         // how to get the array out of this method into collission listener?
         if (random(1) < 0.01) {
-            this.obstacleArray.push(new Iceberg());
+            this.icebergs.push(new Iceberg());
         }
         
-        for (let i of this.obstacleArray) {
+        for (let i of this.icebergs) {
                 i.move()
             if(true){
                 i.draw()
