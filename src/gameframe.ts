@@ -21,6 +21,7 @@ class GameFrame implements iGameState {
 
   //private setDepth: number;
   public isGameRunning: boolean;
+  public collissionListener: CollisionListener;
 
   public constructor() {
 
@@ -28,7 +29,7 @@ class GameFrame implements iGameState {
       new Iceberg(),
       new Mine()
     ]
-    
+    this.collissionListener = new CollisionListener();
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
@@ -51,7 +52,7 @@ class GameFrame implements iGameState {
         obstacle.randomSpawn(); 
       } 
       this.controls.update();
-  
+
       
     } 
   }
@@ -69,6 +70,7 @@ class GameFrame implements iGameState {
       } 
       
       this.controls.draw();
+      
       
   
     } 

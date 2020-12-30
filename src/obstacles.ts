@@ -59,8 +59,6 @@ class Iceberg extends Obstacle{
     }
 
     public draw() {
-        
-        this.collisionListener.draw()
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
     }

@@ -22,10 +22,11 @@ class CollisionListener implements SonarDetected{
      }
     
      public update() {
-         console.log(this.icebergPos.icebergArray)
+         
      }
 
      public draw() {
+         this.controlXY.keyPressed();
          this.cx = this.controlXY.getPositionX();
          this.cy = this.controlXY.getPositionY();
          push()
