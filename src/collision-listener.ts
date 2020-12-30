@@ -12,9 +12,9 @@ class CollisionListener implements SonarDetected{
     public obstacleArray: ObstacleArray;
     public icebergs: IceBergs;
     
-    constructor( /* obstacleArray: ObstacleArray */, icebergs: IceBergs){
+    constructor( /* obstacleArray: ObstacleArray */){
          this.controlXY = new Control();
-         this.icebergs = icebergs;
+         this.icebergs = new Iceberg();
          /* this.obstacleArray = obstacleArray;
          this.obstacleArray = [
              new Iceberg(),
