@@ -47,8 +47,7 @@ class Iceberg extends Obstacle{
     }
 
     public update(){
-        console.log(this.obstacleArray)  
-                     
+        return this.obstacleArray;            
     }
     
     public move() {
@@ -61,7 +60,7 @@ class Iceberg extends Obstacle{
     }
 
     public randomSpawn() {
-        
+        // how to get the array out of this method into collission listener?
         if (random(1) < 0.01) {
             this.obstacleArray.push(new Iceberg());
         }
@@ -74,7 +73,6 @@ class Iceberg extends Obstacle{
         } 
         //return this.obstacleArray
     }   
-    console.log(this.obstacleArray);
 }
 
 

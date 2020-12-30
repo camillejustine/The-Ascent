@@ -29,14 +29,14 @@ class CollisionListener implements SonarDetected{
     
      public update() {
          for(let i of this.obstacleArray){
-             i.randomSpawn();
+             i.update();
+             //console.log(i.obstacleArray)
         }
         
      }
 
      public draw() {
-         this.controlXY.keyPressed();
-         console.log(this.controlXY.subPositionX, this.controlXY.subPositionY);
+         this.controlXY.update();
          this.cx = this.controlXY.getPositionX();
          this.cy = this.controlXY.getPositionY();
          push()
@@ -47,7 +47,6 @@ class CollisionListener implements SonarDetected{
          pop()
          
          for(const obstacle of this.obstacleArray){
-            console.log(obstacle)
             fill(200, 50)
             circle(obstacle.x,obstacle.y,obstacle.r)
             ellipseMode(CENTER);
