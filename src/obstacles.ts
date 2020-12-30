@@ -5,6 +5,7 @@ interface ObstacleArray {
     public abstract move(): void;
     public abstract draw(): void;
     public abstract randomSpawn(): void;
+    public abstract update(): void;
     public rx: number;
     public ry: number;
     public r: number;
@@ -45,11 +46,11 @@ class Iceberg extends Obstacle{
         //this.collisionListener = new CollisionListener(this); 
     }
 
-      public update(){
-         /*  this.move();
-          this.randomSpawn();  */
-      }
-
+    public update(){
+        console.log(this.obstacleArray)  
+                     
+    }
+    
     public move() {
         this.y += 2;
     }
@@ -60,6 +61,7 @@ class Iceberg extends Obstacle{
     }
 
     public randomSpawn() {
+        
         if (random(1) < 0.01) {
             this.obstacleArray.push(new Iceberg());
         }
@@ -69,8 +71,10 @@ class Iceberg extends Obstacle{
             if(true){
                 i.draw()
             }
-        }              
-    }
+        } 
+        //return this.obstacleArray
+    }   
+    console.log(this.obstacleArray);
 }
 
 

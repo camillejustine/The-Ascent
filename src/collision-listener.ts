@@ -16,7 +16,10 @@ class CollisionListener implements SonarDetected{
     constructor(/* subPosition: SubPosition, */ /* obstacleArray: ObstacleArray */){
          this.controlXY = new Control();
          /* this.obstacleArray = obstacleArray; */
-         this.obstacleArray = [];
+         this.obstacleArray = [
+             new Iceberg(),
+             new Mine()
+         ];
 
          this.collission = false;
          this.cx = 50;
@@ -25,7 +28,10 @@ class CollisionListener implements SonarDetected{
      }
     
      public update() {
-        console.log();
+         for(let i of this.obstacleArray){
+             i.randomSpawn();
+        }
+        
      }
 
      public draw() {
@@ -40,7 +46,8 @@ class CollisionListener implements SonarDetected{
          circle(this.cx, this.cy, this.cr*2)
          pop()
          
-         for(const obstacle of this.obstacleArray.obstacleArray){
+         for(const obstacle of this.obstacleArray){
+            console.log(obstacle)
             fill(200, 50)
             circle(obstacle.x,obstacle.y,obstacle.r)
             ellipseMode(CENTER);
