@@ -1,12 +1,12 @@
 interface SonarDetected {
-    detected: boolean;//FIGURE OUT HOW TO IMPLEMENT BOOLEAN IN OBSTACLES FIRST THING
+    collission: boolean;//FIGURE OUT HOW TO IMPLEMENT BOOLEAN IN OBSTACLES FIRST THING
   }
 
 class CollisionListener implements SonarDetected{
      private cx: number;
      private cy: number;
      private cr: number;
-     public detected: boolean;
+     public collission: boolean;
      public controlXY: Control;
 
     /* public subPosition: SubPosition; */
@@ -15,7 +15,7 @@ class CollisionListener implements SonarDetected{
     constructor(/* subPosition: SubPosition, */ icebergPos: IcebergPositions){
         this.controlXY = new Control();
          this.icebergPos = icebergPos;
-         this.detected = false;
+         this.collission = false;
          this.cx = 50;
          this.cy = 50;
          this.cr = 250;     
@@ -39,8 +39,8 @@ class CollisionListener implements SonarDetected{
             fill(200, 50)
             circle(iceberg.x,iceberg.y,iceberg.r)
             ellipseMode(CENTER);
-            this.detected = this.sonarDetect(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r/2);
-            if (this.detected) {
+            this.collission = this.hit(this.cx,this.cy,this.cr, iceberg.x,iceberg.y,iceberg.r/2);
+            if (this.collission) {
                 console.log("HIT!")
                 }
             else { 
@@ -51,7 +51,7 @@ class CollisionListener implements SonarDetected{
            
         }
 
-    public sonarDetect(cx, cy, cr, c2x, c2y, c2r){
+    public hit(cx, cy, cr, c2x, c2y, c2r){
         // get distance between the circle's centers
         // use the Pythagorean Theorem to compute the distance
         let distX = cx - c2x;
