@@ -21,35 +21,30 @@ class CollisionListener implements SonarDetected{
      }
     
      public update() {
-        console.log(this.obstacleArray)
+        this.controlXY.update();
+        this.cx = this.controlXY.getPositionX();
+        this.cy = this.controlXY.getPositionY();
+        push()
+        strokeWeight(1);
+        stroke('rgba(0,255,0,0.25)');
+        noFill()
+        circle(this.cx, this.cy, this.cr*2)
+        pop()
+        
+        for(const obstacle of this.obstacleArray.obstacleArray){
+           fill(200, 50)
+           circle(obstacle.x,obstacle.y,obstacle.r)
+           ellipseMode(CENTER);
+           this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2);
+           if (this.collission) {
+               console.log("HIT!")
+               }
+           else { 
+               console.log("NOPE")
+           }
+          
+       }
      }
-
-     public draw() {
-         this.controlXY.update();
-         this.cx = this.controlXY.getPositionX();
-         this.cy = this.controlXY.getPositionY();
-         push()
-         strokeWeight(1);
-         stroke('rgba(0,255,0,0.25)');
-         noFill()
-         circle(this.cx, this.cy, this.cr*2)
-         pop()
-         
-         for(const obstacle of this.obstacleArray){
-            fill(200, 50)
-            circle(obstacle.x,obstacle.y,obstacle.r)
-            ellipseMode(CENTER);
-            this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2);
-            if (this.collission) {
-                console.log("HIT!")
-                }
-            else { 
-                console.log("NOPE")
-            }
-           
-        }
-           
-        }
 
     public hit(cx, cy, cr, c2x, c2y, c2r){
         // get distance between the circle's centers

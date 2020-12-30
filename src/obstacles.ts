@@ -45,7 +45,7 @@ class Iceberg extends Obstacle{
     }
 
     public update(){
-           this.collissionListener.update();      
+        this.collissionListener.update();      
     }
     
     public move() {
@@ -53,6 +53,7 @@ class Iceberg extends Obstacle{
     }
 
     public draw() {
+         
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
     }
@@ -87,13 +88,14 @@ class Mine extends Obstacle {
 
       public update(){
         this.collissionListener.update(); 
-      }
+    }
 
     public move() {
         this.y += 2;
     }
 
     public draw() {
+        
         image(this.mine, this.x, this.y, 100, 100)
         imageMode(CENTER);
     }
