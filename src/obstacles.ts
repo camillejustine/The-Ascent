@@ -99,7 +99,7 @@ class Mine extends Obstacle {
     }
 
     public randomSpawn() {
-        if (random(1) < 0.001) {
+        if (random(1) < 0.1) {
             this.obstacleArray.push(new Mine());
         }
         for (let i of this.obstacleArray) {

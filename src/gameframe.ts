@@ -29,7 +29,7 @@ class GameFrame implements iGameState {
       new Iceberg(),
       new Mine()
     ]
-    this.collissionListener = new CollisionListener();
+
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
@@ -53,7 +53,6 @@ class GameFrame implements iGameState {
         obstacle.update(); 
       } 
       this.controls.update();
-      this.collissionListener.update();
     } 
   }
 
@@ -70,9 +69,6 @@ class GameFrame implements iGameState {
       } 
       
       this.controls.draw();
-      //this.collissionListener.draw();
-      
-  
     } 
   }
 }
