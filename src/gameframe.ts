@@ -50,6 +50,7 @@ class GameFrame implements iGameState {
       for(const obstacle of this.obstacles){
         obstacle.move(); 
         obstacle.randomSpawn(); 
+        obstacle.update(); 
       } 
       this.controls.update();
       this.collissionListener.update();

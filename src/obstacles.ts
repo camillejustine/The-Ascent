@@ -13,10 +13,12 @@ interface ObstacleArray {
     public x: number;
     public obstacleArray: Array<any>;
     public rotate: number;
+    public collissionListener: CollisionListener;
     //public sonarDetected: SonarDetected;
     
     constructor(/* sonarDetected: SonarDetected */) {
         //this.sonarDetected = sonarDetected;
+        this.collissionListener = new CollisionListener(this);
         this.obstacleArray = [];
         this.rx = random(50,150);
         this.ry = random(50,120);
@@ -33,25 +35,17 @@ interface ObstacleArray {
     }
 }
 
-interface IceBergs {
-    obstacleArray: Array<any>;
-}
 class Iceberg extends Obstacle{
 
     private iceberg: any;
-    public icebergs: Array<any>
-    public collisionListener: CollisionListener;
-    
 
     constructor() {
         super();
         this.iceberg = icebergImage;
-        this.icebergs = [];
-        this.collisionListener = new CollisionListener(this); 
     }
 
     public update(){
-                 
+           this.collissionListener.update();      
     }
     
     public move() {
@@ -66,10 +60,10 @@ class Iceberg extends Obstacle{
     public randomSpawn() {
         // how to get the array out of this method into collission listener?
         if (random(1) < 0.01) {
-            this.icebergs.push(new Iceberg());
+            this.obstacleArray.push(new Iceberg());
         }
         
-        for (let i of this.icebergs) {
+        for (let i of this.obstacleArray) {
                 i.move()
             if(true){
                 i.draw()
@@ -92,8 +86,7 @@ class Mine extends Obstacle {
     }
 
       public update(){
-          this.move();
-          this.randomSpawn();
+        this.collissionListener.update(); 
       }
 
     public move() {
@@ -101,9 +94,6 @@ class Mine extends Obstacle {
     }
 
     public draw() {
-        fill(200, 50)
-        circle(this.x, this.y, this.r)
-        image(this.mine, this.x, this.y, 100, 100)
         ellipseMode(CENTER);
         imageMode(CENTER);
     }
