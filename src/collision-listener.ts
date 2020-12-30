@@ -35,14 +35,7 @@ class CollisionListener implements SonarDetected{
            fill(200, 50)
            circle(obstacle.x,obstacle.y,obstacle.r)
            ellipseMode(CENTER);
-           this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2);
-           if (this.collission) {
-               console.log("HIT!")
-               }
-           else { 
-               console.log("NOPE")
-           }
-          
+           this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2); 
        }
      }
 
