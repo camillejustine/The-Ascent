@@ -1,3 +1,4 @@
+
 interface collissionDetection {
     obstacleArray: Array<any>;
 }
@@ -72,9 +73,7 @@ class Iceberg extends Obstacle{
     }   
 }
 
-
 class Mine extends Obstacle {
-
     private mine: any;
     public r: number
 
@@ -108,3 +107,4 @@ class Mine extends Obstacle {
         }
     }
 }
+

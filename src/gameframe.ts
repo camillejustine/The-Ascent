@@ -20,9 +20,12 @@ class GameFrame implements iGameState {
   public obstacles: Obstacle[];
 
   //private setDepth: number;
+
   public isGameRunning: boolean;
   
   public constructor() {
+    this.obstacles = [new Iceberg(), new Mine()];
+
 
     this.obstacles = [
       new Iceberg(),
@@ -37,14 +40,16 @@ class GameFrame implements iGameState {
   }
 
   public update() {
+    console.log(this.obstacles.length);
     this.mainMenu.update();
 
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
-      
+
       this.background.update();
-      
+
       noCursor();
+
 
       for(const obstacle of this.obstacles){
         obstacle.move(); 
@@ -56,6 +61,8 @@ class GameFrame implements iGameState {
   }
 
   public draw() {
+    noCursor();
+
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
 
@@ -69,22 +76,6 @@ class GameFrame implements iGameState {
       
       this.controls.draw();
     } 
+
   }
 }
-
-  /* private populateObstacles() {}
-
-   private initializePlayer() {}
-
-   private initializePausMenu() {}
-
-   private upwardScroll() {}
-
-   private initilaziePowerUps() {}
-
-   private spawnPowerUp() {}
-
-   private spawnObstacle() {}
- */
-
-//page loads html DOM star button.
