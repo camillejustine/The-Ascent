@@ -35,14 +35,29 @@ class CollisionListener implements SonarDetected{
         noFill()
         circle(this.cx, this.cy, this.cr*2)
         pop()
-        
-        for(const obstacle of this.obstacleArray.obstacleArray){
+        if (this.obstacleArray.obstacleArray.length < 2) {
+            this.obstacleArray.obstacleArray = [new Iceberg(), new Mine()];
+          }
+          for (let i = 0; i < this.obstacleArray.obstacleArray.length; i++) {
+            const distance = dist(
+              this.cx,
+              this.cy,
+              this.obstacleArray.obstacleArray[i].x,
+              this.obstacleArray.obstacleArray[i].y
+            );
+            if (distance < 250) {
+                this.collission = true;
+            } else {
+                this.collission = false;
+            }
+          }
+        /* for(const obstacle of this.obstacleArray.obstacleArray){
            fill(200, 50)
            circle(obstacle.x,obstacle.y,obstacle.r)
            ellipseMode(CENTER);
            this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2); 
            console.log(this.collission)
-       }
+       } */
      }
 
     public hit(cx, cy, cr, c2x, c2y, c2r){
