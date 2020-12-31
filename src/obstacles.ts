@@ -102,7 +102,9 @@ class Mine extends Obstacle {
         }
         for (let i of this.obstacleArray) {
             i.move()
-            i.draw()
+            if(this.collissionListener.collission === true){
+              i.draw()
+          } 
         }
     }
 }

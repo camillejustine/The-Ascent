@@ -17,7 +17,7 @@ class CollisionListener implements SonarDetected{
          this.collission = false;
          this.cx = 50;
          this.cy = 50;
-         this.cr = 100;     
+         this.cr = 250;     
      }
 
      public hitObjc(){
@@ -45,8 +45,8 @@ class CollisionListener implements SonarDetected{
               this.obstacleArray.obstacleArray[i].x,
               this.obstacleArray.obstacleArray[i].y
             );
-            if (distance < 250) {
-                this.collission = true;
+            if (distance < this.cr) {
+                this.obstacleArray.obstacleArray[i].draw();
             } else {
                 this.collission = false;
             }
