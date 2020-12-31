@@ -35,9 +35,9 @@ class CollisionListener implements SonarDetected{
         noFill()
         circle(this.cx, this.cy, this.cr*2)
         pop()
-        if (this.obstacleArray.obstacleArray.length < 2) {
+      /*   if (this.obstacleArray.obstacleArray.length < 2) {
             this.obstacleArray.obstacleArray = [new Iceberg(), new Mine()];
-          }
+          } */
           for (let i = 0; i < this.obstacleArray.obstacleArray.length; i++) {
             const distance = dist(
               this.cx,
