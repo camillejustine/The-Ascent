@@ -1,82 +1,110 @@
-abstract class Obstacle {
-  public abstract move(): void;
-  public abstract draw(): void;
-  public abstract randomSpawn(obstacles: any): void;
-  public rx: number;
-  public ry: number;
-  public r: number;
-  public y: number;
-  public x: number;
 
-  constructor() {
-    this.rx = 100;
-    this.ry = 80;
-    this.r = 50;
-    this.y = -100;
-    this.x = random(10, 900);
-  }
+interface collissionDetection {
+    obstacleArray: Array<any>;
 }
-class Iceberg extends Obstacle {
-  private iceberg: p5.Image | p5.Element;
+ abstract class Obstacle implements collissionDetection{
+    public abstract move(): void;
+    public abstract draw(): void;
+    public abstract randomSpawn(): void;
+    public abstract update(): void;
+    public rx: number;
+    public ry: number;
+    public r: number;
+    public y: number;
+    public x: number;
+    public obstacleArray: Array<any>;
+    public rotate: number;
+    public collissionListener: CollisionListener;
+    //public sonarDetected: SonarDetected;
+    
+    constructor(/* sonarDetected: SonarDetected */) {
+        //this.sonarDetected = sonarDetected;
+        this.collissionListener = new CollisionListener(this);
+        this.obstacleArray = [];
+        this.rx = random(50,150);
+        this.ry = random(50,120);
+        this.r = random(50,150);
+        this.y = -100;
+        this.x = random(10, 900);
+        this.rotate = random(0,360)
+        
+        if(this.rx < this.r || this.rx > this.r){
+            this.rx = this.r; 
+        } if (this.ry < this.r || this.ry > this.r){
+            this.ry = this.r;
+        }
+    }
+}
 
-  constructor() {
-    super();
+class Iceberg extends Obstacle{
 
-    this.iceberg = iceberg;
-  }
+    private iceberg: any;
 
-  public move() {
-    this.y += 2;
-  }
-
-  public draw() {
-    image(this.iceberg, this.x, this.y, this.rx, this.ry);
-    fill(200, 50);
-    circle(this.x, this.y, this.r * 2);
-    imageMode(CENTER);
-  }
-
-  public randomSpawn(obstacles: any) {
-    if (random() < 0.01 && obstacles.length < 5) {
-      obstacles.push(new Iceberg());
+    constructor() {
+        super();
+        this.iceberg = icebergImage;
     }
 
-    for (let i = 0; i < obstacles.length; i++) {
-      if (obstacles[0].y > height + 50) {
-        obstacles.shift();
-      }
+    public update(){
+        this.collissionListener.update();      
     }
-  }
+    
+    public move() {
+        this.y += 2;
+    }
+
+    public draw() {
+        image(this.iceberg, this.x, this.y, this.rx, this.ry) 
+        imageMode(CENTER);
+    }
+
+    public randomSpawn() {
+          
+        if (random(1) < 0.02) {
+            this.obstacleArray.push(new Iceberg());
+        }
+        for (let i of this.obstacleArray) {
+                i.move()
+            if(this.collissionListener.collission === true){
+                i.draw()
+            } 
+        } 
+        //return this.obstacleArray
+    }   
 }
 
 class Mine extends Obstacle {
-  private mine: p5.Image | p5.Element;
+    private mine: any;
+    public r: number
 
-  constructor() {
-    super();
-    this.mine = mine;
-  }
-
-  public move() {
-    this.y += 2;
-  }
-
-  public draw() {
-    image(this.mine, this.x, this.y, this.rx, this.ry);
-    fill(200, 50);
-    circle(this.x, this.y, this.r);
-    imageMode(CENTER);
-  }
-
-  public randomSpawn(obstacles: any) {
-    if (random() < 0.01 && obstacles.length < 5) {
-      obstacles.push(new Mine());
+    constructor() {
+        super();
+        this.mine = mine;
+        this.r = 100;
+    }
+      public update(){
+        this.collissionListener.update(); 
     }
 
-    for (let i = 0; i < obstacles.length; i++) {
-      if (obstacles[0].y > height + 50) {
-        obstacles.shift();
-      }
+    public move() {
+        this.y += 2;
     }
-  }
+
+    public draw() { 
+        image(this.mine, this.x, this.y, 100, 100)
+        imageMode(CENTER);
+    }
+
+    public randomSpawn() {
+        if (random(1) < 0.01) {
+            this.obstacleArray.push(new Mine());
+        }
+        for (let i of this.obstacleArray) {
+            i.move()
+            if(this.collissionListener.collission === true){
+              i.draw()
+          } 
+        }
+    }
 }
+

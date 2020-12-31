@@ -1,9 +1,10 @@
-/* interface SubPosition {
+interface SubPosition {
   subPositionX: number;
-  //subPositionY: number;
-} */
+  subPositionY: number;
+}
 
-class Control /* implements SubPosition */ {
+class Control implements SubPosition {
+
   private angle: number = 0;
 
   private rotateRight: number;
@@ -12,6 +13,9 @@ class Control /* implements SubPosition */ {
   public left: any;
   public forward: any;
   public back: any;
+
+  
+
   public subPositionX: number;
   public subPositionY: number;
 
@@ -20,7 +24,6 @@ class Control /* implements SubPosition */ {
     private acceleration: p5.Vector; */
 
   public constructor() {
-
     this.angle = this.angle;
     /* this.position = new p5.Vector(width/2, height/1.5);
         this.acceleration = new p5.Vector(0, -10); */
@@ -28,20 +31,23 @@ class Control /* implements SubPosition */ {
     this.right = RIGHT_ARROW;
     this.forward = UP_ARROW;
     this.back = DOWN_ARROW;
+    
     this.rotateLeft = 90;
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
     this.subPositionY = 720 / 2;
 
+    
   }
 
-  public getPositionX(){ 
-    return this.subPositionX;
+  public getPositionX() {
+    return this.subPositionX
   }
 
-  public getPositionY(){ 
-    return this.subPositionY;
+  public getPositionY() {
+    return this.subPositionY
   }
+
 
   public update () {
     this.keyPressed();
@@ -93,13 +99,20 @@ class Control /* implements SubPosition */ {
     push();
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
-    image(subImage, 0, 0, 20, 100);
+    image(subImage, 0, 0, 35, 150);
     imageMode(CENTER);
     
     fill(200, 50);
-    circle(0, 0, 20);
-    circle(0, 0, 400);
-    ellipseMode(CENTER)
+    circle(0, -60, 30);
+    circle(0, -30, 30);
+    circle(0, 0, 30);
+    circle(0, 30, 30);
+    circle(0, 60, 30);
     pop();
+    
+    ellipseMode(CENTER)
+    
+
+    
   }
 }
