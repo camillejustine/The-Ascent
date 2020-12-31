@@ -60,7 +60,7 @@ class CollisionListener implements SonarDetected{
        } */
      }
 
-    public hit(cx, cy, cr, c2x, c2y, c2r){
+   /*  public hit(cx, cy, cr, c2x, c2y, c2r){
         // get distance between the circle's centers
         // use the Pythagorean Theorem to compute the distance
         let distX = cx - c2x;
@@ -73,7 +73,7 @@ class CollisionListener implements SonarDetected{
             return true;
         }
         return false;
-    }
+    } */
 }
 
     //assign r variables to submarine circle and then call collision listener functions. 

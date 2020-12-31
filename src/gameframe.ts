@@ -63,9 +63,9 @@ class GameFrame implements iGameState {
 
       noCursor();
 
-      for(const obstacle of this.obstacles){
-        //obstacle.draw();  
-      } 
+     /*  for(const obstacle of this.obstacles){
+        obstacle.draw();  
+      }  */
       
       this.controls.draw();
     } 
