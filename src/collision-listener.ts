@@ -17,7 +17,7 @@ class CollisionListener implements SonarDetected{
          this.collission = false;
          this.cx = 50;
          this.cy = 50;
-         this.cr = 250;     
+         this.cr = 200;     
      }
 
      public hitObjc(){
@@ -28,6 +28,7 @@ class CollisionListener implements SonarDetected{
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
+        circle(this.cx, this.cy, this.cr * 2)
       /*   if (this.obstacleArray.obstacleArray.length < 2) {
             this.obstacleArray.obstacleArray = [new Iceberg(), new Mine()];
           } */
@@ -35,9 +36,11 @@ class CollisionListener implements SonarDetected{
            this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2); 
            if (this.collission) {
             obstacle.draw();
+            push()
             fill(200, 50);
             circle(obstacle.x,obstacle.y,obstacle.r);
             ellipseMode(CENTER);
+            pop()
           } 
       }
     }
