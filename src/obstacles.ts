@@ -65,9 +65,9 @@ class Iceberg extends Obstacle{
         }
         for (let i of this.obstacleArray) {
                 i.move()
-            if(this.collissionListener.collission === true){
+           /*  if(this.collissionListener.collission === true){
                 i.draw()
-            } 
+            }  */
         } 
         //return this.obstacleArray
     }   
@@ -101,9 +101,9 @@ class Mine extends Obstacle {
         }
         for (let i of this.obstacleArray) {
             i.move()
-            if(this.collissionListener.collission === true){
+           /*  if(this.collissionListener.collission === true){
               i.draw()
-          } 
+          }  */
         }
     }
 }

@@ -13,7 +13,7 @@ class SonarAttributes {
         this.positionX = 0;
         this.sonarRadius = 0;
         this.pulseLifespan = 300;
-        this.
+        this.pulses = [];
     }
     
     public update() {
@@ -23,19 +23,21 @@ class SonarAttributes {
     }
 
     public draw() {
+        push()
         strokeWeight(1);
         stroke('rgba(0,255,0,0.25)');
         noFill()
-        //circle(this.positionX, this.positionY, this.sonarRadius*2)
+        circle(this.positionX, this.positionY, this.sonarRadius*2)
+        pop()
     }
 
-    private setSonarRange(){
+  /*   private setSonarRange(){
 
     }
 
     private sonarPulseInterval(){
 
-    }
+    } */
 
 }
 
