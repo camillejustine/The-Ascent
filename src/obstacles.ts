@@ -100,6 +100,7 @@ class Mine extends Obstacle {
             this.obstacleArray.push(new Mine());
         }
         for (let i of this.obstacleArray) {
+            
             i.move()
             if(this.collissionListener.collission === true){
               i.draw()

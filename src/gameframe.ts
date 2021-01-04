@@ -53,16 +53,15 @@ class GameFrame implements iGameState {
   }
 
   public draw() {
-    
-
+ 
     noCursor();
 
     if (this.isGameRunning) {
-      this.depthCounter.draw();
+      
       document.getElementById("main-menu")!.style.display = "none";
-
+      
       this.background.draw();
-
+      
       noCursor();
 
      /*  for(const obstacle of this.obstacles){
@@ -73,6 +72,7 @@ class GameFrame implements iGameState {
       }  */
       
       this.controls.draw();
+      this.depthCounter.draw();
     } 
 
   }

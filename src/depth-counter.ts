@@ -10,13 +10,12 @@ class DepthCounter {
   }
 
   public draw() {
-
-    background(220);
-    if (this.timerValue <= 60) {
-      text(this.timerValue + "SECONDS", width / 2, height / 2);
+    if (this.timerValue <= 4000) {
+      textSize(32);
+      fill('rgba(0,255,0,0.25)');
+      text(Math.floor(this.timerValue) + " METERS", (width / 2) - 80, height - 20);
     }
-    console.log(this.timerValue)
-
+    
     if (this.timerValue <= 0) {
       text('GAME OVER', width / 2, height / 2 + 15);
     }
