@@ -42,7 +42,7 @@ class GameFrame implements iGameState {
   }
 
   public update() {
-    console.log(this.obstacles.length);
+
     this.mainMenu.update();
 
     if (this.isGameRunning) {
@@ -74,7 +74,7 @@ class GameFrame implements iGameState {
       noCursor();
 
       this.sonarAttributes.draw();
-     /*  for(const obstacle of this.obstacles){
+      /* for(const obstacle of this.obstacles){
         obstacle.draw();  
       }  */
       
