@@ -1,56 +1,80 @@
- class CollisionListener {
-//     private cx: number;
-//     private cy: number;
-//     private r: number;
+interface SonarDetected {
+    collission: boolean;//FIGURE OUT HOW TO IMPLEMENT BOOLEAN IN OBSTACLES FIRST THING
+}
 
-//     private sx: number;
-//     private sy: number;
-//     private sw: number;
-//     private sh: number;
+class CollisionListener implements SonarDetected{
+     private cx: number;
+     private cy: number;
+     private cr: number;
+     public collission: boolean;
+     public controlXY: Control;
 
-//     constructor(){
-//         this.cx = 50;
-//         this.cy = 50;
-//         this.r = 40;
+    public obstacleArray: collissionDetection;
+    
+    constructor( obstacleArray: collissionDetection ){
+         this.controlXY = new Control();
+         this.obstacleArray = obstacleArray;
+         this.collission = false;
+         this.cx = 50;
+         this.cy = 50;
+         this.cr = 250;     
+     }
 
-//         this.sx = 200;
-//         this.sy = 200;
-//         this.sw = 200;
-//         this.sh = 200;
-//     }
+     public hitObjc(){
+        return this.collission;
+        
+     }
+    
+     public update() {
+        this.controlXY.update();
+        this.cx = this.controlXY.getPositionX();
+        this.cy = this.controlXY.getPositionY();
+        push()
+        strokeWeight(1);
+        stroke('rgba(0,255,0,0.25)');
+        noFill()
+        circle(this.cx, this.cy, this.cr*2)
+        pop()
+      /*   if (this.obstacleArray.obstacleArray.length < 2) {
+            this.obstacleArray.obstacleArray = [new Iceberg(), new Mine()];
+          } */
+          for (let i = 0; i < this.obstacleArray.obstacleArray.length; i++) {
+            const distance = dist(
+              this.cx,
+              this.cy,
+              this.obstacleArray.obstacleArray[i].x,
+              this.obstacleArray.obstacleArray[i].y
+            );
+            if (distance < this.cr) {
+                this.obstacleArray.obstacleArray[i].draw();
+            } else {
+                this.collission = false;
+            }
+          }
+        /* for(const obstacle of this.obstacleArray.obstacleArray){
+           fill(200, 50)
+           circle(obstacle.x,obstacle.y,obstacle.r)
+           ellipseMode(CENTER);
+           this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2); 
+           console.log(this.collission)
+       } */
+     }
 
-//     public draw() {
-//         this.cx = mouseX;
-//         this.cy = mouseY;
-//         let hit = this.hit(this.cx,this.cy,this.r, this.sx,this.sy,this.sw,this.sh);
-//         fill(0, 255, 100);
-//         circle(this.cx, this.cy, this.r*2)
-//         if (hit) {
-//             fill(255,150,0);
-//           }
-//           else {
-//             fill(0,150,255);
-//           }
-//           rect(this.sx,this.sy, this.sw,this.sh);
-//         }
+   /*  public hit(cx, cy, cr, c2x, c2y, c2r){
+        // get distance between the circle's centers
+        // use the Pythagorean Theorem to compute the distance
+        let distX = cx - c2x;
+        let distY = cy - c2y;
+        let distance = sqrt( (distX*distX) + (distY*distY) );
 
-
-        /* public hit(cx, cy, rad, rx, ry, rw, rh){
-        let testX = this.cx;
-        let testY = this.cy;
-        if (cx < rx)
-                 {testX = rx;}      // test left edge
-        else if (cx > rx+rw) testX = rx+rw;   // right edge
-        if (cy < ry)         testY = ry;      // top edge
-        else if (cy > ry+rh) testY = ry+rh;   // bottom edge
-  
-        let d = dist(cx, cy, testX, testY);
-  
-        if (d <= rad) {
+        // if the distance is less than the sum of the circle's
+        // radii, the circles are touching!
+        if (distance <= cr+c2r) {
             return true;
         }
-        return false; */
-    }
+        return false;
+    } */
+}
 
     //assign r variables to submarine circle and then call collision listener functions. 
     /* public constructor() {}
@@ -81,4 +105,4 @@
 
 //     private applyCollisionsEffects() {} */
 
-// }
+
