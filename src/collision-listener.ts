@@ -29,12 +29,6 @@ class CollisionListener implements SonarDetected{
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-        push()
-        strokeWeight(1);
-        stroke('rgba(0,255,0,0.25)');
-        noFill()
-        circle(this.cx, this.cy, this.cr*2)
-        pop()
       /*   if (this.obstacleArray.obstacleArray.length < 2) {
             this.obstacleArray.obstacleArray = [new Iceberg(), new Mine()];
           } */

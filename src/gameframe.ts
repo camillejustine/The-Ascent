@@ -18,6 +18,7 @@ class GameFrame implements iGameState {
 
   private controls: Control;
   public obstacles: Obstacle[];
+  private sonarAttributes: SonarAttributes
 
   //private setDepth: number;
 
@@ -26,6 +27,7 @@ class GameFrame implements iGameState {
   public constructor() {
     this.obstacles = [new Iceberg(), new Mine()];
 
+    this.sonarAttributes = new SonarAttributes();
 
     this.obstacles = [
       new Iceberg(),
@@ -50,6 +52,7 @@ class GameFrame implements iGameState {
 
       noCursor();
 
+      this.sonarAttributes.update();
 
       for(const obstacle of this.obstacles){
         obstacle.move(); 
@@ -70,6 +73,7 @@ class GameFrame implements iGameState {
 
       noCursor();
 
+      this.sonarAttributes.draw();
      /*  for(const obstacle of this.obstacles){
         obstacle.draw();  
       }  */
