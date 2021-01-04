@@ -17,21 +17,11 @@ class GameFrame implements iGameState {
      */
 
   private controls: Control;
-  // private timeValue: DepthCounter;
   public obstacles: Obstacle[];
-
-
-  //private setDepth: number;
-
   public isGameRunning: boolean;
   
   public constructor() {
     this.obstacles = [new Iceberg(), new Mine()];
-    this.obstacles = [
-      new Iceberg(),
-      new Mine()
-    ]
-
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
@@ -41,7 +31,7 @@ class GameFrame implements iGameState {
   
 
   public update() {
-    console.log(this.obstacles.length);
+    
     this.mainMenu.update();
 
     if (this.isGameRunning) {
