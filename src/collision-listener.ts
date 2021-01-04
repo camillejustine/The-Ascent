@@ -14,7 +14,7 @@ class CollisionListener implements SonarDetected{
     constructor( obstacleArray: collissionDetection ){
          this.controlXY = new Control();
          this.obstacleArray = obstacleArray;
-         //this.collission = false;
+         this.collission = false;
          this.cx = 50;
          this.cy = 50;
          this.cr = 250;     

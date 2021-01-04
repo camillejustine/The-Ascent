@@ -9,23 +9,28 @@ class SonarAttributes {
 
     public constructor() {
         this.control = new Control();
-        this.positionY = 0;
-        this.positionX = 0;
+        this.control.update();
+        this.positionX = this.control.getPositionX(); 
+        this.positionY = this.control.getPositionY(); 
         this.sonarRadius = 0;
-        this.pulseLifespan = 300;
+        this.pulseLifespan = 80;
         this.pulses = [];
     }
     
     public update() {
-        if(frameCount % 120 == 0){
+       console.log(this.positionX)
+        this.draw();
+        if(frameCount % 100 == 0){
             this.pulses.push(new SonarAttributes())
-            
         }
     }
 
     public draw() {
         for(let i = 0; i < this.pulses.length; i++){
             this.pulses[i].pulse();
+            if(this.pulses[i].pulseLifespan <= 0){
+                this.pulses.splice(i, 1);
+            }
         }   
     }
 
@@ -33,13 +38,14 @@ class SonarAttributes {
         this.control.update();
         this.positionX = this.control.getPositionX(); 
         this.positionY = this.control.getPositionY(); 
-        this.sonarRadius = 200;
-        push()
-        strokeWeight(1);
+        this.sonarRadius = this.sonarRadius + 3;
+        this.pulseLifespan--;
+       
+        strokeWeight(2);
         stroke('rgba(0,255,0,0.25)');
         noFill()
         circle(this.positionX, this.positionY, this.sonarRadius * 2)
-        pop()
+        
     }
 
     /*   private setSonarRange(){
