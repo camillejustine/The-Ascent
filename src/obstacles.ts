@@ -12,14 +12,14 @@ abstract class Obstacle implements objecetDetected {
     public y: number;
     public x: number;
     public rotate: number;
-    //public collisionlistener: CollisionListener;
+    public collisionlistener: CollisionListener;
     public objectDetected: boolean;
     //put boolean for true false here instead which is changed by collisionlistener. 
     //remove for loops and array from here.
     //send array to colissionlistner from gameframe 
 
     constructor() {
-        //this.collisionlistener = new CollisionListener(this);
+        this.collisionlistener = new CollisionListener(this);
         this.rx = random(50, 150);
         this.ry = random(50, 120);
         this.r = random(50, 150);
@@ -45,7 +45,7 @@ class Iceberg extends Obstacle {
     }
 
     public update() {
-        //this.collisionlistener.update();
+        this.collisionlistener.update();
     }
 
     public move() {
@@ -69,7 +69,7 @@ class Mine extends Obstacle {
     }
 
     public update() {
-        //this.collisionlistener.update();
+        this.collisionlistener.update();
     }
 
     public move() {

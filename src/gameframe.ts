@@ -26,10 +26,10 @@ class GameFrame implements iGameState, ObstacleArray {
   //private setDepth: number;
 
   public isGameRunning: boolean;
-  public collisionListener: CollisionListener;
+  //public collisionListener: CollisionListener;
 
   public constructor() {
-    this.collisionListener = new CollisionListener(this);
+    //this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
     this.obstacles = [];
     this.mainMenu = new MainMenu(this);
@@ -51,7 +51,8 @@ class GameFrame implements iGameState, ObstacleArray {
       this.controls.update();
 
       this.populate();
-      this.collisionListener.update();
+      this.sendArray(this.obstacles);
+      //this.collisionListener.update();
     }
   }
 
@@ -66,7 +67,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.controls.draw();
       for (const obstacle of this.obstacles) {
-        //obstacle.draw();
+         obstacle.draw();
       }
     }
   }
@@ -83,5 +84,9 @@ class GameFrame implements iGameState, ObstacleArray {
         this.obstacles.splice(obstacle, 1);
       }
     }
+  }
+
+  public sendArray(this.obstacles){
+    return this.obstacles;
   }
 }

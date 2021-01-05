@@ -3,39 +3,40 @@ class CollisionListener{
      private cy: number;
      private cr: number;
      public controlXY: Control;
-     //public obstaclesPowerUps: GameFrame;
-    /* public obstacleArray: objecetDetected; */
+     public sonarDetected: ObjectDetected;
+     public obstacleArray: GameFrame;
     
-    public array: ObstacleArray;
-    
-    constructor(/*  obstacleArray: objecetDetected  */ array: ObstacleArray){
-        //this.obstaclesPowerUps = new GameFrame();
+    constructor(sonarDetected: ObjectDetected){
         this.controlXY = new Control();
-        /* this.obstacleArray = obstacleArray; */
-        this.array = array;
+        this.obstacleArray = new GameFrame();
+        this.sonarDetected = sonarDetected;
         this.cx = 50;
         this.cy = 50;
         this.cr = 200;     
      }
 
      public update() {
+        let array = this.obstacleArray.sendArray(this.obstacleArray.obstacles);
+        console.log(array);
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-        console.log(this.array.obstacles)
-          for (let i = 0; i < this.array.obstacles.length; i++) {
+          /* for (let i = 0; i < this.array.obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
               this.array.obstacles[i].x,
               this.array.obstacles[i].y
             );
+            
             if (distance < this.cr) {
               //this.obstacleArray.objectDetected = true;
               this.array.obstacles[i].draw();
+              let boolean = this.array.obstacles[i].update();
+              console.log(boolean);
             } else {
               //this.obstacleArray.objectDetected = false;
-            }
+            } */
         }
        
      }
