@@ -1,8 +1,8 @@
 
-interface objecetDetected {
+interface ObjectDetected {
     objectDetected: boolean;
 }
-abstract class Obstacle implements objecetDetected {
+abstract class Obstacle implements ObjectDetected {
     public abstract move(): void;
     public abstract draw(): void;
     public abstract update(): void;
