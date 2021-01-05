@@ -21,11 +21,13 @@ class SonarAttributes {
         if(frameCount % 100 == 0){
             this.pulses.push(new SonarAttributes())
         }
-        
     }
 
     public draw() {
         for(let i = 0; i < this.pulses.length; i++){
+            this.control.update();
+            this.pulses[i].positionX = this.control.getPositionX(); 
+            this.pulses[i].positionY = this.control.getPositionY(); 
             this.pulses[i].pulse();
             if(this.pulses[i].pulseLifespan <= 0){
                 this.pulses.splice(i, 1);
@@ -34,12 +36,8 @@ class SonarAttributes {
     }
 
     public pulse(){
-        this.control.update();
-        this.positionX = this.control.getPositionX(); 
-        this.positionY = this.control.getPositionY(); 
         this.sonarRadius = this.sonarRadius + 2;
         this.pulseLifespan--;
-       //why is x and y reseting with each ping? 
         strokeWeight(2);
         stroke('rgba(0,255,0,0.25)');
         noFill()

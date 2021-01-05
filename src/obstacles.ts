@@ -20,6 +20,7 @@ interface collissionDetection {
     constructor(/* sonarDetected: SonarDetected */) {
         //this.sonarDetected = sonarDetected;
         this.collissionListener = new CollisionListener(this);
+        //how to get more than one parameter from interface in other class? 
         this.obstacleArray = [];
         this.rx = random(50,150);
         this.ry = random(50,120);
@@ -37,7 +38,6 @@ interface collissionDetection {
 }
 
 class Iceberg extends Obstacle{
-
     private iceberg: any;
 
     constructor() {
@@ -46,7 +46,7 @@ class Iceberg extends Obstacle{
     }
 
     public update(){
-        this.collissionListener.update();      
+        this.collissionListener.update();  
     }
     
     public move() {
@@ -59,16 +59,16 @@ class Iceberg extends Obstacle{
     }
 
     public randomSpawn() {
-          
         if (random(1) < 0.02) {
             this.obstacleArray.push(new Iceberg());
-        }
-        for (let i of this.obstacleArray) {
-                i.move()
-           /*  if(this.collissionListener.collission === true){
-                i.draw()
-            }  */
         } 
+        for (let i of this.obstacleArray) {
+            i.move()
+        if(this.collissionListener.collission === true){
+            i.draw()
+        } 
+    } 
+       
         //return this.obstacleArray
     }   
 }
@@ -101,9 +101,9 @@ class Mine extends Obstacle {
         }
         for (let i of this.obstacleArray) {
             i.move()
-           /*  if(this.collissionListener.collission === true){
-              i.draw()
-          }  */
+            if(this.collissionListener.collission === true){
+            i.draw()
+          } 
         }
     }
 }

@@ -26,9 +26,8 @@ class GameFrame implements iGameState {
   
   public constructor() {
     this.obstacles = [new Iceberg(), new Mine()];
-
     this.sonarAttributes = new SonarAttributes();
-
+    
     this.obstacles = [
       new Iceberg(),
       new Mine()
