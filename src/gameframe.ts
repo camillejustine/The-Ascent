@@ -33,8 +33,7 @@ class GameFrame implements iGameState {
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
-    this.background = new Background();
-    
+    this.background = new Background();  
   }
 
   public update() {
@@ -49,21 +48,9 @@ class GameFrame implements iGameState {
       noCursor();
 
       this.sonarAttributes.update();
-
-      if(random(1) < 0.01){
-          this.obstacles.push(new Iceberg());
-          this.obstacles.push(new Mine());
-      }
-      for(const obstacle of this.obstacles){
-        obstacle.move(); 
-        obstacle.draw(); 
-        console.log(this.obstacles)
-          if(this.obstacles.length > 20){
-            this.obstacles.splice(obstacle, 1);
-        }
-      } 
-      
       this.controls.update();
+
+      this.populate();
     } 
   }
 
@@ -77,13 +64,24 @@ class GameFrame implements iGameState {
 
       noCursor();
 
-      //this.sonarAttributes.pulse();
-      /* for(const obstacle of this.obstacles){
-        obstacle.draw();  
-      }  */
-      
       this.controls.draw();
+      for(const obstacle of this.obstacles){
+        obstacle.draw();  
+      } 
     } 
+  }
 
+  public populate(){
+      if(random(1) < 0.01){
+          this.obstacles.push(new Iceberg());
+          this.obstacles.push(new Mine());
+      }
+      for(const obstacle of this.obstacles){
+        obstacle.move(); 
+        obstacle.update();
+          if(this.obstacles.length > 40){
+            this.obstacles.splice(obstacle, 1);
+        }
+      } 
   }
 }

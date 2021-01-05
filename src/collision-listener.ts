@@ -3,36 +3,38 @@ class CollisionListener{
      private cy: number;
      private cr: number;
      public controlXY: Control;
+     public obstaclesPowerUps: GameFrame;
 
     public obstacleArray: objecetDetected;
     
     constructor( obstacleArray: objecetDetected ){
          this.controlXY = new Control();
          this.obstacleArray = obstacleArray;
+         this.obstaclesPowerUps = new GameFrame();
          this.cx = 50;
          this.cy = 50;
          this.cr = 200;     
      }
 
      public update() {
-       
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-          /* for (let i = 0; i < this.obstacleArray.obstacleArray.length; i++) {
+        console.log(this.obstaclesPowerUps)
+          for (let i = 0; i < this.obstaclesPowerUps.obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
-              this.obstacleArray.obstacleArray[i].x,
-              this.obstacleArray.obstacleArray[i].y
+              this.obstaclesPowerUps.obstacles[i].x,
+              this.obstaclesPowerUps.obstacles[i].y
             );
             if (distance < this.cr) {
-                
-                this.obstacleArray.obstacleArray[i].draw();
+              this.obstacleArray.objectDetected = true;
+              //this.obstaclesPowerUps.obstacles[i].draw();
             } else {
-                
-            } */
-          }
+              this.obstacleArray.objectDetected = false;
+            }
+        }
        
      }
 
@@ -58,7 +60,7 @@ class CollisionListener{
         }
         return false;
     } */
-}
+
 
     //assign r variables to submarine circle and then call collision listener functions. 
     /* public constructor() {}

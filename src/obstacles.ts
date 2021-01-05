@@ -5,23 +5,21 @@ interface objecetDetected {
  abstract class Obstacle implements objecetDetected{
     public abstract move(): void;
     public abstract draw(): void;
-    public abstract randomSpawn(): void;
     public abstract update(): void;
     public rx: number;
     public ry: number;
     public r: number;
     public y: number;
     public x: number;
-    public obstacleArray: Array<any>;
     public rotate: number;
-    
+    public collisionlistener: CollisionListener;
     public objectDetected: boolean;
     //put boolean for true false here instead which is changed by collisionlistener. 
     //remove for loops and array from here.
     //send array to colissionlistner from gameframe 
         
     constructor() {
-        this.obstacleArray = [];
+        this.collisionlistener = new CollisionListener(this);
         this.rx = random(50,150);
         this.ry = random(50,120);
         this.r = random(50,150);
@@ -47,6 +45,7 @@ class Iceberg extends Obstacle{
     }
 
     public update(){
+         this.collisionlistener.update();
          
     }
     
@@ -71,7 +70,7 @@ class Mine extends Obstacle {
     }
 
     public update(){
-        
+        this.collisionlistener.update();
     }
 
     public move() {
