@@ -1,4 +1,4 @@
-class CollisionListener{
+class CollisionListener {
      private cx: number;
      private cy: number;
      private cr: number;
@@ -16,8 +16,6 @@ class CollisionListener{
      }
 
      public update() {
-        let array = this.obstacleArray.sendArray(this.obstacleArray.obstacles);
-        console.log(array);
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();

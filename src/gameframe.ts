@@ -1,3 +1,4 @@
+
 interface iGameState {
   isGameRunning: boolean;
 }
@@ -51,7 +52,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.controls.update();
 
       this.populate();
-      this.sendArray(this.obstacles);
+      this.sendArray(this.obstacles)
       //this.collisionListener.update();
     }
   }
@@ -86,7 +87,7 @@ class GameFrame implements iGameState, ObstacleArray {
     }
   }
 
-  public sendArray(this.obstacles){
-    return this.obstacles;
+  public sendArray(x: Array<any>){
+    return x;
   }
 }
