@@ -46,7 +46,6 @@ class Iceberg extends Obstacle{
 
     public update(){
          this.collisionlistener.update();
-         
     }
     
     public move() {

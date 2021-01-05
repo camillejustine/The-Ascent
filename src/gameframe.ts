@@ -1,7 +1,11 @@
 interface iGameState {
   isGameRunning: boolean;
 }
-class GameFrame implements iGameState {
+
+interface ObstacleArray{
+  obstacles: Obstacle[];
+}
+class GameFrame implements iGameState, ObstacleArray {
   private mainMenu: MainMenu;
   private background: Background;
 
@@ -37,9 +41,9 @@ class GameFrame implements iGameState {
   }
 
   public update() {
-
+    console.log(frameRate());
     this.mainMenu.update();
-
+    text()
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
 
@@ -50,13 +54,12 @@ class GameFrame implements iGameState {
       this.sonarAttributes.update();
       this.controls.update();
 
-      this.populate();
+      this.populate(); 
     } 
   }
 
   public draw() {
     noCursor();
-
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
 
@@ -79,9 +82,9 @@ class GameFrame implements iGameState {
       for(const obstacle of this.obstacles){
         obstacle.move(); 
         obstacle.update();
-          if(this.obstacles.length > 40){
+          if(this.obstacles.length > 30){
             this.obstacles.splice(obstacle, 1);
         }
-      } 
+      }
   }
 }
