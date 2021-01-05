@@ -3,39 +3,43 @@ class CollisionListener{
      private cy: number;
      private cr: number;
      public controlXY: Control;
-     public obstaclesPowerUps: GameFrame;
-
-    public obstacleArray: objecetDetected;
+     //public obstaclesPowerUps: GameFrame;
+    /* public obstacleArray: objecetDetected; */
     
-    constructor( obstacleArray: objecetDetected ){
-         this.controlXY = new Control();
-         this.obstacleArray = obstacleArray;
-         this.obstaclesPowerUps = new GameFrame();
-         this.cx = 50;
-         this.cy = 50;
-         this.cr = 200;     
+    public array: ObstacleArray;
+    
+    constructor(/*  obstacleArray: objecetDetected  */ array: ObstacleArray){
+        //this.obstaclesPowerUps = new GameFrame();
+        this.controlXY = new Control();
+        /* this.obstacleArray = obstacleArray; */
+        this.array = array;
+        this.cx = 50;
+        this.cy = 50;
+        this.cr = 200;     
      }
 
      public update() {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-          for (let i = 0; i < this.obstaclesPowerUps.obstacles.length; i++) {
+        console.log(this.array.obstacles)
+          for (let i = 0; i < this.array.obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
-              this.obstaclesPowerUps.obstacles[i].x,
-              this.obstaclesPowerUps.obstacles[i].y
+              this.array.obstacles[i].x,
+              this.array.obstacles[i].y
             );
             if (distance < this.cr) {
-              this.obstacleArray.objectDetected = true;
-              //this.obstaclesPowerUps.obstacles[i].draw();
+              //this.obstacleArray.objectDetected = true;
+              this.array.obstacles[i].draw();
             } else {
-              this.obstacleArray.objectDetected = false;
+              //this.obstacleArray.objectDetected = false;
             }
         }
        
      }
+
 
       /* for(const obstacle of this.obstacleArray.obstacleArray){
            fill(200, 50)

@@ -1,8 +1,7 @@
 interface iGameState {
   isGameRunning: boolean;
 }
-
-interface ObstacleArray{
+interface ObstacleArray {
   obstacles: Obstacle[];
 }
 class GameFrame implements iGameState, ObstacleArray {
@@ -27,23 +26,20 @@ class GameFrame implements iGameState, ObstacleArray {
   //private setDepth: number;
 
   public isGameRunning: boolean;
-  
-  public constructor() {
-    
-    this.sonarAttributes = new SonarAttributes();
-    
-    this.obstacles = [];
+  public collisionListener: CollisionListener;
 
+  public constructor() {
+    this.collisionListener = new CollisionListener(this);
+    this.sonarAttributes = new SonarAttributes();
+    this.obstacles = [];
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
-    this.background = new Background();  
+    this.background = new Background();
   }
 
   public update() {
-    console.log(frameRate());
     this.mainMenu.update();
-    text()
     if (this.isGameRunning) {
       document.getElementById("main-menu")!.style.display = "none";
 
@@ -54,8 +50,9 @@ class GameFrame implements iGameState, ObstacleArray {
       this.sonarAttributes.update();
       this.controls.update();
 
-      this.populate(); 
-    } 
+      this.populate();
+      this.collisionListener.update();
+    }
   }
 
   public draw() {
@@ -68,23 +65,23 @@ class GameFrame implements iGameState, ObstacleArray {
       noCursor();
 
       this.controls.draw();
-      for(const obstacle of this.obstacles){
-        obstacle.draw();  
-      } 
-    } 
+      for (const obstacle of this.obstacles) {
+        //obstacle.draw();
+      }
+    }
   }
 
-  public populate(){
-      if(random(1) < 0.01){
-          this.obstacles.push(new Iceberg());
-          this.obstacles.push(new Mine());
+  public populate() {
+    if (random(1) < 0.01) {
+      this.obstacles.push(new Iceberg());
+      this.obstacles.push(new Mine());
+    }
+    for (const obstacle of this.obstacles) {
+      obstacle.move();
+      obstacle.update();
+      if (this.obstacles.length > 30) {
+        this.obstacles.splice(obstacle, 1);
       }
-      for(const obstacle of this.obstacles){
-        obstacle.move(); 
-        obstacle.update();
-          if(this.obstacles.length > 30){
-            this.obstacles.splice(obstacle, 1);
-        }
-      }
+    }
   }
 }
