@@ -62,14 +62,12 @@ class Iceberg extends Obstacle{
         if (random(1) < 0.02) {
             this.obstacleArray.push(new Iceberg());
         } 
-        for (let i of this.obstacleArray) {
-            i.move()
-        if(this.collissionListener.collission === true){
-            i.draw()
+            for (let i of this.obstacleArray) {
+                i.move()
+            if(this.collissionListener.collission === true){
+                i.draw()
+            } 
         } 
-    } 
-       
-        //return this.obstacleArray
     }   
 }
 
@@ -103,7 +101,7 @@ class Mine extends Obstacle {
             i.move()
             if(this.collissionListener.collission === true){
             i.draw()
-          } 
+            } 
         }
     }
 }
