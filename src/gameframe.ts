@@ -28,7 +28,7 @@ class GameFrame implements iGameState {
     
     this.sonarAttributes = new SonarAttributes();
     
-    this.obstacles = [new Iceberg(), new Mine()];
+    this.obstacles = [];
 
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
@@ -50,11 +50,17 @@ class GameFrame implements iGameState {
 
       this.sonarAttributes.update();
 
+      if(random(1) < 0.01){
+          this.obstacles.push(new Iceberg());
+          this.obstacles.push(new Mine());
+      }
       for(const obstacle of this.obstacles){
         obstacle.move(); 
-        obstacle.randomSpawn(); 
-        obstacle.update(); 
+        obstacle.draw(); 
         console.log(this.obstacles)
+          if(this.obstacles.length > 20){
+            this.obstacles.splice(obstacle, 1);
+        }
       } 
       
       this.controls.update();

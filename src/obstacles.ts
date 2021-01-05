@@ -1,8 +1,8 @@
 
-interface collissionDetection {
-    obstacleArray: Array<any>;
+interface objecetDetected {
+    objectDetected: boolean;
 }
- abstract class Obstacle implements collissionDetection{
+ abstract class Obstacle implements objecetDetected{
     public abstract move(): void;
     public abstract draw(): void;
     public abstract randomSpawn(): void;
@@ -14,15 +14,13 @@ interface collissionDetection {
     public x: number;
     public obstacleArray: Array<any>;
     public rotate: number;
-    public collissionListener: CollisionListener;
+    
+    public objectDetected: boolean;
     //put boolean for true false here instead which is changed by collisionlistener. 
     //remove for loops and array from here.
     //send array to colissionlistner from gameframe 
-    
-    //public sonarDetected: SonarDetected;
-    
+        
     constructor() {
-        this.collissionListener = new CollisionListener(this);
         this.obstacleArray = [];
         this.rx = random(50,150);
         this.ry = random(50,120);
@@ -30,6 +28,7 @@ interface collissionDetection {
         this.y = -100;
         this.x = random(10, 900);
         this.rotate = random(0,360)
+        this.objectDetected = false;
         
         if(this.rx < this.r || this.rx > this.r){
             this.rx = this.r; 
@@ -48,7 +47,7 @@ class Iceberg extends Obstacle{
     }
 
     public update(){
-        this.collissionListener.update();  
+         
     }
     
     public move() {
@@ -58,19 +57,6 @@ class Iceberg extends Obstacle{
     public draw() {
         image(this.iceberg, this.x, this.y, this.rx, this.ry) 
         imageMode(CENTER);
-    }
-
-    public randomSpawn() {
-        if (random(1) < 0.02) {
-            this.obstacleArray.push(new Iceberg());
-        } 
-            for (let i of this.obstacleArray) {
-                i.move()
-            if(this.collissionListener.collission === true){
-                i.draw()
-            } 
-        } 
-        
     }   
 }
 
@@ -83,8 +69,9 @@ class Mine extends Obstacle {
         this.mine = mine;
         this.r = 100;
     }
-      public update(){
-        this.collissionListener.update(); 
+
+    public update(){
+        
     }
 
     public move() {
@@ -94,18 +81,6 @@ class Mine extends Obstacle {
     public draw() { 
         image(this.mine, this.x, this.y, 100, 100)
         imageMode(CENTER);
-    }
-
-    public randomSpawn() {
-        if (random(1) < 0.01) {
-            this.obstacleArray.push(new Mine());
-        }
-        for (let i of this.obstacleArray) {
-            i.move()
-            if(this.collissionListener.collission === true){
-            i.draw()
-            } 
-        }
     }
 }
 
