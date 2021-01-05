@@ -30,15 +30,6 @@ class CollisionListener implements SonarDetected{
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-        push()
-        strokeWeight(1);
-        stroke('rgba(0,255,0,0.25)');
-        noFill()
-        circle(this.cx, this.cy, this.cr*2)
-        pop()
-      /*   if (this.obstacleArray.obstacleArray.length < 2) {
-            this.obstacleArray.obstacleArray = [new Iceberg(), new Mine()];
-          } */
           for (let i = 0; i < this.obstacleArray.obstacleArray.length; i++) {
             const distance = dist(
               this.cx,
@@ -47,7 +38,7 @@ class CollisionListener implements SonarDetected{
               this.obstacleArray.obstacleArray[i].y
             );
             if (distance < this.cr) {
-                //this.collission = true;
+                this.collission = true;
                 this.obstacleArray.obstacleArray[i].draw();
             } else {
                 this.collission = false;

@@ -15,12 +15,14 @@ interface collissionDetection {
     public obstacleArray: Array<any>;
     public rotate: number;
     public collissionListener: CollisionListener;
+    //put boolean for true false here instead which is changed by collisionlistener. 
+    //remove for loops and array from here.
+    //send array to colissionlistner from gameframe 
+    
     //public sonarDetected: SonarDetected;
     
-    constructor(/* sonarDetected: SonarDetected */) {
-        //this.sonarDetected = sonarDetected;
+    constructor() {
         this.collissionListener = new CollisionListener(this);
-        //how to get more than one parameter from interface in other class? 
         this.obstacleArray = [];
         this.rx = random(50,150);
         this.ry = random(50,120);
@@ -68,6 +70,7 @@ class Iceberg extends Obstacle{
                 i.draw()
             } 
         } 
+        
     }   
 }
 

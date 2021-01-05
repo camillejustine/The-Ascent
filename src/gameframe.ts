@@ -25,13 +25,10 @@ class GameFrame implements iGameState {
   public isGameRunning: boolean;
   
   public constructor() {
-    this.obstacles = [new Iceberg(), new Mine()];
+    
     this.sonarAttributes = new SonarAttributes();
     
-    this.obstacles = [
-      new Iceberg(),
-      new Mine()
-    ]
+    this.obstacles = [new Iceberg(), new Mine()];
 
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
@@ -57,7 +54,9 @@ class GameFrame implements iGameState {
         obstacle.move(); 
         obstacle.randomSpawn(); 
         obstacle.update(); 
+        console.log(this.obstacles)
       } 
+      
       this.controls.update();
     } 
   }
