@@ -31,8 +31,6 @@ class Control {
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
     this.subPositionY = 720 / 2;
-
-    
   }
 
   public getPositionX() {
@@ -44,7 +42,6 @@ class Control {
   }
 
   public getAngle(){
-    console.log(this.angle)
     return this.angle;
   }
 

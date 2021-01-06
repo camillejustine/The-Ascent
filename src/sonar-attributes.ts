@@ -43,7 +43,6 @@ class SonarAttributes {
         stroke('rgba(0,255,0,0.25)');
         noFill()
         circle(this.positionX, this.positionY, this.sonarRadius * 2)     
-        console.log(this.sonarRadius)
     }
 
     /*   private setSonarRange(){
