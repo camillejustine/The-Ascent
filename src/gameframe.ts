@@ -56,7 +56,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
       noCursor();
 
-      this.sonarAttributes.update();
+      //this.sonarAttributes.update();
       this.controls.update();
       this.populate();
       this.collisionListener.update();

@@ -4,7 +4,7 @@ class SonarAttributes {
     private positionY: number;
     private positionX: number;
     private control: Control;
-    private pulses: Array<any>;
+    public pulses: Array<any>;
     public pulseLifespan: number;
     
 
@@ -20,7 +20,7 @@ class SonarAttributes {
     public update() {
         this.draw();
         if(frameCount % 100 == 0){
-            this.pulses.push(new SonarAttributes())
+            this.pulses.push(new SonarAttributes();
         }
     }
 

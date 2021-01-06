@@ -4,9 +4,11 @@ class CollisionListener {
      private cr: number;
      public controlXY: Control;
      public obstacles: ObstacleArray;
+     public pulse: SonarAttributes;
     
     constructor(obstacles: ObstacleArray){
         this.controlXY = new Control();
+        this.pulse = new SonarAttributes();
         this.obstacles = obstacles;
         this.cx = 50;
         this.cy = 50;
@@ -14,10 +16,11 @@ class CollisionListener {
      }
 
      public update() {
-        //console.log(this.obstacleArray.obstacles)
+        this.pulse.update();
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
+        for(let radii of this.pulse.pulses){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
               this.cx,
@@ -25,12 +28,12 @@ class CollisionListener {
               this.obstacles.obstacles[i].x,
               this.obstacles.obstacles[i].y
             );
-            
-            if (distance < this.cr) {
+            if (distance < radii.sonarRadius) {
               this.obstacles.obstacles[i].draw();
-            } 
-        }
-     }
+        } 
+      }
+    }
+  }
 }
 
 
