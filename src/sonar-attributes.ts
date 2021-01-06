@@ -13,7 +13,7 @@ class SonarAttributes {
         this.positionX = 0; 
         this.positionY = 0; 
         this.sonarRadius = 0;
-        this.pulseLifespan = 140;
+        this.pulseLifespan = 200;
         this.pulses = [];
     }
     
@@ -25,11 +25,12 @@ class SonarAttributes {
     }
 
     public draw() {
+        this.control.update();
         for(let i = 0; i < this.pulses.length; i++){
-            this.control.update();
             this.pulses[i].positionX = this.control.getPositionX(); 
             this.pulses[i].positionY = this.control.getPositionY(); 
             this.pulses[i].pulse();
+            console.log(this.pulses[i].positionX)
             if(this.pulses[i].pulseLifespan <= 0){
                 this.pulses.splice(i, 1);
             }
