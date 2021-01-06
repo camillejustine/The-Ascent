@@ -15,11 +15,11 @@ class GameFrame implements iGameState, ObstacleArray {
    private gameLost: GameLost;
 
    private powerUps: PowerUp[];
-   private submarine: Submarine;
+   
   
    private headsUpDisplay: HeadsUpDisplay;
      */
-
+  private submarine: Submarine;
   private controls: Control;
   public obstacles: Obstacle[];
 
@@ -39,6 +39,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.isGameRunning = false;
     this.background = new Background();
     this.depthCounter = new DepthCounter();
+    this.submarine = new Submarine();
 
   }
   
@@ -73,7 +74,8 @@ class GameFrame implements iGameState, ObstacleArray {
       
       noCursor();
 
-      this.controls.draw();
+      //this.controls.draw();
+      this.submarine.draw();
       
       for (const obstacle of this.obstacles) {
          obstacle.draw();
