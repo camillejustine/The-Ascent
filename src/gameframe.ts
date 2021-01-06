@@ -17,10 +17,11 @@ class GameFrame implements iGameState, ObstacleArray {
    private powerUps: PowerUp[];
    
   
-   private headsUpDisplay: HeadsUpDisplay;
+   
      */
   private submarine: Submarine;
   private controls: Control;
+  private headsUpDisplay: HeadsUpDisplay;
   public obstacles: Obstacle[];
 
   private sonarAttributes: SonarAttributes;
@@ -38,6 +39,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.background = new Background();
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
+    this.headsUpDisplay = new HeadsUpDisplay();
     this.obstacles = [];
     this.isGameRunning = false;
   }
@@ -45,7 +47,8 @@ class GameFrame implements iGameState, ObstacleArray {
 
   public update() {
     this.mainMenu.update();
-    //console.log(this.obstacles)
+    this.slowPopulateRate();
+    //so colission listener can see obstacle array.
     if (this.isGameRunning) {
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
@@ -56,12 +59,19 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.sonarAttributes.update();
       this.controls.update();
-      this.populate();
+      //this.populate();
       //this.collisionListener.update();
-      return this.obstacles;
+
+
+      for (const obstacle of this.obstacles) {
+        obstacle.move();
+        obstacle.update();
+        if (this.obstacles.length > 30) {
+          this.obstacles.splice(obstacle, 1);
+        }
+      } 
+      this.headsUpDisplay.update();
     }
-    
-    
   }
 
   public draw() {
@@ -75,7 +85,6 @@ class GameFrame implements iGameState, ObstacleArray {
       
       noCursor();
 
-      //this.controls.draw();
       this.submarine.draw();
       
       for (const obstacle of this.obstacles) {
@@ -83,21 +92,17 @@ class GameFrame implements iGameState, ObstacleArray {
       }
       
       this.depthCounter.draw();
-       // this.collisionListener.draw()
     }
+  }
+
+  public slowPopulateRate() {
+    this.populate();
   }
 
   public populate() {
     if (random(1) < 0.01) {
       this.obstacles.push(new Iceberg());
       this.obstacles.push(new Mine());
-    }
-    for (const obstacle of this.obstacles) {
-      obstacle.move();
-      obstacle.update();
-      if (this.obstacles.length > 30) {
-        this.obstacles.splice(obstacle, 1);
-      }
     }
   }
 }

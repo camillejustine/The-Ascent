@@ -30,10 +30,9 @@ class CollisionListener {
             );
             
             if (distance < this.cr) {
-              //this.obstacleArray.objectDetected = true;
-              this.obstacleArray.obstacles[i].draw();
+              this.sonarDetected.objectDetected = true;
             } else {
-              //this.obstacleArray.objectDetected = false;
+              this.sonarDetected.objectDetected = false;
             }
         }
      }
