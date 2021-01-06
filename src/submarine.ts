@@ -4,12 +4,14 @@ class Submarine {
   public subPositionX: number;
   public subPositionY: number;
   public angle: number;
+  public hullHealth: number;
 
   constructor(){
     this.control = new Control();
     this.subPositionX = 0;
     this.subPositionY = 0;
     this.angle = 0;
+    this.hullHealth = 1.00;
   }
 
   public update(){
@@ -29,6 +31,7 @@ class Submarine {
     imageMode(CENTER);
     
     fill(200, 50);
+    //make an array for the circles. 
     circle(0, -60, 30);
     circle(0, -30, 30);
     circle(0, 0, 30);
