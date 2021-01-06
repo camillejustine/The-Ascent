@@ -47,7 +47,6 @@ class GameFrame implements iGameState, ObstacleArray {
 
   public update() {
     this.mainMenu.update();
-    this.slowPopulateRate();
     //so colission listener can see obstacle array.
     if (this.isGameRunning) {
       this.depthCounter.update();
@@ -59,17 +58,11 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.sonarAttributes.update();
       this.controls.update();
-      //this.populate();
-      //this.collisionListener.update();
+      this.populate();
+      this.collisionListener.update();
 
 
-      for (const obstacle of this.obstacles) {
-        obstacle.move();
-        obstacle.update();
-        if (this.obstacles.length > 30) {
-          this.obstacles.splice(obstacle, 1);
-        }
-      } 
+      
       this.headsUpDisplay.update();
     }
   }
@@ -95,14 +88,17 @@ class GameFrame implements iGameState, ObstacleArray {
     }
   }
 
-  public slowPopulateRate() {
-    this.populate();
-  }
-
   public populate() {
     if (random(1) < 0.01) {
       this.obstacles.push(new Iceberg());
       this.obstacles.push(new Mine());
     }
+    for (const obstacle of this.obstacles) {
+      obstacle.move();
+      obstacle.update();
+      if (this.obstacles.length > 30) {
+        this.obstacles.splice(obstacle, 1);
+      }
+    } 
   }
 }
