@@ -5,7 +5,7 @@ class HeadsUpDisplay {
     public update(){
         push()
         fill(225)
-        text("FPS: " + Math.floor(frameRate()), width / 2, height / 2);
+        text("FPS: " + Math.floor(frameRate()), width - 120, 30);
         pop()
     }
     /* 
