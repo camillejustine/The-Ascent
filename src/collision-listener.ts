@@ -18,16 +18,16 @@ class CollisionListener {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-          for (let i = 0; i < this.obstacleArray.obstacles.length; i++) {
+          for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
-              this.obstacleArray.obstacles[i].x,
-              this.obstacleArray.obstacles[i].y
+              this.obstacles.obstacles[i].x,
+              this.obstacles.obstacles[i].y
             );
             
             if (distance < this.cr) {
-              this.obstacles.draw();
+              this.obstacles.obstacles[i].draw();
             } 
         }
      }

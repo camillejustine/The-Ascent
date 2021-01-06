@@ -88,7 +88,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.submarine.draw();
       
       for (const obstacle of this.obstacles) {
-         obstacle.draw();
+         //obstacle.draw();
       }
       
       this.depthCounter.draw();
