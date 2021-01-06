@@ -16,22 +16,22 @@ class CollisionListener {
      }
 
      public update() {
+        this.obstacleArray.update();
+        //console.log(this.obstacleArray.obstacles)
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-          for (let i = 0; i < this.obstacleArray .obstacles.length; i++) {
+          for (let i = 0; i < this.obstacleArray.obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
-              this.obstacleArray .obstacles[i].x,
-              this.obstacleArray .obstacles[i].y
+              this.obstacleArray.obstacles[i].x,
+              this.obstacleArray.obstacles[i].y
             );
             
             if (distance < this.cr) {
               //this.obstacleArray.objectDetected = true;
-              this.obstacleArray .obstacles[i].draw();
-              let boolean = this.obstacleArray .obstacles[i].update();
-              console.log(boolean);
+              this.obstacleArray.obstacles[i].draw();
             } else {
               //this.obstacleArray.objectDetected = false;
             }
