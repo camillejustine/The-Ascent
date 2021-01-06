@@ -3,13 +3,9 @@ class CollisionListener {
      private cy: number;
      private cr: number;
      public controlXY: Control;
-     public sonarDetected: ObjectDetected;
-     public obstacleArray: GameFrame;
     
-    constructor(sonarDetected: ObjectDetected){
+    constructor(){
         this.controlXY = new Control();
-        this.obstacleArray = new GameFrame();
-        this.sonarDetected = sonarDetected;
         this.cx = 50;
         this.cy = 50;
         this.cr = 200;     

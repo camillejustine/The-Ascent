@@ -1,8 +1,6 @@
 
-interface ObjectDetected {
-    objectDetected: boolean;
-}
-abstract class Obstacle implements ObjectDetected {
+
+abstract class Obstacle{
     public abstract move(): void;
     public abstract draw(): void;
     public abstract update(): void;
@@ -11,20 +9,13 @@ abstract class Obstacle implements ObjectDetected {
     public r: number;
     public y: number;
     public x: number;
-    public collisionlistener: CollisionListener;
-    public objectDetected: boolean;
-    //put boolean for true false here instead which is changed by collisionlistener. 
-    //remove for loops and array from here.
-    //send array to colissionlistner from gameframe 
 
     constructor() {
-        this.collisionlistener = new CollisionListener(this);
         this.rx = random(50, 150);
         this.ry = random(50, 120);
         this.r = random(50, 150);
         this.y = -100;
         this.x = random(10, 900);
-        this.objectDetected = false;
 
         if (this.rx < this.r || this.rx > this.r) {
             this.rx = this.r;
@@ -43,7 +34,7 @@ class Iceberg extends Obstacle {
     }
 
     public update() {
-        this.collisionlistener.update();
+        
     }
 
     public move() {
@@ -67,7 +58,7 @@ class Mine extends Obstacle {
     }
 
     public update() {
-        this.collisionlistener.update();
+    
     }
 
     public move() {
