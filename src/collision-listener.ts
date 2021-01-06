@@ -3,16 +3,17 @@ class CollisionListener {
      private cy: number;
      private cr: number;
      public controlXY: Control;
+     public obstacles: ObstacleArray;
     
-    constructor(){
+    constructor(obstacles: ObstacleArray){
         this.controlXY = new Control();
+        this.obstacles = obstacles;
         this.cx = 50;
         this.cy = 50;
         this.cr = 200;     
      }
 
      public update() {
-        this.obstacleArray.update();
         //console.log(this.obstacleArray.obstacles)
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
@@ -26,10 +27,8 @@ class CollisionListener {
             );
             
             if (distance < this.cr) {
-              this.sonarDetected.objectDetected = true;
-            } else {
-              this.sonarDetected.objectDetected = false;
-            }
+              this.obstacles.draw();
+            } 
         }
      }
 }

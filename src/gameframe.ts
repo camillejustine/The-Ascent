@@ -29,10 +29,10 @@ class GameFrame implements iGameState, ObstacleArray {
   //private setDepth: number;
 
   public isGameRunning: boolean;
-  //public collisionListener: CollisionListener;
+  public collisionListener: CollisionListener;
 
   public constructor() {
-    //this.collisionListener = new CollisionListener(this);
+    this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
