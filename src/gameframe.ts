@@ -8,7 +8,7 @@ interface ObstacleArray {
 class GameFrame implements iGameState, ObstacleArray {
   private mainMenu: MainMenu;
   private background: Background;
-
+  private depthCounter: DepthCounter;
   //private pauseMenu: PauseMenu;
 
   /* private gameWon: GameWon;
@@ -22,6 +22,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
   private controls: Control;
   public obstacles: Obstacle[];
+
   private sonarAttributes: SonarAttributes;
 
   //private setDepth: number;
@@ -33,15 +34,25 @@ class GameFrame implements iGameState, ObstacleArray {
     //this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
     this.obstacles = [];
+
+  public isGameRunning: boolean;
+  
+  public constructor() {
+    this.obstacles = [new Iceberg(), new Mine()];
+
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
     this.background = new Background();
+    this.depthCounter = new DepthCounter();
+
   }
+  
 
   public update() {
     this.mainMenu.update();
     if (this.isGameRunning) {
+      this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
 
       this.background.update();
@@ -58,18 +69,23 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public draw() {
+ 
     noCursor();
     if (this.isGameRunning) {
+      
       document.getElementById("main-menu")!.style.display = "none";
-
+      
       this.background.draw();
-
+      
       noCursor();
 
-      this.controls.draw();
+      
       for (const obstacle of this.obstacles) {
          obstacle.draw();
       }
+      this.controls.draw();
+      this.depthCounter.draw();
+       // this.collisionListener.draw()
     }
   }
 
