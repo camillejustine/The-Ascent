@@ -13,7 +13,7 @@ class SonarAttributes {
         this.positionX = 0; 
         this.positionY = 0; 
         this.sonarRadius = 0;
-        this.pulseLifespan = 100;
+        this.pulseLifespan = 140;
         this.pulses = [];
     }
     

@@ -20,6 +20,7 @@ class CollisionListener {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
+        
         for(let radii of this.pulse.pulses){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
