@@ -1,64 +1,52 @@
-interface SonarDetected {
-    collission: boolean;//FIGURE OUT HOW TO IMPLEMENT BOOLEAN IN OBSTACLES FIRST THING
-}
-
-class CollisionListener implements SonarDetected{
+class CollisionListener {
      private cx: number;
      private cy: number;
      private cr: number;
-     public collission: boolean;
      public controlXY: Control;
-
-    public obstacleArray: collissionDetection;
+     public sonarDetected: ObjectDetected;
+     public obstacleArray: GameFrame;
     
-    constructor( obstacleArray: collissionDetection ){
-         this.controlXY = new Control();
-         this.obstacleArray = obstacleArray;
-         this.collission = false;
-         this.cx = 50;
-         this.cy = 50;
-         this.cr = 250;     
+    constructor(sonarDetected: ObjectDetected){
+        this.controlXY = new Control();
+        this.obstacleArray = new GameFrame();
+        this.sonarDetected = sonarDetected;
+        this.cx = 50;
+        this.cy = 50;
+        this.cr = 200;     
      }
 
-     public hitObjc(){
-        return this.collission;
-        
-     }
-    
      public update() {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-        push()
-        strokeWeight(1);
-        stroke('rgba(0,255,0,0.25)');
-        noFill()
-        circle(this.cx, this.cy, this.cr*2)
-        pop()
-      /*   if (this.obstacleArray.obstacleArray.length < 2) {
-            this.obstacleArray.obstacleArray = [new Iceberg(), new Mine()];
-          } */
-          for (let i = 0; i < this.obstacleArray.obstacleArray.length; i++) {
+          /* for (let i = 0; i < this.array.obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
-              this.obstacleArray.obstacleArray[i].x,
-              this.obstacleArray.obstacleArray[i].y
+              this.array.obstacles[i].x,
+              this.array.obstacles[i].y
             );
+            
             if (distance < this.cr) {
-                this.obstacleArray.obstacleArray[i].draw();
+              //this.obstacleArray.objectDetected = true;
+              this.array.obstacles[i].draw();
+              let boolean = this.array.obstacles[i].update();
+              console.log(boolean);
             } else {
-                this.collission = false;
-            }
-          }
-        /* for(const obstacle of this.obstacleArray.obstacleArray){
+              //this.obstacleArray.objectDetected = false;
+            } */
+        }
+       
+     }
+
+
+      /* for(const obstacle of this.obstacleArray.obstacleArray){
            fill(200, 50)
            circle(obstacle.x,obstacle.y,obstacle.r)
            ellipseMode(CENTER);
            this.collission = this.hit(this.cx,this.cy,this.cr, obstacle.x,obstacle.y,obstacle.r/2); 
            console.log(this.collission)
        } */
-     }
 
    /*  public hit(cx, cy, cr, c2x, c2y, c2r){
         // get distance between the circle's centers
@@ -74,7 +62,7 @@ class CollisionListener implements SonarDetected{
         }
         return false;
     } */
-}
+
 
     //assign r variables to submarine circle and then call collision listener functions. 
     /* public constructor() {}

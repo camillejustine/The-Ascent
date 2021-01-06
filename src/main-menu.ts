@@ -11,7 +11,6 @@ class MainMenu {
   public update() {
     this.startButton.onclick = () => {
       this.game.isGameRunning = true;
-      console.log("running");
     };
   }
   public draw() {}

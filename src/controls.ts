@@ -111,8 +111,5 @@ class Control implements SubPosition {
     pop();
     
     ellipseMode(CENTER)
-    
-
-    
   }
 }

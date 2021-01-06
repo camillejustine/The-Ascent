@@ -1,7 +1,11 @@
+
 interface iGameState {
   isGameRunning: boolean;
 }
-class GameFrame implements iGameState {
+interface ObstacleArray {
+  obstacles: Obstacle[];
+}
+class GameFrame implements iGameState, ObstacleArray {
   private mainMenu: MainMenu;
   private background: Background;
   private depthCounter: DepthCounter;
@@ -18,22 +22,35 @@ class GameFrame implements iGameState {
 
   private controls: Control;
   public obstacles: Obstacle[];
+
+  private sonarAttributes: SonarAttributes;
+
+  //private setDepth: number;
+
+  public isGameRunning: boolean;
+  //public collisionListener: CollisionListener;
+
+  public constructor() {
+    //this.collisionListener = new CollisionListener(this);
+    this.sonarAttributes = new SonarAttributes();
+    this.obstacles = [];
+
   public isGameRunning: boolean;
   
   public constructor() {
     this.obstacles = [new Iceberg(), new Mine()];
+
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
     this.background = new Background();
     this.depthCounter = new DepthCounter();
+
   }
   
 
   public update() {
-    
     this.mainMenu.update();
-
     if (this.isGameRunning) {
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
@@ -42,20 +59,18 @@ class GameFrame implements iGameState {
 
       noCursor();
 
-
-      for(const obstacle of this.obstacles){
-        obstacle.move(); 
-        obstacle.randomSpawn(); 
-        obstacle.update(); 
-      } 
+      this.sonarAttributes.update();
       this.controls.update();
-    } 
+
+      this.populate();
+      this.sendArray(this.obstacles)
+      //this.collisionListener.update();
+    }
   }
 
   public draw() {
  
     noCursor();
-
     if (this.isGameRunning) {
       
       document.getElementById("main-menu")!.style.display = "none";
@@ -64,16 +79,31 @@ class GameFrame implements iGameState {
       
       noCursor();
 
-     /*  for(const obstacle of this.obstacles){
-        obstacle.draw();  
-      } 
-   
-      // this.collisionListener.draw()
-      }  */
       
+      for (const obstacle of this.obstacles) {
+         obstacle.draw();
+      }
       this.controls.draw();
       this.depthCounter.draw();
-    } 
+       // this.collisionListener.draw()
+    }
+  }
 
+  public populate() {
+    if (random(1) < 0.01) {
+      this.obstacles.push(new Iceberg());
+      this.obstacles.push(new Mine());
+    }
+    for (const obstacle of this.obstacles) {
+      obstacle.move();
+      obstacle.update();
+      if (this.obstacles.length > 30) {
+        this.obstacles.splice(obstacle, 1);
+      }
+    }
+  }
+
+  public sendArray(x: Array<any>){
+    return x;
   }
 }
