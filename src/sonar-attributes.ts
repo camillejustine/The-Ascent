@@ -5,7 +5,8 @@ class SonarAttributes {
     private positionX: number;
     private control: Control;
     private pulses: Array<any>;
-    private pulseLifespan: number;
+    public pulseLifespan: number;
+    
 
     public constructor() {
         this.control = new Control();
@@ -35,13 +36,14 @@ class SonarAttributes {
         }   
     }
 
-    public pulse(){
+    public pulse() {
         this.sonarRadius = this.sonarRadius + 2;
         this.pulseLifespan--;
         strokeWeight(2);
         stroke('rgba(0,255,0,0.25)');
         noFill()
         circle(this.positionX, this.positionY, this.sonarRadius * 2)     
+        console.log(this.sonarRadius)
     }
 
     /*   private setSonarRange(){

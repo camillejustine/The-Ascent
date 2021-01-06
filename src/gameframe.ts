@@ -34,12 +34,6 @@ class GameFrame implements iGameState, ObstacleArray {
     //this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
     this.obstacles = [];
-
-  public isGameRunning: boolean;
-  
-  public constructor() {
-    this.obstacles = [new Iceberg(), new Mine()];
-
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
     this.isGameRunning = false;
@@ -79,11 +73,12 @@ class GameFrame implements iGameState, ObstacleArray {
       
       noCursor();
 
+      this.controls.draw();
       
       for (const obstacle of this.obstacles) {
          obstacle.draw();
       }
-      this.controls.draw();
+      
       this.depthCounter.draw();
        // this.collisionListener.draw()
     }

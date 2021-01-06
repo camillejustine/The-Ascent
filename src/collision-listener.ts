@@ -19,25 +19,25 @@ class CollisionListener {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-          /* for (let i = 0; i < this.array.obstacles.length; i++) {
+          for (let i = 0; i < this.obstacleArray .obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
-              this.array.obstacles[i].x,
-              this.array.obstacles[i].y
+              this.obstacleArray .obstacles[i].x,
+              this.obstacleArray .obstacles[i].y
             );
             
             if (distance < this.cr) {
               //this.obstacleArray.objectDetected = true;
-              this.array.obstacles[i].draw();
-              let boolean = this.array.obstacles[i].update();
+              this.obstacleArray .obstacles[i].draw();
+              let boolean = this.obstacleArray .obstacles[i].update();
               console.log(boolean);
             } else {
               //this.obstacleArray.objectDetected = false;
-            } */
+            }
         }
-       
      }
+}
 
 
       /* for(const obstacle of this.obstacleArray.obstacleArray){
@@ -92,5 +92,3 @@ class CollisionListener {
 //     private checkCollisions(submarine, obstacles, powerups) {}
 
 //     private applyCollisionsEffects() {} */
-
-
