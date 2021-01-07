@@ -24,7 +24,7 @@ class GameFrame implements iGameState, ObstacleArray {
   private headsUpDisplay: HeadsUpDisplay;
   public obstacles: Obstacle[];
 
-  private sonarAttributes: SonarAttributes;
+  public sonarAttributes: SonarAttributes;
 
   //private setDepth: number;
 
