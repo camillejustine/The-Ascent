@@ -9,9 +9,8 @@ class Gamelost {
         button.addClass('button');
         button.html('Click here');
         button.mousePressed(this.restartGame);
-
-
     }
+    
     
     private restartGame() {
         this.div.hide();
