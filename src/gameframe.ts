@@ -105,7 +105,7 @@ class GameFrame implements iGameState, ObstacleArray {
       obstacle.move();
       obstacle.update();
       if (this.obstacles.length > 30) {
-        this.obstacles.splice(obstacle, 1);
+        this.obstacles.splice(0, 1);
       }
     } 
   }
