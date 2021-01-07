@@ -30,7 +30,7 @@ class SonarAttributes {
             this.pulses[i].positionX = this.control.getPositionX(); 
             this.pulses[i].positionY = this.control.getPositionY(); 
             this.pulses[i].pulse();
-            this.pulses[i].pulse();
+            //this.pulses[i].pulse();
             if(this.pulses[i].pulseLifespan <= 0){
                 this.pulses.splice(i, 1);
             }
