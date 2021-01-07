@@ -5,25 +5,37 @@ class CollisionListener {
      public obstacles: ObstacleArray;
      public pulse: SonarAttributes;
      private scr: number;
-     private scrArray: Array[number];
+     private scrArray: Array<any>;
     
     constructor(obstacles: ObstacleArray){
         this.controlXY = new Control();
         this.pulse = new SonarAttributes();
         this.obstacles = obstacles;
-        this.cx = this.controlXY.getPositionX();
-        this.cy = this.controlXY.getPositionY();
+        this.cx = 0;
+        this.cy = 0;
         this.scr = 30;
         this.scrArray = [
-          {  "cx1": this.cx - 60,
-             "cy1": this.cy 
-          },
-          {  "circle2": 2},
-          {  "circle3": 3},
-          {  "circle4": 4},
-          {  "circle5": 5}
-        ];
-      
+              {   "cx": this.cx ,
+                  "cy": this.cy - 60,
+                  "cr": this.scr
+              },
+              {   "cx": this.cx ,
+                  "cy": this.cy - 30,
+                  "cr": this.scr
+              },
+              {   "cx": this.cx,
+                  "cy": this.cy,
+                  "cr": this.scr
+              },
+              {   "cx": this.cx ,
+                  "cy": this.cy + 30,
+                  "cr": this.scr
+              },
+              {   "cx": this.cx,
+                  "cy": this.cy + 60,
+                  "cr": this.scr
+              }
+          ];
      }
 
      public update() {
@@ -31,7 +43,7 @@ class CollisionListener {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-        console.log(this.scrArray[0])
+        
         push()
         translate(this.cx, this.cy);
         fill(200, 50);
@@ -53,6 +65,9 @@ class CollisionListener {
             );
             if (distance < radii.sonarRadius) {
               this.obstacles.obstacles[i].draw();
+        }
+        for(let circles of this.scrArray){
+          console.log(circles)
         } 
       }
     }

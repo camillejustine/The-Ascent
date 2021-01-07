@@ -36,6 +36,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public collisionListener: CollisionListener;
 
   public constructor() {
+    this.obstacles = [];
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
     this.mainMenu = new MainMenu(this);
@@ -45,7 +46,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
     this.headsUpDisplay = new HeadsUpDisplay();
-    this.obstacles = [];
+    
   }
   
 
