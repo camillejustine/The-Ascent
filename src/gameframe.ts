@@ -38,6 +38,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public pauseMenu: PauseMenu;
 
   public constructor() {
+    this.obstacles = [];
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
@@ -48,12 +49,10 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
     this.headsUpDisplay = new HeadsUpDisplay();
-    this.obstacles = [];
+    
   }
 
   public update() {
-    
-    console.log(this.gameState)
     this.mainMenu.update();
     if (this.gameState === "running") {
       this.depthCounter.update();
@@ -67,7 +66,6 @@ class GameFrame implements iGameState, ObstacleArray {
       this.controls.update();
       this.populate();
       this.collisionListener.update();
-
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
     }
@@ -89,10 +87,10 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.submarine.draw();
 
-     /*  for (const obstacle of this.obstacles) {
+      for (const obstacle of this.obstacles) {
          obstacle.draw();
-      } */
-
+      }
+      
       this.depthCounter.draw();
     }
   }

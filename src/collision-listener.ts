@@ -4,13 +4,19 @@ class CollisionListener {
      public controlXY: Control;
      public obstacles: ObstacleArray;
      public pulse: SonarAttributes;
+     private scr: number;
+     private angle: number;
+     private scrArray: Array<any>;
     
     constructor(obstacles: ObstacleArray){
         this.controlXY = new Control();
         this.pulse = new SonarAttributes();
         this.obstacles = obstacles;
-        this.cx = 50;
-        this.cy = 50;
+        this.angle = 0;
+        this.cx = 0;
+        this.cy = 0;
+        this.scr = 30;
+        this.scrArray = [];
      }
 
      public update() {
@@ -18,6 +24,27 @@ class CollisionListener {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
+        this.angle = this.controlXY.getAngle();
+        this.setSubCollision();
+        for(let contact of this.scrArray){
+          contact.cy 
+        }
+        push()
+        
+        fill(200, 50);
+        strokeWeight(0);
+        translate(this.cx, this.cy);
+          rotate(this.angle);
+        circle(0, -60, this.scr);
+        circle(0, -30, this.scr);
+        circle(0, 0, this.scr);
+        circle(0, 30, this.scr);
+        circle(0, 60, this.scr);
+        pop()
+       
+        
+        console.log(this.scrArray)
+
         for(let radii of this.pulse.pulses){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
@@ -27,13 +54,47 @@ class CollisionListener {
               this.obstacles.obstacles[i].y
             );
             if (distance < radii.sonarRadius) {
-              this.obstacles.obstacles[i].draw();
+              this.obstacles.obstacles[i].detected = true;       
         } 
       }
-    }
+    }  
+  }
+  public setSubCollision(){
+    this.scrArray = [ 
+      {   
+        "cx": this.cx ,
+        "cy": this.cy - 60,
+        "cr": this.scr
+      },
+      {   
+        "cx": this.cx ,
+        "cy": this.cy - 30,
+        "cr": this.scr
+      },
+      {  
+        "cx": this.cx,
+        "cy": this.cy,
+        "cr": this.scr
+      },
+      {   
+        "cx": this.cx ,
+        "cy": this.cy + 30,
+        "cr": this.scr
+      },
+      {   
+        "cx": this.cx,
+        "cy": this.cy + 60,
+        "cr": this.scr
+      }
+    ];
   }
 }
 
+
+/* let hit = subCollision(this.cx,this.cy,r, sx,sy,sw,sh);
+public subCollision(cx: number, float cy, float radius, float rx, float ry, float rw, float rh) {
+
+} */
 
       /* for(const obstacle of this.obstacleArray.obstacleArray){
            fill(200, 50)

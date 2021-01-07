@@ -7,13 +7,15 @@ abstract class Obstacle {
   public r: number;
   public y: number;
   public x: number;
-
+  public detected: boolean;
+  
   constructor() {
     this.rx = random(30, 80);
     this.ry = random(30, 80);
     this.r = random(50, 100);
     this.y = -100;
     this.x = random(10, 900);
+    this.detected = false;
 
     if (this.rx < this.r || this.rx > this.r) {
       this.rx = this.r;
@@ -38,10 +40,13 @@ class Iceberg extends Obstacle {
     this.y += 2;
   }
 
-  public draw() {
-    image(this.iceberg, this.x, this.y, this.rx, this.ry);
-    imageMode(CENTER);
-  }
+    public draw() {
+        if(this.detected){
+        image(this.iceberg, this.x, this.y, this.rx, this.ry)
+        imageMode(CENTER);
+        }
+    }
+
 }
 
 class Mine extends Obstacle {
@@ -60,8 +65,10 @@ class Mine extends Obstacle {
     this.y += 2;
   }
 
-  public draw() {
-    image(this.mine, this.x, this.y, 50, 50);
-    imageMode(CENTER);
-  }
+    public draw() {
+        if(this.detected){
+        image(this.mine, this.x, this.y, 100, 100)
+        imageMode(CENTER);
+        }
+    }
 }
