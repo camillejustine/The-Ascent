@@ -6,7 +6,7 @@ class PauseMenu {
         constructor(game: iGameState) {
           this.game = game;
           this.pauseMenu = createElement('div');
-        }
+}
       
         public update() {
          this.keyPressed();
@@ -33,6 +33,5 @@ class PauseMenu {
               this.game.gameState = 'running';
           } */
         public draw() {}
-
-
+}
 
