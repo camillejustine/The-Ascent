@@ -4,13 +4,26 @@ class CollisionListener {
      public controlXY: Control;
      public obstacles: ObstacleArray;
      public pulse: SonarAttributes;
+     private scr: number;
+     private scrArray: Array[number];
     
     constructor(obstacles: ObstacleArray){
         this.controlXY = new Control();
         this.pulse = new SonarAttributes();
         this.obstacles = obstacles;
-        this.cx = 50;
-        this.cy = 50;
+        this.cx = this.controlXY.getPositionX();
+        this.cy = this.controlXY.getPositionY();
+        this.scr = 30;
+        this.scrArray = [
+          {  "cx1": this.cx - 60,
+             "cy1": this.cy 
+          },
+          {  "circle2": 2},
+          {  "circle3": 3},
+          {  "circle4": 4},
+          {  "circle5": 5}
+        ];
+      
      }
 
      public update() {
@@ -18,6 +31,18 @@ class CollisionListener {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
+        console.log(this.scrArray[0])
+        push()
+        translate(this.cx, this.cy);
+        fill(200, 50);
+        strokeWeight(0);
+        
+        circle(0, -60, this.scr);
+        circle(0, -30, this.scr);
+        circle(0, 0, this.scr);
+        circle(0, 30, this.scr);
+        circle(0, 60, this.scr);
+        pop()
         for(let radii of this.pulse.pulses){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
@@ -34,6 +59,9 @@ class CollisionListener {
   }
 }
 
+class Circle extends CollisionListener {
+
+}
 
       /* for(const obstacle of this.obstacleArray.obstacleArray){
            fill(200, 50)

@@ -29,19 +29,9 @@ class Submarine {
     rotate(this.angle);
     image(subImage, 0, 0, 35, 150);
     imageMode(CENTER);
-    
-    fill(200, 50);
-    //make an array for the circles. 
-    circle(0, -60, 30);
-    circle(0, -30, 30);
-    circle(0, 0, 30);
-    circle(0, 30, 30);
-    circle(0, 60, 30);
-    pop();
-    
-    ellipseMode(CENTER)
+    pop(); 
   }
-  //get the subimage and assign it to x y from control. 
+  
   
   /* private sub = p5.Image | p5.Element;
     

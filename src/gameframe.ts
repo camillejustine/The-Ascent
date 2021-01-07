@@ -50,6 +50,7 @@ class GameFrame implements iGameState, ObstacleArray {
   
 
   public update() {
+    
     this.mainMenu.update();
     if (this.gameState === 'running') {
       this.depthCounter.update();
@@ -63,9 +64,6 @@ class GameFrame implements iGameState, ObstacleArray {
       this.controls.update();
       this.populate();
       this.collisionListener.update();
-
-
-      
       this.headsUpDisplay.update();
 
     } 
@@ -77,23 +75,23 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public draw() {
- 
+    
     noCursor();
     if (this.gameState === 'running') {
-
       
       document.getElementById("main-menu")!.style.display = "none";
+      
       
       this.background.draw();
       
       noCursor();
 
-      this.submarine.draw();
       
+    
       /* for (const obstacle of this.obstacles) {
          //obstacle.draw();
       } */
-      
+      this.submarine.draw();
       this.depthCounter.draw();
     }
   }
