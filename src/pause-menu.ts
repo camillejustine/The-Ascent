@@ -10,20 +10,22 @@ class PauseMenu {
       
         public update() {
          this.keyPressed();
-         //this.keyReleased();
         }
 
         public keyPressed() {
-            if (keyCode === 32 && this.game.gameState == 'running') {
+            if (keyCode === 32) {
               this.game.gameState = 'pauseMenu';
-            } else if (keyCode === 32 && this.game.gameState === 'pauseMenu'){
-              this.game.gameState = 'running';
-            }        
+            } 
+            return false;      
         }
 
+        public keyReleased() {
+            
+        }
         public unpause() {
-          if (keyCode === 32 && this.game.gameState == 'pauseMenu') {
-            this.game.gameState = 'running';
+          if (keyCode === DOWN_ARROW) {
+            this.game.gameState = 'running'; 
+            console.log('test')
           }
         }
         /* public keyReleased() {
