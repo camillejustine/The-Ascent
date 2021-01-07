@@ -17,10 +17,11 @@ class GameFrame implements iGameState, ObstacleArray {
    private powerUps: PowerUp[];
    
   
-   private headsUpDisplay: HeadsUpDisplay;
+   
      */
   private submarine: Submarine;
   private controls: Control;
+  private headsUpDisplay: HeadsUpDisplay;
   public obstacles: Obstacle[];
 
   private sonarAttributes: SonarAttributes;
@@ -28,24 +29,25 @@ class GameFrame implements iGameState, ObstacleArray {
   //private setDepth: number;
 
   public isGameRunning: boolean;
-  //public collisionListener: CollisionListener;
+  public collisionListener: CollisionListener;
 
   public constructor() {
-    //this.collisionListener = new CollisionListener(this);
+    this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
-    this.obstacles = [];
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
-    this.isGameRunning = false;
     this.background = new Background();
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
-
+    this.headsUpDisplay = new HeadsUpDisplay();
+    this.obstacles = [];
+    this.isGameRunning = false;
   }
   
 
   public update() {
     this.mainMenu.update();
+    //so colission listener can see obstacle array.
     if (this.isGameRunning) {
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
@@ -54,12 +56,14 @@ class GameFrame implements iGameState, ObstacleArray {
 
       noCursor();
 
-      this.sonarAttributes.update();
+      //this.sonarAttributes.update();
       this.controls.update();
-
       this.populate();
-      this.sendArray(this.obstacles)
-      //this.collisionListener.update();
+      this.collisionListener.update();
+
+
+      
+      this.headsUpDisplay.update();
     }
   }
 
@@ -74,15 +78,13 @@ class GameFrame implements iGameState, ObstacleArray {
       
       noCursor();
 
-      //this.controls.draw();
       this.submarine.draw();
       
       for (const obstacle of this.obstacles) {
-         obstacle.draw();
+         //obstacle.draw();
       }
       
       this.depthCounter.draw();
-       // this.collisionListener.draw()
     }
   }
 
@@ -97,10 +99,6 @@ class GameFrame implements iGameState, ObstacleArray {
       if (this.obstacles.length > 30) {
         this.obstacles.splice(obstacle, 1);
       }
-    }
-  }
-
-  public sendArray(x: Array<any>){
-    return x;
+    } 
   }
 }

@@ -3,40 +3,37 @@ class CollisionListener {
      private cy: number;
      private cr: number;
      public controlXY: Control;
-     public sonarDetected: ObjectDetected;
-     public obstacleArray: GameFrame;
+     public obstacles: ObstacleArray;
+     public pulse: SonarAttributes;
     
-    constructor(sonarDetected: ObjectDetected){
+    constructor(obstacles: ObstacleArray){
         this.controlXY = new Control();
-        this.obstacleArray = new GameFrame();
-        this.sonarDetected = sonarDetected;
+        this.pulse = new SonarAttributes();
+        this.obstacles = obstacles;
         this.cx = 50;
         this.cy = 50;
         this.cr = 200;     
      }
 
      public update() {
+        this.pulse.update();
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-          for (let i = 0; i < this.obstacleArray .obstacles.length; i++) {
+        for(let radii of this.pulse.pulses){
+          for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
               this.cx,
               this.cy,
-              this.obstacleArray .obstacles[i].x,
-              this.obstacleArray .obstacles[i].y
+              this.obstacles.obstacles[i].x,
+              this.obstacles.obstacles[i].y
             );
-            
-            if (distance < this.cr) {
-              //this.obstacleArray.objectDetected = true;
-              this.obstacleArray .obstacles[i].draw();
-              let boolean = this.obstacleArray .obstacles[i].update();
-              console.log(boolean);
-            } else {
-              //this.obstacleArray.objectDetected = false;
-            }
-        }
-     }
+            if (distance < radii.sonarRadius) {
+              this.obstacles.obstacles[i].draw();
+        } 
+      }
+    }
+  }
 }
 
 
