@@ -10,7 +10,7 @@ class MainMenu {
 
   public update() {
     this.startButton.onclick = () => {
-      this.game.isGameRunning = true;
+      this.game.gameState = 'running';
       console.log("running");
     };
   }

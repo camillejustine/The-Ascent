@@ -1,5 +1,5 @@
 interface iGameState {
-  isGameRunning: boolean;
+  gameState: 'running' | 'mainMenu' | 'gameLost' | 'gameWon' | 'pauseMenu';
 }
 class GameFrame implements iGameState {
   private mainMenu: MainMenu;
@@ -18,13 +18,13 @@ class GameFrame implements iGameState {
 
   private controls: Control;
   public obstacles: Obstacle[];
-  public isGameRunning: boolean;
+  public gameState: 'running' | 'mainMenu' | 'gameLost' | 'gameWon' | 'pauseMenu';
   
   public constructor() {
     this.obstacles = [new Iceberg(), new Mine()];
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
-    this.isGameRunning = false;
+    this.gameState = 'mainMenu';
     this.background = new Background();
     this.depthCounter = new DepthCounter();
   }
@@ -34,9 +34,9 @@ class GameFrame implements iGameState {
     
     this.mainMenu.update();
 
-    if (this.isGameRunning) {
+    if (this.gameState === 'running') {
       this.depthCounter.update();
-      document.getElementById("main-menu")!.style.display = "none";
+      document.getElementById("mainMenu")!.style.display = "none";
 
       this.background.update();
 
@@ -50,15 +50,19 @@ class GameFrame implements iGameState {
       } 
       this.controls.update();
     } 
+
+    if (this.gameState === 'pauseMenu') {
+      
+    }
   }
 
   public draw() {
  
     noCursor();
 
-    if (this.isGameRunning) {
+    if (this.gameState === 'running') {
       
-      document.getElementById("main-menu")!.style.display = "none";
+      document.getElementById("mainMenu")!.style.display = "none";
       
       this.background.draw();
       
