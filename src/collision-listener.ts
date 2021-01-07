@@ -1,7 +1,6 @@
 class CollisionListener {
      private cx: number;
      private cy: number;
-     private cr: number;
      public controlXY: Control;
      public obstacles: ObstacleArray;
      public pulse: SonarAttributes;
@@ -12,7 +11,6 @@ class CollisionListener {
         this.obstacles = obstacles;
         this.cx = 50;
         this.cy = 50;
-        this.cr = 200;     
      }
 
      public update() {
