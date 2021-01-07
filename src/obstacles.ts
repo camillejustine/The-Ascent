@@ -9,9 +9,9 @@ abstract class Obstacle {
   public x: number;
 
   constructor() {
-    this.rx = random(50, 150);
-    this.ry = random(50, 120);
-    this.r = random(50, 150);
+    this.rx = random(30, 80);
+    this.ry = random(30, 80);
+    this.r = random(50, 100);
     this.y = -100;
     this.x = random(10, 900);
 

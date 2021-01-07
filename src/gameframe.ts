@@ -91,7 +91,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public populate() {
-    if (random(1) < 0.01) {
+    if (random(1) < 0.02) {
       this.obstacles.push(new Iceberg());
     }
     if (random(1) < 0.0005) {
