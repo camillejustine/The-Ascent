@@ -1,5 +1,5 @@
 class PauseMenu {
-        private pauseMenu: any;
+        public pauseMenu: any;
         //private aboutButton: any;
         public game: iGameState;
       

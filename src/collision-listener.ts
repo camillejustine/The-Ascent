@@ -5,9 +5,9 @@ class CollisionListener {
      public obstacles: ObstacleArray;
      public pulse: SonarAttributes;
      private scr: number;
-     private angle: number;
+     public angle: number;
      private scrArray: Array<any>;
-     private collision: boolean;
+     public collision: boolean;
     
     constructor(obstacles: ObstacleArray){
         this.collision = false;
