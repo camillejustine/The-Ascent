@@ -19,7 +19,7 @@ class SonarAttributes {
     
     public update() {
         this.draw();
-        if(frameCount % 100 == 0){
+        if(frameCount % 80 == 0){
             this.pulses.push(new SonarAttributes());
         }
     }
@@ -39,7 +39,7 @@ class SonarAttributes {
     }
 
     public pulse() {
-        this.sonarRadius = this.sonarRadius + 3.4;
+        this.sonarRadius = this.sonarRadius + 2;
         this.pulseLifespan--;
         strokeWeight(2);
         stroke('rgba(0,255,0,0.25)');
