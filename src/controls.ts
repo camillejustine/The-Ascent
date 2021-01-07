@@ -1,9 +1,4 @@
-interface SubPosition {
-  subPositionX: number;
-  subPositionY: number;
-}
-
-class Control implements SubPosition {
+class Control {
 
   private angle: number = 0;
 
@@ -36,18 +31,19 @@ class Control implements SubPosition {
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
     this.subPositionY = 720 / 2;
-
-    
   }
 
   public getPositionX() {
-    return this.subPositionX
+    return this.subPositionX;
   }
 
   public getPositionY() {
-    return this.subPositionY
+    return this.subPositionY;
   }
 
+  public getAngle(){
+    return this.angle;
+  }
 
   public update () {
     this.keyPressed();
@@ -60,7 +56,6 @@ class Control implements SubPosition {
     } else if (keyIsDown(this.rotateRight)) {
       this.angle += 1;
     }
-
 
     if (keyIsDown(LEFT_ARROW)) {
       this.subPositionX -= 4;
@@ -78,13 +73,10 @@ class Control implements SubPosition {
 
   public move() {
     this.keyPressed();
-
-
            /* this.acceleration.setMag(3);
           
             this.position.add(this.acceleration);
              */
-
 
     if (this.subPositionX < 0) {
       this.subPositionX = 0;
@@ -93,26 +85,7 @@ class Control implements SubPosition {
     }
   }
 
-
   public draw() {
-    angleMode(DEGREES);
-    push();
-    translate(this.subPositionX, this.subPositionY);
-    rotate(this.angle);
-    image(subImage, 0, 0, 35, 150);
-    imageMode(CENTER);
-    
-    fill(200, 50);
-    circle(0, -60, 30);
-    circle(0, -30, 30);
-    circle(0, 0, 30);
-    circle(0, 30, 30);
-    circle(0, 60, 30);
-    pop();
-    
-    ellipseMode(CENTER)
-    
-
     
   }
 }
