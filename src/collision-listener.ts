@@ -55,6 +55,9 @@ class CollisionListener {
         circle(0, 30, this.scr);
         circle(0, 60, this.scr);
         pop()
+        /*  for(let circles of this.scrArray){
+          console.log(circles)
+        }  */
         for(let radii of this.pulse.pulses){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
@@ -64,10 +67,7 @@ class CollisionListener {
               this.obstacles.obstacles[i].y
             );
             if (distance < radii.sonarRadius) {
-              this.obstacles.obstacles[i].draw();
-        }
-        for(let circles of this.scrArray){
-          console.log(circles)
+              this.obstacles.obstacles[i].detected = true;       
         } 
       }
     }
