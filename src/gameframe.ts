@@ -35,8 +35,10 @@ class GameFrame implements iGameState, ObstacleArray {
   //private setDepth: number;
 
   public collisionListener: CollisionListener;
+  public pauseMenu: PauseMenu;
 
   public constructor() {
+    this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
     this.mainMenu = new MainMenu(this);
@@ -59,15 +61,16 @@ class GameFrame implements iGameState, ObstacleArray {
 
       noCursor();
 
-      //this.sonarAttributes.update();
       this.controls.update();
       this.populate();
       this.collisionListener.update();
 
       this.headsUpDisplay.update();
+      this.pauseMenu.keyPressed();
     }
 
-    if (this.gameState === "pauseMenu") {
+    if(this.gameState === 'pauseMenu'){
+      document.getElementById('div')!.style.display = 'flex';
     }
   }
 
