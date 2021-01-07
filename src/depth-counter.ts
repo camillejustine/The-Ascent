@@ -28,21 +28,3 @@ class DepthCounter {
 
   }
 }
-
-
-    // private game: boolean;
-    // private depth: number;
-
-    // public constructor(depth: number, game: boolean) {
-    // this.depth = 1000;
-    // this.game = true;
-
-//     public constructor(public counter = 90) {
-
-//         let intervalId = setInterval(() => {
-//             this.counter = this.counter - 1;
-//             console.log(this.counter)
-//             if(this.counter === 0) clearInterval(intervalId)
-//         }, 1000)
-//     }
-// 

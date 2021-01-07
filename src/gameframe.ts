@@ -1,6 +1,6 @@
 
 interface iGameState {
-  isGameRunning: boolean;
+  gameState: 'running' | 'mainMenu' | 'gameLost' | 'gameWon' | 'pauseMenu';
 }
 interface ObstacleArray {
   obstacles: Obstacle[];
@@ -24,11 +24,15 @@ class GameFrame implements iGameState, ObstacleArray {
   private headsUpDisplay: HeadsUpDisplay;
   public obstacles: Obstacle[];
 
+  public gameState: 'running' | 'mainMenu' | 'gameLost' | 'gameWon' | 'pauseMenu';
+  
+
+
   public sonarAttributes: SonarAttributes;
 
   //private setDepth: number;
 
-  public isGameRunning: boolean;
+  
   public collisionListener: CollisionListener;
 
   public constructor() {
@@ -36,21 +40,20 @@ class GameFrame implements iGameState, ObstacleArray {
     this.sonarAttributes = new SonarAttributes();
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
+    this.gameState = 'mainMenu';
     this.background = new Background();
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
     this.headsUpDisplay = new HeadsUpDisplay();
     this.obstacles = [];
-    this.isGameRunning = false;
   }
   
 
   public update() {
     this.mainMenu.update();
-    //so colission listener can see obstacle array.
-    if (this.isGameRunning) {
+    if (this.gameState === 'running') {
       this.depthCounter.update();
-      document.getElementById("main-menu")!.style.display = "none";
+      document.getElementById("mainMenu")!.style.display = "none";
 
       this.background.update();
 
@@ -64,15 +67,22 @@ class GameFrame implements iGameState, ObstacleArray {
 
       
       this.headsUpDisplay.update();
+
+    } 
+
+    if (this.gameState === 'pauseMenu') {
+      
+
     }
   }
 
   public draw() {
  
     noCursor();
-    if (this.isGameRunning) {
+    if (this.gameState === 'running') {
+
       
-      document.getElementById("main-menu")!.style.display = "none";
+      document.getElementById("mainMenu")!.style.display = "none";
       
       this.background.draw();
       
