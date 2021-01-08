@@ -11,6 +11,7 @@
       src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/addons/p5.sound.js"
     ></script>
     <script defer src="build/bundle.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
@@ -22,30 +23,26 @@
       <!-- <h1>The Ascent</h1> -->
       <div id="menu-frame">
         <div class="menu-text-frame">
+          
           <p class="menu-text">
             You’re playing as the commander of a rogue Swedish submarine named
             HMS Sven. By accident, you’ve managed to dive too deep into parts of
             the ocean where no light comes through and you need to get back up
-            to the correct depth again.<br/>
+            to the correct depth again.<br/><br>
             While ascending, you’ll face different obstacles trying to take you
             out.
 
-           <br><br><br><br>
+           
           
           </p>
         </div>
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_obtvnlau.json" id="sonar-animation" background="transparent"  speed="1"  style="width: 150px; height: 150px" loop autoplay></lottie-player>
         <div class="button-container">
-          <img
-            class="start-game-bg"
-            src="./assets/images/start-button.png"
-            alt=""
-          />
-          <button id="start-game">start</button>
+          <input type="image" id="start-game" src="./assets/images/start-button.png"></button>
+          <input type="image" id="about" src="./assets/images/about-button.png"></button>
         </div>
-        <div class="button-container">
-          <img class="about-bg" src="./assets/images/about-button.png" alt="" />
-          <button id="about">about</button>
-        </div>
+        <!-- <div class="button-container">
+        </div> -->
       </div>
     </div>
     <!-- Code injected via JavaScript -->
