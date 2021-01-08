@@ -22,17 +22,21 @@ class Submarine {
     this.subPositionY = this.control.getPositionY();
     this.angle = this.control.getAngle();
     this.collisionHullDamage();
-    console.log(this.hullHealth)
+    //console.log(this.hullHealth)
     }
 
   public draw() {
     this.update()
     angleMode(DEGREES);
+    
     push();
+    
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
+    
     image(subImage, 0, 0, 35, 150);
     imageMode(CENTER);
+    
     pop(); 
   }
   
