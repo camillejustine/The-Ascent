@@ -29,6 +29,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public spawnRateHullFix: number;
   public spawnRateSIncrease: number;
   public spawnRatePI: number;
+  //decrease nr of types for powerups. 
   public sonarAttributes: SonarAttributes;
   public collisionListener: CollisionListener;
   public pauseMenu: PauseMenu;
@@ -36,6 +37,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public constructor() {
     this.powerUps = [];
     this.obstacles = [];
+    //push all powerups and obstacles to the same array?
 
     this.gameState = "mainMenu";
 
@@ -56,7 +58,6 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.sonarAttributes = new SonarAttributes();
     this.headsUpDisplay = new HeadsUpDisplay();
-    this.obstacles = [];
     this.gameWon = new GameWon(this.restartGame);
   }
   
@@ -119,6 +120,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
 
   public populateObstacle() {
+    
     if (random(1) < this.spawnRateIceberg) {
       this.obstacles.push(new Iceberg());
     }
@@ -139,6 +141,8 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
     public populatePowerUp() {
+      //combo obstacle and powerup arrays.
+      //send array in interface?
       if (random(1) < this.spawnRateHullFix) {
         this.powerUps.push(new SupplyBox());
       } 
