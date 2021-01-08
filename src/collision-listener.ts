@@ -67,6 +67,7 @@ class CollisionListener {
       public submarineCollisions(){
         //this.submarine.update();
         for(let collisionPoint of this.scrArray){
+          console.log(collisionPoint.cx)
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
               collisionPoint.cx,
