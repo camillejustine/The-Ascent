@@ -1,4 +1,5 @@
 abstract class Obstacle {
+  [x: string]: any;
   public abstract move(): void;
   public abstract draw(): void;
   public abstract update(): void;
@@ -8,6 +9,7 @@ abstract class Obstacle {
   public y: number;
   public x: number;
   public detected: boolean;
+  public collision: boolean;
 
   constructor() {
     this.rx = random(30, 80);
@@ -16,6 +18,7 @@ abstract class Obstacle {
     this.y = -100;
     this.x = random(10, 900);
     this.detected = false;
+    this.collision = false;
 
     if (this.rx < this.r || this.rx > this.r) {
       this.rx = this.r;
@@ -28,10 +31,14 @@ abstract class Obstacle {
 
 class Iceberg extends Obstacle {
   private iceberg: p5.Image | p5.Element;
+  private iceberg: any;
+  public id: string;
+
 
   constructor() {
     super();
     this.iceberg = icebergImage;
+    this.id = "iceberg";
   }
 
   public update() {}
@@ -51,11 +58,13 @@ class Iceberg extends Obstacle {
 class Mine extends Obstacle {
   private mine: p5.Image | p5.Element;
   public r: number;
+  public id: string;
 
   constructor() {
     super();
     this.mine = mineImage;
     this.r = 100;
+    this.id = "mine";
   }
 
   public update() {}
