@@ -1,4 +1,5 @@
 class PauseMenu {
+
         public pauseMenu: any;
         //private aboutButton: any;
         public game: iGameState;
@@ -6,7 +7,7 @@ class PauseMenu {
         constructor(game: iGameState) {
           this.game = game;
           this.pauseMenu = createElement('div');
-}
+        }       
       
         public update() {
          this.keyPressed();

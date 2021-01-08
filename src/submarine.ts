@@ -22,6 +22,7 @@ class Submarine {
     this.subPositionY = this.control.getPositionY();
     this.angle = this.control.getAngle();
     this.collisionHullDamage();
+    console.log(this.hullHealth)
     }
 
   public draw() {
@@ -37,8 +38,13 @@ class Submarine {
   
   public collisionHullDamage(){
     for(let i = 0; i < this.obstacle.obstacles.length; i++){
-      console.log(this.obstacle.obstacles[i].collision)
+      if(this.obstacle.obstacles[i].collision && this.obstacle.obstacles[i].id === 'iceberg'){
+        this.hullHealth = this.hullHealth - 0.25;
+      }if(this.obstacle.obstacles[i].collision && this.obstacle.obstacles[i].id === 'mine'){
+        this.hullHealth = 0;
+      }
     }
+    //console.log(this.hullHealth)
   }
   
   /* private sub = p5.Image | p5.Element;
