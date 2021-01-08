@@ -7,7 +7,7 @@ class PauseMenu {
         constructor(game: iGameState) {
           this.game = game;
           this.pauseMenu = createElement('div');
-}
+        }       
       
         public update() {
          this.keyPressed();

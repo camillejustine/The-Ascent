@@ -47,7 +47,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.gameState = "mainMenu";
     this.background = new Background();
     this.depthCounter = new DepthCounter();
-    this.submarine = new Submarine();
+    this.submarine = new Submarine(this);
     this.headsUpDisplay = new HeadsUpDisplay();
     
   }
@@ -68,6 +68,8 @@ class GameFrame implements iGameState, ObstacleArray {
       this.collisionListener.update();
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
+      this.submarine.update()
+      console.log(this.submarine.hullHealth)
     }
 
     if(this.gameState === 'pauseMenu'){
