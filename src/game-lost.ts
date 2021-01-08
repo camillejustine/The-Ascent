@@ -1,29 +1,33 @@
-class Gamelost {
+class GameLost {
     private div: p5.Element;
-    
-    public constructor() {
+    private restartGameCallback: iGameState;
+
+    public constructor(restartGameCallback: iGameState) {
+        this.restartGameCallback = restartGameCallback;
         this.div = createElement('main-menu');
-        // this.div.hide();
 
-        const button = createElement('button');
-        button.addClass('button');
-        button.html('Click here');
-        button.mousePressed(this.restartGame);
+        const restartButton = createElement('button');
+        restartButton.addClass('button');
+        restartButton.html('Restart');
+        restartButton.mousePressed(() => this.resumeGame);
+
+        const backToMain = createElement('button');
+        backToMain.addClass('button');
+        backToMain.html('Back To Main');
+        backToMain.mousePressed(() => this.backToMain());
+
+        this.div.child(restartButton);
+        this.div.child(backToMain);
     }
     
-    
-    private restartGame() {
+    private resumeGame() {
+        console.log('restart');
         this.div.hide();
-    }
-    // private backToMain() {}
-
-    public showContent() {
-        this.div.show();
+        this.restartGameCallback();
     }
     
-    public update() {}
-    
-    public draw() {}
-
-    
-}    
+    private backToMain() {
+        console.log('backtomain');
+        // this.backToMainCallback();
+    }
+}
