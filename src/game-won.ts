@@ -23,6 +23,8 @@ class Gamewon {
         this.div.show()
     }
     
-    private backToMain() {}
+    private backToMain() {
+        
+    }
 
 }
