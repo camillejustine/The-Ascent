@@ -10,7 +10,7 @@ abstract class Obstacle {
   public x: number;
   public detected: boolean;
   public collision: boolean;
-  
+
   constructor() {
     this.rx = random(30, 80);
     this.ry = random(30, 80);
@@ -30,8 +30,10 @@ abstract class Obstacle {
 }
 
 class Iceberg extends Obstacle {
+  private iceberg: p5.Image | p5.Element;
   private iceberg: any;
   public id: string;
+
 
   constructor() {
     super();
@@ -45,23 +47,22 @@ class Iceberg extends Obstacle {
     this.y += 2;
   }
 
-    public draw() {
-        if(this.detected){
-        image(this.iceberg, this.x, this.y, this.rx, this.ry)
-        imageMode(CENTER);
-        }
+  public draw() {
+    if (this.detected) {
+      image(this.iceberg, this.x, this.y, this.rx, this.ry);
+      imageMode(CENTER);
     }
-
+  }
 }
 
 class Mine extends Obstacle {
-  private mine: any;
+  private mine: p5.Image | p5.Element;
   public r: number;
   public id: string;
 
   constructor() {
     super();
-    this.mine = mine;
+    this.mine = mineImage;
     this.r = 100;
     this.id = "mine";
   }
@@ -72,10 +73,34 @@ class Mine extends Obstacle {
     this.y += 2;
   }
 
-    public draw() {
-        if(this.detected){
-        image(this.mine, this.x, this.y, 100, 100)
-        imageMode(CENTER);
-        }
+  public draw() {
+    if (this.detected) {
+      image(this.mine, this.x, this.y, 100, 100);
+      imageMode(CENTER);
     }
+  }
+}
+
+class SunkenShip extends Obstacle {
+  private sunkenShip: p5.Image | p5.Element;
+  public r: number;
+
+  constructor() {
+    super();
+    this.sunkenShip = sunkenShipImage;
+    this.r = 100;
+  }
+
+  public update() {}
+
+  public move() {
+    this.y += 2;
+  }
+
+  public draw() {
+    if (this.detected) {
+      image(this.sunkenShip, this.x, this.y, 100, 100);
+      imageMode(CENTER);
+    }
+  }
 }
