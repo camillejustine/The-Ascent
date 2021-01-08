@@ -1,26 +1,26 @@
-class GameWon {
+class GameLost {
     private div: p5.Element;
-    private restartGameCallback: Function;
+    private restartGameCallback: iGameState;
 
-    public constructor(restartGameCallback: Function) {
+    public constructor(restartGameCallback: iGameState) {
         this.restartGameCallback = restartGameCallback;
         this.div = createElement('main-menu');
 
-        const button1 = createElement('button');
-        button1.addClass('button');
-        button1.html('Restart');
-        button1.mousePressed(() => this.restartGame);
+        const restartButton = createElement('button');
+        restartButton.addClass('button');
+        restartButton.html('Restart');
+        restartButton.mousePressed(() => this.resumeGame);
 
-        const button2 = createElement('button');
-        button2.addClass('button');
-        button2.html('Back To Main');
-        button2.mousePressed(() => this.backToMain());
+        const backToMain = createElement('button');
+        backToMain.addClass('button');
+        backToMain.html('Back To Main');
+        backToMain.mousePressed(() => this.backToMain());
 
-        this.div.child(button1);
-        this.div.child(button2);
+        this.div.child(restartButton);
+        this.div.child(backToMain);
     }
     
-    private restartGame() {
+    private resumeGame() {
         console.log('restart');
         this.div.hide();
         this.restartGameCallback();

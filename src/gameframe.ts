@@ -13,11 +13,7 @@ class GameFrame implements iGameState, ObstacleArray {
   private gameWon: GameWon;
   private gameLost: GameLost;
 
-  /* private powerUps: PowerUp[];
-   
-  
-   
-     */
+  /* private powerUps: PowerUp[]; */
   private submarine: Submarine;
   private controls: Control;
   private headsUpDisplay: HeadsUpDisplay;
@@ -49,6 +45,9 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
     this.headsUpDisplay = new HeadsUpDisplay();
+    
+    // this.gameWon = new GameWon(this.resumeGame);
+    this.gameLost = new GameLost(this);
     
   }
 
