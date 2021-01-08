@@ -23,10 +23,12 @@ abstract class PowerUp {
 
 class SupplyBox extends PowerUp {
   private supplyBox: p5.Image | p5.Element;
+  public id: string;
 
   constructor() {
     super();
     this.supplyBox = powerUpsImage;
+    this.id = 'supplyBox';
   }
 
   public update() {}

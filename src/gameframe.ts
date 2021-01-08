@@ -16,7 +16,7 @@ class GameFrame implements iGameState, ObstacleArray {
   private mainMenu: MainMenu;
   private background: Background;
   private depthCounter: DepthCounter;
-  private gameWon: GameWon;
+  public gameWon: GameWon;
   /* private gameLost: GameLost;*/
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
@@ -85,7 +85,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
       this.submarine.update()
-      //console.log(this.submarine.hullHealth)
+      console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
@@ -139,7 +139,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
     public populatePowerUp() {
-      if (random(1) < this.spawnRateHullFix) {
+      if (random(1) < this.spawnRateIceberg) {
         this.powerUps.push(new SupplyBox());
       }
       for (const powerUp of this.powerUps) {
