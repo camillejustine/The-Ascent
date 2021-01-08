@@ -17,19 +17,20 @@ class CollisionListener {
         this.angle = 0;
         this.cx = 0;
         this.cy = 0;
-        this.scr = 30;
+        this.scr = 30 * 2;
         this.scrArray = [];
      }
 
      public update() {
-        this.pulse.update();
-        this.controlXY.update();
-        this.cx = this.controlXY.getPositionX();
-        this.cy = this.controlXY.getPositionY();
-        this.angle = this.controlXY.getAngle();
-        this.subContactPoints();
-        this.submarineCollisions();
-        this.sonarDetection();     
+          this.pulse.update();
+          this.controlXY.update();
+          this.cx = this.controlXY.getPositionX();
+          this.cy = this.controlXY.getPositionY();
+          this.angle = this.controlXY.getAngle();
+          this.subContactPoints();
+          this.submarineCollisions();
+          
+          this.sonarDetection();  
         }
 
       public subContactPoints(){
@@ -71,10 +72,10 @@ class CollisionListener {
               this.obstacles.obstacles[i].x,
               this.obstacles.obstacles[i].y
             );
-            if (distance < collisionPoint.cr) {
-              this.collision = true;    
+            if (distance < collisionPoint.cr/2) {
+              //this.collision = true;    
             } else if (distance > collisionPoint.cr){
-              this.collision = false;
+              //this.collision = false;
             } 
           }
         } 
@@ -90,7 +91,7 @@ class CollisionListener {
               this.obstacles.obstacles[i].r/2
               ); 
               if (this.collision) {
-              this.obstacles.obstacles[i].detected = true;       
+                this.obstacles.obstacles[i].detected = true; 
             } 
           }
         }
