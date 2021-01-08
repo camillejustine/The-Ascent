@@ -104,11 +104,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public populate() {
-    if(this.depthCounter.depth <= 2900){
-      this.spawnRateIceberg = 0.04;
-      this.spawnRateMine = 0.01;
-    }
-    console.log(this.spawnRateMine)
+    this.setSpawnRate();
       if (random(1) < this.spawnRateIceberg) {
         this.obstacles.push(new Iceberg());
       }
@@ -118,10 +114,27 @@ class GameFrame implements iGameState, ObstacleArray {
       for (const obstacle of this.obstacles) {
         obstacle.move();
         obstacle.update();
-        if (this.obstacles.length > 30) {
+        if (this.obstacles.length > 50) {
           this.obstacles.splice(0, 1);
         }
       }
-    
   }
+
+  public setSpawnRate(){
+    if(this.depthCounter.depth <= 750){
+      this.spawnRateIceberg = 0.03;
+      this.spawnRateMine = 0.007;
+    } if (this.depthCounter.depth <= 500){
+      this.spawnRateIceberg = 0.05;
+      this.spawnRateMine = 0.009;
+    } if (this.depthCounter.depth <= 250){
+      this.spawnRateIceberg = 0.08;
+      this.spawnRateMine = 0.015;
+    } if (this.depthCounter.depth <= 100){
+      this.spawnRateIceberg = 0.1;
+      this.spawnRateMine = 0.02;
+    } if (this.depthCounter.depth <= 50){
+      this.spawnRateIceberg = 0;
+      this.spawnRateMine = 0;
+    } 
 }

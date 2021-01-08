@@ -2,7 +2,7 @@ class DepthCounter {
   public depth: number;
 
   public constructor() {
-    this.depth = 3000;
+    this.depth = 1000;
   }
 
   public update() {
