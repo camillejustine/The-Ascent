@@ -141,7 +141,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
     public populatePowerUp() {
-      if (random(1) < 0.005) {
+      if (random(1) < this.spawnRateHullFix) {
         this.powerUps.push(new SupplyBox());
       }
       for (const powerUp of this.powerUps) {
