@@ -18,13 +18,6 @@ abstract class PowerUp {
     this.x = random(10, 900);
     this.detected = false;
     this.collision = false;
-
-    if (this.rx < this.r || this.rx > this.r) {
-      this.rx = this.r;
-    }
-    if (this.ry < this.r || this.ry > this.r) {
-      this.ry = this.r;
-    }
   }
 }
 

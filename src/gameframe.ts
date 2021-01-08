@@ -88,7 +88,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
       this.submarine.update()
-      console.log(this.submarine.hullHealth)
+      //console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
@@ -134,14 +134,14 @@ class GameFrame implements iGameState, ObstacleArray {
     for (const obstacle of this.obstacles) {
       obstacle.move();
       obstacle.update();
-      if (this.obstacles.length > 30) {
+      if (this.obstacles.length > 50) {
         this.obstacles.splice(0, 1);
       }
     }
   }
 
     public populatePowerUp() {
-      if (random(1) < 0.10) {
+      if (random(1) < 0.1) {
         this.powerUps.push(new SupplyBox());
       }
       for (const powerUp of this.powerUps) {

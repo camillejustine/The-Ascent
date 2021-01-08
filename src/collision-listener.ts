@@ -8,6 +8,7 @@ class CollisionListener {
      public collision: boolean;
      public rectH: number;
      public rectW: number;
+     public allObjectsArray: Array<object>;
     
     constructor(obstacles: ObstacleArray){
         this.collision = false;
@@ -19,6 +20,8 @@ class CollisionListener {
         this.cy = 0;
         this.rectH = 138;
         this.rectW = 23.5;
+        this.allObjectsArray = [];
+
      }
 
      public update() {
@@ -28,13 +31,16 @@ class CollisionListener {
           this.cy = this.controlXY.getPositionY() -70;
           this.angle = this.controlXY.getAngle();
           this.submarineCollisions();
-          this.sonarDetection(); 
-        }
-        //make new array with both on it
+          this.sonarDetection();
+          this.allObjectsArray = this.obstacles.obstacles.concat(this.obstacles.powerUps) 
+      }
+      
       public submarineCollisions(){
+        
+        console.log(this.allObjectsArray)
         for(let i = 0; i < this.obstacles.powerUps.length; i++){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
-            let collisionObstacle = this.subCollision(
+              let collisionObstacle = this.subCollision(
                 this.obstacles.obstacles[i].x,
                 this.obstacles.obstacles[i].y,
                 this.obstacles.obstacles[i].r/2, 
@@ -51,12 +57,13 @@ class CollisionListener {
                 this.cy,
                 this.rectW,
                 this.rectH
-                );
-            if (collisionObstacle) {
+              );
+              //console.log(this.obstacles.powerUps[i].x)
+              if (collisionObstacle) {
               this.obstacles.obstacles[i].collision = true;  
-            } if (collisionPowerUp){
+              } if (collisionPowerUp){
               this.obstacles.powerUps[i].collision = true; 
-            } else {
+              } else {
               this.obstacles.obstacles[i].collision = false;
               this.obstacles.powerUps[i].collision = false;
             } 
@@ -76,9 +83,9 @@ class CollisionListener {
                 this.cx, this.cy, radii.sonarRadius,
                 this.obstacles.powerUps[i].x, this.obstacles.powerUps[i].y, this.obstacles.powerUps[i].r 
                 ); 
-                if (detectObstacle) {
+                if(detectObstacle) {
                   this.obstacles.obstacles[i].detected = true; 
-              } if(detectPowerUp){
+                } if(detectPowerUp){
                   this.obstacles.powerUps[i].detected = true; 
               }
             }
