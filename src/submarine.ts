@@ -5,8 +5,10 @@ class Submarine {
   public subPositionY: number;
   public angle: number;
   public hullHealth: number;
+  public obstacle: ObstacleArray;
 
-  constructor(){
+  constructor(obstacle: ObstacleArray){
+    this.obstacle = obstacle;
     this.control = new Control();
     this.subPositionX = 0;
     this.subPositionY = 0;
@@ -19,8 +21,8 @@ class Submarine {
     this.subPositionX = this.control.getPositionX();
     this.subPositionY = this.control.getPositionY();
     this.angle = this.control.getAngle();
-    console.log(this.hullHealth)
-  }
+    this.array();
+    }
 
   public draw() {
     this.update()
@@ -33,6 +35,11 @@ class Submarine {
     pop(); 
   }
   
+  public array(){
+    for(let i = 0; i < this.obstacle.obstacles.length; i++){
+      console.log(this.obstacle.obstacles[i])
+    }
+  }
   
   /* private sub = p5.Image | p5.Element;
     

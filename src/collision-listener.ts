@@ -78,7 +78,7 @@ class CollisionListener {
               //console.log('iceberg hit')
               this.collision = true;  
               if(this.collision && this.obstacles.obstacles[i].id === 'iceberg'){
-                this.submarine.hullHealth = this.submarine.hullHealth - 25;
+                this.submarine.hullHealth = this.submarine.hullHealth - 0.25;
               }
             } else {
               this.collision = false;
