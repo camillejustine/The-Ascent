@@ -33,9 +33,7 @@ class Submarine {
     rotate(this.angle);
     imageMode(CENTER);
     image(subImage, 0, 0, 35, 150);
-    stroke('rgba(0,255,0,0.25)');
-        noFill()
-    rect(-12,-70, 25, 140)
+    
     pop(); 
   }
   
