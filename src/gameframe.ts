@@ -26,6 +26,12 @@ class GameFrame implements iGameState, ObstacleArray {
 
   public spawnRateMine: number;
   public spawnRateIceberg: number;
+  public spawnRateShip: number;
+
+  public spawnRateHullFix: number;
+  public spawnRateSIncrease: number;
+  public spawnRatePI: number;
+
 
   public gameState:
     | "running"
@@ -46,7 +52,10 @@ class GameFrame implements iGameState, ObstacleArray {
     this.powerUps = [];
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
-
+    this.spawnRateShip = 0.0005;
+    this.spawnRateHullFix = 0.0005;
+    this.spawnRateSIncrease = 0.0005;
+    this.spawnRatePI= 0.0005;
 
     this.obstacles = [];
     this.pauseMenu = new PauseMenu(this);
