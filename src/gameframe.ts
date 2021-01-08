@@ -128,37 +128,38 @@ class GameFrame implements iGameState, ObstacleArray {
       if (this.obstacles.length > 30) {
         this.obstacles.splice(0, 1);
       }
-  }
-
-
-  public populatePowerUp() {
-    if (random(1) < 0.1) {
-      this.powerUps.push(new SupplyBox());
     }
-    for (const powerUp of this.powerUps) {
-      powerUp.move();
-      powerUp.update();
-      if (this.powerUps.length > 30) {
-        this.powerUps.splice(0, 1);
+  }
+  
+    public populatePowerUp() {
+      if (random(1) < 0.1) {
+        this.powerUps.push(new SupplyBox());
+      }
+      for (const powerUp of this.powerUps) {
+        powerUp.move();
+        powerUp.update();
+        if (this.powerUps.length > 30) {
+          this.powerUps.splice(0, 1);
+        }
       }
     }
+
+    public setSpawnRate(){
+      if(this.depthCounter.depth <= 750){
+        this.spawnRateIceberg = 0.03;
+        this.spawnRateMine = 0.007;
+      } if (this.depthCounter.depth <= 500){
+        this.spawnRateIceberg = 0.05;
+        this.spawnRateMine = 0.009;
+      } if (this.depthCounter.depth <= 250){
+        this.spawnRateIceberg = 0.08;
+        this.spawnRateMine = 0.015;
+      } if (this.depthCounter.depth <= 100){
+        this.spawnRateIceberg = 0.1;
+        this.spawnRateMine = 0.02;
+      } if (this.depthCounter.depth <= 50){
+        this.spawnRateIceberg = 0;
+        this.spawnRateMine = 0;
+      } 
   }
-    
-  public setSpawnRate(){
-    if(this.depthCounter.depth <= 750){
-      this.spawnRateIceberg = 0.03;
-      this.spawnRateMine = 0.007;
-    } if (this.depthCounter.depth <= 500){
-      this.spawnRateIceberg = 0.05;
-      this.spawnRateMine = 0.009;
-    } if (this.depthCounter.depth <= 250){
-      this.spawnRateIceberg = 0.08;
-      this.spawnRateMine = 0.015;
-    } if (this.depthCounter.depth <= 100){
-      this.spawnRateIceberg = 0.1;
-      this.spawnRateMine = 0.02;
-    } if (this.depthCounter.depth <= 50){
-      this.spawnRateIceberg = 0;
-      this.spawnRateMine = 0;
-    } 
 }

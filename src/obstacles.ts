@@ -31,7 +31,6 @@ abstract class Obstacle {
 
 class Iceberg extends Obstacle {
   private iceberg: p5.Image | p5.Element;
-  private iceberg: any;
   public id: string;
 
 
