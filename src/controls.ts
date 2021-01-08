@@ -1,20 +1,16 @@
 class Control {
-
   private angle: number = 0;
 
   private rotateRight: number;
   private rotateLeft: number;
-  public right: any;
-  public left: any;
-  public forward: any;
-  public back: any;
-
-  
+  public right: number;
+  public left: number;
+  public forward: number;
+  public back: number;
 
   public subPositionX: number;
   public subPositionY: number;
 
-  
   /* private position: p5.Vector;
     private acceleration: p5.Vector; */
 
@@ -26,7 +22,7 @@ class Control {
     this.right = RIGHT_ARROW;
     this.forward = UP_ARROW;
     this.back = DOWN_ARROW;
-    
+
     this.rotateLeft = 90;
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
@@ -41,39 +37,53 @@ class Control {
     return this.subPositionY;
   }
 
-  public getAngle(){
+  public getAngle() {
     return this.angle;
   }
 
-  public update () {
+  public update() {
     this.keyPressed();
     this.move();
   }
 
   public keyPressed() {
     if (keyIsDown(this.rotateLeft)) {
-      this.angle -= 1;
-    } else if (keyIsDown(this.rotateRight)) {
-      this.angle += 1;
+      if (this.angle >= -40) {
+        this.angle -= 0.5;
+      }
+    } else {
+      if (this.angle <= 0) {
+        this.angle += 0.5;
+      }
+    }
+
+    if (keyIsDown(this.rotateRight)) {
+      if (this.angle <= 40) {
+        this.angle += 0.5;
+      }
+    } else {
+      if (this.angle >= 0) {
+        this.angle -= 0.5;
+      }
     }
 
     if (keyIsDown(LEFT_ARROW)) {
-      this.subPositionX -= 4;
+      this.subPositionX -= 0.7;
     }
     if (keyIsDown(RIGHT_ARROW)) {
-      this.subPositionX += 4;
+      this.subPositionX += 0.7;
     }
     if (keyIsDown(UP_ARROW)) {
-      this.subPositionY -= 4;
+      this.subPositionY -= 0.7;
     }
     if (keyIsDown(DOWN_ARROW)) {
-      this.subPositionY += 4;
+      this.subPositionY += 1.2;
     }
   }
 
   public move() {
     this.keyPressed();
-           /* this.acceleration.setMag(3);
+    /* this.acceleration.setMag(3);
           
             this.position.add(this.acceleration);
              */
@@ -85,7 +95,5 @@ class Control {
     }
   }
 
-  public draw() {
-    
-  }
+  public draw() {}
 }

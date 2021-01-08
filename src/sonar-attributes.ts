@@ -13,13 +13,13 @@ class SonarAttributes {
         this.positionX = 0; 
         this.positionY = 0; 
         this.sonarRadius = 0;
-        this.pulseLifespan = 80;
+        this.pulseLifespan = 100;
         this.pulses = [];
     }
     
     public update() {
         this.draw();
-        if(frameCount % 80 == 0){
+        if(frameCount % 85 == 0){
             this.pulses.push(new SonarAttributes());
         }
     }
@@ -28,10 +28,9 @@ class SonarAttributes {
         this.control.update();
         for(let i = 0; i < this.pulses.length; i++){
             this.pulses[i].positionX = this.control.getPositionX(); 
-            this.pulses[i].positionY = this.control.getPositionY(); 
+            this.pulses[i].positionY = this.control.getPositionY() - 60; 
             this.pulses[i].pulse();
             this.pulses[i].pulse();
-            console.log(this.pulses[i].positionX)
             if(this.pulses[i].pulseLifespan <= 0){
                 this.pulses.splice(i, 1);
             }

@@ -1,6 +1,5 @@
-
 interface iGameState {
-  gameState: 'running' | 'mainMenu' | 'gameLost' | 'gameWon' | 'pauseMenu';
+  gameState: "running" | "mainMenu" | "gameLost" | "gameWon" | "pauseMenu";
 }
 interface ObstacleArray {
   obstacles: Obstacle[];
@@ -19,31 +18,46 @@ class GameFrame implements iGameState, ObstacleArray {
   
    
      */
+  public powerUps: PowerUp[];
   private submarine: Submarine;
   private controls: Control;
   private headsUpDisplay: HeadsUpDisplay;
   public obstacles: Obstacle[];
 
-  public gameState: 'running' | 'mainMenu' | 'gameLost' | 'gameWon' | 'pauseMenu';
-  
+  public spawnRateMine: number;
+  public spawnRateIceberg: number;
 
+  public gameState:
+    | "running"
+    | "mainMenu"
+    | "gameLost"
+    | "gameWon"
+    | "pauseMenu";
 
   public sonarAttributes: SonarAttributes;
 
   //private setDepth: number;
 
-  
   public collisionListener: CollisionListener;
+  public pauseMenu: PauseMenu;
 
   public constructor() {
+
+    this.powerUps = [];
+    this.spawnRateMine = 0.005;
+    this.spawnRateIceberg = 0.02;
+
+
+    this.obstacles = [];
+    this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
     this.mainMenu = new MainMenu(this);
     this.controls = new Control();
-    this.gameState = 'mainMenu';
+    this.gameState = "mainMenu";
     this.background = new Background();
     this.depthCounter = new DepthCounter();
-    this.submarine = new Submarine();
+    this.submarine = new Submarine(this);
     this.headsUpDisplay = new HeadsUpDisplay();
     this.obstacles = [];
     this.gameWon = new GameWon(this.restartGame);
@@ -55,66 +69,106 @@ class GameFrame implements iGameState, ObstacleArray {
     console.log('restart');
   }
 
+
   public update() {
     this.mainMenu.update();
-    if (this.gameState === 'running') {
+    if (this.gameState === "running") {
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
+      document.getElementById("div")!.style.display = "none";
 
       this.background.update();
 
       noCursor();
 
-      //this.sonarAttributes.update();
       this.controls.update();
-      this.populate();
+      this.populateObstacle();
+      this.populatePowerUp();
       this.collisionListener.update();
-
-
-      
       this.headsUpDisplay.update();
+      this.pauseMenu.keyPressed();
+      this.submarine.update()
+      console.log(this.submarine.hullHealth)
+    }
 
-    } 
-
-    if (this.gameState === 'pauseMenu') {
-      
-
+    if (this.gameState === "pauseMenu") {
+      document.getElementById("div")!.style.display = "flex";
+      this.pauseMenu.unpause();
     }
   }
 
   public draw() {
- 
     noCursor();
-    if (this.gameState === 'running') {
-
-      
+    if (this.gameState === "running") {
       document.getElementById("main-menu")!.style.display = "none";
-      
+
       this.background.draw();
-      
+
       noCursor();
 
       this.submarine.draw();
-      
-      /* for (const obstacle of this.obstacles) {
-         //obstacle.draw();
-      } */
-      
+
+      for (const obstacle of this.obstacles) {
+        obstacle.draw();
+      }
+
+      for (const powerUp of this.powerUps) {
+        powerUp.draw();
+      }
+
       this.depthCounter.draw();
     }
   }
 
-  public populate() {
-    if (random(1) < 0.01) {
+
+  public populateObstacle() {
+    if (random(1) < this.spawnRateIceberg) {
       this.obstacles.push(new Iceberg());
+    }
+    if (random(1) < this.spawnRateMine) {
       this.obstacles.push(new Mine());
+    }
+    if (random(1) < 0.0005) {
+      this.obstacles.push(new SunkenShip());
     }
     for (const obstacle of this.obstacles) {
       obstacle.move();
       obstacle.update();
       if (this.obstacles.length > 30) {
-        this.obstacles.splice(obstacles, 1);
+
+        this.obstacles.splice(0, 1);
       }
-    } 
+    }
+  }
+    public populatePowerUp() {
+      if (random(1) < 0.1) {
+        this.powerUps.push(new SupplyBox());
+      }
+      for (const powerUp of this.powerUps) {
+        powerUp.move();
+        powerUp.update();
+        if (this.powerUps.length > 30) {
+          this.powerUps.splice(0, 1);
+        }
+      }
+    }
+
+    public setSpawnRate(){
+      if(this.depthCounter.depth <= 750){
+        this.spawnRateIceberg = 0.03;
+        this.spawnRateMine = 0.007;
+      } if (this.depthCounter.depth <= 500){
+        this.spawnRateIceberg = 0.05;
+        this.spawnRateMine = 0.009;
+      } if (this.depthCounter.depth <= 250){
+        this.spawnRateIceberg = 0.08;
+        this.spawnRateMine = 0.015;
+      } if (this.depthCounter.depth <= 100){
+        this.spawnRateIceberg = 0.1;
+        this.spawnRateMine = 0.02;
+      } if (this.depthCounter.depth <= 50){
+        this.spawnRateIceberg = 0;
+        this.spawnRateMine = 0;
+      } 
   }
 }

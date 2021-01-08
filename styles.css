@@ -43,7 +43,7 @@ button:focus {
 }
 
 .menu-text-frame {
-  width: 40%;
+  width: 50%;
   background: linear-gradient(
     186.1deg,
     rgba(110, 198, 65, 0.2) 13.63%,
@@ -52,50 +52,65 @@ button:focus {
   border: 10px solid;
   border-image: linear-gradient(
     180deg,
-    rgba(110, 198, 65, 0.2) 13.63%,
-    rgba(110, 198, 65, 0) 95.41%
+    rgba(137, 238, 86, 0.966) 22.63%,
+    rgba(32, 85, 6, 0.767) 95.41%
   );
   border-image-slice: 80;
-
   margin-left: 2rem;
+  height: 50%;
 }
 
 .menu-text {
   color: #6ec641;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 1rem;
-  /* margin-top: 6rem; */
+  position: relative;
+  letter-spacing: 5%;
 }
 
 .button-container {
   position: relative;
   width: 20%;
+  top: 20%;
 }
 
-.start-game-bg {
+.about-link {
+  width: 78%;
   position: relative;
-  width: 100%;
+  right: 2rem;
 }
 
-.about-bg {
+.title {
+  font-size: 8rem;
+  color: #6ec641;
+  margin: 0;
+}
+
+#sonar-animation {
+  display: flex;
   position: relative;
-  width: 100%;
+  left: 5rem;
+  bottom: 2rem;
 }
 
 #about {
   position: absolute;
   top: 50%;
-  left: 58%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  width: 80%;
+  left: 37%;
 }
 
 #start-game {
   position: absolute;
   top: 50%;
-  left: 42%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  width: 80%;
+  left: -50%;
+  border: 0 none !important;
+  outline: 0 !important;
 }
 
 #main-menu {
@@ -105,6 +120,7 @@ button:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-image: url(./assets/images/menu-background.png);
   background-size: cover;
 }
