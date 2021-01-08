@@ -28,86 +28,88 @@ class CollisionListener {
         this.cy = this.controlXY.getPositionY();
         this.angle = this.controlXY.getAngle();
         this.setSubCollision();
-                for(let collisionPoint of this.scrArray){
-                  for (let i = 0; i < this.obstacles.obstacles.length; i++) {
-                    const distance = dist(
-                      collisionPoint.cx,
-                      collisionPoint.cy,
-                      this.obstacles.obstacles[i].x,
-                      this.obstacles.obstacles[i].y
-                    );
-                    if (distance < collisionPoint.cr) {
-                      //console.log('test')
-                      //this.collision = true;    
-                    } else if (distance > collisionPoint.cr){
-                      //this.collision = false;
-                    } 
-                }
-              } 
-                for(let radii of this.pulse.pulses){
-                  for(let i = 0; i < this.obstacles.obstacles.length; i++){
-                    /* fill(200, 50)
-                    circle(obstacle.x,obstacle.y,obstacle.r)
-                    ellipseMode(CENTER); */
-                    this.collision = this.hit(this.cx,this.cy,radii.sonarRadius, this.obstacles.obstacles[i].x,this.obstacles.obstacles[i].y,this.obstacles.obstacles[i].r/2); 
-                      if (this.collision) {
-                      this.obstacles.obstacles[i].detected = true;       
-                    } 
-                  }
-                  /* for (let i = 0; i < this.obstacles.obstacles.length; i++) {
-                    const distance = dist(
-                      this.cx,
-                      this.cy,
-                      this.obstacles.obstacles[i].x,
-                      this.obstacles.obstacles[i].y
-                    ); */
-                   
-              }
-             
+        this.submarineCollisions();
+        this.sonarDetection();     
+        }
+
+      public setSubCollision(){
+        this.scrArray = [ 
+          {   
+            "cx": this.cx ,
+            "cy": this.cy - 60,
+            "cr": this.scr
+          },
+          {   
+            "cx": this.cx ,
+            "cy": this.cy - 30,
+            "cr": this.scr
+          },
+          {  
+            "cx": this.cx,
+            "cy": this.cy,
+            "cr": this.scr
+          },
+          {   
+            "cx": this.cx ,
+            "cy": this.cy + 30,
+            "cr": this.scr
+          },
+          {   
+            "cx": this.cx,
+            "cy": this.cy + 60,
+            "cr": this.scr
           }
-          public setSubCollision(){
-            this.scrArray = [ 
-              {   
-                "cx": this.cx ,
-                "cy": this.cy - 60,
-                "cr": this.scr
-              },
-              {   
-                "cx": this.cx ,
-                "cy": this.cy - 30,
-                "cr": this.scr
-              },
-              {  
-                "cx": this.cx,
-                "cy": this.cy,
-                "cr": this.scr
-              },
-              {   
-                "cx": this.cx ,
-                "cy": this.cy + 30,
-                "cr": this.scr
-              },
-              {   
-                "cx": this.cx,
-                "cy": this.cy + 60,
-                "cr": this.scr
-              }
-            ];
+        ];
       }
-          public hit(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
-          // get distance between the circle's centers
-          // use the Pythagorean Theorem to compute the distance
-          let distX = cx - c2x;
-          let distY = cy - c2y;
-          let distance = sqrt( (distX*distX) + (distY*distY) );
-  
-          // if the distance is less than the sum of the circle's
-          // radii, the circles are touching!
-          if (distance <= cr+c2r) {
-              return true;
+
+      public submarineCollisions(){
+        for(let collisionPoint of this.scrArray){
+          for (let i = 0; i < this.obstacles.obstacles.length; i++) {
+            const distance = dist(
+              collisionPoint.cx,
+              collisionPoint.cy,
+              this.obstacles.obstacles[i].x,
+              this.obstacles.obstacles[i].y
+            );
+            if (distance < collisionPoint.cr) {
+              this.collision = true;    
+            } else if (distance > collisionPoint.cr){
+              this.collision = false;
+            } 
           }
-          return false;
+        } 
       }
+
+      public sonarDetection(){
+        for(let radii of this.pulse.pulses){
+          for(let i = 0; i < this.obstacles.obstacles.length; i++){
+            this.collision = this.hit(
+              this.cx,this.cy,radii.sonarRadius, 
+              this.obstacles.obstacles[i].x,
+              this.obstacles.obstacles[i].y,
+              this.obstacles.obstacles[i].r/2
+              ); 
+              if (this.collision) {
+              this.obstacles.obstacles[i].detected = true;       
+            } 
+          }
+        }
+      }
+
+      public hit(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
+        // get distance between the circle's centers
+        // use the Pythagorean Theorem to compute the distance
+        let distX = cx - c2x;
+        let distY = cy - c2y;
+        let distance = sqrt( (distX*distX) + (distY*distY) );
+
+        // if the distance is less than the sum of the circle's
+        // radii, the circles are touching!
+        if (distance <= cr+c2r) {
+            return true;
+        }
+        return false;
+    }
 }
 
     
