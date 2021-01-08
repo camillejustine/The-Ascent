@@ -30,41 +30,58 @@ class CollisionListener {
           this.submarineCollisions();
           this.sonarDetection(); 
         }
-
+        //make new array with both on it
       public submarineCollisions(){
+        for(let i = 0; i < this.obstacles.powerUps.length; i++){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
-            let collision = this.subCollision(
-              this.obstacles.obstacles[i].x,
-              this.obstacles.obstacles[i].y,
-              this.obstacles.obstacles[i].r/2, 
-              this.cx,
-              this.cy,
-              this.rectW,
-              this.rectH
+            let collisionObstacle = this.subCollision(
+                this.obstacles.obstacles[i].x,
+                this.obstacles.obstacles[i].y,
+                this.obstacles.obstacles[i].r/2, 
+                this.cx,
+                this.cy,
+                this.rectW,
+                this.rectH
               );
-
-            if (collision) {
+              let collisionPowerUp = this.subCollision(
+                this.obstacles.powerUps[i].x,
+                this.obstacles.powerUps[i].y,
+                this.obstacles.powerUps[i].r/2, 
+                this.cx,
+                this.cy,
+                this.rectW,
+                this.rectH
+                );
+            if (collisionObstacle) {
               this.obstacles.obstacles[i].collision = true;  
+            } if (collisionPowerUp){
+              this.obstacles.powerUps[i].collision = true; 
             } else {
               this.obstacles.obstacles[i].collision = false;
+              this.obstacles.powerUps[i].collision = false;
             } 
           }
+        }
       }
 
       public sonarDetection(){
         for(let radii of this.pulse.pulses){
-          for(let i = 0; i < this.obstacles.obstacles.length; i++){
-            this.collision = this.detect(
-              this.cx,
-              this.cy,
-              radii.sonarRadius, 
-              this.obstacles.obstacles[i].x,
-              this.obstacles.obstacles[i].y,
-              this.obstacles.obstacles[i].r
-              ); 
-              if (this.collision) {
-                this.obstacles.obstacles[i].detected = true; 
-            } 
+          for(let i = 0; i < this.obstacles.powerUps.length; i++){
+            for(let i = 0; i < this.obstacles.obstacles.length; i++){
+              let detectObstacle = this.detect(
+                this.cx, this.cy, radii.sonarRadius, 
+                this.obstacles.obstacles[i].x, this.obstacles.obstacles[i].y, this.obstacles.obstacles[i].r
+                );
+              let detectPowerUp = this.detect(
+                this.cx, this.cy, radii.sonarRadius,
+                this.obstacles.powerUps[i].x, this.obstacles.powerUps[i].y, this.obstacles.powerUps[i].r 
+                ); 
+                if (detectObstacle) {
+                  this.obstacles.obstacles[i].detected = true; 
+              } if(detectPowerUp){
+                  this.obstacles.powerUps[i].detected = true; 
+              }
+            }
           }
         }
       }

@@ -3,26 +3,24 @@ interface iGameState {
 }
 interface ObstacleArray {
   obstacles: Obstacle[];
+  powerUps: PowerUp[];
 }
 class GameFrame implements iGameState, ObstacleArray {
   private mainMenu: MainMenu;
   private background: Background;
   private depthCounter: DepthCounter;
   //private pauseMenu: PauseMenu;
-
-  /* private gameWon: GameWon;
+  /* 
+   private gameWon: GameWon;
    private gameLost: GameLost;
-
-   private powerUps: PowerUp[];
-   
-  
-   
-     */
+   private powerUps: PowerUp[]; 
+  */
   public powerUps: PowerUp[];
+  public obstacles: Obstacle[];
   private submarine: Submarine;
   private controls: Control;
   private headsUpDisplay: HeadsUpDisplay;
-  public obstacles: Obstacle[];
+  
 
   public spawnRateMine: number;
   public spawnRateIceberg: number;
@@ -143,7 +141,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
     public populatePowerUp() {
-      if (random(1) < 0.1) {
+      if (random(1) < 0.10) {
         this.powerUps.push(new SupplyBox());
       }
       for (const powerUp of this.powerUps) {
