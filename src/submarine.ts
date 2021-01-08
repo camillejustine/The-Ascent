@@ -5,6 +5,8 @@ class Submarine {
   public angle: number;
   public hullHealth: number;
   public obstacle: ObstacleArray;
+  public allObjectsArray: Array<any>;
+  private deletedArray: Array<any>;
   
   constructor(obstacle: ObstacleArray){
     this.obstacle = obstacle;
@@ -13,11 +15,15 @@ class Submarine {
     this.subPositionY = 0;
     this.angle = 0;
     this.hullHealth = 100;
+    this.allObjectsArray = [];
+    this.deletedArray = [];
   }
 
   public update() {
     this.angle = this.control.getAngle();
     this.collisionHullDamage();
+    this.pickUpHullFix();
+    this.allObjectsArray = this.obstacle.obstacles.concat(this.obstacle.powerUps)
     //console.log(this.hullHealth)
     }
 
@@ -36,24 +42,24 @@ class Submarine {
   }
   
   public collisionHullDamage(){
-      for(let i = 0; i < this.obstacle.obstacles.length; i++){
-        if(this.obstacle.obstacles[i].collision && this.obstacle.obstacles[i].id === 'iceberg'){
+    for(let i = 0; i < this.allObjectsArray.length; i++){
+        if(this.allObjectsArray[i].collision && this.allObjectsArray[i].id === 'iceberg'){
           this.hullHealth = this.hullHealth - 0.25;
-        }if(this.obstacle.obstacles[i].collision && this.obstacle.obstacles[i].id === 'mine'){
+        }if(this.allObjectsArray[i].collision && this.allObjectsArray[i].id === 'mine'){
           this.hullHealth = 0;
-        }
-      }
+      } 
     } 
   }
-  
-  /* private sub = p5.Image | p5.Element;
-    
-    
-    constructor(subImage: p5.Image | p5.Element){
-      this.sub = subImage;
+
+  public pickUpHullFix(){
+    for(let i = 0; i < this.allObjectsArray.length; i++){
+      if(this.allObjectsArray[i].collision && this.allObjectsArray[i].id === 'supplyBox'){
+        this.hullHealth += 0.25;
+        if(this.hullHealth >= 100){
+          this.hullHealth = 100;
+        }
+        this.allObjectsArray.splice(i,1)
+      }
     }
-
-    public show(){
-        this.sub = image(subImage,-25, -125, 50, 250);
-    } */
-
+  }
+}

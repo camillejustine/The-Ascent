@@ -17,7 +17,7 @@ class GameFrame implements iGameState, ObstacleArray {
   private mainMenu: MainMenu;
   private background: Background;
   private depthCounter: DepthCounter;
-  private gameWon: GameWon;
+  public gameWon: GameWon;
   /* private gameLost: GameLost;*/
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
@@ -43,9 +43,9 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
-    this.spawnRateHullFix = 0.0005;
-    this.spawnRateSIncrease = 0.0005;
-    this.spawnRatePI= 0.0005;
+    this.spawnRateHullFix = 0.0001;
+    this.spawnRateSIncrease = 0.0001;
+    this.spawnRatePI= 0.0001;
 
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
@@ -88,7 +88,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
       this.submarine.update()
-      //console.log(this.submarine.hullHealth)
+      console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
@@ -128,7 +128,7 @@ class GameFrame implements iGameState, ObstacleArray {
     if (random(1) < this.spawnRateMine) {
       this.obstacles.push(new Mine());
     }
-    if (random(1) < 0.0005) {
+    if (random(1) < 0.00005) {
       this.obstacles.push(new SunkenShip());
     }
     for (const obstacle of this.obstacles) {
@@ -144,6 +144,12 @@ class GameFrame implements iGameState, ObstacleArray {
     public populatePowerUp() {
       if (random(1) < this.spawnRateHullFix) {
         this.powerUps.push(new SupplyBox());
+      } 
+      if (random(1) < this.spawnRateSIncrease) {
+        this.powerUps.push(new RangePowerUp());
+      } 
+      if (random(1) < this.spawnRatePI) {
+        this.powerUps.push(new PulsePowerUp());
       }
       for (const powerUp of this.powerUps) {
         powerUp.move();
@@ -155,12 +161,22 @@ class GameFrame implements iGameState, ObstacleArray {
     }
 
     public setSpawnRate(){
+      /* for(let ship of this.powerUps){
+        if(ship.detected){
+          this.spawnRateHullFix = 0.05
+          this.spawnRatePI = 0.05
+          this.spawnRateSIncrease = 0.05
+        } 
+      } */
       if(this.depthCounter.depth <= 750){
         this.spawnRateIceberg = 0.03;
         this.spawnRateMine = 0.007;
       } if (this.depthCounter.depth <= 500){
         this.spawnRateIceberg = 0.05;
         this.spawnRateMine = 0.009;
+        this.spawnRatePI = 0.005;
+        this.spawnRateSIncrease = 0.005;
+        this.spawnRateHullFix = 0.005;
       } if (this.depthCounter.depth <= 250){
         this.spawnRateIceberg = 0.08;
         this.spawnRateMine = 0.015;
