@@ -23,6 +23,9 @@ class GameFrame implements iGameState, ObstacleArray {
   private headsUpDisplay: HeadsUpDisplay;
   public obstacles: Obstacle[];
 
+  public spawnRateMine: number;
+  public spawnRateIceberg: number;
+
   public gameState:
     | "running"
     | "mainMenu"
@@ -38,6 +41,9 @@ class GameFrame implements iGameState, ObstacleArray {
   public pauseMenu: PauseMenu;
 
   public constructor() {
+    this.spawnRateMine = 0.005;
+    this.spawnRateIceberg = 0.02;
+
     this.obstacles = [];
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
@@ -98,19 +104,24 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public populate() {
-    console.log(this.depthCounter.depth)
-    if (random(1) < 0.02) {
-      this.obstacles.push(new Iceberg());
+    if(this.depthCounter.depth <= 2900){
+      this.spawnRateIceberg = 0.04;
+      this.spawnRateMine = 0.01;
     }
-    if (random(1) < 0.0005) {
-      this.obstacles.push(new Mine());
-    }
-    for (const obstacle of this.obstacles) {
-      obstacle.move();
-      obstacle.update();
-      if (this.obstacles.length > 30) {
-        this.obstacles.splice(0, 1);
+    console.log(this.spawnRateMine)
+      if (random(1) < this.spawnRateIceberg) {
+        this.obstacles.push(new Iceberg());
       }
-    }
+      if (random(1) < this.spawnRateMine) {
+        this.obstacles.push(new Mine());
+      }
+      for (const obstacle of this.obstacles) {
+        obstacle.move();
+        obstacle.update();
+        if (this.obstacles.length > 30) {
+          this.obstacles.splice(0, 1);
+        }
+      }
+    
   }
 }
