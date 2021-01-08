@@ -6,31 +6,6 @@ interface ObstacleArray {
   powerUps: PowerUp[];
 }
 class GameFrame implements iGameState, ObstacleArray {
-  private mainMenu: MainMenu;
-  private background: Background;
-  private depthCounter: DepthCounter;
-  //private pauseMenu: PauseMenu;
-  /* 
-   private gameWon: GameWon;
-   private gameLost: GameLost;
-   private powerUps: PowerUp[]; 
-  */
-  public powerUps: PowerUp[];
-  public obstacles: Obstacle[];
-  private submarine: Submarine;
-  private controls: Control;
-  private headsUpDisplay: HeadsUpDisplay;
-  
-
-  public spawnRateMine: number;
-  public spawnRateIceberg: number;
-  public spawnRateShip: number;
-
-  public spawnRateHullFix: number;
-  public spawnRateSIncrease: number;
-  public spawnRatePI: number;
-
-
   public gameState:
     | "running"
     | "mainMenu"
@@ -38,10 +13,23 @@ class GameFrame implements iGameState, ObstacleArray {
     | "gameWon"
     | "pauseMenu";
 
+  private mainMenu: MainMenu;
+  private background: Background;
+  private depthCounter: DepthCounter;
+  private gameWon: GameWon;
+  /* private gameLost: GameLost;*/
+  public powerUps: PowerUp[];
+  public obstacles: Obstacle[];
+  private submarine: Submarine;
+  private controls: Control;
+  private headsUpDisplay: HeadsUpDisplay;
+  public spawnRateMine: number;
+  public spawnRateIceberg: number;
+  public spawnRateShip: number;
+  public spawnRateHullFix: number;
+  public spawnRateSIncrease: number;
+  public spawnRatePI: number;
   public sonarAttributes: SonarAttributes;
-
-  //private setDepth: number;
-
   public collisionListener: CollisionListener;
   public pauseMenu: PauseMenu;
 
@@ -68,7 +56,16 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.sonarAttributes = new SonarAttributes();
     this.headsUpDisplay = new HeadsUpDisplay();
+    this.obstacles = [];
+    this.gameWon = new GameWon(this.restartGame);
   }
+  
+  private restartGame() {
+    // behöver resetta allting och skapa nya
+    // this.gameController = new GameController();
+    console.log('restart');
+  }
+
 
   public update() {
     this.mainMenu.update();
@@ -134,6 +131,7 @@ class GameFrame implements iGameState, ObstacleArray {
     for (const obstacle of this.obstacles) {
       obstacle.move();
       obstacle.update();
+
       if (this.obstacles.length > 50) {
         this.obstacles.splice(0, 1);
       }
