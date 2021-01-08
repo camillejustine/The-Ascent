@@ -42,9 +42,9 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
-    this.spawnRateHullFix = 0.0005;
-    this.spawnRateSIncrease = 0.0005;
-    this.spawnRatePI= 0.0005;
+    this.spawnRateHullFix = 0;
+    this.spawnRateSIncrease = 0;
+    this.spawnRatePI= 0;
 
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
@@ -139,8 +139,14 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
     public populatePowerUp() {
-      if (random(1) < this.spawnRateIceberg) {
+      if (random(1) < this.spawnRateHullFix) {
         this.powerUps.push(new SupplyBox());
+      } 
+      if (random(1) < this.spawnRateSIncrease) {
+        this.powerUps.push(new RangePowerUp());
+      } 
+      if (random(1) < this.spawnRatePI) {
+        this.powerUps.push(new PulsePowerUp());
       }
       for (const powerUp of this.powerUps) {
         powerUp.move();
@@ -152,12 +158,18 @@ class GameFrame implements iGameState, ObstacleArray {
     }
 
     public setSpawnRate(){
+      for(let ship of this.powerUps){
+        console.log(ship.detected)
+      }
       if(this.depthCounter.depth <= 750){
         this.spawnRateIceberg = 0.03;
         this.spawnRateMine = 0.007;
       } if (this.depthCounter.depth <= 500){
         this.spawnRateIceberg = 0.05;
         this.spawnRateMine = 0.009;
+        this.spawnRatePI = 0.005;
+        this.spawnRateSIncrease = 0.005;
+        this.spawnRateHullFix = 0.005;
       } if (this.depthCounter.depth <= 250){
         this.spawnRateIceberg = 0.08;
         this.spawnRateMine = 0.015;

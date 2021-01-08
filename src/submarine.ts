@@ -58,7 +58,7 @@ class Submarine {
         if(this.hullHealth >= 100){
           this.hullHealth = 100;
         }
-        this.deletedArray.push(this.allObjectsArray[i])
+        this.allObjectsArray.splice(i,1)
       }
     }
   }

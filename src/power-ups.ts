@@ -27,7 +27,7 @@ class SupplyBox extends PowerUp {
 
   constructor() {
     super();
-    this.supplyBox = powerUpsImage;
+    this.supplyBox = supplyBox;
     this.id = 'supplyBox';
   }
 
@@ -40,6 +40,54 @@ class SupplyBox extends PowerUp {
   public draw() {
     if (this.detected) {
       image(this.supplyBox, this.x, this.y, this.rx, this.ry);
+      imageMode(CENTER);
+    }
+  }
+}
+
+class PulsePowerUp extends PowerUp {
+  private pulsePowerUp: p5.Image | p5.Element;
+  public id: string;
+
+  constructor() {
+    super();
+    this.pulsePowerUp = pulsePowerUp;
+    this.id = 'pulse';
+  }
+
+  public update() {}
+
+  public move() {
+    this.y += 2;
+  }
+
+  public draw() {
+    if (this.detected) {
+      image(this.pulsePowerUp, this.x, this.y, this.rx, this.ry);
+      imageMode(CENTER);
+    }
+  }
+}
+
+class RangePowerUp extends PowerUp {
+  private rangePowerUp: p5.Image | p5.Element;
+  public id: string;
+
+  constructor() {
+    super();
+    this.rangePowerUp = rangePowerUp;
+    this.id = 'range';
+  }
+
+  public update() {}
+
+  public move() {
+    this.y += 2;
+  }
+
+  public draw() {
+    if (this.detected) {
+      image(this.rangePowerUp, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     }
   }
