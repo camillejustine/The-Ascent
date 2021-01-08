@@ -2,9 +2,10 @@
 let gameFrame: GameFrame;
 //let mainMenu: MainMenu;
 let subImage: p5.Image | p5.Element;
-let bg: p5.Image | p5.Element;
 let icebergImage: p5.Image | p5.Element;
-let mine: p5.Image | p5.Element;
+let mineImage: p5.Image | p5.Element;
+let sunkenShipImage: p5.Image | p5.Element;
+let powerUpsImage: p5.Image | p5.Element;
 
 /**
  * Built in preload function in P5
@@ -13,9 +14,10 @@ let mine: p5.Image | p5.Element;
  */
 function preload() {
   subImage = loadImage("./assets/images/sub.png");
-  bg = loadImage("./assets/images/Background.png");
   icebergImage = loadImage("./assets/images/iceberg4.png");
-  mine = loadImage("./assets/images/mine.png");
+  mineImage = loadImage("./assets/images/mine.png");
+  sunkenShipImage = loadImage("assets/images/sunken-ship.png");
+  powerUpsImage = loadImage("./assets/images/power-up.png");
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 
@@ -40,7 +42,7 @@ function setup() {
  */
 function draw() {
   //mainMenu.draw();
-  
+
   gameFrame.draw();
   gameFrame.update();
 }
