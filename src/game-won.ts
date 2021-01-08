@@ -1,28 +1,33 @@
 class GameWon {
     private div: p5.Element;
+    private restartGameCallback: Function;
 
-    public constructor() {
+    public constructor(restartGameCallback: Function) {
+        this.restartGameCallback = restartGameCallback;
         this.div = createElement('main-menu');
 
         const button1 = createElement('button');
         button1.addClass('button');
-        button1.html('Click here');
-        button1.mousePressed(this.restartGame);
+        button1.html('Restart');
+        button1.mousePressed(() => this.restartGame);
 
         const button2 = createElement('button');
         button2.addClass('button');
-        button2.html('Click here');
-        button2.mousePressed(this.backToMain);
+        button2.html('Back To Main');
+        button2.mousePressed(() => this.backToMain());
 
-
+        this.div.child(button1);
+        this.div.child(button2);
     }
-
     
-    private restartGame() {}
+    private restartGame() {
+        console.log('restart');
+        this.div.hide();
+        this.restartGameCallback();
+    }
     
-    private backToMain() {}
-    
-    //public update() {}
-    //public draw() {}
-
+    private backToMain() {
+        console.log('backtomain');
+        // this.backToMainCallback();
+    }
 }
