@@ -1,4 +1,4 @@
-#game-won-div {
+.game-won-div {
     display: none;
     align-items: center;
     justify-content: center;
@@ -7,6 +7,5 @@
     width: 50rem;
     height: 50rem;
     background-color: green;
-
 }
 
