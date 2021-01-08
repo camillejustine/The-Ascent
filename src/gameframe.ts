@@ -18,6 +18,7 @@ class GameFrame implements iGameState, ObstacleArray {
   
    
      */
+  public powerUps: PowerUp[];
   private submarine: Submarine;
   private controls: Control;
   private headsUpDisplay: HeadsUpDisplay;
@@ -38,6 +39,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public pauseMenu: PauseMenu;
 
   public constructor() {
+    this.powerUps = [];
     this.obstacles = [];
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
@@ -49,7 +51,6 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
     this.headsUpDisplay = new HeadsUpDisplay();
-    
   }
 
   public update() {
@@ -57,21 +58,22 @@ class GameFrame implements iGameState, ObstacleArray {
     if (this.gameState === "running") {
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
-      document.getElementById('div')!.style.display = 'none';
+      document.getElementById("div")!.style.display = "none";
 
       this.background.update();
 
       noCursor();
 
       this.controls.update();
-      this.populate();
+      this.populateObstacle();
+      this.populatePowerUp();
       this.collisionListener.update();
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
     }
 
-    if(this.gameState === 'pauseMenu'){
-      document.getElementById('div')!.style.display = 'flex';
+    if (this.gameState === "pauseMenu") {
+      document.getElementById("div")!.style.display = "flex";
       this.pauseMenu.unpause();
     }
   }
@@ -88,25 +90,45 @@ class GameFrame implements iGameState, ObstacleArray {
       this.submarine.draw();
 
       for (const obstacle of this.obstacles) {
-         obstacle.draw();
+        obstacle.draw();
       }
-      
+
+      for (const powerUp of this.powerUps) {
+        powerUp.draw();
+      }
+
       this.depthCounter.draw();
     }
   }
 
-  public populate() {
+  public populateObstacle() {
     if (random(1) < 0.02) {
       this.obstacles.push(new Iceberg());
     }
     if (random(1) < 0.0005) {
       this.obstacles.push(new Mine());
     }
+    if (random(1) < 0.0005) {
+      this.obstacles.push(new SunkenShip());
+    }
     for (const obstacle of this.obstacles) {
       obstacle.move();
       obstacle.update();
       if (this.obstacles.length > 30) {
         this.obstacles.splice(0, 1);
+      }
+    }
+  }
+
+  public populatePowerUp() {
+    if (random(1) < 0.1) {
+      this.powerUps.push(new SupplyBox());
+    }
+    for (const powerUp of this.powerUps) {
+      powerUp.move();
+      powerUp.update();
+      if (this.powerUps.length > 30) {
+        this.powerUps.splice(0, 1);
       }
     }
   }
