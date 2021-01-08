@@ -84,6 +84,9 @@ button:focus {
   font-size: 8rem;
   color: #6ec641;
   margin: 0;
+  color: #6ec641;
+  text-shadow: -5px 5px 0px #519230, -10px 10px 0px #3f7225,
+    -15px 15px 0px #2c501a;
 }
 
 #sonar-animation {
