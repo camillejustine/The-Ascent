@@ -23,6 +23,9 @@ class GameFrame implements iGameState, ObstacleArray {
   private headsUpDisplay: HeadsUpDisplay;
   public obstacles: Obstacle[];
 
+  public spawnRateMine: number;
+  public spawnRateIceberg: number;
+
   public gameState:
     | "running"
     | "mainMenu"
@@ -38,6 +41,9 @@ class GameFrame implements iGameState, ObstacleArray {
   public pauseMenu: PauseMenu;
 
   public constructor() {
+    this.spawnRateMine = 0.005;
+    this.spawnRateIceberg = 0.02;
+
     this.obstacles = [];
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
@@ -98,18 +104,37 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public populate() {
-    if (random(1) < 0.02) {
-      this.obstacles.push(new Iceberg());
-    }
-    if (random(1) < 0.0005) {
-      this.obstacles.push(new Mine());
-    }
-    for (const obstacle of this.obstacles) {
-      obstacle.move();
-      obstacle.update();
-      if (this.obstacles.length > 30) {
-        this.obstacles.splice(0, 1);
+    this.setSpawnRate();
+      if (random(1) < this.spawnRateIceberg) {
+        this.obstacles.push(new Iceberg());
       }
-    }
+      if (random(1) < this.spawnRateMine) {
+        this.obstacles.push(new Mine());
+      }
+      for (const obstacle of this.obstacles) {
+        obstacle.move();
+        obstacle.update();
+        if (this.obstacles.length > 50) {
+          this.obstacles.splice(0, 1);
+        }
+      }
   }
+
+  public setSpawnRate(){
+    if(this.depthCounter.depth <= 750){
+      this.spawnRateIceberg = 0.03;
+      this.spawnRateMine = 0.007;
+    } if (this.depthCounter.depth <= 500){
+      this.spawnRateIceberg = 0.05;
+      this.spawnRateMine = 0.009;
+    } if (this.depthCounter.depth <= 250){
+      this.spawnRateIceberg = 0.08;
+      this.spawnRateMine = 0.015;
+    } if (this.depthCounter.depth <= 100){
+      this.spawnRateIceberg = 0.1;
+      this.spawnRateMine = 0.02;
+    } if (this.depthCounter.depth <= 50){
+      this.spawnRateIceberg = 0;
+      this.spawnRateMine = 0;
+    } 
 }
