@@ -12,7 +12,7 @@ abstract class PowerUp {
   constructor() {
     this.rx = random(30, 80);
     this.ry = random(30, 80);
-    this.r = random(50, 100);
+    this.r = 100;
     this.y = -100;
     this.x = random(10, 900);
     this.detected = false;

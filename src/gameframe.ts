@@ -48,8 +48,11 @@ class GameFrame implements iGameState, ObstacleArray {
   public pauseMenu: PauseMenu;
 
   public constructor() {
-
     this.powerUps = [];
+    this.obstacles = [];
+
+    this.gameState = "mainMenu";
+
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
@@ -57,16 +60,15 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateSIncrease = 0.0005;
     this.spawnRatePI= 0.0005;
 
-    this.obstacles = [];
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
-    this.sonarAttributes = new SonarAttributes();
+    this.submarine = new Submarine(this);
     this.mainMenu = new MainMenu(this);
+    
     this.controls = new Control();
-    this.gameState = "mainMenu";
     this.background = new Background();
     this.depthCounter = new DepthCounter();
-    this.submarine = new Submarine(this);
+    this.sonarAttributes = new SonarAttributes();
     this.headsUpDisplay = new HeadsUpDisplay();
   }
 
