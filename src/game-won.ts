@@ -1,4 +1,4 @@
-class Gamewon {
+class GameWon {
     private div: p5.Element;
 
     public constructor() {
@@ -17,14 +17,12 @@ class Gamewon {
 
     }
 
+    
+    private restartGame() {}
+    
+    private backToMain() {}
+    
     //public update() {}
-    
-    private restartGame() {
-        this.div.show()
-    }
-    
-    private backToMain() {
-        
-    }
+    //public draw() {}
 
 }
