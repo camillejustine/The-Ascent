@@ -98,6 +98,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public populate() {
+    console.log(this.depthCounter.depth)
     if (random(1) < 0.02) {
       this.obstacles.push(new Iceberg());
     }
