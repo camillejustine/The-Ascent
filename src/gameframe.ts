@@ -86,7 +86,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
       this.submarine.update()
-      console.log(this.submarine.hullHealth)
+      //console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
@@ -115,7 +115,11 @@ class GameFrame implements iGameState, ObstacleArray {
       }
 
       for(let i = 0; i < this.powerUps.length; i++){
-        if(this.powerUps[i].collision && this.powerUps[i].id === 'supplyBox'){
+        if(this.powerUps[i].collision && 
+           this.powerUps[i].id === 'supplyBox' ||
+           this.powerUps[i].id === 'range' ||
+           this.powerUps[i].id === 'pulse' 
+           ){
           this.powerUps.splice(i,1)
         }
       }
@@ -149,13 +153,14 @@ class GameFrame implements iGameState, ObstacleArray {
     public populatePowerUp() {
       //combo obstacle and powerup arrays.
       //send array in interface?
-      if (random(1) < this.spawnRateHullFix) {
+      console.log(this.powerUps)
+      /* if (random(1) < .1) {
         this.powerUps.push(new SupplyBox());
-      } 
-      if (random(1) < this.spawnRateSIncrease) {
+      }  */
+      if (random(1) < .1) {
         this.powerUps.push(new RangePowerUp());
       } 
-      if (random(1) < this.spawnRatePI) {
+      if (random(1) < .1) {
         this.powerUps.push(new PulsePowerUp());
       }
       for (const powerUp of this.powerUps) {
@@ -175,7 +180,7 @@ class GameFrame implements iGameState, ObstacleArray {
           this.spawnRateSIncrease = 0.05
         } 
       } */
-      if(this.depthCounter.depth <= 750){
+      /* if(this.depthCounter.depth <= 750){
         this.spawnRateIceberg = 0.03;
         this.spawnRateMine = 0.007;
       } if (this.depthCounter.depth <= 500){
@@ -193,6 +198,6 @@ class GameFrame implements iGameState, ObstacleArray {
       } if (this.depthCounter.depth <= 50){
         this.spawnRateIceberg = 0;
         this.spawnRateMine = 0;
-      } 
+      }  */
   }
 }
