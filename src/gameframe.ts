@@ -158,9 +158,11 @@ class GameFrame implements iGameState, ObstacleArray {
     }
 
     public setSpawnRate(){
-      for(let ship of this.powerUps){
-        console.log(ship.detected)
-      }
+     /*  for(let ship of this.powerUps){
+        if(ship.detected){
+          setInterval(function(){console.log('test')}, 10000)
+        }
+      } */
       if(this.depthCounter.depth <= 750){
         this.spawnRateIceberg = 0.03;
         this.spawnRateMine = 0.007;
