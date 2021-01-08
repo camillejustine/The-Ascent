@@ -114,6 +114,12 @@ class GameFrame implements iGameState, ObstacleArray {
         powerUp.draw();
       }
 
+      for(let i = 0; i < this.powerUps.length; i++){
+        if(this.powerUps[i].collision && this.powerUps[i].id === 'supplyBox'){
+          this.powerUps.splice(i,1)
+        }
+      }
+
       this.depthCounter.draw();
     }
   }
@@ -143,7 +149,7 @@ class GameFrame implements iGameState, ObstacleArray {
     public populatePowerUp() {
       //combo obstacle and powerup arrays.
       //send array in interface?
-      if (random(1) < this.spawnRateHullFix) {
+      if (random(1) < this.spawnRateMine) {
         this.powerUps.push(new SupplyBox());
       } 
       if (random(1) < this.spawnRateSIncrease) {
