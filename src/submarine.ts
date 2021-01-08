@@ -33,7 +33,6 @@ class Submarine {
     rotate(this.angle);
     imageMode(CENTER);
     image(subImage, 0, 0, 35, 150);
-    
     pop(); 
   }
   

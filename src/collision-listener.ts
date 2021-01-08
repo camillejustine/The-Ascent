@@ -42,6 +42,7 @@ class CollisionListener {
               this.rectW,
               this.rectH
               );
+
             if (collision) {
               this.obstacles.obstacles[i].collision = true;  
             } else {
@@ -69,14 +70,10 @@ class CollisionListener {
       }
 
       public detect(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
-        // get distance between the circle's centers
-        // use the Pythagorean Theorem to compute the distance
         let distX = cx - c2x;
         let distY = cy - c2y;
         let distance = sqrt( (distX*distX) + (distY*distY) );
 
-        // if the distance is less than the sum of the circle's
-        // radii, the circles are touching!
         if (distance <= cr+c2r) {
             return true;
         }
@@ -86,18 +83,16 @@ class CollisionListener {
     public subCollision(cx: number, cy: number, radius: number, rx: number, ry: number, rw: number, rh: number) {
       let testX = cx;
       let testY = cy;
-      // which edge is closest?
-      if (cx < rx)         testX = rx;      // test left edge
-      else if (cx > rx+rw) testX = rx+rw;   // right edge
-      if (cy < ry)         testY = ry;      // top edge
-      else if (cy > ry+rh) testY = ry+rh;   // bottom edge
+      
+      if (cx < rx)         testX = rx;      
+      else if (cx > rx+rw) testX = rx+rw;   
+      if (cy < ry)         testY = ry;      
+      else if (cy > ry+rh) testY = ry+rh;   
 
-      // get distance from closest edges
       let distX = cx-testX;
       let distY = cy-testY;
       let distance = sqrt( (distX*distX) + (distY*distY) );
 
-      // if the distance is less than the radius, collision!
       if (distance <= radius) {
         return true;
       }
