@@ -1,4 +1,4 @@
-class DepthCounter {
+                class DepthCounter {
   public timerValue: number;
 
   public constructor() {

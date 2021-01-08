@@ -8,12 +8,12 @@ class GameFrame implements iGameState, ObstacleArray {
   private mainMenu: MainMenu;
   private background: Background;
   private depthCounter: DepthCounter;
-  //private pauseMenu: PauseMenu;
+  private pauseMenu: PauseMenu;
 
-  /* private gameWon: GameWon;
-   private gameLost: GameLost;
+  private gameWon: GameWon;
+  private gameLost: GameLost;
 
-   private powerUps: PowerUp[];
+  /* private powerUps: PowerUp[];
    
   
    
@@ -35,7 +35,7 @@ class GameFrame implements iGameState, ObstacleArray {
   //private setDepth: number;
 
   public collisionListener: CollisionListener;
-  public pauseMenu: PauseMenu;
+  // public pauseMenu: PauseMenu;
 
   public constructor() {
     this.obstacles = [];

@@ -1,29 +1,33 @@
-class Gamelost {
+class GameWon {
     private div: p5.Element;
-    
-    public constructor() {
-        this.div = createElement('main-menu');
-        // this.div.hide();
+    private restartGameCallback: Function;
 
-        const button = createElement('button');
-        button.addClass('button');
-        button.html('Click here');
-        button.mousePressed(this.restartGame);
+    public constructor(restartGameCallback: Function) {
+        this.restartGameCallback = restartGameCallback;
+        this.div = createElement('main-menu');
+
+        const button1 = createElement('button');
+        button1.addClass('button');
+        button1.html('Restart');
+        button1.mousePressed(() => this.restartGame);
+
+        const button2 = createElement('button');
+        button2.addClass('button');
+        button2.html('Back To Main');
+        button2.mousePressed(() => this.backToMain());
+
+        this.div.child(button1);
+        this.div.child(button2);
     }
-    
     
     private restartGame() {
+        console.log('restart');
         this.div.hide();
-    }
-    // private backToMain() {}
-
-    public showContent() {
-        this.div.show();
+        this.restartGameCallback();
     }
     
-    public update() {}
-    
-    public draw() {}
-
-    
-}    
+    private backToMain() {
+        console.log('backtomain');
+        // this.backToMainCallback();
+    }
+}
