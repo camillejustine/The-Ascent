@@ -4,13 +4,21 @@ class CollisionListener {
      public controlXY: Control;
      public obstacles: ObstacleArray;
      public pulse: SonarAttributes;
+     private scr: number;
+     public angle: number;
+     private scrArray: Array<any>;
+     public collision: boolean;
     
     constructor(obstacles: ObstacleArray){
+        this.collision = false;
         this.controlXY = new Control();
         this.pulse = new SonarAttributes();
         this.obstacles = obstacles;
-        this.cx = 50;
-        this.cy = 50;
+        this.angle = 0;
+        this.cx = 0;
+        this.cy = 0;
+        this.scr = 30;
+        this.scrArray = [];
      }
 
      public update() {
@@ -18,22 +26,75 @@ class CollisionListener {
         this.controlXY.update();
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
-        for(let radii of this.pulse.pulses){
-          for (let i = 0; i < this.obstacles.obstacles.length; i++) {
-            const distance = dist(
-              this.cx,
-              this.cy,
-              this.obstacles.obstacles[i].x,
-              this.obstacles.obstacles[i].y
-            );
-            if (distance < radii.sonarRadius) {
-              this.obstacles.obstacles[i].draw();
-        } 
-      }
+        this.angle = this.controlXY.getAngle();
+        this.setSubCollision();
+                for(let collisionPoint of this.scrArray){
+                  for (let i = 0; i < this.obstacles.obstacles.length; i++) {
+                    const distance = dist(
+                      collisionPoint.cx,
+                      collisionPoint.cy,
+                      this.obstacles.obstacles[i].x,
+                      this.obstacles.obstacles[i].y
+                    );
+                    if (distance < collisionPoint.cr) {
+                      //console.log('test')
+                      this.collision = true;    
+                    } else if (distance > collisionPoint.cr){
+                      this.collision = false;
+                    } 
+                }
+                for(let radii of this.pulse.pulses){
+                  for (let i = 0; i < this.obstacles.obstacles.length; i++) {
+                    const distance = dist(
+                      this.cx,
+                      this.cy,
+                      this.obstacles.obstacles[i].x,
+                      this.obstacles.obstacles[i].y
+                    );
+                    if (distance < radii.sonarRadius) {
+                      this.obstacles.obstacles[i].detected = true;       
+                } 
+              }
+            }  
+          }
+        }
+
+    public setSubCollision(){
+          this.scrArray = [ 
+            {   
+              "cx": this.cx ,
+              "cy": this.cy - 60,
+              "cr": this.scr
+            },
+            {   
+              "cx": this.cx ,
+              "cy": this.cy - 30,
+              "cr": this.scr
+            },
+            {  
+              "cx": this.cx,
+              "cy": this.cy,
+              "cr": this.scr
+            },
+            {   
+              "cx": this.cx ,
+              "cy": this.cy + 30,
+              "cr": this.scr
+            },
+            {   
+              "cx": this.cx,
+              "cy": this.cy + 60,
+              "cr": this.scr
+            }
+          ];
     }
-  }
 }
 
+
+/* let hit = subCollision(this.cx,this.cy,r, sx,sy,sw,sh);
+public subCollision(cx: number, float cy, float radius, float rx, float ry, float rw, float rh) {
+
+} */
 
       /* for(const obstacle of this.obstacleArray.obstacleArray){
            fill(200, 50)

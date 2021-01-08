@@ -38,6 +38,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public pauseMenu: PauseMenu;
 
   public constructor() {
+    this.obstacles = [];
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes();
@@ -48,7 +49,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.submarine = new Submarine();
     this.headsUpDisplay = new HeadsUpDisplay();
-    this.obstacles = [];
+    
   }
 
   public update() {
@@ -56,6 +57,7 @@ class GameFrame implements iGameState, ObstacleArray {
     if (this.gameState === "running") {
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
+      document.getElementById('div')!.style.display = 'none';
 
       this.background.update();
 
@@ -64,13 +66,13 @@ class GameFrame implements iGameState, ObstacleArray {
       this.controls.update();
       this.populate();
       this.collisionListener.update();
-
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
     }
 
     if(this.gameState === 'pauseMenu'){
       document.getElementById('div')!.style.display = 'flex';
+      this.pauseMenu.unpause();
     }
   }
 
@@ -85,10 +87,10 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.submarine.draw();
 
-      /* for (const obstacle of this.obstacles) {
-         //obstacle.draw();
-      } */
-
+      for (const obstacle of this.obstacles) {
+         obstacle.draw();
+      }
+      
       this.depthCounter.draw();
     }
   }
