@@ -69,6 +69,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
       this.submarine.update()
+      console.log(this.submarine.hullHealth)
     }
 
     if(this.gameState === 'pauseMenu'){

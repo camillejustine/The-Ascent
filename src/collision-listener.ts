@@ -4,11 +4,8 @@ class CollisionListener {
      public controlXY: Control;
      public obstacles: ObstacleArray;
      public pulse: SonarAttributes;
-     private scr: number;
      public angle: number;
-     private scrArray: Array<any>;
      public collision: boolean;
-     //public submarine: Submarine;
      public rectH: number;
      public rectW: number;
     
@@ -16,13 +13,10 @@ class CollisionListener {
         this.collision = false;
         this.controlXY = new Control();
         this.pulse = new SonarAttributes();
-        //this.submarine = new Submarine();
         this.obstacles = obstacles;
         this.angle = 0;
         this.cx = 0;
         this.cy = 0;
-        this.scr = 30 * 2;
-        this.scrArray = [];
         this.rectH = 138;
         this.rectW = 23.5;
      }
@@ -30,59 +24,23 @@ class CollisionListener {
      public update() {
           this.pulse.update();
           this.controlXY.update();
-          this.cx = this.controlXY.getPositionX();
-          this.cy = this.controlXY.getPositionY();
+          this.cx = this.controlXY.getPositionX() -12.5;
+          this.cy = this.controlXY.getPositionY() -70;
           this.angle = this.controlXY.getAngle();
-          this.subContactPoints();
           this.submarineCollisions();
-          this.sonarDetection();  
-
-          translate(this.cx, this.cy);
-          stroke('rgba(0,255,0,0.25)');
-          noFill()
-          rect(-12.5,-70, 23.5, 138)
+          this.sonarDetection(); 
         }
-
-      public subContactPoints(){
-        this.scrArray = [ 
-          {   
-            "cx": this.cx ,
-            "cy": this.cy - 60,
-            "cr": this.scr
-          },
-          {   
-            "cx": this.cx ,
-            "cy": this.cy - 30,
-            "cr": this.scr
-          },
-          {  
-            "cx": this.cx,
-            "cy": this.cy,
-            "cr": this.scr
-          },
-          {   
-            "cx": this.cx ,
-            "cy": this.cy + 30,
-            "cr": this.scr
-          },
-          {   
-            "cx": this.cx,
-            "cy": this.cy + 60,
-            "cr": this.scr
-          }
-        ];
-      }
 
       public submarineCollisions(){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             let collision = this.subCollision(
               this.obstacles.obstacles[i].x,
               this.obstacles.obstacles[i].y,
-              this.obstacles.obstacles[i].r, 
+              this.obstacles.obstacles[i].r/2, 
               this.cx,
               this.cy,
-              this.rectH,
-              this.rectW
+              this.rectW,
+              this.rectH
               );
             if (collision) {
               this.obstacles.obstacles[i].collision = true;  
@@ -90,17 +48,18 @@ class CollisionListener {
               this.obstacles.obstacles[i].collision = false;
             } 
           }
-         
       }
 
       public sonarDetection(){
         for(let radii of this.pulse.pulses){
           for(let i = 0; i < this.obstacles.obstacles.length; i++){
-            this.collision = this.hit(
-              this.cx,this.cy,radii.sonarRadius, 
+            this.collision = this.detect(
+              this.cx,
+              this.cy,
+              radii.sonarRadius, 
               this.obstacles.obstacles[i].x,
               this.obstacles.obstacles[i].y,
-              this.obstacles.obstacles[i].r/2
+              this.obstacles.obstacles[i].r
               ); 
               if (this.collision) {
                 this.obstacles.obstacles[i].detected = true; 
@@ -109,7 +68,7 @@ class CollisionListener {
         }
       }
 
-      public hit(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
+      public detect(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
         // get distance between the circle's centers
         // use the Pythagorean Theorem to compute the distance
         let distX = cx - c2x;
@@ -124,11 +83,9 @@ class CollisionListener {
         return false;
     }
 
-    
-    public subCollision(cx, cy, radius, rx, ry, rw, rh) {
+    public subCollision(cx: number, cy: number, radius: number, rx: number, ry: number, rw: number, rh: number) {
       let testX = cx;
       let testY = cy;
-
       // which edge is closest?
       if (cx < rx)         testX = rx;      // test left edge
       else if (cx > rx+rw) testX = rx+rw;   // right edge
@@ -145,7 +102,6 @@ class CollisionListener {
         return true;
       }
       return false;
-
     }
 }
 
