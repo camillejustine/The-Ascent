@@ -33,6 +33,7 @@ class CollisionListener {
 
       public submarineCollisions(){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
+            rect(this.cx, this.cy, this.rectW, this.rectH)
             let collision = this.subCollision(
               this.obstacles.obstacles[i].x,
               this.obstacles.obstacles[i].y,
