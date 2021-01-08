@@ -54,7 +54,7 @@ class Submarine {
   public pickUpHullFix(){
     for(let i = 0; i < this.allObjectsArray.length; i++){
       if(this.allObjectsArray[i].collision && this.allObjectsArray[i].id === 'supplyBox'){
-        this.hullHealth += 20;
+        this.hullHealth += 8.35;
         if(this.hullHealth >= 100){
           this.hullHealth = 100;
         }
