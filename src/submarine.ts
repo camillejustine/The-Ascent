@@ -56,4 +56,4 @@ class Submarine {
     public show(){
         this.sub = image(subImage,-25, -125, 50, 250);
     } */
-}
+
