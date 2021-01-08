@@ -8,13 +8,13 @@ class CollisionListener {
      public angle: number;
      private scrArray: Array<any>;
      public collision: boolean;
-     public submarine: Submarine;
+     //public submarine: Submarine;
     
     constructor(obstacles: ObstacleArray){
         this.collision = false;
         this.controlXY = new Control();
         this.pulse = new SonarAttributes();
-        this.submarine = new Submarine();
+        //this.submarine = new Submarine();
         this.obstacles = obstacles;
         this.angle = 0;
         this.cx = 0;
@@ -65,7 +65,7 @@ class CollisionListener {
       }
 
       public submarineCollisions(){
-        this.submarine.update();
+        //this.submarine.update();
         for(let collisionPoint of this.scrArray){
           for (let i = 0; i < this.obstacles.obstacles.length; i++) {
             const distance = dist(
@@ -75,13 +75,12 @@ class CollisionListener {
               this.obstacles.obstacles[i].y
             );
             if (distance < collisionPoint.cr/2/*  && this.obstacles.obstacles[i].id === 'iceberg' */) {
-              //console.log('iceberg hit')
-              this.collision = true;  
-              if(this.collision && this.obstacles.obstacles[i].id === 'iceberg'){
+              this.obstacles.obstacles[i].collision = true;  
+              /* if(this.collision && this.obstacles.obstacles[i].id === 'iceberg'){
                 this.submarine.hullHealth = this.submarine.hullHealth - 0.25;
-              }
+              } */
             } else {
-              this.collision = false;
+              this.obstacles.obstacles[i].collision = false;
             } 
           }
         } 

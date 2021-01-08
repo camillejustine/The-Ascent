@@ -9,6 +9,7 @@ abstract class Obstacle {
   public y: number;
   public x: number;
   public detected: boolean;
+  public collision: boolean;
   
   constructor() {
     this.rx = random(30, 80);
@@ -17,6 +18,7 @@ abstract class Obstacle {
     this.y = -100;
     this.x = random(10, 900);
     this.detected = false;
+    this.collision = false;
 
     if (this.rx < this.r || this.rx > this.r) {
       this.rx = this.r;

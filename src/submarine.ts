@@ -21,7 +21,7 @@ class Submarine {
     this.subPositionX = this.control.getPositionX();
     this.subPositionY = this.control.getPositionY();
     this.angle = this.control.getAngle();
-    this.array();
+    this.collisionHullDamage();
     }
 
   public draw() {
@@ -35,9 +35,9 @@ class Submarine {
     pop(); 
   }
   
-  public array(){
+  public collisionHullDamage(){
     for(let i = 0; i < this.obstacle.obstacles.length; i++){
-      console.log(this.obstacle.obstacles[i])
+      console.log(this.obstacle.obstacles[i].collision)
     }
   }
   
