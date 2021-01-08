@@ -8,21 +8,16 @@ abstract class PowerUp {
   public y: number;
   public x: number;
   public detected: boolean;
+  public collision: boolean;
 
   constructor() {
-    this.rx = random(30, 80);
-    this.ry = random(30, 80);
-    this.r = random(50, 100);
+    this.rx = 100;
+    this.ry = 100;
+    this.r = 100;
     this.y = -100;
     this.x = random(10, 900);
     this.detected = false;
-
-    if (this.rx < this.r || this.rx > this.r) {
-      this.rx = this.r;
-    }
-    if (this.ry < this.r || this.ry > this.r) {
-      this.ry = this.r;
-    }
+    this.collision = false;
   }
 }
 

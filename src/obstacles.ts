@@ -87,7 +87,7 @@ class SunkenShip extends Obstacle {
   constructor() {
     super();
     this.sunkenShip = sunkenShipImage;
-    this.r = 100;
+    this.r = 150;
   }
 
   public update() {}
@@ -98,7 +98,7 @@ class SunkenShip extends Obstacle {
 
   public draw() {
     if (this.detected) {
-      image(this.sunkenShip, this.x, this.y, 100, 100);
+      image(this.sunkenShip, this.x, this.y, 150, 150);
       imageMode(CENTER);
     }
   }
