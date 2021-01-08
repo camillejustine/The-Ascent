@@ -1,0 +1,68 @@
+html,
+body,
+canvas {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: black;
+  font-family: "VT323", monospace;
+}
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.menu-text-frame {
+  width: 70%;
+  background: linear-gradient(
+    186.1deg,
+    rgba(110, 198, 65, 0.2) 13.63%,
+    rgba(110, 198, 65, 0) 95.41%
+  );
+  border: 10px solid;
+  border-image: linear-gradient(
+    180deg,
+    rgba(137, 238, 86, 0.966) 22.63%,
+    rgba(32, 85, 6, 0.767) 95.41%
+  );
+  border-image-slice: 80;
+  margin-left: 10rem;
+  height: 50%;
+}
+
+.menu-text {
+  color: #6ec641;
+  font-size: 1.2rem;
+  padding: 2rem;
+  position: relative;
+  letter-spacing: 5%;
+
+  /* margin-top: 6rem; */
+}
+
+.button-container {
+  position: relative;
+  width: 20%;
+  top: 40%;
+  right: 40%;
+}
+
+.back-link {
+  width: 78%;
+  position: relative;
+  right: 0rem;
+}
+
+#main-menu {
+  width: 960px;
+  height: 720px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./assets/images/menu-background.png);
+  background-size: cover;
+}

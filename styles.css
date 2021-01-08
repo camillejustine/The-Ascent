@@ -66,15 +66,24 @@ button:focus {
   padding: 1rem;
   position: relative;
   letter-spacing: 5%;
-
-  /* margin-top: 6rem; */
 }
 
 .button-container {
   position: relative;
   width: 20%;
-  background-color: blueviolet;
   top: 20%;
+}
+
+.about-link {
+  width: 78%;
+  position: relative;
+  right: 2rem;
+}
+
+.title {
+  font-size: 8rem;
+  color: #6ec641;
+  margin: 0;
 }
 
 #sonar-animation {
@@ -100,6 +109,8 @@ button:focus {
   -ms-transform: translate(-50%, -50%);
   width: 80%;
   left: -50%;
+  border: 0 none !important;
+  outline: 0 !important;
 }
 
 #main-menu {
@@ -109,6 +120,7 @@ button:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-image: url(./assets/images/menu-background.png);
   background-size: cover;
 }
