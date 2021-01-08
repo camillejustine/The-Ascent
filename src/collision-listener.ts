@@ -8,7 +8,7 @@ class CollisionListener {
      public collision: boolean;
      public rectH: number;
      public rectW: number;
-     public allObjectsArray: Array<object>;
+     public allObjectsArray: Array<any>;
     
     constructor(obstacles: ObstacleArray){
         this.collision = false;
@@ -36,60 +36,39 @@ class CollisionListener {
       }
       
       public submarineCollisions(){
-        
-        console.log(this.allObjectsArray)
-        for(let i = 0; i < this.obstacles.powerUps.length; i++){
-          for (let i = 0; i < this.obstacles.obstacles.length; i++) {
-              let collisionObstacle = this.subCollision(
-                this.obstacles.obstacles[i].x,
-                this.obstacles.obstacles[i].y,
-                this.obstacles.obstacles[i].r/2, 
-                this.cx,
-                this.cy,
-                this.rectW,
-                this.rectH
-              );
-              let collisionPowerUp = this.subCollision(
-                this.obstacles.powerUps[i].x,
-                this.obstacles.powerUps[i].y,
-                this.obstacles.powerUps[i].r/2, 
-                this.cx,
-                this.cy,
-                this.rectW,
-                this.rectH
-              );
-              //console.log(this.obstacles.powerUps[i].x)
-              if (collisionObstacle) {
-              this.obstacles.obstacles[i].collision = true;  
-              } if (collisionPowerUp){
-              this.obstacles.powerUps[i].collision = true; 
-              } else {
-              this.obstacles.obstacles[i].collision = false;
-              this.obstacles.powerUps[i].collision = false;
-            } 
-          }
+        for(let i = 0; i < this.allObjectsArray.length; i++){
+          let collision = this.subCollision(
+            this.allObjectsArray[i].x,
+            this.allObjectsArray[i].y,
+            this.allObjectsArray[i].r/2, 
+            this.cx,
+            this.cy,
+            this.rectW,
+            this.rectH
+          );
+            if (collision) {
+            this.allObjectsArray[i].collision = true;  
+            } else {
+            this.allObjectsArray[i].collision = false;
+          } 
         }
       }
 
       public sonarDetection(){
         for(let radii of this.pulse.pulses){
-          for(let i = 0; i < this.obstacles.powerUps.length; i++){
-            for(let i = 0; i < this.obstacles.obstacles.length; i++){
-              let detectObstacle = this.detect(
-                this.cx, this.cy, radii.sonarRadius, 
-                this.obstacles.obstacles[i].x, this.obstacles.obstacles[i].y, this.obstacles.obstacles[i].r
-                );
-              let detectPowerUp = this.detect(
-                this.cx, this.cy, radii.sonarRadius,
-                this.obstacles.powerUps[i].x, this.obstacles.powerUps[i].y, this.obstacles.powerUps[i].r 
-                ); 
-                if(detectObstacle) {
-                  this.obstacles.obstacles[i].detected = true; 
-                } if(detectPowerUp){
-                  this.obstacles.powerUps[i].detected = true; 
+          for(let i = 0; i < this.allObjectsArray.length; i++){
+            let detect = this.detect(
+              this.cx, 
+              this.cy, 
+              radii.sonarRadius, 
+              this.allObjectsArray[i].x, 
+              this.allObjectsArray[i].y, 
+              this.allObjectsArray[i].r
+              );
+              if(detect) {
+                this.allObjectsArray[i].detected = true; 
               }
-            }
-          }
+          } 
         }
       }
 

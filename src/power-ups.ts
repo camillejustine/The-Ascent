@@ -11,8 +11,8 @@ abstract class PowerUp {
   public collision: boolean;
 
   constructor() {
-    this.rx = random(30, 80);
-    this.ry = random(30, 80);
+    this.rx = 100;
+    this.ry = 100;
     this.r = 100;
     this.y = -100;
     this.x = random(10, 900);
