@@ -27,12 +27,12 @@ class CollisionListener {
         this.cx = this.controlXY.getPositionX();
         this.cy = this.controlXY.getPositionY();
         this.angle = this.controlXY.getAngle();
-        this.setSubCollision();
+        this.subContactPoints();
         this.submarineCollisions();
         this.sonarDetection();     
         }
 
-      public setSubCollision(){
+      public subContactPoints(){
         this.scrArray = [ 
           {   
             "cx": this.cx ,
