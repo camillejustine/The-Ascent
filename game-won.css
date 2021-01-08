@@ -1,0 +1,11 @@
+.game-won-div {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+    width: 50rem;
+    height: 50rem;
+    background-color: green;
+}
+
