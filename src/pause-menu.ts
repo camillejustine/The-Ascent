@@ -1,28 +1,30 @@
 class PauseMenu {
   private div: p5.Element;
-  private restartGameCallback: iGameState;
 
   public pauseMenu: any;
   public backToMain: any;
+  public resumeGame: any;
+  public game: any;
   //private aboutButton: any;
   
-  public constructor(restartGameCallback: iGameState) {
-      this.restartGameCallback = restartGameCallback;
-      this.div = createElement('main-menu');
+  public constructor() {
+      this.div = createElement('pauseMenu');
 
       const resumeButton = createElement('button');
-      resumeButton.addClass('button');
-      resumeButton.html('Restart');
-      resumeButton.mousePressed(() => this.resumeGame);
+      resumeButton.addClass('resumeButton');
+      resumeButton.html('Resume');
+      resumeButton.mousePressed(() => this.resumeGame());
 
       const backToMain = createElement('button');
-      backToMain.addClass('button');
+      backToMain.addClass('backToMainButton');
       backToMain.html('Back To Main');
       backToMain.mousePressed(() => this.backToMain());
 
       this.div.child(resumeButton);
       this.div.child(backToMain);
   }
+
+  
 
   public update() {
    this.keyPressed();
@@ -32,6 +34,6 @@ class PauseMenu {
       if (keyCode === 32) {
         this.game.gameState = 'pauseMenu';
       } 
-      return false;      
+      return false;   
+    }
   }
-
