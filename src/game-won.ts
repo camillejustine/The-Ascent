@@ -6,18 +6,18 @@ class GameWon {
         this.restartGameCallback = restartGameCallback;
         this.div = createElement('main-menu');
 
-        const button1 = createElement('button');
-        button1.addClass('button');
-        button1.html('Restart');
-        button1.mousePressed(() => this.restartGame);
+        const restartButton = createElement('button');
+        restartButton.addClass('button');
+        restartButton.html('Restart');
+        restartButton.mousePressed(() => this.restartGame);
 
-        const button2 = createElement('button');
-        button2.addClass('button');
-        button2.html('Back To Main');
-        button2.mousePressed(() => this.backToMain());
+        const backToMainButton = createElement('button');
+        backToMainButton.addClass('button');
+        backToMainButton.html('Back To Main');
+        backToMainButton.mousePressed(() => this.backToMain());
 
-        this.div.child(button1);
-        this.div.child(button2);
+        this.div.child(restartButton);
+        this.div.child(backToMainButton);
     }
     
     private restartGame() {
