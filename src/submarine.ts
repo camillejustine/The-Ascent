@@ -11,7 +11,7 @@ class Submarine {
     this.subPositionX = 0;
     this.subPositionY = 0;
     this.angle = 0;
-    this.hullHealth = 1.00;
+    this.hullHealth = 100;
   }
 
   public update(){
@@ -19,6 +19,7 @@ class Submarine {
     this.subPositionX = this.control.getPositionX();
     this.subPositionY = this.control.getPositionY();
     this.angle = this.control.getAngle();
+    console.log(this.hullHealth)
   }
 
   public draw() {

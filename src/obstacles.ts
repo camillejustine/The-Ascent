@@ -1,4 +1,5 @@
 abstract class Obstacle {
+  [x: string]: any;
   public abstract move(): void;
   public abstract draw(): void;
   public abstract update(): void;
@@ -28,10 +29,12 @@ abstract class Obstacle {
 
 class Iceberg extends Obstacle {
   private iceberg: any;
+  public id: string;
 
   constructor() {
     super();
     this.iceberg = icebergImage;
+    this.id = "iceberg";
   }
 
   public update() {}
@@ -52,11 +55,13 @@ class Iceberg extends Obstacle {
 class Mine extends Obstacle {
   private mine: any;
   public r: number;
+  public id: string;
 
   constructor() {
     super();
     this.mine = mine;
     this.r = 100;
+    this.id = "mine";
   }
 
   public update() {}
