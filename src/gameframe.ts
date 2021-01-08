@@ -6,6 +6,7 @@ interface ObstacleArray {
   powerUps: PowerUp[];
 }
 class GameFrame implements iGameState, ObstacleArray {
+  
   public gameState:
     | "running"
     | "mainMenu"
@@ -31,7 +32,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public spawnRatePI: number;
   public sonarAttributes: SonarAttributes;
   public collisionListener: CollisionListener;
-  public pauseMenu: PauseMenu;
+  // public pauseMenu: PauseMenu;
 
   public constructor() {
     this.powerUps = [];
@@ -56,8 +57,10 @@ class GameFrame implements iGameState, ObstacleArray {
     this.depthCounter = new DepthCounter();
     this.sonarAttributes = new SonarAttributes();
     this.headsUpDisplay = new HeadsUpDisplay();
+ 
     this.obstacles = [];
     this.gameWon = new GameWon(this.restartGame);
+    this.gameLost = new GameLost(this);
   }
   
   private restartGame() {

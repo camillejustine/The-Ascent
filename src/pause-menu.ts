@@ -1,38 +1,37 @@
 class PauseMenu {
+  private div: p5.Element;
+  private restartGameCallback: iGameState;
 
-        public pauseMenu: any;
-        //private aboutButton: any;
-        public game: iGameState;
-      
-        constructor(game: iGameState) {
-          this.game = game;
-          this.pauseMenu = createElement('div');
-        }       
-      
-        public update() {
-         this.keyPressed();
-        }
+  public pauseMenu: any;
+  public backToMain: any;
+  //private aboutButton: any;
+  
+  public constructor(restartGameCallback: iGameState) {
+      this.restartGameCallback = restartGameCallback;
+      this.div = createElement('main-menu');
 
-        public keyPressed() {
-            if (keyCode === 32) {
-              this.game.gameState = 'pauseMenu';
-            } 
-            return false;      
-        }
+      const resumeButton = createElement('button');
+      resumeButton.addClass('button');
+      resumeButton.html('Restart');
+      resumeButton.mousePressed(() => this.resumeGame);
 
-        public keyReleased() {
-            
-        }
-        public unpause() {
-          if (keyCode === DOWN_ARROW) {
-            this.game.gameState = 'running'; 
-            console.log('test')
-          }
-        }
-        /* public keyReleased() {
-          if (keyCode === 32) {
-              this.game.gameState = 'running';
-          } */
-        public draw() {}
-}
+      const backToMain = createElement('button');
+      backToMain.addClass('button');
+      backToMain.html('Back To Main');
+      backToMain.mousePressed(() => this.backToMain());
+
+      this.div.child(resumeButton);
+      this.div.child(backToMain);
+  }
+
+  public update() {
+   this.keyPressed();
+  }
+
+  public keyPressed() {
+      if (keyCode === 32) {
+        this.game.gameState = 'pauseMenu';
+      } 
+      return false;      
+  }
 
