@@ -154,6 +154,7 @@ class GameFrame implements iGameState, ObstacleArray {
       } if(this.powerUps.length >= 30){
         this.powerUps.splice(0, 1);
         //crashes randomly
+        //more stable without concated array
       }  
     }
   }
