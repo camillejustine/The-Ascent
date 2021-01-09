@@ -13,8 +13,8 @@ class CollisionListener {
     constructor(allObjectsArray: ObstacleArray){
         this.collision = false;
         this.controlXY = new Control();
-        this.pulse = new SonarAttributes();
         this.allObjectsArray = allObjectsArray;
+        this.pulse = new SonarAttributes(this.allObjectsArray);
         this.angle = 0;
         this.cx = 0;
         this.cy = 0;

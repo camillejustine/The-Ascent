@@ -113,6 +113,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
       for(let i = 0; i < this.powerUps.length; i++){
         this.powerUps[i].draw();
+        
           if(this.powerUps[i].collision && this.powerUps[i].id === 'supplyBox'){
             this.powerUps.splice(i,1)
           } if(this.powerUps[i].collision && this.powerUps[i].id === 'range'){

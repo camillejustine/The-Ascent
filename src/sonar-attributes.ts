@@ -20,6 +20,7 @@ class SonarAttributes {
     }
     
     public update() {
+        console.log(this.allObjectsArray)
         this.sonarRangeIncrease();
         this.draw();
         if(frameCount % 85 == 0){
