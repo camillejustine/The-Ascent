@@ -80,32 +80,32 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.background.update();
 
-      noCursor();
+      // noCursor();
 
       this.controls.update();
       this.populateObstacle();
       this.populatePowerUp();
       this.collisionListener.update();
       this.headsUpDisplay.update();
-      this.pauseMenu.keyPressed();
+      this.pauseMenu.update();
       this.submarine.update()
       //console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
-      document.getElementById("")!.style.display = "flex";
-      this.pauseMenu.unpause();
+      // document.getElementById("")!.style.display = "flex";
+      // this.pauseMenu.unpause();
     }
   }
 
   public draw() {
-    noCursor();
+
     if (this.gameState === "running") {
       document.getElementById("main-menu")!.style.display = "none";
 
       this.background.draw();
 
-      noCursor();
+      // noCursor();
 
       this.submarine.draw();
 
