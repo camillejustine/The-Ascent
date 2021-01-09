@@ -38,8 +38,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.powerUps = [];
     this.obstacles = [];
     this.allObjects = [];
-    //push all powerups and obstacles to the same array?
-
+    
     this.gameState = "mainMenu";
 
     this.spawnRateMine = 0.005;
@@ -129,6 +128,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
 
   public populate() {
+    console.log(this.powerUps)
     if (random(1) < this.spawnRateIceberg) {
       this.obstacles.push(new Iceberg());
     }
@@ -150,11 +150,12 @@ class GameFrame implements iGameState, ObstacleArray {
     for (const object of this.allObjects) {
       object.move();
       object.update();
-      if (this.obstacles.length > 50) {
+      if (this.obstacles.length >= 50) {
         this.obstacles.splice(0, 1);
-      } if(this.powerUps.length > 30){
+      } if(this.powerUps.length >= 30){
         this.powerUps.splice(0, 1);
-      } 
+        //crashes randomly
+      }  
     }
   }
 
