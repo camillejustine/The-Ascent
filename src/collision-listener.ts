@@ -21,7 +21,6 @@ class CollisionListener {
         this.rectH = 138;
         this.rectW = 23.5;
         //this.allObjectsArray = [];
-
      }
 
      public update() {
