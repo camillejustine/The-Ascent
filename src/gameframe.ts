@@ -87,7 +87,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
       this.submarine.update()
-      console.log(this.submarine.hullHealth)
+      //console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
@@ -155,7 +155,7 @@ class GameFrame implements iGameState, ObstacleArray {
       } if(this.powerUps.length >= 30){
         this.powerUps.splice(0, 1);
         //crashes randomly
-        //more stable without concated array
+        //more stable without concated array?
       }  
     }
   }

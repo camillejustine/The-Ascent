@@ -20,7 +20,6 @@ class SonarAttributes {
     }
     
     public update() {
-        console.log(this.allObjectsArray)
         this.sonarRangeIncrease();
         this.draw();
         if(frameCount % 85 == 0){
@@ -51,6 +50,11 @@ class SonarAttributes {
     }
 
     public sonarRangeIncrease(){
+        for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+            if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'pulse'){
+                console.log('test')
+            }
+        }
         
     }
 
