@@ -1,4 +1,5 @@
 abstract class PowerUp {
+  [x: string]: any;
   public abstract move(): void;
   public abstract draw(): void;
   public abstract update(): void;
@@ -9,6 +10,7 @@ abstract class PowerUp {
   public x: number;
   public detected: boolean;
   public collision: boolean;
+  
 
   constructor() {
     this.rx = 100;

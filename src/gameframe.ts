@@ -2,8 +2,7 @@ interface iGameState {
   gameState: "running" | "mainMenu" | "gameLost" | "gameWon" | "pauseMenu";
 }
 interface ObstacleArray {
-  obstacles: Obstacle[];
-  powerUps: PowerUp[];
+  allObjects: Array<any>;
 }
 class GameFrame implements iGameState, ObstacleArray {
   public gameState:
@@ -20,6 +19,7 @@ class GameFrame implements iGameState, ObstacleArray {
   /* private gameLost: GameLost;*/
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
+  public allObjects: Array<any>
   private submarine: Submarine;
   private controls: Control;
   private headsUpDisplay: HeadsUpDisplay;
@@ -37,6 +37,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public constructor() {
     this.powerUps = [];
     this.obstacles = [];
+    this.allObjects = [];
     //push all powerups and obstacles to the same array?
 
     this.gameState = "mainMenu";
@@ -45,7 +46,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
     this.spawnRateHullFix = 0.0001;
-    this.spawnRateSIncrease = 0.0001;
+    this.spawnRateSIncrease = 0.005;
     this.spawnRatePI= 0.0001;
 
     this.pauseMenu = new PauseMenu(this);
@@ -71,6 +72,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public update() {
     this.mainMenu.update();
     if (this.gameState === "running") {
+      this.allObjects = this.obstacles.concat(this.powerUps)
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
       document.getElementById("div")!.style.display = "none";
@@ -80,13 +82,12 @@ class GameFrame implements iGameState, ObstacleArray {
       noCursor();
 
       this.controls.update();
-      this.populateObstacle();
-      this.populatePowerUp();
+      this.populate();
       this.collisionListener.update();
       this.headsUpDisplay.update();
       this.pauseMenu.keyPressed();
       this.submarine.update()
-      //console.log(this.submarine.hullHealth)
+      console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
@@ -106,31 +107,27 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.submarine.draw();
 
-      for (const obstacle of this.obstacles) {
+      for(let obstacle of this.obstacles){
         obstacle.draw();
       }
 
-      for (const powerUp of this.powerUps) {
-        powerUp.draw();
-      }
-
       for(let i = 0; i < this.powerUps.length; i++){
-        if(this.powerUps[i].collision && 
-           this.powerUps[i].id === 'supplyBox' ||
-           this.powerUps[i].id === 'range' ||
-           this.powerUps[i].id === 'pulse' 
-           ){
-          this.powerUps.splice(i,1)
+        this.powerUps[i].draw();
+          if(this.powerUps[i].collision && this.powerUps[i].id === 'supplyBox'){
+            this.powerUps.splice(i,1)
+          } if(this.powerUps[i].collision && this.powerUps[i].id === 'range'){
+            this.powerUps.splice(i,1)
+          } if(this.powerUps[i].collision && this.powerUps[i].id === 'pulse'){
+            this.powerUps.splice(i,1)
+          }
         }
       }
-
       this.depthCounter.draw();
     }
-  }
+  
 
 
-  public populateObstacle() {
-    
+  public populate() {
     if (random(1) < this.spawnRateIceberg) {
       this.obstacles.push(new Iceberg());
     }
@@ -140,37 +137,23 @@ class GameFrame implements iGameState, ObstacleArray {
     if (random(1) < 0.00005) {
       this.obstacles.push(new SunkenShip());
     }
-    for (const obstacle of this.obstacles) {
+    if (random(1) < this.spawnRateSIncrease) {
+        this.powerUps.push(new SupplyBox());
+    } 
+    if (random(1) < this.spawnRateSIncrease) {
+      this.powerUps.push(new RangePowerUp());
+    } 
+    if (random(1) < this.spawnRateSIncrease) {
+      this.powerUps.push(new PulsePowerUp());
+    }
+    for (const obstacle of this.allObjects) {
       obstacle.move();
       obstacle.update();
-
       if (this.obstacles.length > 50) {
         this.obstacles.splice(0, 1);
       }
     }
   }
-
-    public populatePowerUp() {
-      //combo obstacle and powerup arrays.
-      //send array in interface?
-      console.log(this.powerUps)
-      /* if (random(1) < .1) {
-        this.powerUps.push(new SupplyBox());
-      }  */
-      if (random(1) < .1) {
-        this.powerUps.push(new RangePowerUp());
-      } 
-      if (random(1) < .1) {
-        this.powerUps.push(new PulsePowerUp());
-      }
-      for (const powerUp of this.powerUps) {
-        powerUp.move();
-        powerUp.update();
-        if (this.powerUps.length > 30) {
-          this.powerUps.splice(0, 1);
-        }
-      }
-    }
 
     public setSpawnRate(){
       /* for(let ship of this.powerUps){
