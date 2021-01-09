@@ -6,11 +6,11 @@ class SonarAttributes {
     private control: Control;
     public pulses: Array<any>;
     public pulseLifespan: number;
-    //public allObjectsArray: ObstacleArray;
+    public allObjectsArray: ObstacleArray;
     
 
-    public constructor(/* allObjectsArray: ObstacleArray */) {
-        //this.allObjectsArray = allObjectsArray;
+    public constructor(allObjectsArray: ObstacleArray) {
+        this.allObjectsArray = allObjectsArray;
         this.control = new Control();
         this.positionX = 0; 
         this.positionY = 0; 
@@ -20,9 +20,10 @@ class SonarAttributes {
     }
     
     public update() {
+        this.sonarRangeIncrease();
         this.draw();
         if(frameCount % 85 == 0){
-            this.pulses.push(new SonarAttributes());
+            this.pulses.push(new SonarAttributes(this.allObjectsArray));
         }
     }
 
@@ -46,6 +47,10 @@ class SonarAttributes {
         stroke('rgba(0,255,0,0.25)');
         noFill()
         circle(this.positionX, this.positionY, this.sonarRadius * 2)     
+    }
+
+    public sonarRangeIncrease(){
+        
     }
 
     /*   private setSonarRange(){

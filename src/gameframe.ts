@@ -50,7 +50,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
-    this.sonarAttributes = new SonarAttributes();
+    this.sonarAttributes = new SonarAttributes(this);
     this.submarine = new Submarine(this);
     this.mainMenu = new MainMenu(this);
     
@@ -128,7 +128,6 @@ class GameFrame implements iGameState, ObstacleArray {
 
 
   public populate() {
-    console.log(this.powerUps)
     if (random(1) < this.spawnRateIceberg) {
       this.obstacles.push(new Iceberg());
     }
