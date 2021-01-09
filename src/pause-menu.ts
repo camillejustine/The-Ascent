@@ -1,22 +1,22 @@
 class PauseMenu {
   private div: p5.Element;
-  private restartGameCallback: iGameState;
-
-  public pauseMenu: any;
-  public backToMain: any;
+  public game: iGameState;
+  
   //private aboutButton: any;
   
-  public constructor(restartGameCallback: iGameState) {
-      this.restartGameCallback = restartGameCallback;
-      this.div = createElement('main-menu');
+  public constructor(game: iGameState) {
+      this.game = game;
+      this.div = createElement('pauseMenu');
 
       const resumeButton = createElement('button');
-      resumeButton.addClass('button');
-      resumeButton.html('Restart');
-      resumeButton.mousePressed(() => this.resumeGame);
+      resumeButton.addClass('resumeButton');
+      resumeButton.html('Resume');
+      resumeButton.mouseClicked(() => this.resume());
+      this.div.hide();
+
 
       const backToMain = createElement('button');
-      backToMain.addClass('button');
+      backToMain.addClass('backToMainButton');
       backToMain.html('Back To Main');
       backToMain.mousePressed(() => this.backToMain());
 
@@ -24,14 +24,27 @@ class PauseMenu {
       this.div.child(backToMain);
   }
 
+  private hideButton() {
+    if (this.game.gameState === 'running') {
+      this.div.hide();
+    }
+    
+  }
+  private resume() {
+    this.game.gameState = 'running';
+  }
+
   public update() {
+    console.log(this.game.gameState)
    this.keyPressed();
+   this.hideButton();
   }
 
   public keyPressed() {
-      if (keyCode === 32) {
+  
+      if (keyCode === 32 && keyIsPressed) {
+        this.div.show();
         this.game.gameState = 'pauseMenu';
       } 
-      return false;      
+    }
   }
-

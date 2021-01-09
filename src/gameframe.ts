@@ -32,13 +32,15 @@ class GameFrame implements iGameState, ObstacleArray {
   public spawnRatePI: number;
   public sonarAttributes: SonarAttributes;
   public collisionListener: CollisionListener;
-  // public pauseMenu: PauseMenu;
+  public pauseMenu: PauseMenu;
 
   public constructor() {
     this.powerUps = [];
     this.obstacles = [];
 
     this.gameState = "mainMenu";
+
+    this.pauseMenu = new PauseMenu(this);
 
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
@@ -47,7 +49,6 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateSIncrease = 0.0001;
     this.spawnRatePI= 0.0001;
 
-    this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
     this.submarine = new Submarine(this);
     this.mainMenu = new MainMenu(this);
@@ -79,32 +80,32 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.background.update();
 
-      noCursor();
+      // noCursor();
 
       this.controls.update();
       this.populateObstacle();
       this.populatePowerUp();
       this.collisionListener.update();
       this.headsUpDisplay.update();
-      this.pauseMenu.keyPressed();
+      this.pauseMenu.update();
       this.submarine.update()
       console.log(this.submarine.hullHealth)
     }
 
     if (this.gameState === "pauseMenu") {
-      document.getElementById("div")!.style.display = "flex";
-      this.pauseMenu.unpause();
+      // document.getElementById("")!.style.display = "flex";
+      // this.pauseMenu.unpause();
     }
   }
 
   public draw() {
-    noCursor();
+
     if (this.gameState === "running") {
       document.getElementById("main-menu")!.style.display = "none";
 
       this.background.draw();
 
-      noCursor();
+      // noCursor();
 
       this.submarine.draw();
 

@@ -1,5 +1,27 @@
 
 
 #pauseMenu {
+    width: 50rem;
+    height: 20rem;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(./assets/images/menu-background.png);
+    background-size: cover;
+  }
 
-}
+.resumeButton {
+    position: relative;
+    font-family: "VT323", monospace;
+    background: transparent;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 20px;
+    border-style: none;
+    font-size: 20px;
+    color: #6ec641;
+    border: none;
+    z-index: 1000;
+  }
