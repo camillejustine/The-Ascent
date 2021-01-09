@@ -5,9 +5,7 @@ class Submarine {
   public angle: number;
   public hullHealth: number;
   public allObjectsArray: ObstacleArray;
-  
-  
-  
+
   constructor(allObjectsArray: ObstacleArray){
     this.allObjectsArray = allObjectsArray;
     this.control = new Control();
@@ -54,7 +52,6 @@ class Submarine {
         if(this.hullHealth >= 100){
           this.hullHealth = 100;
         }
-        //this.allObjectsArray.allObjects.splice(i,1)
       }
     }
   }

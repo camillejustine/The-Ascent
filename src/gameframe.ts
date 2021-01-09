@@ -51,13 +51,14 @@ class GameFrame implements iGameState, ObstacleArray {
 
     this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
+    this.sonarAttributes = new SonarAttributes();
     this.submarine = new Submarine(this);
     this.mainMenu = new MainMenu(this);
     
     this.controls = new Control();
     this.background = new Background();
     this.depthCounter = new DepthCounter();
-    this.sonarAttributes = new SonarAttributes();
+    
     this.headsUpDisplay = new HeadsUpDisplay();
     this.gameWon = new GameWon(this.restartGame);
   }

@@ -1,5 +1,5 @@
 abstract class PowerUp {
-  [x: string]: any;
+  public id: string;
   public abstract move(): void;
   public abstract draw(): void;
   public abstract update(): void;
@@ -13,6 +13,7 @@ abstract class PowerUp {
   
 
   constructor() {
+    this.id = '';
     this.rx = 100;
     this.ry = 100;
     this.r = 100;

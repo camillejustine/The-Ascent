@@ -6,9 +6,11 @@ class SonarAttributes {
     private control: Control;
     public pulses: Array<any>;
     public pulseLifespan: number;
+    //public allObjectsArray: ObstacleArray;
     
 
-    public constructor() {
+    public constructor(/* allObjectsArray: ObstacleArray */) {
+        //this.allObjectsArray = allObjectsArray;
         this.control = new Control();
         this.positionX = 0; 
         this.positionY = 0; 
