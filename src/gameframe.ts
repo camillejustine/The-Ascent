@@ -147,12 +147,14 @@ class GameFrame implements iGameState, ObstacleArray {
     if (random(1) < this.spawnRateSIncrease) {
       this.powerUps.push(new PulsePowerUp());
     }
-    for (const obstacle of this.allObjects) {
-      obstacle.move();
-      obstacle.update();
+    for (const object of this.allObjects) {
+      object.move();
+      object.update();
       if (this.obstacles.length > 50) {
         this.obstacles.splice(0, 1);
-      }
+      } if(this.powerUps.length > 30){
+        this.powerUps.splice(0, 1);
+      } 
     }
   }
 
