@@ -41,6 +41,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.gameState = "mainMenu";
 
     this.pauseMenu = new PauseMenu(this);
+    this.mainMenu = new MainMenu(this);
 
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
@@ -51,7 +52,6 @@ class GameFrame implements iGameState, ObstacleArray {
 
     this.collisionListener = new CollisionListener(this);
     this.submarine = new Submarine(this);
-    this.mainMenu = new MainMenu(this);
     
     this.controls = new Control();
     this.background = new Background();
@@ -76,7 +76,7 @@ class GameFrame implements iGameState, ObstacleArray {
     if (this.gameState === "running") {
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
-      document.getElementById("div")!.style.display = "none";
+      // document.getElementById("pause-menu")!.style.display = "none";
 
       this.background.update();
 
@@ -92,10 +92,9 @@ class GameFrame implements iGameState, ObstacleArray {
       console.log(this.submarine.hullHealth)
     }
 
-    if (this.gameState === "pauseMenu") {
-      // document.getElementById("")!.style.display = "flex";
-      // this.pauseMenu.unpause();
-    }
+    // if (this.gameState === "pauseMenu") {
+    //   document.getElementById("pause-menu")!.style.display = "absolute";
+    // }
   }
 
   public draw() {

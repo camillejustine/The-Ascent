@@ -1,33 +1,51 @@
 class GameLost {
     private div: p5.Element;
-    private restartGameCallback: iGameState;
-
-    public constructor(restartGameCallback: iGameState) {
-        this.restartGameCallback = restartGameCallback;
-        this.div = createElement('main-menu');
-
+    public game: iGameState;
+    
+    public constructor(game: iGameState) {
+        this.game = game;
+        this.div = createDiv('gameLost');
+        this.div.addClass('gameLost'); 
+        this.div.html('Sorry dude, you lost...');
+        this.div.style('text-align:center');
+  
         const restartButton = createElement('button');
-        restartButton.addClass('button');
         restartButton.html('Restart');
-        restartButton.mousePressed(() => this.resumeGame);
-
+        restartButton.mouseClicked(() => this.restart());
+        restartButton.addClass('resumeButton');
+  
         const backToMain = createElement('button');
-        backToMain.addClass('button');
+        backToMain.addClass('backToMainButton');
         backToMain.html('Back To Main');
         backToMain.mousePressed(() => this.backToMain());
-
+  
         this.div.child(restartButton);
         this.div.child(backToMain);
-    }
-    
-    private resumeGame() {
-        console.log('restart');
         this.div.hide();
-        this.restartGameCallback();
     }
-    
+  
+    private hideButton() {
+      if (this.game.gameState === 'running') {
+        this.div.hide();
+      }
+    }
+  
+    private restart() {
+      this.game.gameState = 'running';
+    }
+  
     private backToMain() {
-        console.log('backtomain');
-        // this.backToMainCallback();
+      if (this.game.gameState === 'gameLost') {
+      this.game.gameState = 'running';
+      
+      // this doesnt work
+      // this.game.gameState = 'backtoMain';
     }
+  }
+  
+    public update() {
+      console.log(this.game.gameState)
+     this.hideButton();
+    }
+
 }
