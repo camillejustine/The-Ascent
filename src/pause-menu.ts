@@ -2,8 +2,6 @@ class PauseMenu {
   private div: p5.Element;
   public game: iGameState;
   
-  //private aboutButton: any;
-  
   public constructor(game: iGameState) {
       this.game = game;
       this.div = createDiv('pauseMenu');
@@ -17,7 +15,7 @@ class PauseMenu {
       resumeButton.mouseClicked(() => this.resume());
 
       const backToMain = createElement('button');
-      backToMain.addClass('backToMainButton');
+      backToMain.addClass('backToMain');
       backToMain.html('Back To Main');
       backToMain.mousePressed(() => this.backToMain());
 
