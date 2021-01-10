@@ -32,6 +32,7 @@ class SupplyBox extends PowerUp {
     super();
     this.supplyBox = supplyBox;
     this.id = 'supplyBox';
+
   }
 
   public update() {}

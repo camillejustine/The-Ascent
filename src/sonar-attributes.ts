@@ -58,13 +58,15 @@ class SonarAttributes {
     }
 
     public sonarPulseFrequency(){
+        console.log()
         for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
             if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'pulse'){
                 //set active on powerups. 
                 if(frameCount % 60 == 0 && this.timer > 0){
                     this.timer --;
                 }   
-                this.pulseRate = 20;           
+                this.pulseRate = 20; 
+                console.log(this.allObjectsArray.allObjects[i].collision)          
             }
         }
     }

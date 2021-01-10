@@ -3,6 +3,7 @@ interface iGameState {
 }
 interface ObstacleArray {
   allObjects: Array<any>;
+  powerUps: PowerUp[]
 }
 class GameFrame implements iGameState, ObstacleArray {
   public gameState:
@@ -113,14 +114,15 @@ class GameFrame implements iGameState, ObstacleArray {
 
       for(let i = 0; i < this.powerUps.length; i++){
         this.powerUps[i].draw();
-        
-         /*  if(this.powerUps[i].collision && this.powerUps[i].id === 'supplyBox'){
+        //powerups not added? 
+        //maybe need to revert to separate arrays.
+          if(this.powerUps[i].collision && this.powerUps[i].id === 'supplyBox'){
             this.powerUps.splice(i,1)
           } if(this.powerUps[i].collision && this.powerUps[i].id === 'range'){
             this.powerUps.splice(i,1)
           } if(this.powerUps[i].collision && this.powerUps[i].id === 'pulse'){
             this.powerUps.splice(i,1)
-          } */
+          }
         }
       }
       this.depthCounter.draw();
