@@ -74,7 +74,6 @@ class GameFrame implements iGameState, ObstacleArray {
       this.allObjects = this.obstacles.concat(this.powerUps);
       this.headsUpDisplay.update();
       document.getElementById("main-menu")!.style.display = "none";
-      // document.getElementById("pause-menu")!.style.display = "none";
 
       this.background.update();
 
@@ -102,7 +101,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
   public draw() {
     if (this.gameState === "running") {
-      document.getElementById("main-menu")!.style.display = "none";
+      // document.getElementById("main-menu")!.style.display = "none";
 
       this.background.draw();
 

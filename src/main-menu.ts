@@ -8,11 +8,15 @@ class MainMenu {
     this.startButton = document.getElementById("start-game")!;
   }
 
+
   public update() {
     this.startButton.onclick = () => {
       this.game.gameState = 'running';
     };
 
   }
-  public draw() {}
+
 }
+
+
+ 
