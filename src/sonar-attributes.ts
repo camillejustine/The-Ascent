@@ -60,9 +60,9 @@ class SonarAttributes {
     public sonarPulseFrequency(){
         console.log()
         for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-            if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'pulse'){ 
+            if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'pulse'){
                 this.pulseRate = 20;
-                setTimeout(() =>{this.pulseRate = 85;}, 5000) 
+                setTimeout(() =>{this.pulseRate = 85}, 5000) 
             }
         }
     }
@@ -70,8 +70,12 @@ class SonarAttributes {
     public sonarRange(){
         for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
             if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'range'){
+                this.allObjectsArray.allObjects[i].powerUpActive = true;
                 this.range = 3.5;
-                setTimeout(() =>{this.range = 2;}, 5000)    
+                setTimeout(() =>{this.allObjectsArray.allObjects[i].powerUpActive = false;}, 5000) 
+                if(this.allObjectsArray.allObjects[i].powerUpActive){
+                
+                }   
             } 
         }
     } 
