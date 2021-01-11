@@ -62,7 +62,7 @@ class SonarAttributes {
             if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'pulse'){
                 this.pulseRate = 20;
                 setTimeout(() =>{this.pulseRate = 85}, 5000) 
-            }
+            } 
         }
     }
 
@@ -71,11 +71,10 @@ class SonarAttributes {
             if(this.allObjectsArray.allObjects[i].powerUpActive && this.allObjectsArray.allObjects[i].id === 'range'){
                 this.range = 3.5; 
             }
-            /* if(this.allObjectsArray.allObjects[i].collision ){
+            if(this.allObjectsArray.allObjects[i].collision ){
                 this.allObjectsArray.allObjects[i].powerUpActive = true;
-               
-                setTimeout(() =>{this.range = 85}, 5000) 
-            }  */
+                //setTimeout(() =>{this.range = 85}, 5000) 
+            } 
         }
     } 
 }
