@@ -4,28 +4,22 @@ class Submarine {
   public subPositionY: number;
   public angle: number;
   public hullHealth: number;
-  public obstacle: ObstacleArray;
-  public allObjectsArray: Array<any>;
-  private deletedArray: Array<any>;
-  
-  constructor(obstacle: ObstacleArray){
-    this.obstacle = obstacle;
+  public allObjectsArray: ObstacleArray;
+
+  constructor(allObjectsArray: ObstacleArray){
+    this.allObjectsArray = allObjectsArray;
     this.control = new Control();
     this.subPositionX = 0;
     this.subPositionY = 0;
     this.angle = 0;
     this.hullHealth = 100;
-    this.allObjectsArray = [];
-    this.deletedArray = [];
   }
 
   public update() {
     this.angle = this.control.getAngle();
     this.collisionHullDamage();
     this.pickUpHullFix();
-    this.allObjectsArray = this.obstacle.obstacles.concat(this.obstacle.powerUps)
-    //console.log(this.hullHealth)
-    }
+  }
 
   public draw() {
     this.update()
@@ -42,23 +36,23 @@ class Submarine {
   }
   
   public collisionHullDamage(){
-    for(let i = 0; i < this.allObjectsArray.length; i++){
-        if(this.allObjectsArray[i].collision && this.allObjectsArray[i].id === 'iceberg'){
+    for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+        if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'iceberg'){
           this.hullHealth = this.hullHealth - 0.25;
-        }if(this.allObjectsArray[i].collision && this.allObjectsArray[i].id === 'mine'){
+        }if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'mine'){
           this.hullHealth = 0;
       } 
     } 
   }
 
   public pickUpHullFix(){
-    for(let i = 0; i < this.allObjectsArray.length; i++){
-      if(this.allObjectsArray[i].collision && this.allObjectsArray[i].id === 'supplyBox'){
-        this.hullHealth += 0.25;
+    for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+      if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'supplyBox'){
+        this.hullHealth += 8.35;
         if(this.hullHealth >= 100){
           this.hullHealth = 100;
         }
-        this.allObjectsArray.splice(i,1)
+        this.allObjectsArray.allObjects.splice(i,1)
       }
     }
   }

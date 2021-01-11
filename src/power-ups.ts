@@ -1,4 +1,5 @@
 abstract class PowerUp {
+  public id: string;
   public abstract move(): void;
   public abstract draw(): void;
   public abstract update(): void;
@@ -9,8 +10,11 @@ abstract class PowerUp {
   public x: number;
   public detected: boolean;
   public collision: boolean;
+  public powerUpActive: boolean;
+  
 
   constructor() {
+    this.id = '';
     this.rx = 100;
     this.ry = 100;
     this.r = 100;
@@ -18,6 +22,7 @@ abstract class PowerUp {
     this.x = random(10, 900);
     this.detected = false;
     this.collision = false;
+    this.powerUpActive = false;
   }
 }
 
@@ -29,6 +34,7 @@ class SupplyBox extends PowerUp {
     super();
     this.supplyBox = supplyBox;
     this.id = 'supplyBox';
+
   }
 
   public update() {}
