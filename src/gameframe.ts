@@ -43,6 +43,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.pauseMenu = new PauseMenu(this);
     this.mainMenu = new MainMenu(this);
 
+    // SET THE SPAWN RATE FOR OBSTACLES
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
