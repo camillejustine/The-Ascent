@@ -9,8 +9,7 @@ class GameWon {
        this.div.addClass('gameWon'); 
        this.div.html('Yay! You are a winner!!');
        this.div.style('text-align:center');
-       //this.div = createElement('main-menu');
-
+       
         const backToMain = createElement('button');
         backToMain.addClass('backToMain');
         backToMain.html('Back To Main');
@@ -19,12 +18,22 @@ class GameWon {
         this.div.child(backToMain);
         this.div.hide();
     }
-    
+
     private backToMain() {
+      if (this.game.gameState === 'gameWon' && mouseIsPressed) {
         document.location.href = '';
-        //this.div.hide();
-        
       }
+    }
+
+    private gameWonShow() {
+      if (this.game.gameState === 'gameWon') {
+        this.backToMain();
+        this.div.show();
+      }
+    }
+    public update() {
+      this.gameWonShow();
+    }
     
 
 }
