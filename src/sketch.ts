@@ -5,7 +5,9 @@ let subImage: p5.Image | p5.Element;
 let icebergImage: p5.Image | p5.Element;
 let mineImage: p5.Image | p5.Element;
 let sunkenShipImage: p5.Image | p5.Element;
-let powerUpsImage: p5.Image | p5.Element;
+let supplyBox: p5.Image | p5.Element;
+let rangePowerUp: p5.Image | p5.Element;
+let pulsePowerUp: p5.Image | p5.Element;
 
 /**
  * Built in preload function in P5
@@ -17,7 +19,9 @@ function preload() {
   icebergImage = loadImage("./assets/images/iceberg4.png");
   mineImage = loadImage("./assets/images/mine.png");
   sunkenShipImage = loadImage("assets/images/sunken-ship.png");
-  powerUpsImage = loadImage("./assets/images/power-up.png");
+  supplyBox = loadImage("./assets/images/power-up.png");
+  rangePowerUp = loadImage("./assets/images/range.png")
+  pulsePowerUp = loadImage("./assets/images/pulse.png")
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 

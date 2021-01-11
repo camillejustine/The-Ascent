@@ -1,28 +1,34 @@
-class Submarine {
+interface HullHealth {
+  hullHealth: number;
+}
+
+class Submarine implements HullHealth {
   public control: Control;
   public subPositionX: number;
   public subPositionY: number;
   public angle: number;
   public hullHealth: number;
-  public obstacle: ObstacleArray;
-  
-  constructor(obstacle: ObstacleArray){
-    this.obstacle = obstacle;
+  public headsUpDisplay: HeadsUpDisplay;
+  public allObjectsArray: ObstacleArray;
+
+  constructor(allObjectsArray: ObstacleArray) {
+    this.allObjectsArray = allObjectsArray;
     this.control = new Control();
     this.subPositionX = 0;
     this.subPositionY = 0;
     this.angle = 0;
     this.hullHealth = 100;
+    this.headsUpDisplay = new HeadsUpDisplay(this);
   }
 
   public update() {
     this.angle = this.control.getAngle();
     this.collisionHullDamage();
-    //console.log(this.hullHealth)
-    }
+    this.pickUpHullFix();
+  }
 
   public draw() {
-    this.update()
+    this.update();
     this.control.update();
     this.subPositionX = this.control.getPositionX();
     this.subPositionY = this.control.getPositionY();
@@ -32,28 +38,40 @@ class Submarine {
     rotate(this.angle);
     imageMode(CENTER);
     image(subImage, 0, 0, 35, 150);
-    pop(); 
+    pop();
   }
-  
-  public collisionHullDamage(){
-      for(let i = 0; i < this.obstacle.obstacles.length; i++){
-        if(this.obstacle.obstacles[i].collision && this.obstacle.obstacles[i].id === 'iceberg'){
-          this.hullHealth = this.hullHealth - 0.25;
-        }if(this.obstacle.obstacles[i].collision && this.obstacle.obstacles[i].id === 'mine'){
+
+  public collisionHullDamage() {
+    for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
+      if (
+        this.allObjectsArray.allObjects[i].collision &&
+        this.allObjectsArray.allObjects[i].id === "iceberg"
+      ) {
+        this.hullHealth = this.hullHealth - 0.25;
+        if (this.hullHealth <= 0) {
           this.hullHealth = 0;
         }
       }
-    } 
-  }
-  
-  /* private sub = p5.Image | p5.Element;
-    
-    
-    constructor(subImage: p5.Image | p5.Element){
-      this.sub = subImage;
+      if (
+        this.allObjectsArray.allObjects[i].collision &&
+        this.allObjectsArray.allObjects[i].id === "mine"
+      ) {
+        this.hullHealth = 0;
+      }
     }
+  }
 
-    public show(){
-        this.sub = image(subImage,-25, -125, 50, 250);
-    } */
-
+  public pickUpHullFix() {
+    for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
+      if (
+        this.allObjectsArray.allObjects[i].collision &&
+        this.allObjectsArray.allObjects[i].id === "supplyBox"
+      ) {
+        this.hullHealth += 8.35;
+        if (this.hullHealth >= 100) {
+          this.hullHealth = 100;
+        }
+      }
+    }
+  }
+}

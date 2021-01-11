@@ -2,26 +2,27 @@ class CollisionListener {
      private cx: number;
      private cy: number;
      public controlXY: Control;
-     public obstacles: ObstacleArray;
+     public allObjectsArray: ObstacleArray;
      public pulse: SonarAttributes;
      public angle: number;
      public collision: boolean;
      public rectH: number;
      public rectW: number;
-     public allObjectsArray: Array<any>;
+     public timer: number;
+     //public allObjectsArray: Array<any>;
     
-    constructor(obstacles: ObstacleArray){
+    constructor(allObjectsArray: ObstacleArray){
         this.collision = false;
         this.controlXY = new Control();
-        this.pulse = new SonarAttributes();
-        this.obstacles = obstacles;
+        this.allObjectsArray = allObjectsArray;
+        this.pulse = new SonarAttributes(this.allObjectsArray);
         this.angle = 0;
         this.cx = 0;
         this.cy = 0;
         this.rectH = 138;
         this.rectW = 23.5;
-        this.allObjectsArray = [];
-
+        this.timer = 5;
+        //this.allObjectsArray = [];
      }
 
      public update() {
@@ -32,41 +33,42 @@ class CollisionListener {
           this.angle = this.controlXY.getAngle();
           this.submarineCollisions();
           this.sonarDetection();
-          this.allObjectsArray = this.obstacles.obstacles.concat(this.obstacles.powerUps) 
+          //this.allObjectsArray = this.obstacles.obstacles.concat(this.obstacles.powerUps) 
       }
       
       public submarineCollisions(){
-        for(let i = 0; i < this.allObjectsArray.length; i++){
+        
+        for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
           let collision = this.subCollision(
-            this.allObjectsArray[i].x,
-            this.allObjectsArray[i].y,
-            this.allObjectsArray[i].r/2, 
+            this.allObjectsArray.allObjects[i].x,
+            this.allObjectsArray.allObjects[i].y,
+            this.allObjectsArray.allObjects[i].r/2, 
             this.cx,
             this.cy,
             this.rectW,
             this.rectH
           );
             if (collision) {
-            this.allObjectsArray[i].collision = true;  
-            } else {
-            this.allObjectsArray[i].collision = false;
+            this.allObjectsArray.allObjects[i].collision = true;
+          } else {
+            this.allObjectsArray.allObjects[i].collision = false;
           } 
         }
       }
 
       public sonarDetection(){
         for(let radii of this.pulse.pulses){
-          for(let i = 0; i < this.allObjectsArray.length; i++){
+          for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
             let detect = this.detect(
               this.cx, 
               this.cy, 
               radii.sonarRadius, 
-              this.allObjectsArray[i].x, 
-              this.allObjectsArray[i].y, 
-              this.allObjectsArray[i].r
+              this.allObjectsArray.allObjects[i].x, 
+              this.allObjectsArray.allObjects[i].y, 
+              this.allObjectsArray.allObjects[i].r
               );
               if(detect) {
-                this.allObjectsArray[i].detected = true; 
+                this.allObjectsArray.allObjects[i].detected = true; 
               }
           } 
         }

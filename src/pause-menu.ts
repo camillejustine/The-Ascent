@@ -2,8 +2,9 @@ class PauseMenu {
   private div: p5.Element;
   private div2: p5.Element;
   public game: iGameState;
-  
+
   public constructor(game: iGameState) {
+    
       this.game = game;
       this.div = createDiv('pauseMenu');
       this.div.addClass('pauseMenu'); 
@@ -27,16 +28,17 @@ class PauseMenu {
       this.div2.child(resumeButton);
       this.div2.child(backToMain);
       this.div.hide();
+  
   }
 
   private hideButton() {
-    if (this.game.gameState === 'running') {
+    if (this.game.gameState === "running") {
       this.div.hide();
     }
   }
 
   private resume() {
-    this.game.gameState = 'running';
+    this.game.gameState = "running";
   }
 
   private backToMain() {
@@ -44,18 +46,15 @@ class PauseMenu {
   document.location.href = "";
   console.log(this.game.gameState)
 }
-
   public update() {
-    console.log(this.game.gameState)
-   this.keyPressed();
-   this.hideButton();
+    this.keyPressed();
+    this.hideButton();
   }
 
   public keyPressed() {
-  
-      if (keyCode === 32 && keyIsPressed) {
-        this.div.show();
-        this.game.gameState = 'pauseMenu';
-      } 
+    if (keyCode === 32 && keyIsPressed) {
+      this.div.show();
+      this.game.gameState = "pauseMenu";
     }
   }
+}
