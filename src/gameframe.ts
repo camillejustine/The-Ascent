@@ -3,10 +3,9 @@ interface iGameState {
 }
 interface ObstacleArray {
   allObjects: Array<any>;
-  powerUps: PowerUp[]
+  powerUps: PowerUp[];
 }
 class GameFrame implements iGameState, ObstacleArray {
-  
   public gameState:
     | "running"
     | "mainMenu"
@@ -21,7 +20,7 @@ class GameFrame implements iGameState, ObstacleArray {
   /* private gameLost: GameLost;*/
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
-  public allObjects: Array<any>
+  public allObjects: Array<any>;
   private submarine: Submarine;
   private controls: Control;
   private headsUpDisplay: HeadsUpDisplay;
@@ -31,7 +30,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public spawnRateHullFix: number;
   public spawnRateSIncrease: number;
   public spawnRatePI: number;
-  //decrease nr of types for powerups. 
+  //decrease nr of types for powerups.
   public sonarAttributes: SonarAttributes;
   public collisionListener: CollisionListener;
   public pauseMenu: PauseMenu;
@@ -40,7 +39,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.powerUps = [];
     this.obstacles = [];
     this.allObjects = [];
-    
+
     this.gameState = "mainMenu";
 
     this.pauseMenu = new PauseMenu(this);
@@ -51,32 +50,31 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateShip = 0.0005;
     this.spawnRateHullFix = 0.0001;
     this.spawnRateSIncrease = 0.005;
-    this.spawnRatePI= 0.0001;
+    this.spawnRatePI = 0.0001;
 
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
     this.submarine = new Submarine(this);
-    
+
     this.controls = new Control();
     this.background = new Background();
     this.depthCounter = new DepthCounter();
-    
+
     this.headsUpDisplay = new HeadsUpDisplay();
     this.gameWon = new GameWon(this.restartGame);
-    this.gameLost = new GameLost(this);
+    // this.gameLost = new GameLost(this);
   }
-  
+
   private restartGame() {
     // behöver resetta allting och skapa nya
     // this.gameController = new GameController();
-    console.log('restart');
+    console.log("restart");
   }
-
 
   public update() {
     this.mainMenu.update();
     if (this.gameState === "running") {
-      this.allObjects = this.obstacles.concat(this.powerUps)
+      this.allObjects = this.obstacles.concat(this.powerUps);
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
       // document.getElementById("pause-menu")!.style.display = "none";
@@ -90,7 +88,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.collisionListener.update();
       this.headsUpDisplay.update();
       this.pauseMenu.update();
-      this.submarine.update()
+      this.submarine.update();
       //console.log(this.submarine.hullHealth)
     }
 
@@ -100,7 +98,6 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public draw() {
-
     if (this.gameState === "running") {
       document.getElementById("main-menu")!.style.display = "none";
 
@@ -110,26 +107,26 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.submarine.draw();
 
-      for(let obstacle of this.obstacles){
+      for (let obstacle of this.obstacles) {
         obstacle.draw();
       }
 
-      for(let i = 0; i < this.powerUps.length; i++){
+      for (let i = 0; i < this.powerUps.length; i++) {
         this.powerUps[i].draw();
-        //not detected when sliced. 
-          if(this.powerUps[i].collision && this.powerUps[i].id === 'supplyBox'){
-            this.powerUps.splice(i,1)
-          } if(this.powerUps[i].collision && this.powerUps[i].id === 'range'){
-            this.powerUps.splice(i,1)
-          } if(this.powerUps[i].collision && this.powerUps[i].id === 'pulse'){
-            this.powerUps.splice(i,1)
-          }
+        //not detected when sliced.
+        if (this.powerUps[i].collision && this.powerUps[i].id === "supplyBox") {
+          this.powerUps[i].y += 750;
+        }
+        if (this.powerUps[i].collision && this.powerUps[i].id === "range") {
+          this.powerUps[i].y += 750;
+        }
+        if (this.powerUps[i].collision && this.powerUps[i].id === "pulse") {
+          this.powerUps[i].y += 750;
         }
       }
-      this.depthCounter.draw();
     }
-  
-
+    this.depthCounter.draw();
+  }
 
   public populate() {
     if (random(1) < this.spawnRateIceberg) {
@@ -142,11 +139,11 @@ class GameFrame implements iGameState, ObstacleArray {
       this.obstacles.push(new SunkenShip());
     }
     if (random(1) < this.spawnRateSIncrease) {
-        this.powerUps.push(new SupplyBox());
-    } 
+      this.powerUps.push(new SupplyBox());
+    }
     if (random(1) < this.spawnRateSIncrease) {
       this.powerUps.push(new RangePowerUp());
-    } 
+    }
     if (random(1) < this.spawnRateSIncrease) {
       this.powerUps.push(new PulsePowerUp());
     }
@@ -155,23 +152,24 @@ class GameFrame implements iGameState, ObstacleArray {
       object.update();
       if (this.obstacles.length >= 50) {
         this.obstacles.splice(0, 1);
-      } if(this.powerUps.length >= 30){
+      }
+      if (this.powerUps.length >= 30) {
         this.powerUps.splice(0, 1);
         //crashes randomly
         //more stable without concated array?
-      }  
+      }
     }
   }
 
-    public setSpawnRate(){
-      /* for(let ship of this.powerUps){
+  public setSpawnRate() {
+    /* for(let ship of this.powerUps){
         if(ship.detected){
           this.spawnRateHullFix = 0.05
           this.spawnRatePI = 0.05
           this.spawnRateSIncrease = 0.05
         } 
       } */
-      /* if(this.depthCounter.depth <= 750){
+    /* if(this.depthCounter.depth <= 750){
         this.spawnRateIceberg = 0.03;
         this.spawnRateMine = 0.007;
       } if (this.depthCounter.depth <= 500){
