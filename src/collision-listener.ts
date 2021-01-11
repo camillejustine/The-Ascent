@@ -50,7 +50,7 @@ class CollisionListener {
           );
             if (collision) {
             this.allObjectsArray.allObjects[i].collision = true;
-            }else {
+          } else {
             this.allObjectsArray.allObjects[i].collision = false;
           } 
         }

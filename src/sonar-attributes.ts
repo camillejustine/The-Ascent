@@ -55,6 +55,7 @@ class SonarAttributes {
     circle(this.positionX, this.positionY, this.sonarRadius * 2);
   }
 
+
   public sonarPulseFrequency() {
     console.log();
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
@@ -70,17 +71,15 @@ class SonarAttributes {
     }
   }
 
-  public sonarRange() {
-    for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
-      if (
-        this.allObjectsArray.allObjects[i].collision &&
-        this.allObjectsArray.allObjects[i].id === "range"
-      ) {
-        this.range = 3.5;
-        setTimeout(() => {
-          this.range = 2;
-        }, 5000);
-      }
-    }
-  }
+
+    public sonarRange(){
+        for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+            if(this.allObjectsArray.allObjects[i].powerUpActive && this.allObjectsArray.allObjects[i].id === 'range'){
+                this.range = 3.5; 
+            }
+            if(this.allObjectsArray.allObjects[i].collision){
+                this.allObjectsArray.allObjects[i].powerUpActive = true; 
+            } 
+        }
+    } 
 }

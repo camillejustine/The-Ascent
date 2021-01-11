@@ -11,6 +11,7 @@ abstract class PowerUp {
   public detected: boolean;
   public collision: boolean;
   public powerUpActive: boolean;
+  public timer: number
   
 
   constructor() {
@@ -23,6 +24,7 @@ abstract class PowerUp {
     this.detected = false;
     this.collision = false;
     this.powerUpActive = false;
+    this.timer = 5;
   }
 }
 
@@ -34,7 +36,6 @@ class SupplyBox extends PowerUp {
     super();
     this.supplyBox = supplyBox;
     this.id = 'supplyBox';
-
   }
 
   public update() {}
@@ -61,7 +62,9 @@ class PulsePowerUp extends PowerUp {
     this.id = 'pulse';
   }
 
-  public update() {}
+  public update() {
+
+  }
 
   public move() {
     this.y += 2;
@@ -85,7 +88,14 @@ class RangePowerUp extends PowerUp {
     this.id = 'range';
   }
 
-  public update() {}
+  public update() {
+    if(this.powerUpActive){
+      this.timer -= deltaTime/1000;
+      if(this.timer <= 0){
+        this.powerUpActive = false;
+      }
+    }
+  }
 
   public move() {
     this.y += 2;
