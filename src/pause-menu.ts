@@ -46,7 +46,8 @@ class PauseMenu {
   document.location.href = "";
   console.log(this.game.gameState)
 }
-  public update() {
+
+public update() {
     this.keyPressed();
     this.hideButton();
   }
