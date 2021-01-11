@@ -17,7 +17,7 @@ class GameFrame implements iGameState, ObstacleArray {
   private background: Background;
   private headsUpDisplay: HeadsUpDisplay;
   public gameWon: GameWon;
-  /* private gameLost: GameLost;*/
+  private gameLost: GameLost;
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
   public allObjects: Array<any>;
@@ -59,7 +59,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.headsUpDisplay = new HeadsUpDisplay(this.submarine);
 
     this.gameWon = new GameWon(this.restartGame);
-    // this.gameLost = new GameLost(this);
+    this.gameLost = new GameLost(this);
   }
 
   private restartGame() {
@@ -69,6 +69,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public update() {
+    console.log(this.gameState)
     this.mainMenu.update();
     if (this.gameState === "running") {
       this.allObjects = this.obstacles.concat(this.powerUps);
@@ -96,6 +97,7 @@ class GameFrame implements iGameState, ObstacleArray {
     }
     if (this.submarine.hullHealth <= 0) {
       this.gameState = "gameLost";
+      this.gameLost.update();
     }
   }
 
@@ -161,13 +163,13 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public setSpawnRate() {
-    /* for(let ship of this.powerUps){
+    for(let ship of this.powerUps){
         if(ship.detected){
-          this.spawnRatePowerUps = 0.05;
+          this.spawnRatePowerUps = 0.01;
         } else {
-          this.spawnRatePowerUps = this.spawnRatePowerUps;
+          this.spawnRatePowerUps = 0.005;
         }
-      } */
+      }
 
     // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
     if (this.headsUpDisplay.depth <= 750) {

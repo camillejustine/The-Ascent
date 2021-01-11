@@ -8,6 +8,7 @@ let sunkenShipImage: p5.Image | p5.Element;
 let supplyBox: p5.Image | p5.Element;
 let rangePowerUp: p5.Image | p5.Element;
 let pulsePowerUp: p5.Image | p5.Element;
+let explosion: p5.Image | p5.Element;
 
 /**
  * Built in preload function in P5
@@ -22,6 +23,7 @@ function preload() {
   supplyBox = loadImage("./assets/images/power-up.png");
   rangePowerUp = loadImage("./assets/images/range.png")
   pulsePowerUp = loadImage("./assets/images/pulse.png")
+  explosion = loadImage("./assets/images/explosion.png")
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 

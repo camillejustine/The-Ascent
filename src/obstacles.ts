@@ -56,12 +56,14 @@ class Iceberg extends Obstacle {
 
 class Mine extends Obstacle {
   private mine: p5.Image | p5.Element;
+  private explosion: p5.Image | p5.Element;
   public r: number;
   public id: string;
 
   constructor() {
     super();
     this.mine = mineImage;
+    this.explosion = explosion;
     this.r = 100;
     this.id = "mine";
   }
@@ -75,6 +77,9 @@ class Mine extends Obstacle {
   public draw() {
     if (this.detected) {
       image(this.mine, this.x, this.y, 100, 100);
+      imageMode(CENTER);
+    } if(this.collision){
+      image(this.explosion, this.x, this.y, 300, 300);
       imageMode(CENTER);
     }
   }

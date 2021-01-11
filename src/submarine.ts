@@ -56,7 +56,7 @@ class Submarine implements HullHealth {
         this.allObjectsArray.allObjects[i].collision &&
         this.allObjectsArray.allObjects[i].id === "mine"
       ) {
-        this.hullHealth = 0;
+        this.hullHealth -= 5;
       }
     }
   }
