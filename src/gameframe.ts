@@ -27,6 +27,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public spawnRateIceberg: number;
   public spawnRateShip: number;
   public spawnRatePowerUps: number;
+  public spawnrateSunkenShip: number;
   //decrease nr of types for powerups.
   public sonarAttributes: SonarAttributes;
   public collisionListener: CollisionListener;
@@ -42,10 +43,12 @@ class GameFrame implements iGameState, ObstacleArray {
     this.pauseMenu = new PauseMenu(this);
     this.mainMenu = new MainMenu(this);
 
+    // SET THE SPAWN RATE FOR OBSTACLES
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
     this.spawnRatePowerUps = 0.0009;
+    this.spawnrateSunkenShip = 0.00005;
 
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
@@ -134,7 +137,7 @@ class GameFrame implements iGameState, ObstacleArray {
     if (random(1) < this.spawnRateMine) {
       this.obstacles.push(new Mine());
     }
-    if (random(1) < 0.00005) {
+    if (random(1) < this.spawnrateSunkenShip) {
       this.obstacles.push(new SunkenShip());
     }
     if (random(1) < this.spawnRatePowerUps) {
@@ -166,6 +169,8 @@ class GameFrame implements iGameState, ObstacleArray {
           this.spawnRatePowerUps = this.spawnRatePowerUps;
         }
       } */
+
+    // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
     if (this.headsUpDisplay.depth <= 750) {
       this.spawnRateIceberg = 0.03;
       this.spawnRateMine = 0.007;
