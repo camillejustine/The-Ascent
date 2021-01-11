@@ -1,17 +1,19 @@
 
 
-
-
+/* pause menu styling */
 
 .pauseMenu {
     position: fixed;
 
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-  
-    width: 50%;
+    justify-content: center; */
+
+    padding: 7rem;
+    width: 20rem;
+    height: 5rem;
+
     background: linear-gradient(
       186.1deg,
       rgba(110, 198, 65, 0.2) 13.63%,
@@ -25,14 +27,25 @@
     );
 
     border-image-slice: 80;
-    height: 50%;
+
   }
 
-  .resumeButton {
-    position: absolute;
+
+  /* buttons */
+
+
+  .buttonContainer {
+    
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
+  }
+
+
+  .resumeButton {
+    justify-content: flex-start;
+    align-items: flex-end;
     margin-right: 0!important;
 
     background: linear-gradient(
@@ -41,25 +54,21 @@
       rgba(110, 198, 65, 0) 95.41%
     ); 
 
-    background-image: url(./assets/images/button-frame-left.png);
+    background-image: url(./assets/images/button-frame.png);
     background-size: cover;
-    position: relative;
   
     border-radius: 0rem!important;
     border-style: none!important;
     border: none!important;
 
-    width: 7rem!important;
-    height: 3rem!important;
+    width: 8rem!important;
+    height: 3.4rem!important;
   }
 
   .backToMain {
-
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 0!important;
+/* 
+    justify-content: flex-start;
+    align-items: center; */
 
     background: linear-gradient(
       186.1deg,
@@ -67,15 +76,15 @@
       rgba(110, 198, 65, 0) 95.41%
     ); 
 
-    background-image: url(./assets/images/button-frame-right.png);
+    background-image: url(./assets/images/button-back-to-menu.png);
     background-size: cover;
-    position: relative;
+
   
     border-radius: 0rem!important;
     border-style: none!important;
     border: none!important;
 
-    width: 7rem!important;
-    height: 3rem!important;
+    width: 20rem!important;
+    height: 3.2rem!important;
 
   }

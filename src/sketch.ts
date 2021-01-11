@@ -28,11 +28,18 @@ function preload() {
  * in the draw function below
  */
 function setup() {
+  reset();
+  // gameFrame = new GameFrame();
+  // createCanvas(960, 720);
+  // frameRate(60);
+
+  // game = new Game();
+}
+
+function reset() {
   gameFrame = new GameFrame();
   createCanvas(960, 720);
   frameRate(60);
-
-  // game = new Game();
 }
 
 /**
