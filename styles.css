@@ -17,17 +17,13 @@ body {
 button {
   position: relative;
   font-family: "VT323", monospace;
-  background: linear-gradient(
-    186.1deg,
-    rgba(110, 198, 65, 0.3) 13.63%,
-    rgba(110, 198, 65, 0) 95.41%
-  );
+  background: transparent;
   width: 5rem;
   height: 2rem;
   border-radius: 20px;
   border-style: none;
   font-size: 20px;
-  color: aliceblue;
+  color: #6ec641;
   border: none;
   z-index: 1000;
 }
@@ -35,11 +31,7 @@ button {
 button:focus {
   border: none;
   outline: none;
-  background: linear-gradient(
-    186.1deg,
-    rgba(92, 233, 22, 0.3) 13.63%,
-    rgba(35, 95, 6, 0) 95.41%
-  );
+  background: transparent;
 }
 
 .menu-text-frame {
@@ -84,6 +76,9 @@ button:focus {
   font-size: 8rem;
   color: #6ec641;
   margin: 0;
+  color: #6ec641;
+  text-shadow: -5px 5px 0px #519230, -10px 10px 0px #3f7225,
+    -15px 15px 0px #2c501a;
 }
 
 #sonar-animation {

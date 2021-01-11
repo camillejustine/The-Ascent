@@ -6,6 +6,7 @@ interface ObstacleArray {
   powerUps: PowerUp[]
 }
 class GameFrame implements iGameState, ObstacleArray {
+  
   public gameState:
     | "running"
     | "mainMenu"
@@ -42,6 +43,9 @@ class GameFrame implements iGameState, ObstacleArray {
     
     this.gameState = "mainMenu";
 
+    this.pauseMenu = new PauseMenu(this);
+    this.mainMenu = new MainMenu(this);
+
     this.spawnRateMine = 0.005;
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
@@ -49,11 +53,9 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateSIncrease = 0.005;
     this.spawnRatePI= 0.0001;
 
-    this.pauseMenu = new PauseMenu(this);
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
     this.submarine = new Submarine(this);
-    this.mainMenu = new MainMenu(this);
     
     this.controls = new Control();
     this.background = new Background();
@@ -61,6 +63,7 @@ class GameFrame implements iGameState, ObstacleArray {
     
     this.headsUpDisplay = new HeadsUpDisplay();
     this.gameWon = new GameWon(this.restartGame);
+    this.gameLost = new GameLost(this);
   }
   
   private restartGame() {
@@ -76,35 +79,34 @@ class GameFrame implements iGameState, ObstacleArray {
       this.allObjects = this.obstacles.concat(this.powerUps)
       this.depthCounter.update();
       document.getElementById("main-menu")!.style.display = "none";
-      document.getElementById("div")!.style.display = "none";
+      // document.getElementById("pause-menu")!.style.display = "none";
 
       this.background.update();
 
-      noCursor();
+      // noCursor();
 
       this.controls.update();
       this.populate();
       this.collisionListener.update();
       this.headsUpDisplay.update();
-      this.pauseMenu.keyPressed();
+      this.pauseMenu.update();
       this.submarine.update()
       //console.log(this.submarine.hullHealth)
     }
 
-    if (this.gameState === "pauseMenu") {
-      document.getElementById("div")!.style.display = "flex";
-      this.pauseMenu.unpause();
-    }
+    // if (this.gameState === "pauseMenu") {
+    //   document.getElementById("pause-menu")!.style.display = "absolute";
+    // }
   }
 
   public draw() {
-    noCursor();
+
     if (this.gameState === "running") {
       document.getElementById("main-menu")!.style.display = "none";
 
       this.background.draw();
 
-      noCursor();
+      // noCursor();
 
       this.submarine.draw();
 

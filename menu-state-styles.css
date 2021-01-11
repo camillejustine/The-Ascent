@@ -1,0 +1,81 @@
+
+
+
+
+
+.pauseMenu {
+    position: fixed;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+    width: 50%;
+    background: linear-gradient(
+      186.1deg,
+      rgba(110, 198, 65, 0.2) 13.63%,
+      rgba(110, 198, 65, 0) 95.41%
+    );
+    border: 10px solid;
+    border-image: linear-gradient(
+      180deg,
+      rgba(137, 238, 86, 0.966) 22.63%,
+      rgba(32, 85, 6, 0.767) 95.41%
+    );
+
+    border-image-slice: 80;
+    height: 50%;
+  }
+
+  .resumeButton {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0!important;
+
+    background: linear-gradient(
+      186.1deg,
+      rgba(110, 198, 65, 0.2) 13.63%,
+      rgba(110, 198, 65, 0) 95.41%
+    ); 
+
+    background-image: url(./assets/images/button-frame-left.png);
+    background-size: cover;
+    position: relative;
+  
+    border-radius: 0rem!important;
+    border-style: none!important;
+    border: none!important;
+
+    width: 7rem!important;
+    height: 3rem!important;
+  }
+
+  .backToMain {
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0!important;
+
+    background: linear-gradient(
+      186.1deg,
+      rgba(110, 198, 65, 0.2) 13.63%,
+      rgba(110, 198, 65, 0) 95.41%
+    ); 
+
+    background-image: url(./assets/images/button-frame-right.png);
+    background-size: cover;
+    position: relative;
+  
+    border-radius: 0rem!important;
+    border-style: none!important;
+    border: none!important;
+
+    width: 7rem!important;
+    height: 3rem!important;
+
+  }
