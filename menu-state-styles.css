@@ -79,3 +79,27 @@
     height: 3rem!important;
 
   }
+ 
+/*    .gameWon {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: fixed;
+  
+    width: 50rem;
+    height: 50rem;
+
+    background: linear-gradient(
+      186.1deg,
+      rgba(110, 198, 65, 0.2) 13.63%,
+      rgba(110, 198, 65, 0) 95.41%
+    ); 
+
+    border: 10px solid;
+    border-image: linear-gradient(
+      180deg,
+      rgba(137, 238, 86, 0.966) 22.63%,
+      rgba(32, 85, 6, 0.767) 95.41%
+    );
+}   */
+

@@ -18,7 +18,7 @@ class GameFrame implements iGameState, ObstacleArray {
   private background: Background;
   private depthCounter: DepthCounter;
   public gameWon: GameWon;
-  /* private gameLost: GameLost;*/
+ /*  private gameLost: GameLost; */
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
   private submarine: Submarine;
@@ -60,15 +60,15 @@ class GameFrame implements iGameState, ObstacleArray {
     this.headsUpDisplay = new HeadsUpDisplay();
  
     this.obstacles = [];
-    this.gameWon = new GameWon(this.restartGame);
+    this.gameWon = new GameWon(this);
     this.gameLost = new GameLost(this);
   }
   
-  private restartGame() {
+/*   private restartGame() {
     // behöver resetta allting och skapa nya
     // this.gameController = new GameController();
     console.log('restart');
-  }
+  } */
 
 
   public update() {

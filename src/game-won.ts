@@ -1,33 +1,30 @@
 class GameWon {
     private div: p5.Element;
-    private restartGameCallback: Function;
+    public game: iGameState;
+  ;
 
-    public constructor(restartGameCallback: Function) {
-        this.restartGameCallback = restartGameCallback;
-        this.div = createElement('main-menu');
+    public constructor(game: iGameState) {
+       this.game = game;
+       this.div = createDiv('gameWon');
+       this.div.addClass('gameWon'); 
+       this.div.html('Yay! You are a winner!!');
+       this.div.style('text-align:center');
+       //this.div = createElement('main-menu');
 
-        const restartButton = createElement('button');
-        restartButton.addClass('button');
-        restartButton.html('Restart');
-        restartButton.mousePressed(() => this.restartGame);
+        const backToMain = createElement('button');
+        backToMain.addClass('backToMain');
+        backToMain.html('Back To Main');
+        backToMain.mousePressed(() => this.backToMain());
 
-        const backToMainButton = createElement('button');
-        backToMainButton.addClass('button');
-        backToMainButton.html('Back To Main');
-        backToMainButton.mousePressed(() => this.backToMain());
-
-        this.div.child(restartButton);
-        this.div.child(backToMainButton);
-    }
-    
-    private restartGame() {
-        console.log('restart');
+        this.div.child(backToMain);
         this.div.hide();
-        this.restartGameCallback();
     }
     
     private backToMain() {
-        console.log('backtomain');
-        // this.backToMainCallback();
-    }
+        document.location.href = '';
+        //this.div.hide();
+        
+      }
+    
+
 }
