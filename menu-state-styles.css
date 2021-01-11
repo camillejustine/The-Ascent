@@ -80,12 +80,12 @@
 
   }
  
-/*    .gameWon {
+ .gameWon {
     display: flex;
     align-items: center;
     justify-content: center; 
-    position: fixed;
-  
+    margin-right: 0!important;
+    
     width: 50rem;
     height: 50rem;
 
@@ -101,5 +101,6 @@
       rgba(137, 238, 86, 0.966) 22.63%,
       rgba(32, 85, 6, 0.767) 95.41%
     );
-}   */
+}   
 
+ 
