@@ -45,7 +45,7 @@ class Control {
     this.keyPressed();
     this.move();
   }
-
+  // SET SUBMARINE ROTATION LEFT SPEED
   public keyPressed() {
     if (keyIsDown(this.rotateLeft)) {
       if (this.angle >= -40) {
@@ -56,7 +56,7 @@ class Control {
         this.angle += 0.5;
       }
     }
-
+    // SET SUBMARINE ROTATION RIGHT SPEED
     if (keyIsDown(this.rotateRight)) {
       if (this.angle <= 40) {
         this.angle += 0.5;
@@ -66,7 +66,7 @@ class Control {
         this.angle -= 0.5;
       }
     }
-
+    // SET SUBMARINE MOVEMENT SPEED
     if (keyIsDown(LEFT_ARROW)) {
       this.subPositionX -= 0.7;
     }
