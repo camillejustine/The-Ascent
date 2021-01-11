@@ -15,7 +15,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
   private mainMenu: MainMenu;
   private background: Background;
-  private depthCounter: DepthCounter;
+  private headsUpDisplay: HeadsUpDisplay;
   public gameWon: GameWon;
   /* private gameLost: GameLost;*/
   public powerUps: PowerUp[];
@@ -23,7 +23,6 @@ class GameFrame implements iGameState, ObstacleArray {
   public allObjects: Array<any>;
   private submarine: Submarine;
   private controls: Control;
-  private headsUpDisplay: HeadsUpDisplay;
   public spawnRateMine: number;
   public spawnRateIceberg: number;
   public spawnRateShip: number;
@@ -47,7 +46,6 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
     this.spawnRatePowerUps = 0.0009;
-   
 
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
@@ -55,9 +53,8 @@ class GameFrame implements iGameState, ObstacleArray {
 
     this.controls = new Control();
     this.background = new Background();
-    this.depthCounter = new DepthCounter();
+    this.headsUpDisplay = new HeadsUpDisplay(this.submarine);
 
-    this.headsUpDisplay = new HeadsUpDisplay();
     this.gameWon = new GameWon(this.restartGame);
     // this.gameLost = new GameLost(this);
   }
@@ -72,7 +69,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.mainMenu.update();
     if (this.gameState === "running") {
       this.allObjects = this.obstacles.concat(this.powerUps);
-      this.depthCounter.update();
+      this.headsUpDisplay.update();
       document.getElementById("main-menu")!.style.display = "none";
       // document.getElementById("pause-menu")!.style.display = "none";
 
@@ -83,23 +80,21 @@ class GameFrame implements iGameState, ObstacleArray {
       this.controls.update();
       this.populate();
       this.collisionListener.update();
-      this.headsUpDisplay.update();
       this.pauseMenu.update();
       this.submarine.update();
       this.setSpawnRate();
-      console.log(this.submarine.hullHealth)
     }
 
     // if (this.gameState === "pauseMenu") {
     //   document.getElementById("pause-menu")!.style.display = "absolute";
     // }
 
-      if(this.depthCounter.depth === 0){
-        this.gameState = 'gameWon';
-      }
-      if(this.submarine.hullHealth <= 0){
-        this.gameState = 'gameLost';
-      }
+    if (this.headsUpDisplay.depth === 0) {
+      this.gameState = "gameWon";
+    }
+    if (this.submarine.hullHealth <= 0) {
+      this.gameState = "gameLost";
+    }
   }
 
   public draw() {
@@ -129,7 +124,7 @@ class GameFrame implements iGameState, ObstacleArray {
         }
       }
     }
-    this.depthCounter.draw();
+    this.headsUpDisplay.draw();
   }
 
   public populate() {
@@ -171,25 +166,29 @@ class GameFrame implements iGameState, ObstacleArray {
           this.spawnRatePowerUps = this.spawnRatePowerUps;
         }
       } */
-    if(this.depthCounter.depth <= 750){
-        this.spawnRateIceberg = 0.03;
-        this.spawnRateMine = 0.007;
-      } if (this.depthCounter.depth <= 500){
-        this.spawnRateIceberg = 0.05;
-        this.spawnRateMine = 0.009;
-        this.spawnRatePowerUps = 0.00099
-      } if (this.depthCounter.depth <= 250){
-        this.spawnRateIceberg = 0.08;
-        this.spawnRateMine = 0.015;
-        this.spawnRatePowerUps = 0.002
-      } if (this.depthCounter.depth <= 100){
-        this.spawnRateIceberg = 0.1;
-        this.spawnRateMine = 0.02;
-        this.spawnRatePowerUps = 0.004;
-      } if (this.depthCounter.depth <= 50){
-        this.spawnRateIceberg = 0;
-        this.spawnRateMine = 0;
-        this.spawnRatePowerUps =  0;
-      } 
+    if (this.headsUpDisplay.depth <= 750) {
+      this.spawnRateIceberg = 0.03;
+      this.spawnRateMine = 0.007;
+    }
+    if (this.headsUpDisplay.depth <= 500) {
+      this.spawnRateIceberg = 0.05;
+      this.spawnRateMine = 0.009;
+      this.spawnRatePowerUps = 0.00099;
+    }
+    if (this.headsUpDisplay.depth <= 250) {
+      this.spawnRateIceberg = 0.08;
+      this.spawnRateMine = 0.015;
+      this.spawnRatePowerUps = 0.002;
+    }
+    if (this.headsUpDisplay.depth <= 100) {
+      this.spawnRateIceberg = 0.1;
+      this.spawnRateMine = 0.02;
+      this.spawnRatePowerUps = 0.004;
+    }
+    if (this.headsUpDisplay.depth <= 50) {
+      this.spawnRateIceberg = 0;
+      this.spawnRateMine = 0;
+      this.spawnRatePowerUps = 0;
+    }
   }
 }
