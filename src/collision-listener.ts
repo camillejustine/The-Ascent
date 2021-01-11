@@ -8,6 +8,7 @@ class CollisionListener {
      public collision: boolean;
      public rectH: number;
      public rectW: number;
+     public timer: number;
      //public allObjectsArray: Array<any>;
     
     constructor(allObjectsArray: ObstacleArray){
@@ -20,6 +21,7 @@ class CollisionListener {
         this.cy = 0;
         this.rectH = 138;
         this.rectW = 23.5;
+        this.timer = 5;
         //this.allObjectsArray = [];
      }
 
@@ -35,6 +37,7 @@ class CollisionListener {
       }
       
       public submarineCollisions(){
+        
         for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
           let collision = this.subCollision(
             this.allObjectsArray.allObjects[i].x,
@@ -46,8 +49,8 @@ class CollisionListener {
             this.rectH
           );
             if (collision) {
-            this.allObjectsArray.allObjects[i].collision = true;  
-            } else {
+            this.allObjectsArray.allObjects[i].collision = true;
+            }else {
             this.allObjectsArray.allObjects[i].collision = false;
           } 
         }

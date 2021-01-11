@@ -10,6 +10,7 @@ abstract class PowerUp {
   public x: number;
   public detected: boolean;
   public collision: boolean;
+  public powerUpActive: boolean;
   
 
   constructor() {
@@ -21,6 +22,7 @@ abstract class PowerUp {
     this.x = random(10, 900);
     this.detected = false;
     this.collision = false;
+    this.powerUpActive = false;
   }
 }
 

@@ -8,7 +8,7 @@ class SonarAttributes {
     public pulseLifespan: number;
     public allObjectsArray: ObstacleArray;
     public pulseRate: number;
-    private timer: number;
+  //private timer: number;
     private range: number;
     
 
@@ -21,14 +21,13 @@ class SonarAttributes {
         this.pulseLifespan = 100;
         this.pulses = [];
         this.pulseRate = 85;
-        this.timer = 5;
+      //this.timer = 5;
         this.range = 2;
     }
     
     public update() {
         this.draw();
         this.sonarPulseFrequency()
-        this.sonarRange();
         if(frameCount % this.pulseRate == 0){
             this.pulses.push(new SonarAttributes(this.allObjectsArray));
         }
@@ -39,6 +38,7 @@ class SonarAttributes {
         for(let i = 0; i < this.pulses.length; i++){
             this.pulses[i].positionX = this.control.getPositionX(); 
             this.pulses[i].positionY = this.control.getPositionY() - 60; 
+            this.sonarRange()
             this.pulses[i].pulse();
             this.pulses[i].pulse();
             if(this.pulses[i].pulseLifespan <= 0){
@@ -60,13 +60,9 @@ class SonarAttributes {
     public sonarPulseFrequency(){
         console.log()
         for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-            if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'pulse'){
-                //set active on powerups. 
-                if(frameCount % 60 == 0 && this.timer > 0){
-                    this.timer --;
-                }   
-                this.pulseRate = 20; 
-                console.log(this.allObjectsArray.allObjects[i].collision)          
+            if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'pulse'){ 
+                this.pulseRate = 20;
+                setTimeout(() =>{this.pulseRate = 85;}, 5000) 
             }
         }
     }
@@ -74,9 +70,9 @@ class SonarAttributes {
     public sonarRange(){
         for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
             if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'range'){
-                this.range = 10;
-                console.log(this.range)
-            }
+                this.range = 3.5;
+                setTimeout(() =>{this.range = 2;}, 5000)    
+            } 
         }
     } 
 }
