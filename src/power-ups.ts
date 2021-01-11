@@ -63,12 +63,7 @@ class PulsePowerUp extends PowerUp {
   }
 
   public update() {
-    if(this.powerUpActive){
-        this.timer -= deltaTime/1000;
-        if(this.timer <= 0){
-          this.powerUpActive = false;
-        }
-    }
+
   }
 
   public move() {

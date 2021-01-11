@@ -71,9 +71,8 @@ class SonarAttributes {
             if(this.allObjectsArray.allObjects[i].powerUpActive && this.allObjectsArray.allObjects[i].id === 'range'){
                 this.range = 3.5; 
             }
-            if(this.allObjectsArray.allObjects[i].collision ){
-                this.allObjectsArray.allObjects[i].powerUpActive = true;
-                //setTimeout(() =>{this.range = 85}, 5000) 
+            if(this.allObjectsArray.allObjects[i].collision){
+                this.allObjectsArray.allObjects[i].powerUpActive = true; 
             } 
         }
     } 
