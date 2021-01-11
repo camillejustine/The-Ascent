@@ -12,27 +12,25 @@ class HeadsUpDisplay {
   }
 
   public draw() {
-    push();
+   
     if (this.depth <= 4000) {
       textSize(32);
-      fill("rgba(0,255,0,0.25)");
-      text(Math.floor(this.depth) + " METERS", width / 2 - 60, height - 20);
+      //fill("rgba(0,255,0,0.25)");
+      text("DEPTH: " + Math.floor(this.depth) + " METERS", width / 2 - 400, height - 10);
     }
 
     if (this.depth <= 0) {
       text("GAME OVER", width / 2, height / 2 + 15);
     }
-    pop();
-
-    push();
+    
     textSize(32);
-    fill("rgba(0,255,0,0.25)");
+    //fill("rgba(0,255,0,0.25)");
     text(
-      Math.floor(this.hullHealth.hullHealth) + "% HULL HEALTH",
-      width / 2 - 80,
-      height - 50
+      "HULL HEALTH: " + Math.floor(this.hullHealth.hullHealth) + "%",
+      width / 2 + 100,
+      height - 10
     );
-    pop();
+    
   }
 
   public timeIt() {
@@ -42,21 +40,3 @@ class HeadsUpDisplay {
   }
 }
 
-// class HeadsUpDisplay {
-
-//     public constructor() {}
-
-//     public update(){
-//         push()
-//         fill(225)
-//         text("FPS: " + Math.floor(frameRate()), width - 120, 30);
-//         pop()
-//     }
-//     /*
-
-//     public draw(){}
-
-//     public update(){}
-
-//     private updateHudElements(){} */
-// }
