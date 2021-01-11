@@ -185,7 +185,7 @@ class GameFrame implements iGameState, ObstacleArray {
       } if (this.depthCounter.depth <= 100){
         this.spawnRateIceberg = 0.1;
         this.spawnRateMine = 0.02;
-        this.spawnRatePowerUps = 0.004
+        this.spawnRatePowerUps = 0.004;
       } if (this.depthCounter.depth <= 50){
         this.spawnRateIceberg = 0;
         this.spawnRateMine = 0;
