@@ -21,9 +21,9 @@ function preload() {
   mineImage = loadImage("./assets/images/mine.png");
   sunkenShipImage = loadImage("assets/images/sunken-ship.png");
   supplyBox = loadImage("./assets/images/power-up.png");
-  rangePowerUp = loadImage("./assets/images/range.png")
-  pulsePowerUp = loadImage("./assets/images/pulse.png")
-  explosion = loadImage("./assets/images/explosion.png")
+  rangePowerUp = loadImage("./assets/images/range.png");
+  pulsePowerUp = loadImage("./assets/images/pulse.png");
+  explosion = loadImage("./assets/images/mineboom.gif");
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 
