@@ -2,7 +2,7 @@
 
 /* pause menu styling */
 
-.pauseMenu {
+.pauseMenu, .gameLost {
     position: fixed;
 
     display: flex;
@@ -90,5 +90,26 @@
 
     width: 21rem!important;
     height: 3.2rem!important;
+
+  }
+
+
+  .backToMainButton {
+
+    background: linear-gradient(
+      186.1deg,
+      rgba(110, 198, 65, 0.2) 13.63%,
+      rgba(110, 198, 65, 0) 95.41%
+    ); 
+
+    background-image: url(./assets/images/button-frame.png);
+    background-size: cover;
+
+    border-radius: 0rem!important;
+    border-style: none!important;
+    border: none!important;
+
+    width: 10rem!important;
+    height: 5rem!important;
 
   }

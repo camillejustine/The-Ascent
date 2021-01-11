@@ -43,10 +43,11 @@ class PauseMenu {
   }
 }
 
-  public update() {
-    console.log(this.game.gameState)
-   this.keyPressed();
-   this.hideButton();
+
+public update() {
+    this.keyPressed();
+    this.hideButton();
+
   }
 
   public keyPressed() {
