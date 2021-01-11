@@ -38,7 +38,6 @@ class SonarAttributes {
         for(let i = 0; i < this.pulses.length; i++){
             this.pulses[i].positionX = this.control.getPositionX(); 
             this.pulses[i].positionY = this.control.getPositionY() - 60; 
-            this.sonarRange()
             this.pulses[i].pulse();
             this.pulses[i].pulse();
             if(this.pulses[i].pulseLifespan <= 0){
@@ -69,14 +68,14 @@ class SonarAttributes {
 
     public sonarRange(){
         for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-            if(this.allObjectsArray.allObjects[i].collision && this.allObjectsArray.allObjects[i].id === 'range'){
+            if(this.allObjectsArray.allObjects[i].powerUpActive && this.allObjectsArray.allObjects[i].id === 'range'){
+                this.range = 3.5; 
+            }
+            /* if(this.allObjectsArray.allObjects[i].collision ){
                 this.allObjectsArray.allObjects[i].powerUpActive = true;
-                this.range = 3.5;
-                setTimeout(() =>{this.allObjectsArray.allObjects[i].powerUpActive = false;}, 5000) 
-                if(this.allObjectsArray.allObjects[i].powerUpActive){
-                
-                }   
-            } 
+               
+                setTimeout(() =>{this.range = 85}, 5000) 
+            }  */
         }
     } 
 }

@@ -63,10 +63,8 @@ class PulsePowerUp extends PowerUp {
   }
 
   public update() {
-    console.log(this.timer)
     if(this.powerUpActive){
         this.timer -= deltaTime/1000;
-        console.log(this.timer)
         if(this.timer <= 0){
           this.powerUpActive = false;
         }
@@ -98,7 +96,6 @@ class RangePowerUp extends PowerUp {
   public update() {
     if(this.powerUpActive){
       this.timer -= deltaTime/1000;
-      console.log(this.timer)
       if(this.timer <= 0){
         this.powerUpActive = false;
       }
