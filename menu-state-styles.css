@@ -5,12 +5,12 @@
 .pauseMenu {
     position: fixed;
 
-    /* display: flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
 
-    padding: 7rem;
+    padding: 5em;
     width: 20rem;
     height: 5rem;
 
@@ -28,17 +28,23 @@
 
     border-image-slice: 80;
 
+    color: rgba(137, 238, 86, 0.966);
+    text-align: center;
+    font-size: 1.5rem;
+
+
   }
 
 
   /* buttons */
-
 
   .buttonContainer {
     
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin-top: 2rem;
 
   }
 
@@ -61,14 +67,12 @@
     border-style: none!important;
     border: none!important;
 
-    width: 8rem!important;
-    height: 3.4rem!important;
+    width: 9rem!important;
+    height: 3.2rem!important;
   }
 
   .backToMain {
-/* 
-    justify-content: flex-start;
-    align-items: center; */
+
 
     background: linear-gradient(
       186.1deg,
@@ -84,7 +88,7 @@
     border-style: none!important;
     border: none!important;
 
-    width: 20rem!important;
+    width: 21rem!important;
     height: 3.2rem!important;
 
   }
