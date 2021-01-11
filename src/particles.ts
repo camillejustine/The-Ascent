@@ -29,8 +29,8 @@ class Particle {
   }
 
   public draw() {
-    noStroke();
-    fill(255, 255, this.color, this.alpha);
-    ellipse(this.x, this.y, this.size);
+    stroke(255, 255, this.color, this.alpha);
+    strokeWeight(this.size);
+    line(this.x, this.y, this.x, this.y);
   }
 }
