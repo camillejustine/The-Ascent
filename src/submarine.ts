@@ -35,12 +35,21 @@ class Submarine implements HullHealth {
     angleMode(DEGREES);
     push();
     rectMode(CENTER)
-    rect(this.subPositionX, this.subPositionY,35, 150,)
+    
+    
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
     
     imageMode(CENTER);
+    //rect(0, 0,35, 150,)
+   
     image(subImage, 0, 0, 35, 150);
+    
+    /* circle(0,0 - 60,30)
+    circle(0,0 - 30,30)
+    circle(0,0,30)
+    circle(0,0 + 30,30)
+    circle(0,0 + 60,30) */
     
     pop();
   }

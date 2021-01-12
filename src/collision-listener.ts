@@ -9,51 +9,63 @@ class CollisionListener {
      public rectH: number;
      public rectW: number;
      public timer: number;
-     //public allObjectsArray: Array<any>;
+
+     public r: number;
+    public x: number;
     
     constructor(allObjectsArray: ObstacleArray){
         this.collision = false;
         this.controlXY = new Control();
         this.allObjectsArray = allObjectsArray;
         this.pulse = new SonarAttributes(this.allObjectsArray);
-        this.angle = 0;
         this.cx = 0;
         this.cy = 0;
+        this.angle = 0;
         this.rectH = 138;
         this.rectW = 23.5;
         this.timer = 5;
-        //this.allObjectsArray = [];
+        this.r = 30;
+        this.x = 0;
      }
 
      public update() {
           this.pulse.update();
           this.controlXY.update();
-          this.cx = this.controlXY.getPositionX() -12.5;
-          this.cy = this.controlXY.getPositionY() -70;
+          this.cx = this.controlXY.getPositionX();
+          this.cy = this.controlXY.getPositionY();
           this.angle = this.controlXY.getAngle();
           this.submarineCollisions();
           this.sonarDetection();
-          //this.allObjectsArray = this.obstacles.obstacles.concat(this.obstacles.powerUps) 
       }
       
       public submarineCollisions(){
+        let circleArray = [
+          {"x": this.cx, "y": this.cy - 60, "r": this.r},
+          {"x": this.cx, "y": this.cy - 30, "r": this.r},
+          {"x": this.cx, "y": this.cy , "r": this.r},
+          {"x": this.cx, "y": this.cy + 30, "r": this.r},
+          {"x": this.cx, "y": this.cy + 60, "r": this.r} 
+        ]; 
         
-        for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-          let collision = this.subCollision(
-            this.allObjectsArray.allObjects[i].x,
-            this.allObjectsArray.allObjects[i].y,
-            this.allObjectsArray.allObjects[i].r/2, 
-            this.cx,
-            this.cy,
-            this.rectW,
-            this.rectH
-          );
-            if (collision) {
-            this.allObjectsArray.allObjects[i].collision = true;
-            this.allObjectsArray.allObjects[i].collided = true;
-          } else {
-            this.allObjectsArray.allObjects[i].collision = false;
-          } 
+        
+        for(let i = 0; i < circleArray.length; i++){
+          circle(circleArray[i].x,circleArray[i].y,circleArray[i].r)
+          for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+              let collision = this.detect(
+                circleArray[i].x, 
+                circleArray[i].y, 
+                circleArray[i].r, 
+                this.allObjectsArray.allObjects[i].x, 
+                this.allObjectsArray.allObjects[i].y, 
+                this.allObjectsArray.allObjects[i].r
+                );
+                if (collision) {
+                  this.allObjectsArray.allObjects[i].collision = true;
+                  this.allObjectsArray.allObjects[i].collided = true;
+                } else {
+                  this.allObjectsArray.allObjects[i].collision = false;
+                } 
+            }
         }
       }
 
@@ -86,7 +98,7 @@ class CollisionListener {
         return false;
     }
 
-    public subCollision(cx: number, cy: number, radius: number, rx: number, ry: number, rw: number, rh: number) {
+    /* public subCollision(cx: number, cy: number, radius: number, rx: number, ry: number, rw: number, rh: number) {
       let testX = cx;
       let testY = cy;
       
@@ -103,7 +115,19 @@ class CollisionListener {
         return true;
       }
       return false;
-    }
+    } */
+
+
+     /* let collision = this.subCollision(
+            this.allObjectsArray.allObjects[i].x,
+            this.allObjectsArray.allObjects[i].y,
+            this.allObjectsArray.allObjects[i].r/2, 
+            this.cx,
+            this.cy,
+            this.rectW,
+            this.rectH
+          ); */
+
 
     /** Rotates a point around another center point, will return a new point */
   public rotatePointAroundCenter(point: p5.Vector, center: p5.Vector, angle: number): p5.Vector {​​​​
