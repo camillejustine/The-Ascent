@@ -1,7 +1,7 @@
 class HeadsUpDisplay {
   public depth: number;
   public hullHealth: HullHealth;
-  
+
   public constructor(hullHealth: HullHealth) {
     this.depth = 1000;
     this.hullHealth = hullHealth;
@@ -11,21 +11,25 @@ class HeadsUpDisplay {
     this.depth -= deltaTime / 100;
   }
 
-  public draw() { 
-    push()
+  public draw() {
+    push();
     textSize(32);
     fill("rgba(0,255,0,0.25)");
-    noStroke()
+    noStroke();
     text(
       "HULL HEALTH: " + Math.floor(this.hullHealth.hullHealth) + "%",
       width / 2 + 100,
       height - 10
     );
-    text("DEPTH: " + Math.floor(this.depth) + " METERS", width / 2 - 400, height - 10);
-    pop()
-   
-    text(Math.floor(frameRate()),width / 2, height /2)
-    textSize(32);
+    text(
+      "DEPTH: " + Math.floor(this.depth) + " METERS",
+      width / 2 - 400,
+      height - 10
+    );
+    pop();
+
+    // text(Math.floor(frameRate()),width / 2, height /2)
+    // textSize(32);
   }
 
   public timeIt() {
@@ -34,4 +38,3 @@ class HeadsUpDisplay {
     }
   }
 }
-
