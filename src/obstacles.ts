@@ -52,6 +52,10 @@ class Iceberg extends Obstacle {
     if (this.detected) {
       image(this.iceberg, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
+    } 
+    if(this.collided){
+      image(icebergCrack, this.x, this.y, this.rx, this.ry);
+      imageMode(CENTER);
     }
   }
 }

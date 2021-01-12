@@ -11,6 +11,7 @@ abstract class PowerUp {
   public detected: boolean;
   public collision: boolean;
   public powerUpActive: boolean;
+  public collided: boolean;
   public timer: number
   
 
@@ -24,6 +25,7 @@ abstract class PowerUp {
     this.detected = false;
     this.collision = false;
     this.powerUpActive = false;
+    this.collided = false;
     this.timer = 5;
   }
 }

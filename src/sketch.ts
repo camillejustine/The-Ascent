@@ -25,7 +25,7 @@ function preload() {
   rangePowerUp = loadImage("./assets/images/range.png");
   pulsePowerUp = loadImage("./assets/images/pulse.png");
   explosion = loadImage("./assets/images/mineboom.gif");
-  icebergCrack = loadImage("./assets/images/mineboom.gif");
+  icebergCrack = loadImage("./assets/images/icebergC.png");
 
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
