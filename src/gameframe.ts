@@ -71,7 +71,6 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public update() {
-    console.log(this.gameState)
     this.mainMenu.update();
     if (this.gameState === "running") {
       this.allObjects = this.obstacles.concat(this.powerUps);
@@ -199,5 +198,5 @@ class GameFrame implements iGameState, ObstacleArray {
       this.spawnRatePowerUps = 0;
     }
   }
-  console.log(this.spawnRatePowerUps)
+  
 }
