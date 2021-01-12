@@ -123,7 +123,7 @@ class CollisionListener {
               radii.sonarRadius, 
               this.allObjectsArray.allObjects[i].x, 
               this.allObjectsArray.allObjects[i].y, 
-              this.allObjectsArray.allObjects[i].r/2
+              this.allObjectsArray.allObjects[i].r
               );
               if(detect) {
                 this.allObjectsArray.allObjects[i].detected = true; 
