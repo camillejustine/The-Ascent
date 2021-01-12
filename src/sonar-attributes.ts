@@ -46,7 +46,7 @@ class SonarAttributes {
   public pulse() {
     this.sonarRange();
     this.sonarRadius = this.sonarRadius + this.range;
-    console.log(this.sonarRadius)
+    //console.log(this.sonarRadius)
     this.pulseLifespan--;
     strokeWeight(2);
     stroke("rgba(0,255,0,0.25)");
@@ -56,7 +56,7 @@ class SonarAttributes {
 
 
   public sonarPulseFrequency() {
-    console.log();
+
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
       if (
         this.allObjectsArray.allObjects[i].collision &&
