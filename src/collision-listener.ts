@@ -68,7 +68,7 @@ class CollisionListener {
                   this.allObjectsArray.allObjects[i].collision = false;
                 } 
             }
-            for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+            /* for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
 
               let position = createVector(circleArray[1].x,circleArray[1].y);
               let center = createVector(this.cx,this.cy);
@@ -101,6 +101,9 @@ class CollisionListener {
               circle(rotate.x, 
                 rotate.y, 
                 circleArray[2].r)
+                circle(rotate.x, 
+                  rotate.y, 
+                  circleArray[2].r)
               let collision = this.detect(
                 rotate.x, 
                 rotate.y, 
@@ -140,7 +143,7 @@ class CollisionListener {
                   this.allObjectsArray.allObjects[i].collision = false;
                 } 
             }
-            for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+           */   for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
 
               let position = createVector(circleArray[4].x,circleArray[4].y);
               let center = createVector(this.cx,this.cy);
@@ -163,7 +166,7 @@ class CollisionListener {
                 } else {
                   this.allObjectsArray.allObjects[i].collision = false;
                 } 
-            }
+            } 
       }
 
       public sonarDetection(){
@@ -175,7 +178,7 @@ class CollisionListener {
               radii.sonarRadius, 
               this.allObjectsArray.allObjects[i].x, 
               this.allObjectsArray.allObjects[i].y, 
-              this.allObjectsArray.allObjects[i].r
+              this.allObjectsArray.allObjects[i].r/2
               );
               if(detect) {
                 this.allObjectsArray.allObjects[i].detected = true; 

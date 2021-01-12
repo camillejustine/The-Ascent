@@ -35,22 +35,10 @@ class Submarine implements HullHealth {
     
     push();
     rectMode(CENTER)
-    
-    
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
-    
     imageMode(CENTER);
-    //rect(0, 0,35, 150,)
-   
     image(subImage, 0, 0, 35, 150);
-    
-    /* circle(0,0 - 60,30)
-    circle(0,0 - 30,30)
-    circle(0,0,30)
-    circle(0,0 + 30,30)
-    circle(0,0 + 60,30) */
-    
     pop();
   }
 
@@ -60,6 +48,7 @@ class Submarine implements HullHealth {
         this.allObjectsArray.allObjects[i].collision &&
         this.allObjectsArray.allObjects[i].id === "iceberg"
       ) {
+        console.log(this.allObjectsArray.allObjects[i].collision);
         this.hullHealth = this.hullHealth - 0.25;
         if (this.hullHealth <= 0) {
           this.hullHealth = 0;
