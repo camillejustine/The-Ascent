@@ -34,7 +34,7 @@ class SonarAttributes {
     this.control.update();
     for (let i = 0; i < this.pulses.length; i++) {
       this.pulses[i].positionX = this.control.getPositionX();
-      this.pulses[i].positionY = this.control.getPositionY() - 60;
+      this.pulses[i].positionY = this.control.getPositionY();
       this.pulses[i].pulse();
       this.pulses[i].pulse();
       if (this.pulses[i].pulseLifespan <= 0) {

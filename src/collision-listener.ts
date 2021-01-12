@@ -9,52 +9,161 @@ class CollisionListener {
      public rectH: number;
      public rectW: number;
      public timer: number;
-     //public allObjectsArray: Array<any>;
+
+     public r: number;
+    public x: number;
     
     constructor(allObjectsArray: ObstacleArray){
         this.collision = false;
         this.controlXY = new Control();
         this.allObjectsArray = allObjectsArray;
         this.pulse = new SonarAttributes(this.allObjectsArray);
-        this.angle = 0;
         this.cx = 0;
         this.cy = 0;
+        this.angle = 0;
         this.rectH = 138;
         this.rectW = 23.5;
         this.timer = 5;
-        //this.allObjectsArray = [];
+        this.r = 30;
+        this.x = 0;
      }
 
      public update() {
           this.pulse.update();
           this.controlXY.update();
-          this.cx = this.controlXY.getPositionX() -12.5;
-          this.cy = this.controlXY.getPositionY() -70;
+          this.cx = this.controlXY.getPositionX();
+          this.cy = this.controlXY.getPositionY();
           this.angle = this.controlXY.getAngle();
           this.submarineCollisions();
           this.sonarDetection();
-          //this.allObjectsArray = this.obstacles.obstacles.concat(this.obstacles.powerUps) 
       }
       
       public submarineCollisions(){
-        
-        for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-          let collision = this.subCollision(
-            this.allObjectsArray.allObjects[i].x,
-            this.allObjectsArray.allObjects[i].y,
-            this.allObjectsArray.allObjects[i].r/2, 
-            this.cx,
-            this.cy,
-            this.rectW,
-            this.rectH
-          );
-            if (collision) {
-            this.allObjectsArray.allObjects[i].collision = true;
-            this.allObjectsArray.allObjects[i].collided = true;
-          } else {
-            this.allObjectsArray.allObjects[i].collision = false;
-          } 
-        }
+        let circleArray = [
+          {"x": this.cx, "y": this.cy - 60, "r": this.r},
+          {"x": this.cx, "y": this.cy - 30, "r": this.r},
+          {"x": this.cx, "y": this.cy , "r": this.r},
+          {"x": this.cx, "y": this.cy + 30, "r": this.r},
+          {"x": this.cx, "y": this.cy + 60, "r": this.r} 
+        ]; 
+          for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+           
+              let position = createVector(circleArray[0].x,circleArray[0].y);
+              let center = createVector(this.cx,this.cy);
+              let rotate = this.rotatePointAroundCenter(position, center,this.angle)
+
+              circle(rotate.x, rotate.y, circleArray[0].r)
+                 let collision = this.detect(
+                rotate.x, 
+                rotate.y, 
+                circleArray[0].r, 
+                this.allObjectsArray.allObjects[i].x, 
+                this.allObjectsArray.allObjects[i].y, 
+                this.allObjectsArray.allObjects[i].r/2
+                );
+                if (collision) {
+                  this.allObjectsArray.allObjects[i].collision = true;
+                  this.allObjectsArray.allObjects[i].collided = true;
+                } else {
+                  this.allObjectsArray.allObjects[i].collision = false;
+                } 
+            }
+            for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+
+              let position = createVector(circleArray[1].x,circleArray[1].y);
+              let center = createVector(this.cx,this.cy);
+              let rotate = this.rotatePointAroundCenter(position, center,this.angle)
+
+              circle(rotate.x, 
+                rotate.y, 
+                circleArray[1].r)
+              let collision = this.detect(
+                rotate.x, 
+                rotate.y, 
+                circleArray[1].r, 
+                this.allObjectsArray.allObjects[i].x, 
+                this.allObjectsArray.allObjects[i].y, 
+                this.allObjectsArray.allObjects[i].r/2
+                );
+                if (collision) {
+                  this.allObjectsArray.allObjects[i].collision = true;
+                  this.allObjectsArray.allObjects[i].collided = true;
+                } else {
+                  this.allObjectsArray.allObjects[i].collision = false;
+                } 
+            }
+            for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+
+              let position = createVector(circleArray[2].x,circleArray[2].y);
+              let center = createVector(this.cx,this.cy);
+              let rotate = this.rotatePointAroundCenter(position, center,this.angle)
+
+              circle(rotate.x, 
+                rotate.y, 
+                circleArray[2].r)
+              let collision = this.detect(
+                rotate.x, 
+                rotate.y, 
+                circleArray[2].r, 
+                this.allObjectsArray.allObjects[i].x, 
+                this.allObjectsArray.allObjects[i].y, 
+                this.allObjectsArray.allObjects[i].r/2
+                );
+                if (collision) {
+                  this.allObjectsArray.allObjects[i].collision = true;
+                  this.allObjectsArray.allObjects[i].collided = true;
+                } else {
+                  this.allObjectsArray.allObjects[i].collision = false;
+                } 
+            }
+            for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+
+              let position = createVector(circleArray[3].x,circleArray[3].y);
+              let center = createVector(this.cx,this.cy);
+              let rotate = this.rotatePointAroundCenter(position, center,this.angle)
+
+              circle(rotate.x, 
+                rotate.y, 
+                circleArray[3].r)
+              let collision = this.detect(
+                rotate.x, 
+                rotate.y, 
+                circleArray[3].r, 
+                this.allObjectsArray.allObjects[i].x, 
+                this.allObjectsArray.allObjects[i].y, 
+                this.allObjectsArray.allObjects[i].r/2
+                );
+                if (collision) {
+                  this.allObjectsArray.allObjects[i].collision = true;
+                  this.allObjectsArray.allObjects[i].collided = true;
+                } else {
+                  this.allObjectsArray.allObjects[i].collision = false;
+                } 
+            }
+            for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+
+              let position = createVector(circleArray[4].x,circleArray[4].y);
+              let center = createVector(this.cx,this.cy);
+              let rotate = this.rotatePointAroundCenter(position, center,this.angle)
+
+              circle(rotate.x, 
+                rotate.y, 
+                circleArray[4].r)
+              let collision = this.detect(
+                rotate.x, 
+                rotate.y, 
+                circleArray[4].r, 
+                this.allObjectsArray.allObjects[i].x, 
+                this.allObjectsArray.allObjects[i].y, 
+                this.allObjectsArray.allObjects[i].r/2
+                );
+                if (collision) {
+                  this.allObjectsArray.allObjects[i].collision = true;
+                  this.allObjectsArray.allObjects[i].collided = true;
+                } else {
+                  this.allObjectsArray.allObjects[i].collision = false;
+                } 
+            }
       }
 
       public sonarDetection(){
@@ -75,6 +184,14 @@ class CollisionListener {
         }
       }
 
+      public rotatePointAroundCenter(point: p5.Vector, center: p5.Vector, angle: number): p5.Vector {​​​​
+        //angle in radions 
+        /** Rotates a point around another center point, will return a new point */
+        const angleToCenter = Math.atan2(point.y - center.y, point.x - center.x);
+        const distToCenter = center.dist(point);
+        return p5.Vector.fromAngle(angleToCenter + angle, distToCenter).add(center);
+    }​​​​
+
       public detect(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
         let distX = cx - c2x;
         let distY = cy - c2y;
@@ -86,7 +203,7 @@ class CollisionListener {
         return false;
     }
 
-    public subCollision(cx: number, cy: number, radius: number, rx: number, ry: number, rw: number, rh: number) {
+    /* public subCollision(cx: number, cy: number, radius: number, rx: number, ry: number, rw: number, rh: number) {
       let testX = cx;
       let testY = cy;
       
@@ -103,15 +220,22 @@ class CollisionListener {
         return true;
       }
       return false;
-    }
+    } */
 
-    /** Rotates a point around another center point, will return a new point */
-  public rotatePointAroundCenter(point: p5.Vector, center: p5.Vector, angle: number): p5.Vector {​​​​
-      //angle in radions 
-      const angleToCenter = Math.atan2(point.y - center.y, point.x - center.x);
-      const distToCenter = center.dist(point);
-      return p5.Vector.fromAngle(angleToCenter + angle, distToCenter).add(center);
-  }​​​​
+
+     /* let collision = this.subCollision(
+            this.allObjectsArray.allObjects[i].x,
+            this.allObjectsArray.allObjects[i].y,
+            this.allObjectsArray.allObjects[i].r/2, 
+            this.cx,
+            this.cy,
+            this.rectW,
+            this.rectH
+          ); */
+
+
+    
+  
 }
 
     
