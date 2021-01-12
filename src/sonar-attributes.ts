@@ -7,7 +7,6 @@ class SonarAttributes {
   public pulseLifespan: number;
   public allObjectsArray: ObstacleArray;
   public pulseRate: number;
-  //private timer: number;
   private range: number;
 
   public constructor(allObjectsArray: ObstacleArray) {
@@ -19,7 +18,6 @@ class SonarAttributes {
     this.pulseLifespan = 100;
     this.pulses = [];
     this.pulseRate = 85;
-    //this.timer = 5;
     this.range = 2;
   }
 
