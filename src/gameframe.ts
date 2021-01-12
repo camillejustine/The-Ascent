@@ -158,7 +158,7 @@ class GameFrame implements iGameState, ObstacleArray {
       if (this.obstacles.length >= 100) {
         this.obstacles.splice(0, 1);
       }
-      if (this.powerUps.length >= 100) {
+      if (this.powerUps.length >= 30) {
         this.powerUps.splice(0, 1);
       }
     }
