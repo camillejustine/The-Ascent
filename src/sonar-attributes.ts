@@ -48,10 +48,12 @@ class SonarAttributes {
     this.sonarRadius = this.sonarRadius + this.range;
     //console.log(this.sonarRadius)
     this.pulseLifespan--;
+    push()
     strokeWeight(2);
     stroke("rgba(0,255,0,0.25)");
     noFill();
     circle(this.positionX, this.positionY, this.sonarRadius * 2);
+    pop()
   }
 
 
