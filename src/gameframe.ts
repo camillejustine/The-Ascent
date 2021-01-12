@@ -165,7 +165,8 @@ class GameFrame implements iGameState, ObstacleArray {
 
   public setSpawnRate() {
     for(let ship of this.powerUps){
-        if(ship.detected){
+        if(ship.detected && ship.id === "sunkenShip"){
+          console.log(ship.detected)
           this.spawnRatePowerUps = 0.01;
         } else {
           this.spawnRatePowerUps = 0.005;

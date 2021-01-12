@@ -94,11 +94,13 @@ class Mine extends Obstacle {
 class SunkenShip extends Obstacle {
   private sunkenShip: p5.Image | p5.Element;
   public r: number;
+  public id: string;
 
   constructor() {
     super();
     this.sunkenShip = sunkenShipImage;
     this.r = 150;
+    this.id = 'sunkenShip';
   }
 
   public update() {}
