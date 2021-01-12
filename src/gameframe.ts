@@ -142,6 +142,7 @@ class GameFrame implements iGameState, ObstacleArray {
       this.powerUps.push(new PulsePowerUp());
       this.powerUps.push(new RangePowerUp());
       this.powerUps.push(new SupplyBox());
+      console.log(this.obstacles[this.obstacles.length - 1]);
     }
     if (random(1) < this.spawnRateSupplyBox) {
       this.powerUps.push(new SupplyBox());
@@ -158,7 +159,7 @@ class GameFrame implements iGameState, ObstacleArray {
       if (this.obstacles.length >= 100) {
         this.obstacles.splice(0, 1);
       }
-      if (this.powerUps.length >= 30) {
+      if (this.powerUps.length >= 100) {
         this.powerUps.splice(0, 1);
       }
     }

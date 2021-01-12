@@ -20,7 +20,7 @@ abstract class PowerUp {
     this.id = "";
     this.rx = 70;
     this.ry = 70;
-    this.r = 100;
+    this.r = 55;
     this.y = -100;
     this.x = random(10, 900);
     this.detected = false;

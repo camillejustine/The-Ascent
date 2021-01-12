@@ -15,7 +15,7 @@ abstract class Obstacle {
   constructor() {
     this.rx = random(30, 80);
     this.ry = random(30, 80);
-    this.r = random(50, 100);
+    this.r = random(30, 80);
     this.y = -100;
     this.x = random(10, 950);
     this.detected = false;
@@ -49,7 +49,6 @@ class Iceberg extends Obstacle {
 
   public draw() {
     if (this.detected) {
-      circle(this.x, this.y, this.r)
       image(this.iceberg, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     } 
@@ -70,7 +69,7 @@ class Mine extends Obstacle {
     super();
     this.mine = mineImage;
     this.explosion = explosion;
-    this.r = 100;
+    this.r = 70;
     this.id = "mine";
   }
 
