@@ -50,7 +50,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateIceberg = 0.02;
     this.spawnRateShip = 0.0005;
     this.spawnRatePowerUps = 0.0009;
-    this.spawnrateSunkenShip = 0.009;
+    this.spawnrateSunkenShip = 0.0001;
 
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
@@ -79,7 +79,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.background.update();
 
-      // noCursor();
+      noCursor();
 
       this.controls.update();
       this.populate();
@@ -146,13 +146,13 @@ class GameFrame implements iGameState, ObstacleArray {
       console.log(this.obstacles[this.obstacles.length - 1]);
     }
     if (random(1) < this.spawnRatePowerUps) {
-      //this.powerUps.push(new SupplyBox());
+      this.powerUps.push(new SupplyBox());
     }
     if (random(1) < this.spawnRatePowerUps) {
-      //this.powerUps.push(new RangePowerUp());
+      this.powerUps.push(new RangePowerUp());
     }
     if (random(1) < this.spawnRatePowerUps) {
-      //this.powerUps.push(new PulsePowerUp());
+      this.powerUps.push(new PulsePowerUp());
     }
     for (const object of this.allObjects) {
       object.move();
@@ -167,14 +167,6 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public setSpawnRate() {
-    for(let ship of this.allObjects){
-        if(ship.detected && ship.id === "sunkenShip"){
-          this.spawnRatePowerUps = 0.01;
-        } else {
-          this.spawnRatePowerUps = 0.005;
-        }
-      }
-    
     // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
     if (this.headsUpDisplay.depth <= 750) {
       this.spawnRateIceberg = 0.03;

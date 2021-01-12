@@ -34,10 +34,15 @@ class Submarine implements HullHealth {
     this.subPositionY = this.control.getPositionY();
     angleMode(DEGREES);
     push();
+    rectMode(CENTER)
+    rect(this.subPositionX, this.subPositionY,35, 150,)
+    rotate(this.angle);
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
+    
     imageMode(CENTER);
     image(subImage, 0, 0, 35, 150);
+    
     pop();
   }
 
