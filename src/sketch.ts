@@ -9,6 +9,7 @@ let supplyBox: p5.Image | p5.Element;
 let rangePowerUp: p5.Image | p5.Element;
 let pulsePowerUp: p5.Image | p5.Element;
 let explosion: p5.Image | p5.Element;
+let icebergCrack: p5.Image | p5.Element;
 
 /**
  * Built in preload function in P5
@@ -24,6 +25,8 @@ function preload() {
   rangePowerUp = loadImage("./assets/images/range.png");
   pulsePowerUp = loadImage("./assets/images/pulse.png");
   explosion = loadImage("./assets/images/mineboom.gif");
+  icebergCrack = loadImage("./assets/images/mineboom.gif");
+
   // sound = (window as any).loadSound('../assets/mySound.wav');
 }
 
