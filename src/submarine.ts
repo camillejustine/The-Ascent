@@ -8,7 +8,7 @@ class Submarine implements HullHealth {
   public subPositionY: number;
   public angle: number;
   public hullHealth: number;
-  public headsUpDisplay: HeadsUpDisplay;
+  
   public allObjectsArray: ObstacleArray;
 
   constructor(allObjectsArray: ObstacleArray) {
@@ -18,7 +18,7 @@ class Submarine implements HullHealth {
     this.subPositionY = 0;
     this.angle = 0;
     this.hullHealth = 100;
-    this.headsUpDisplay = new HeadsUpDisplay(this);
+    
   }
 
   public update() {
@@ -34,10 +34,15 @@ class Submarine implements HullHealth {
     this.subPositionY = this.control.getPositionY();
     angleMode(DEGREES);
     push();
+    rectMode(CENTER)
+    rect(this.subPositionX, this.subPositionY,35, 150,)
+    rotate(this.angle);
     translate(this.subPositionX, this.subPositionY);
     rotate(this.angle);
+    
     imageMode(CENTER);
     image(subImage, 0, 0, 35, 150);
+    
     pop();
   }
 

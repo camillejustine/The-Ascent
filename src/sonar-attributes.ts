@@ -7,7 +7,6 @@ class SonarAttributes {
   public pulseLifespan: number;
   public allObjectsArray: ObstacleArray;
   public pulseRate: number;
-  //private timer: number;
   private range: number;
 
   public constructor(allObjectsArray: ObstacleArray) {
@@ -19,7 +18,6 @@ class SonarAttributes {
     this.pulseLifespan = 100;
     this.pulses = [];
     this.pulseRate = 85;
-    //this.timer = 5;
     this.range = 2;
   }
 
@@ -48,15 +46,18 @@ class SonarAttributes {
   public pulse() {
     this.sonarRange();
     this.sonarRadius = this.sonarRadius + this.range;
+    //console.log(this.sonarRadius)
     this.pulseLifespan--;
+    push()
     strokeWeight(2);
     stroke("rgba(0,255,0,0.25)");
     noFill();
     circle(this.positionX, this.positionY, this.sonarRadius * 2);
+    pop()
   }
 
   public sonarPulseFrequency() {
-    console.log();
+
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
       if (
         this.allObjectsArray.allObjects[i].collision &&
