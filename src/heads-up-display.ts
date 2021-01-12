@@ -12,8 +12,7 @@ class HeadsUpDisplay {
     this.depth -= deltaTime / 100;
   }
 
-  public draw() {
-    
+  public draw() { 
     push()
     textSize(32);
     fill("rgba(0,255,0,0.25)");

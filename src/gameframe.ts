@@ -60,14 +60,8 @@ class GameFrame implements iGameState, ObstacleArray {
     this.background = new Background();
     this.headsUpDisplay = new HeadsUpDisplay(this.submarine);
 
-    this.gameWon = new GameWon(this.restartGame);
+    this.gameWon = new GameWon(this);
     this.gameLost = new GameLost(this);
-  }
-
-  private restartGame() {
-    // behöver resetta allting och skapa nya
-    // this.gameController = new GameController();
-    console.log("restart");
   }
 
   public update() {
@@ -79,7 +73,9 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.background.update();
 
+
       noCursor();
+
 
       this.controls.update();
       this.populate();
@@ -89,13 +85,12 @@ class GameFrame implements iGameState, ObstacleArray {
       this.setSpawnRate();
     }
 
-    // if (this.gameState === "pauseMenu") {
-    //   document.getElementById("pause-menu")!.style.display = "absolute";
-    // }
 
-    if (this.headsUpDisplay.depth === 0) {
+    if (this.headsUpDisplay.depth <= 0) {
       this.gameState = "gameWon";
+      this.gameWon.update();
     }
+
     if (this.submarine.hullHealth <= 0) {
       this.gameState = "gameLost";
       this.gameLost.update();

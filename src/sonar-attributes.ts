@@ -24,6 +24,7 @@ class SonarAttributes {
   public update() {
     this.draw();
     this.sonarPulseFrequency();
+    this.sonarRange();
     if (frameCount % this.pulseRate == 0) {
       this.pulses.push(new SonarAttributes(this.allObjectsArray));
     }
@@ -34,7 +35,6 @@ class SonarAttributes {
     for (let i = 0; i < this.pulses.length; i++) {
       this.pulses[i].positionX = this.control.getPositionX();
       this.pulses[i].positionY = this.control.getPositionY() - 60;
-      this.sonarRange();
       this.pulses[i].pulse();
       this.pulses[i].pulse();
       if (this.pulses[i].pulseLifespan <= 0) {
@@ -56,7 +56,6 @@ class SonarAttributes {
     pop()
   }
 
-
   public sonarPulseFrequency() {
 
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
@@ -72,15 +71,17 @@ class SonarAttributes {
     }
   }
 
-
-    public sonarRange(){
-        for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-            if(this.allObjectsArray.allObjects[i].powerUpActive && this.allObjectsArray.allObjects[i].id === 'range'){
-                this.range = 3.5; 
-            }
-            if(this.allObjectsArray.allObjects[i].collision){
-                this.allObjectsArray.allObjects[i].powerUpActive = true; 
-            } 
-        }
-    } 
+  public sonarRange() {
+    for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
+      if (
+        this.allObjectsArray.allObjects[i].collision &&
+        this.allObjectsArray.allObjects[i].id === "range"
+      ) {
+        this.allObjectsArray.allObjects[i].powerUpActive = true;
+      }
+      if (this.allObjectsArray.allObjects[i].powerUpActive) {
+        this.range = 3.5;
+      }
+    }
+  }
 }
