@@ -27,9 +27,10 @@ class GameFrame implements iGameState, ObstacleArray {
   private controls: Control;
   public spawnRateMine: number;
   public spawnRateIceberg: number;
-  public spawnRateShip: number;
-  public spawnRatePowerUps: number;
   public spawnrateSunkenShip: number;
+  public spawnRateRange: number;
+  public spawnRatePulse: number;
+  public spawnRateSupplyBox: number;
   //decrease nr of types for powerups.
   public sonarAttributes: SonarAttributes;
   public collisionListener: CollisionListener;
@@ -45,12 +46,14 @@ class GameFrame implements iGameState, ObstacleArray {
     this.pauseMenu = new PauseMenu(this);
     this.mainMenu = new MainMenu(this);
 
-    // SET THE SPAWN RATE FOR OBSTACLES
-    this.spawnRateMine = 0.005;
-    this.spawnRateIceberg = 0.02;
-    this.spawnRateShip = 0.0005;
-    this.spawnRatePowerUps = 0.0009;
-    this.spawnrateSunkenShip = 0.00005;
+    // SET THE SPAWN RATE FOR OBSTACLES AND POWERUPS
+    this.spawnRateMine = 0.0005;
+    this.spawnRateIceberg = 0.009;
+    this.spawnrateSunkenShip = 0.00007;
+
+    this.spawnRatePulse = 0.0003;
+    this.spawnRateRange = 0.0002;
+    this.spawnRateSupplyBox = 0.0005;
 
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
@@ -71,7 +74,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public update() {
-    console.log(this.gameState)
+    console.log(this.gameState);
     this.mainMenu.update();
     if (this.gameState === "running") {
       this.allObjects = this.obstacles.concat(this.powerUps);
@@ -105,7 +108,6 @@ class GameFrame implements iGameState, ObstacleArray {
 
   public draw() {
     if (this.gameState === "running") {
-
       this.background.draw();
 
       // noCursor();
@@ -142,13 +144,13 @@ class GameFrame implements iGameState, ObstacleArray {
     if (random(1) < this.spawnrateSunkenShip) {
       this.obstacles.push(new SunkenShip());
     }
-    if (random(1) < this.spawnRatePowerUps) {
+    if (random(1) < this.spawnRateSupplyBox) {
       this.powerUps.push(new SupplyBox());
     }
-    if (random(1) < this.spawnRatePowerUps) {
+    if (random(1) < this.spawnRateRange) {
       this.powerUps.push(new RangePowerUp());
     }
-    if (random(1) < this.spawnRatePowerUps) {
+    if (random(1) < this.spawnRatePulse) {
       this.powerUps.push(new PulsePowerUp());
     }
     for (const object of this.allObjects) {
@@ -164,38 +166,41 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   public setSpawnRate() {
-    for(let ship of this.powerUps){
-        if(ship.detected){
-          this.spawnRatePowerUps = 0.01;
-        } else {
-          this.spawnRatePowerUps = 0.005;
-        }
+    for (let ship of this.powerUps) {
+      if (ship.detected) {
+        this.spawnRateRange = 0.01;
+        this.spawnRatePulse = 0.01;
+        this.spawnRateSupplyBox = 0.01;
+      } else {
+        this.spawnRatePulse = this.spawnRatePulse;
+        this.spawnRateRange = this.spawnRateRange;
+        this.spawnRateSupplyBox = this.spawnRateSupplyBox;
       }
+    }
 
     // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
     if (this.headsUpDisplay.depth <= 750) {
-      this.spawnRateIceberg = 0.03;
+      this.spawnRateIceberg = 0.01;
       this.spawnRateMine = 0.007;
     }
     if (this.headsUpDisplay.depth <= 500) {
-      this.spawnRateIceberg = 0.05;
+      this.spawnRateIceberg = 0.04;
       this.spawnRateMine = 0.009;
-      this.spawnRatePowerUps = 0.00099;
     }
     if (this.headsUpDisplay.depth <= 250) {
-      this.spawnRateIceberg = 0.08;
+      this.spawnRateIceberg = 0.07;
       this.spawnRateMine = 0.015;
-      this.spawnRatePowerUps = 0.002;
     }
     if (this.headsUpDisplay.depth <= 100) {
       this.spawnRateIceberg = 0.1;
       this.spawnRateMine = 0.02;
-      this.spawnRatePowerUps = 0.004;
     }
-    if (this.headsUpDisplay.depth <= 50) {
+    if (this.headsUpDisplay.depth <= 20) {
       this.spawnRateIceberg = 0;
       this.spawnRateMine = 0;
-      this.spawnRatePowerUps = 0;
+      this.spawnRatePulse = 0;
+      this.spawnRateRange = 0;
+      this.spawnRateSupplyBox = 0;
     }
   }
 }
