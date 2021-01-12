@@ -12,7 +12,7 @@ class Background {
       for (let i = 0; i < 100; i++) {
         let p: Particle = new Particle();
         this.particles.push(p);
-        // console.log(this.particles.length);
+
       }
     }
   }

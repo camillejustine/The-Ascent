@@ -48,7 +48,6 @@ class Submarine implements HullHealth {
         this.allObjectsArray.allObjects[i].collision &&
         this.allObjectsArray.allObjects[i].id === "iceberg"
       ) {
-        console.log(this.allObjectsArray.allObjects[i].collision);
         this.hullHealth = this.hullHealth - 0.25;
         if (this.hullHealth <= 0) {
           this.hullHealth = 0;

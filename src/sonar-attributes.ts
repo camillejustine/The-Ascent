@@ -46,7 +46,6 @@ class SonarAttributes {
   public pulse() {
     this.sonarRange();
     this.sonarRadius = this.sonarRadius + this.range;
-    //console.log(this.sonarRadius)
     this.pulseLifespan--;
     push()
     strokeWeight(2);

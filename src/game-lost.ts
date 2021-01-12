@@ -43,7 +43,6 @@ class GameLost {
   }
   
     public update() {
-      console.log(this.game.gameState)
      this.hideButton();
      this.gameLostShow();
      

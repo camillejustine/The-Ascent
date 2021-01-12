@@ -5,7 +5,6 @@ class HeadsUpDisplay {
   public constructor(hullHealth: HullHealth) {
     this.depth = 1000;
     this.hullHealth = hullHealth;
-    console.log(this.hullHealth)
   }
 
   public update() {
