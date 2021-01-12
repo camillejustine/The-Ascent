@@ -46,24 +46,24 @@ class CollisionListener {
           {"x4": this.cx, "y4": this.cy + 30, "r": this.r},
           {"x5": this.cx, "y5": this.cy + 60, "r": this.r} 
         ]; 
+        let position1 = createVector(circleArray[0].x1,circleArray[0].y1);
+        let position2 = createVector(circleArray[1].x2,circleArray[1].y2);
+        let position3 = createVector(circleArray[2].x3,circleArray[2].y3);
+        let position4 = createVector(circleArray[3].x4,circleArray[3].y4);
+        let position5 = createVector(circleArray[4].x5,circleArray[4].y5);
+        let center = createVector(this.cx,this.cy);
+        let rotate1 = this.rotatePointAroundCenter(position1, center,this.angle)
+        let rotate2 = this.rotatePointAroundCenter(position2, center,this.angle)
+        let rotate3 = this.rotatePointAroundCenter(position3, center,this.angle)
+        let rotate4 = this.rotatePointAroundCenter(position4, center,this.angle)
+        let rotate5 = this.rotatePointAroundCenter(position5, center,this.angle)  
           for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
            for(let j = 0; j < circleArray.length; j++){
-              let position1 = createVector(circleArray[0].x1,circleArray[0].y1);
-              let position2 = createVector(circleArray[1].x2,circleArray[1].y2);
-              let position3 = createVector(circleArray[2].x3,circleArray[2].y3);
-              let position4 = createVector(circleArray[3].x4,circleArray[3].y4);
-              let position5 = createVector(circleArray[4].x5,circleArray[4].y5);
-              let center = createVector(this.cx,this.cy);
-              let rotate1 = this.rotatePointAroundCenter(position1, center,this.angle)
-              let rotate2 = this.rotatePointAroundCenter(position2, center,this.angle)
-              let rotate3 = this.rotatePointAroundCenter(position3, center,this.angle)
-              let rotate4 = this.rotatePointAroundCenter(position4, center,this.angle)
-              let rotate5 = this.rotatePointAroundCenter(position5, center,this.angle)  
-              circle(rotate1.x, rotate1.y, circleArray[j].r)
+              /* circle(rotate1.x, rotate1.y, circleArray[j].r)
               circle(rotate2.x, rotate2.y, circleArray[j].r)
               circle(rotate3.x, rotate3.y, circleArray[j].r)
               circle(rotate4.x, rotate4.y, circleArray[j].r)
-              circle(rotate5.x, rotate5.y, circleArray[j].r)
+              circle(rotate5.x, rotate5.y, circleArray[j].r) */
                 let collision1 = this.detect(
                   rotate1.x, 
                   rotate1.y, 

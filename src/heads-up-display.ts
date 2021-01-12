@@ -5,7 +5,6 @@ class HeadsUpDisplay {
   public constructor(hullHealth: HullHealth) {
     this.depth = 1000;
     this.hullHealth = hullHealth;
-    console.log(this.hullHealth)
   }
 
   public update() {
@@ -24,6 +23,9 @@ class HeadsUpDisplay {
     );
     text("DEPTH: " + Math.floor(this.depth) + " METERS", width / 2 - 400, height - 10);
     pop()
+   
+    text(Math.floor(frameRate()),width / 2, height /2)
+    textSize(32);
   }
 
   public timeIt() {
