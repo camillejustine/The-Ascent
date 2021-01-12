@@ -3,7 +3,7 @@ class HeadsUpDisplay {
   public hullHealth: HullHealth;
 
   public constructor(hullHealth: HullHealth) {
-    this.depth = 1000;
+    this.depth = 10;
     this.hullHealth = hullHealth;
   }
 
@@ -13,14 +13,10 @@ class HeadsUpDisplay {
 
   public draw() {
    
-    if (this.depth <= 4000) {
+    if (this.depth <= 10) {
       textSize(32);
       //fill("rgba(0,255,0,0.25)");
       text("DEPTH: " + Math.floor(this.depth) + " METERS", width / 2 - 400, height - 10);
-    }
-
-    if (this.depth <= 0) {
-      text("GAME OVER", width / 2, height / 2 + 15);
     }
     
     textSize(32);
