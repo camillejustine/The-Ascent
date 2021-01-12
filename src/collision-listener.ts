@@ -47,16 +47,15 @@ class CollisionListener {
           {"x": this.cx, "y": this.cy + 60, "r": this.r} 
         ]; 
           for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-           
-              let position = createVector(circleArray[0].x,circleArray[0].y);
+           for(let j = 0; j < circleArray.length; j++){
+              let position = createVector(circleArray[j].x,circleArray[j].y);
               let center = createVector(this.cx,this.cy);
               let rotate = this.rotatePointAroundCenter(position, center,this.angle)
-
-              circle(rotate.x, rotate.y, circleArray[0].r)
-                 let collision = this.detect(
+              circle(rotate.x, rotate.y, circleArray[j].r)
+                let collision = this.detect(
                 rotate.x, 
                 rotate.y, 
-                circleArray[0].r, 
+                circleArray[j].r, 
                 this.allObjectsArray.allObjects[i].x, 
                 this.allObjectsArray.allObjects[i].y, 
                 this.allObjectsArray.allObjects[i].r/2
@@ -67,6 +66,7 @@ class CollisionListener {
                 } else {
                   this.allObjectsArray.allObjects[i].collision = false;
                 } 
+              }
             }
             /* for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
 
@@ -143,7 +143,7 @@ class CollisionListener {
                   this.allObjectsArray.allObjects[i].collision = false;
                 } 
             }
-           */   for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
+           */  /*  for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
 
               let position = createVector(circleArray[4].x,circleArray[4].y);
               let center = createVector(this.cx,this.cy);
@@ -166,7 +166,7 @@ class CollisionListener {
                 } else {
                   this.allObjectsArray.allObjects[i].collision = false;
                 } 
-            } 
+            }  */
       }
 
       public sonarDetection(){
