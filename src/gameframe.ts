@@ -69,7 +69,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.gameLost = new GameLost(this);
   }
 
-
+  public update(){
     this.mainMenu.update();
     if (this.gameState === "running") {
       this.allObjects = this.obstacles.concat(this.powerUps);
@@ -166,6 +166,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
     // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
+  public setSpawnRate(){
     if (this.headsUpDisplay.depth <= 750) {
       this.spawnRateIceberg = 0.01;
       this.spawnRateMine = 0.007;
@@ -190,5 +191,5 @@ class GameFrame implements iGameState, ObstacleArray {
       this.spawnRateSupplyBox = 0;
     }
   }
-  
 }
+  
