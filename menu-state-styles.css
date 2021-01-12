@@ -2,7 +2,7 @@
 
 /* pause menu styling */
 
-.pauseMenu, .gameLost {
+.pauseMenu, .gameLost, .gameWon {
     position: fixed;
 
     display: flex;
