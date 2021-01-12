@@ -32,7 +32,7 @@ class Submarine implements HullHealth {
     this.control.update();
     this.subPositionX = this.control.getPositionX();
     this.subPositionY = this.control.getPositionY();
-    angleMode(DEGREES);
+    
     push();
     rectMode(CENTER)
     

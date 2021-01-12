@@ -1,6 +1,6 @@
 class Control {
   private angle: number = 0;
-
+  public radians: number;
   private rotateRight: number;
   private rotateLeft: number;
   public right: number;
@@ -16,6 +16,7 @@ class Control {
 
   public constructor() {
     this.angle = this.angle;
+    this.radians = radians(this.angle)
     /* this.position = new p5.Vector(width/2, height/1.5);
         this.acceleration = new p5.Vector(0, -10); */
     this.left = LEFT_ARROW;
@@ -49,22 +50,22 @@ class Control {
   // ROTATION SETTINGS
   public keyPressed() {
     if (keyIsDown(this.rotateLeft)) {
-      if (this.angle >= -40) {
-        this.angle -= 0.5;
+      if (this.angle >= -0.90) {
+        this.angle -= 0.005;
       }
     } else {
       if (this.angle <= 0) {
-        this.angle += 0.5;
+        this.angle += 0.005;
       }
     }
 
     if (keyIsDown(this.rotateRight)) {
-      if (this.angle <= 40) {
-        this.angle += 0.5;
+      if (this.angle <= 0.90) {
+        this.angle += 0.005;
       }
     } else {
       if (this.angle >= 0) {
-        this.angle -= 0.5;
+        this.angle -= 0.005;
       }
     }
 

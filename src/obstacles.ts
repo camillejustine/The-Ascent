@@ -49,6 +49,7 @@ class Iceberg extends Obstacle {
 
   public draw() {
     if (this.detected) {
+      circle(this.x, this.y, this.r)
       image(this.iceberg, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     } 
