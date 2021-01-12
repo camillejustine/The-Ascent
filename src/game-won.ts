@@ -1,33 +1,52 @@
 class GameWon {
     private div: p5.Element;
-    private restartGameCallback: Function;
-
-    public constructor(restartGameCallback: Function) {
-        this.restartGameCallback = restartGameCallback;
-        this.div = createElement('main-menu');
-
-        const restartButton = createElement('button');
-        restartButton.addClass('button');
-        restartButton.html('Restart');
-        restartButton.mousePressed(() => this.restartGame);
-
-        const backToMainButton = createElement('button');
-        backToMainButton.addClass('button');
-        backToMainButton.html('Back To Main');
-        backToMainButton.mousePressed(() => this.backToMain());
-
-        this.div.child(restartButton);
-        this.div.child(backToMainButton);
-    }
+    private div2: p5.Element;
+    public game: iGameState;
     
-    private restartGame() {
-        console.log('restart');
+    public constructor(game: iGameState) {
+        this.game = game;
+        this.div = createDiv('gameWon');
+        this.div.addClass('gameWon'); 
+        this.div.html('Hurray! You did not die!');
+  
+        this.div2 = createDiv('');
+        this.div2.addClass('buttonContainer');
+
+        const backToMain = createElement('button');
+        backToMain.addClass('backToMainButton');
+        backToMain.html('Back To Main');
+        backToMain.mousePressed(() => this.backToMain());
+
+        this.div.child(this.div2);
+        this.div2.child(backToMain)
         this.div.hide();
-        this.restartGameCallback();
     }
-    
-    private backToMain() {
-        console.log('backtomain');
-        // this.backToMainCallback();
+  
+    public backToMain() {
+      if (this.game.gameState === "gameWon" && mouseIsPressed) {
+        document.location.href = "";
+      }
+  }
+
+  public gameWonShow() {
+    if (this.game.gameState === "gameWon") {
+      this.backToMain();
+      this.div.show();
     }
+}
+
+
+  public hideButton() {
+    if (this.game.gameState === "running") {
+      this.div.hide();
+    }
+  }
+  
+    public update() {
+     console.log(this.game.gameState)
+     this.hideButton();
+     this.gameWonShow();
+     
+    }
+
 }

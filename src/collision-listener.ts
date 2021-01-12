@@ -50,6 +50,7 @@ class CollisionListener {
           );
             if (collision) {
             this.allObjectsArray.allObjects[i].collision = true;
+            this.allObjectsArray.allObjects[i].collided = true;
           } else {
             this.allObjectsArray.allObjects[i].collision = false;
           } 
@@ -103,50 +104,20 @@ class CollisionListener {
       }
       return false;
     }
+
+    /** Rotates a point around another center point, will return a new point */
+  public rotatePointAroundCenter(point: p5.Vector, center: p5.Vector, angle: number): p5.Vector {​​​​
+      //angle in radions 
+      const angleToCenter = Math.atan2(point.y - center.y, point.x - center.x);
+      const distToCenter = center.dist(point);
+      return p5.Vector.fromAngle(angleToCenter + angle, distToCenter).add(center);
+  }​​​​
 }
 
     
-
-/* const distance = dist(
-  collisionPoint.cx,
-  collisionPoint.cy,
-  this.obstacles.obstacles[i].x,
-  this.obstacles.obstacles[i].y
-);
- */
-
 
 
      
 
 
 
-
-    //assign r variables to submarine circle and then call collision listener functions. 
-    /* public constructor() {}
-    
-    public update() {}
-
-
-//         let d = dist(cx, cy, testX, testY);
-
-//         if (d <= rad) {
-//             return true;
-//         }
-//         return false;
-//     }
-//     /* public constructor() {}
-
-//     public update() {}
-
-//     private setShipStatus() {}
-
-//     private setObstacleIntegrity() {}
-
-//     private shipStatusDamaged() {}
-
-//     private grantPowerUp() {}
-
-//     private checkCollisions(submarine, obstacles, powerups) {}
-
-//     private applyCollisionsEffects() {} */

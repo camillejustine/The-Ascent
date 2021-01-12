@@ -85,15 +85,16 @@ class Control {
 
   public move() {
     this.keyPressed();
-    /* this.acceleration.setMag(3);
-          
-            this.position.add(this.acceleration);
-             */
-
+    /* 
+    this.acceleration.setMag(3);
+    this.position.add(this.acceleration);
+     */
     if (this.subPositionX < 0) {
       this.subPositionX = 0;
     } else if (this.subPositionX > width) {
       this.subPositionX = 960;
+    } else if (this.subPositionY > height){
+      this.subPositionY = height;
     }
   }
 
