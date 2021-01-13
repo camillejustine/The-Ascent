@@ -1,0 +1,136 @@
+html,
+body,
+canvas {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: black;
+  font-family: "VT323", monospace;
+}
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212;
+}
+
+button {
+  position: relative;
+  font-family: "VT323", monospace;
+  background: transparent;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 20px;
+  border-style: none;
+  font-size: 20px;
+  color: #6ec641;
+  border: none;
+  z-index: 1000;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.menu-text-frame {
+  width: 50%;
+  background: linear-gradient(
+    186.1deg,
+    rgba(110, 198, 65, 0.2) 13.63%,
+    rgba(110, 198, 65, 0) 95.41%
+  );
+  border: 10px solid;
+  border-image: linear-gradient(
+    180deg,
+    rgba(137, 238, 86, 0.966) 22.63%,
+    rgba(32, 85, 6, 0.767) 95.41%
+  );
+  border-image-slice: 80;
+  margin-left: 2rem;
+  height: 50%;
+}
+
+.menu-text {
+  color: #6ec641;
+  font-size: 1.2rem;
+  padding: 1rem;
+  position: relative;
+  letter-spacing: 5%;
+}
+
+.button-container {
+  position: relative;
+  width: 20%;
+  top: 20%;
+}
+
+.about-link {
+  width: 78%;
+  position: relative;
+  right: 2rem;
+}
+
+.title {
+  font-size: 8rem;
+  color: #6ec641;
+  margin: 0;
+  color: #6ec641;
+  text-shadow: -5px 5px 0px #519230, -10px 10px 0px #3f7225,
+    -15px 15px 0px #2c501a;
+}
+
+#sonar-animation {
+  display: flex;
+  position: relative;
+  left: 5rem;
+  bottom: 2rem;
+}
+
+#about {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  width: 80%;
+  left: 37%;
+}
+
+#start-game {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  width: 80%;
+  left: -50%;
+  border: 0 none !important;
+  outline: 0 !important;
+}
+
+#main-menu {
+  width: 960px;
+  height: 720px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(../assets/images/menu-background.png);
+  background-size: cover;
+}
+
+#menu-frame {
+  background-image: url(../assets/images/menu-frame.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70%;
+  width: 80%;
+  position: relative;
+  text-align: center;
+}
