@@ -22,6 +22,11 @@ class GameLost {
     this.div.hide();
   }
 
+  public update() {
+    this.hideButton();
+    this.gameLostShow();
+  }
+
   private backToMain() {
     if (this.game.gameState === "gameLost" && mouseIsPressed) {
       document.location.href = "";
@@ -39,10 +44,5 @@ class GameLost {
     if (this.game.gameState === "running") {
       this.div.hide();
     }
-  }
-
-  public update() {
-    this.hideButton();
-    this.gameLostShow();
-  }
+  } 
 }

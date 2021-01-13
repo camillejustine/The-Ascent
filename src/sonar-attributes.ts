@@ -1,13 +1,13 @@
 class SonarAttributes {
-  private sonarRadius: number;
   private positionY: number;
   private positionX: number;
   private control: Control;
-  public pulses: Array<any>;
-  public pulseLifespan: number;
-  public allObjectsArray: ObstacleArray;
-  public pulseRate: number;
+  private pulseLifespan: number;
+  private pulseRate: number;
   private range: number;
+  public sonarRadius: number;
+  public pulses: Array<SonarAttributes>;
+  public allObjectsArray: ObstacleArray;
 
   public constructor(allObjectsArray: ObstacleArray) {
     this.allObjectsArray = allObjectsArray;
@@ -43,7 +43,7 @@ class SonarAttributes {
     }
   }
 
-  public pulse() {
+  private pulse() {
     this.sonarRange();
     this.sonarRadius = this.sonarRadius + this.range;
     this.pulseLifespan--;
@@ -55,8 +55,7 @@ class SonarAttributes {
     pop()
   }
 
-  public sonarPulseFrequency() {
-
+  private sonarPulseFrequency() {
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
       if (
         this.allObjectsArray.allObjects[i].collision &&
@@ -70,7 +69,7 @@ class SonarAttributes {
     }
   }
 
-  public sonarRange() {
+  private sonarRange() {
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
       if (
         this.allObjectsArray.allObjects[i].collision &&

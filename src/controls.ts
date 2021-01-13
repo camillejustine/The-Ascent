@@ -1,29 +1,22 @@
 class Control {
   private angle: number = 0;
-  public radians: number;
   private rotateRight: number;
   private rotateLeft: number;
+  private subPositionX: number;
+  private subPositionY: number;
   public right: number;
   public left: number;
   public forward: number;
   public back: number;
-
-  public subPositionX: number;
-  public subPositionY: number;
-
-  /* private position: p5.Vector;
-    private acceleration: p5.Vector; */
+  public radians: number;
 
   public constructor() {
     this.angle = this.angle;
     this.radians = radians(this.angle)
-    /* this.position = new p5.Vector(width/2, height/1.5);
-        this.acceleration = new p5.Vector(0, -10); */
     this.left = LEFT_ARROW;
     this.right = RIGHT_ARROW;
     this.forward = UP_ARROW;
     this.back = DOWN_ARROW;
-
     this.rotateLeft = 90;
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
@@ -48,7 +41,7 @@ class Control {
   }
 
   // ROTATION SETTINGS
-  public keyPressed() {
+  private keyPressed() {
     if (keyIsDown(this.rotateLeft)) {
       if (this.angle >= -0.90) {
         this.angle -= 0.005;
@@ -84,12 +77,8 @@ class Control {
     }
   }
 
-  public move() {
+  private move() {
     this.keyPressed();
-    /* 
-    this.acceleration.setMag(3);
-    this.position.add(this.acceleration);
-     */
     if (this.subPositionX < 0) {
       this.subPositionX = 0;
     } else if (this.subPositionX > width) {
@@ -98,6 +87,4 @@ class Control {
       this.subPositionY = height;
     }
   }
-
-  public draw() {}
 }

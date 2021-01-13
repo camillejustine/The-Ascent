@@ -28,6 +28,12 @@ class PauseMenu {
       this.div.hide();
   }
 
+  public update() {
+    this.keyPressed();
+    this.hideButton();
+
+  }
+
   private hideButton() {
     if (this.game.gameState === 'running') {
       this.div.hide();
@@ -40,19 +46,12 @@ class PauseMenu {
 
   private backToMain() {
     document.location.href = "";
-}
-
-
-public update() {
-    this.keyPressed();
-    this.hideButton();
-
-  }
+  } 
 
   public keyPressed() {
       if (keyCode === 32 && keyIsPressed) {
         this.div.show();
         this.game.gameState = 'pauseMenu';
       } 
-    }
   }
+}

@@ -1,10 +1,10 @@
 class Particle {
-  x: number;
-  y: number;
-  vy: number;
-  alpha: number;
-  size: number;
-  color: number;
+  private x: number;
+  private y: number;
+  private vy: number;
+  private alpha: number;
+  private size: number;
+  private color: number;
 
   public constructor() {
     this.x = random(0, width);

@@ -1,6 +1,5 @@
 class MainMenu {
-  private startButton: any;
-  //private aboutButton: any;
+  private startButton: HTMLElement;
   public game: iGameState;
 
   constructor(game: iGameState) {
@@ -8,14 +7,11 @@ class MainMenu {
     this.startButton = document.getElementById("start-game")!;
   }
 
-
   public update() {
     this.startButton.onclick = () => {
       this.game.gameState = 'running';
     };
-
   }
-
 }
 
 
