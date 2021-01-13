@@ -59,15 +59,15 @@ class CollisionListener {
         let rotate5 = this.rotatePointAroundCenter(position5, center,this.angle)  
           for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
            for(let j = 0; j < circleArray.length; j++){
-              /* circle(rotate1.x, rotate1.y, circleArray[j].r)
+              circle(rotate1.x, rotate1.y, circleArray[j].r)
               circle(rotate2.x, rotate2.y, circleArray[j].r)
               circle(rotate3.x, rotate3.y, circleArray[j].r)
               circle(rotate4.x, rotate4.y, circleArray[j].r)
-              circle(rotate5.x, rotate5.y, circleArray[j].r) */
+              circle(rotate5.x, rotate5.y, circleArray[j].r)
                 let collision1 = this.detect(
                   rotate1.x, 
                   rotate1.y, 
-                  circleArray[j].r, 
+                  circleArray[j].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -75,7 +75,7 @@ class CollisionListener {
                 let collision2 = this.detect(
                   rotate2.x, 
                   rotate2.y, 
-                  circleArray[j].r, 
+                  circleArray[j].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -83,7 +83,7 @@ class CollisionListener {
                 let collision3 = this.detect(
                   rotate3.x, 
                   rotate3.y, 
-                  circleArray[j].r, 
+                  circleArray[j].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -91,7 +91,7 @@ class CollisionListener {
                 let collision4 = this.detect(
                   rotate4.x, 
                   rotate4.y, 
-                  circleArray[j].r, 
+                  circleArray[j].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -99,7 +99,7 @@ class CollisionListener {
                 let collision5 = this.detect(
                   rotate5.x, 
                   rotate5.y, 
-                  circleArray[j].r, 
+                  circleArray[j].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
