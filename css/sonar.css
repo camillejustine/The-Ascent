@@ -1,0 +1,80 @@
+.sonar {
+    border-radius: 20rem;
+    border: 2px solid springgreen;
+    background: radial-gradient(
+      54.17% 50% at 50% 50%,
+      rgba(168, 255, 177, 0.281405) 30%,
+      rgba(168, 255, 177, 0) 100%
+    );
+
+
+    fill: transparent;
+    width: 16rem;
+    height: 16rem;
+    animation: radar 2s;
+    animation-iteration-count: infinite;
+    position: fixed;
+  }
+
+  .sonar2 {
+    border-radius: 20rem;
+    border: 2px solid springgreen;
+    fill: transparent;
+    width: 16rem;
+    height: 16rem;
+    animation: radar2 2s;
+    animation-iteration-count: infinite;
+    position: fixed;
+  }
+  
+  .obstacle {
+    position: fixed;
+    width: 5%;
+    right: 35rem;
+    top: 34rem;
+  }
+  
+  #submarine {
+    position: fixed;
+    top: 38rem;
+  }
+  
+  @keyframes radar {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 100%;
+    }
+  
+    100% {
+      width: 20rem;
+      height: 20rem;
+      opacity: 0%;
+    }
+  }
+  
+  @keyframes radar2 {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 100%;
+    }
+  
+    20% {
+      width: 0;
+      height: 0;
+      opacity: 100%;
+    }
+  
+    100% {
+      width: 20rem;
+      height: 20rem;
+      opacity: 0%;
+    }
+  }
+  
+  #sub-container {
+    background: turquoise;
+    width: 1.2rem;
+    position: fixed;
+  }
