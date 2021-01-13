@@ -32,16 +32,14 @@ abstract class Obstacle {
 }
 
 class Iceberg extends Obstacle {
-  private iceberg: p5.Image | p5.Element;
   public id: string;
 
   constructor() {
     super();
-    this.iceberg = icebergImage;
     this.id = "iceberg";
   }
 
-  public update() {}
+  public update(){}
 
   public move() {
     this.y += 2;
@@ -50,7 +48,7 @@ class Iceberg extends Obstacle {
   public draw() {
     if (this.detected) {
       circle(this.x,this.y,this.r)
-      image(this.iceberg, this.x, this.y, this.rx, this.ry);
+      image(icebergImage, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     } 
     if(this.collided){
@@ -61,20 +59,16 @@ class Iceberg extends Obstacle {
 }
 
 class Mine extends Obstacle {
-  private mine: p5.Image | p5.Element;
-  private explosion: p5.Image | p5.Element;
   public r: number;
   public id: string;
 
   constructor() {
     super();
-    this.mine = mineImage;
-    this.explosion = explosion;
     this.r = 70;
     this.id = "mine";
   }
 
-  public update() {}
+  public update(){}
 
   public move() {
     this.y += 2;
@@ -82,29 +76,27 @@ class Mine extends Obstacle {
 
   public draw() {
     if (this.detected) {
-      image(this.mine, this.x, this.y, 70, 70);
+      image(mineImage, this.x, this.y, 70, 70);
       imageMode(CENTER);
     }
     if (this.collision) {
-      image(this.explosion, this.x, this.y, 300, 300);
+      image(explosion, this.x, this.y, 300, 300);
       imageMode(CENTER);
     }
   }
 }
 
 class SunkenShip extends Obstacle {
-  private sunkenShip: p5.Image | p5.Element;
   public r: number;
   public id: string;
 
   constructor() {
     super();
-    this.sunkenShip = sunkenShipImage;
     this.r = 150;
     this.id = 'sunkenShip';
   }
 
-  public update() {}
+  public update(){}
 
   public move() {
     this.y += 2;
@@ -112,7 +104,7 @@ class SunkenShip extends Obstacle {
 
   public draw() {
     if (this.detected) {
-      image(this.sunkenShip, this.x, this.y, 150, 150);
+      image(sunkenShipImage, this.x, this.y, 150, 150);
       imageMode(CENTER);
     }
   }

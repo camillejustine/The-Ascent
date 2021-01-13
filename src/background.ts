@@ -17,8 +17,6 @@ class Background {
     }
   }
 
-  // private gradient() {}
-
   public draw() {
     background(this.color);
 

@@ -11,14 +11,9 @@ class Control {
   public subPositionX: number;
   public subPositionY: number;
 
-  /* private position: p5.Vector;
-    private acceleration: p5.Vector; */
-
   public constructor() {
     this.angle = this.angle;
     this.radians = radians(this.angle)
-    /* this.position = new p5.Vector(width/2, height/1.5);
-        this.acceleration = new p5.Vector(0, -10); */
     this.left = LEFT_ARROW;
     this.right = RIGHT_ARROW;
     this.forward = UP_ARROW;
@@ -86,10 +81,6 @@ class Control {
 
   public move() {
     this.keyPressed();
-    /* 
-    this.acceleration.setMag(3);
-    this.position.add(this.acceleration);
-     */
     if (this.subPositionX < 0) {
       this.subPositionX = 0;
     } else if (this.subPositionX > width) {
@@ -98,6 +89,4 @@ class Control {
       this.subPositionY = height;
     }
   }
-
-  public draw() {}
 }

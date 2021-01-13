@@ -9,9 +9,8 @@ class CollisionListener {
      public rectH: number;
      public rectW: number;
      public timer: number;
-
      public r: number;
-    public x: number;
+     public x: number;
     
     constructor(allObjectsArray: ObstacleArray){
         this.collision = false;
@@ -58,16 +57,10 @@ class CollisionListener {
         let rotate4 = this.rotatePointAroundCenter(position4, center,this.angle)
         let rotate5 = this.rotatePointAroundCenter(position5, center,this.angle)  
           for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
-           for(let j = 0; j < circleArray.length; j++){
-              circle(rotate1.x, rotate1.y, circleArray[j].r)
-              circle(rotate2.x, rotate2.y, circleArray[j].r)
-              circle(rotate3.x, rotate3.y, circleArray[j].r)
-              circle(rotate4.x, rotate4.y, circleArray[j].r)
-              circle(rotate5.x, rotate5.y, circleArray[j].r)
                 let collision1 = this.detect(
                   rotate1.x, 
                   rotate1.y, 
-                  circleArray[j].r/2, 
+                  circleArray[0].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -75,7 +68,7 @@ class CollisionListener {
                 let collision2 = this.detect(
                   rotate2.x, 
                   rotate2.y, 
-                  circleArray[j].r/2, 
+                  circleArray[1].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -83,7 +76,7 @@ class CollisionListener {
                 let collision3 = this.detect(
                   rotate3.x, 
                   rotate3.y, 
-                  circleArray[j].r/2, 
+                  circleArray[2].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -91,7 +84,7 @@ class CollisionListener {
                 let collision4 = this.detect(
                   rotate4.x, 
                   rotate4.y, 
-                  circleArray[j].r/2, 
+                  circleArray[3].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -99,7 +92,7 @@ class CollisionListener {
                 let collision5 = this.detect(
                   rotate5.x, 
                   rotate5.y, 
-                  circleArray[j].r/2, 
+                  circleArray[4].r/2, 
                   this.allObjectsArray.allObjects[i].x, 
                   this.allObjectsArray.allObjects[i].y, 
                   this.allObjectsArray.allObjects[i].r/2
@@ -110,7 +103,6 @@ class CollisionListener {
                 } else {
                   this.allObjectsArray.allObjects[i].collision = false;
                 } 
-              }
           }
       }
 
@@ -148,35 +140,6 @@ class CollisionListener {
         }
         return false;
     }
-
-    /* public subCollision(cx: number, cy: number, radius: number, rx: number, ry: number, rw: number, rh: number) {
-      let testX = cx;
-      let testY = cy;
-      
-      if (cx < rx)         testX = rx;      
-      else if (cx > rx+rw) testX = rx+rw;   
-      if (cy < ry)         testY = ry;      
-      else if (cy > ry+rh) testY = ry+rh;   
-
-      let distX = cx-testX;
-      let distY = cy-testY;
-      let distance = sqrt( (distX*distX) + (distY*distY) );
-
-      if (distance <= radius) {
-        return true;
-      }
-      return false;
-    } */
-
-     /* let collision = this.subCollision(
-            this.allObjectsArray.allObjects[i].x,
-            this.allObjectsArray.allObjects[i].y,
-            this.allObjectsArray.allObjects[i].r/2, 
-            this.cx,
-            this.cy,
-            this.rectW,
-            this.rectH
-          ); */ 
 }
 
     

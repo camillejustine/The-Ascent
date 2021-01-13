@@ -27,9 +27,6 @@ class HeadsUpDisplay {
       height - 10
     );
     pop();
-
-    // text(Math.floor(frameRate()),width / 2, height /2)
-    // textSize(32);
   }
 
   public timeIt() {

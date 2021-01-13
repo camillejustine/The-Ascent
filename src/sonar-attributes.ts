@@ -1,9 +1,9 @@
 class SonarAttributes {
-  private sonarRadius: number;
+  public  sonarRadius: number;
   private positionY: number;
   private positionX: number;
   private control: Control;
-  public pulses: Array<any>;
+  public pulses: Array<SonarAttributes>;
   public pulseLifespan: number;
   public allObjectsArray: ObstacleArray;
   public pulseRate: number;

@@ -11,7 +11,6 @@ abstract class PowerUp {
   public detected: boolean;
   public collision: boolean;
   public powerUpActive: boolean;
-
   public collided: boolean;
   public timer: number
   
@@ -32,12 +31,10 @@ abstract class PowerUp {
 }
 
 class SupplyBox extends PowerUp {
-  private supplyBox: p5.Image | p5.Element;
   public id: string;
 
   constructor() {
     super();
-    this.supplyBox = supplyBox;
     this.id = "supplyBox";
   }
 
@@ -49,19 +46,17 @@ class SupplyBox extends PowerUp {
 
   public draw() {
     if (this.detected) {
-      image(this.supplyBox, this.x, this.y, this.rx, this.ry);
+      image(supplyBox, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     }
   }
 }
 
 class PulsePowerUp extends PowerUp {
-  private pulsePowerUp: p5.Image | p5.Element;
   public id: string;
 
   constructor() {
     super();
-    this.pulsePowerUp = pulsePowerUp;
     this.id = "pulse";
   }
 
@@ -73,19 +68,17 @@ class PulsePowerUp extends PowerUp {
 
   public draw() {
     if (this.detected) {
-      image(this.pulsePowerUp, this.x, this.y, this.rx, this.ry);
+      image(pulsePowerUp, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     }
   }
 }
 
 class RangePowerUp extends PowerUp {
-  private rangePowerUp: p5.Image | p5.Element;
   public id: string;
 
   constructor() {
     super();
-    this.rangePowerUp = rangePowerUp;
     this.id = "range";
   }
 
@@ -104,7 +97,7 @@ class RangePowerUp extends PowerUp {
 
   public draw() {
     if (this.detected) {
-      image(this.rangePowerUp, this.x, this.y, this.rx, this.ry);
+      image(rangePowerUp, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     }
   }

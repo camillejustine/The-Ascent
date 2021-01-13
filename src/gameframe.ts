@@ -2,7 +2,7 @@ interface iGameState {
   gameState: "running" | "mainMenu" | "gameLost" | "gameWon" | "pauseMenu";
 }
 interface ObstacleArray {
-  allObjects: Array<any>;
+  allObjects: Array<Obstacle | PowerUp>;
   powerUps: PowerUp[];
 }
 class GameFrame implements iGameState, ObstacleArray {
@@ -22,7 +22,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
-  public allObjects: Array<any>;
+  public allObjects: Array<Obstacle | PowerUp>;
   private submarine: Submarine;
   private controls: Control;
   public spawnRateMine: number;
@@ -31,7 +31,6 @@ class GameFrame implements iGameState, ObstacleArray {
   public spawnRateRange: number;
   public spawnRatePulse: number;
   public spawnRateSupplyBox: number;
-  //decrease nr of types for powerups.
   public sonarAttributes: SonarAttributes;
   public collisionListener: CollisionListener;
   public pauseMenu: PauseMenu;
@@ -101,7 +100,7 @@ class GameFrame implements iGameState, ObstacleArray {
     if (this.gameState === "running") {
       this.background.draw();
 
-      // noCursor();
+      noCursor();
 
       this.submarine.draw();
 
@@ -137,7 +136,6 @@ class GameFrame implements iGameState, ObstacleArray {
       this.powerUps.push(new PulsePowerUp());
       this.powerUps.push(new RangePowerUp());
       this.powerUps.push(new SupplyBox());
-      console.log(this.obstacles[this.obstacles.length - 1]);
     }
     if (random(1) < this.spawnRateSupplyBox) {
       this.powerUps.push(new SupplyBox());
