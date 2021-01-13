@@ -1,15 +1,12 @@
 class CollisionListener {
      private cx: number;
      private cy: number;
-     public controlXY: Control;
-     public allObjectsArray: ObstacleArray;
-     public pulse: SonarAttributes;
-     public angle: number;
+     private r: number;
+     private controlXY: Control;
+     private allObjectsArray: ObstacleArray;
+     private pulse: SonarAttributes;
+     private angle: number;
      public collision: boolean;
-     public rectH: number;
-     public rectW: number;
-     public timer: number;
-     public r: number;
      public x: number;
     
     constructor(allObjectsArray: ObstacleArray){
@@ -20,9 +17,6 @@ class CollisionListener {
         this.cx = 0;
         this.cy = 0;
         this.angle = 0;
-        this.rectH = 138;
-        this.rectW = 23.5;
-        this.timer = 5;
         this.r = 30;
         this.x = 0;
      }
@@ -37,7 +31,7 @@ class CollisionListener {
           this.sonarDetection();
       }
       
-      public submarineCollisions(){
+      private submarineCollisions(){
         let circleArray = [
           {"x1": this.cx, "y1": this.cy - 60, "r": this.r},
           {"x2": this.cx, "y2": this.cy - 30, "r": this.r},
@@ -106,7 +100,7 @@ class CollisionListener {
           }
       }
 
-      public sonarDetection(){
+      private sonarDetection(){
         for(let radii of this.pulse.pulses){
           for(let i = 0; i < this.allObjectsArray.allObjects.length; i++){
             let detect = this.detect(
@@ -124,13 +118,13 @@ class CollisionListener {
         }
       }
 
-      public rotatePointAroundCenter(point: p5.Vector, center: p5.Vector, angle: number): p5.Vector {​​​​
+      private rotatePointAroundCenter(point: p5.Vector, center: p5.Vector, angle: number): p5.Vector {​​​​
         const angleToCenter = Math.atan2(point.y - center.y, point.x - center.x);
         const distToCenter = center.dist(point);
         return p5.Vector.fromAngle(angleToCenter + angle, distToCenter).add(center);
     }​​​​
 
-      public detect(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
+      private detect(cx: number, cy: number, cr: any, c2x: number, c2y: number, c2r: number){
         let distX = cx - c2x;
         let distY = cy - c2y;
         let distance = sqrt( (distX*distX) + (distY*distY) );

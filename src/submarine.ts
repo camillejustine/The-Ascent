@@ -3,10 +3,10 @@ interface HullHealth {
 }
 
 class Submarine implements HullHealth {
-  public control: Control;
-  public subPositionX: number;
-  public subPositionY: number;
-  public angle: number;
+  private control: Control;
+  private subPositionX: number;
+  private subPositionY: number;
+  private angle: number;
   public hullHealth: number;
   
   public allObjectsArray: ObstacleArray;
@@ -42,7 +42,7 @@ class Submarine implements HullHealth {
     pop();
   }
 
-  public collisionHullDamage() {
+  private collisionHullDamage() {
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
       if (
         this.allObjectsArray.allObjects[i].collision &&
@@ -62,7 +62,7 @@ class Submarine implements HullHealth {
     }
   }
 
-  public pickUpHullFix() {
+  private pickUpHullFix() {
     for (let i = 0; i < this.allObjectsArray.allObjects.length; i++) {
       if (
         this.allObjectsArray.allObjects[i].collision &&

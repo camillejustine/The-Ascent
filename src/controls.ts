@@ -1,15 +1,14 @@
 class Control {
   private angle: number = 0;
-  public radians: number;
   private rotateRight: number;
   private rotateLeft: number;
+  private subPositionX: number;
+  private subPositionY: number;
   public right: number;
   public left: number;
   public forward: number;
   public back: number;
-
-  public subPositionX: number;
-  public subPositionY: number;
+  public radians: number;
 
   public constructor() {
     this.angle = this.angle;
@@ -18,7 +17,6 @@ class Control {
     this.right = RIGHT_ARROW;
     this.forward = UP_ARROW;
     this.back = DOWN_ARROW;
-
     this.rotateLeft = 90;
     this.rotateRight = 88;
     this.subPositionX = 960 / 2;
@@ -43,7 +41,7 @@ class Control {
   }
 
   // ROTATION SETTINGS
-  public keyPressed() {
+  private keyPressed() {
     if (keyIsDown(this.rotateLeft)) {
       if (this.angle >= -0.90) {
         this.angle -= 0.005;
@@ -79,7 +77,7 @@ class Control {
     }
   }
 
-  public move() {
+  private move() {
     this.keyPressed();
     if (this.subPositionX < 0) {
       this.subPositionX = 0;

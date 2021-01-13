@@ -12,36 +12,31 @@ class GameFrame implements iGameState, ObstacleArray {
     | "gameLost"
     | "gameWon"
     | "pauseMenu";
-
   private mainMenu: MainMenu;
   private background: Background;
   private headsUpDisplay: HeadsUpDisplay;
-  public gameWon: GameWon;
-
+  private gameWon: GameWon;
   private gameLost: GameLost;
-
+  private submarine: Submarine;
+  private controls: Control;
+  private spawnRateMine: number;
+  private spawnRateIceberg: number;
+  private spawnrateSunkenShip: number;
+  private spawnRateRange: number;
+  private spawnRatePulse: number;
+  private spawnRateSupplyBox: number;
+  private collisionListener: CollisionListener;
+  private pauseMenu: PauseMenu;
   public powerUps: PowerUp[];
   public obstacles: Obstacle[];
   public allObjects: Array<Obstacle | PowerUp>;
-  private submarine: Submarine;
-  private controls: Control;
-  public spawnRateMine: number;
-  public spawnRateIceberg: number;
-  public spawnrateSunkenShip: number;
-  public spawnRateRange: number;
-  public spawnRatePulse: number;
-  public spawnRateSupplyBox: number;
   public sonarAttributes: SonarAttributes;
-  public collisionListener: CollisionListener;
-  public pauseMenu: PauseMenu;
-
+  
   public constructor() {
     this.powerUps = [];
     this.obstacles = [];
     this.allObjects = [];
-
     this.gameState = "mainMenu";
-
     this.pauseMenu = new PauseMenu(this);
     this.mainMenu = new MainMenu(this);
 
@@ -49,19 +44,15 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRateMine = 0.0005;
     this.spawnRateIceberg = 0.009;
     this.spawnrateSunkenShip = 0.00007;
-
     this.spawnRatePulse = 0.0003;
     this.spawnRateRange = 0.0002;
     this.spawnRateSupplyBox = 0.0005;
-
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
     this.submarine = new Submarine(this);
-
     this.controls = new Control();
     this.background = new Background();
     this.headsUpDisplay = new HeadsUpDisplay(this.submarine);
-
     this.gameWon = new GameWon(this);
     this.gameLost = new GameLost(this);
   }
@@ -72,11 +63,8 @@ class GameFrame implements iGameState, ObstacleArray {
       this.allObjects = this.obstacles.concat(this.powerUps);
       this.headsUpDisplay.update();
       document.getElementById("main-menu")!.style.display = "none";
-
       this.background.update();
-
       noCursor();
-
       this.controls.update();
       this.populate();
       this.collisionListener.update();
@@ -84,12 +72,10 @@ class GameFrame implements iGameState, ObstacleArray {
       this.submarine.update();
       this.setSpawnRate();
     }
-
     if (this.headsUpDisplay.depth <= 0) {
       this.gameState = "gameWon";
       this.gameWon.update();
     }
-
     if (this.submarine.hullHealth <= 0) {
       this.gameState = "gameLost";
       this.gameLost.update();
@@ -99,15 +85,11 @@ class GameFrame implements iGameState, ObstacleArray {
   public draw() {
     if (this.gameState === "running") {
       this.background.draw();
-
       noCursor();
-
       this.submarine.draw();
-
       for (let obstacle of this.obstacles) {
         obstacle.draw();
       }
-
       for (let i = 0; i < this.powerUps.length; i++) {
         this.powerUps[i].draw();
         if (this.powerUps[i].collision && this.powerUps[i].id === "supplyBox") {
@@ -124,7 +106,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.headsUpDisplay.draw();
   }
 
-  public populate() {
+  private populate() {
     if (random(1) < this.spawnRateIceberg) {
       this.obstacles.push(new Iceberg());
     }
@@ -159,7 +141,7 @@ class GameFrame implements iGameState, ObstacleArray {
   }
 
   // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
-  public setSpawnRate() {
+  private setSpawnRate() {
     if (this.headsUpDisplay.depth <= 750) {
       this.spawnRateIceberg = 0.01;
       this.spawnRateMine = 0.007;
