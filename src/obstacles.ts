@@ -7,7 +7,6 @@ abstract class Obstacle {
   public ry: number;
   public r: number;
   public y: number;
-  public x: number;
   public detected: boolean;
   public collision: boolean;
   public collided: boolean;
@@ -39,7 +38,7 @@ class Iceberg extends Obstacle {
     this.id = "iceberg";
   }
 
-  public update(){}
+  public update() {}
 
   public move() {
     this.y += 2;
@@ -49,8 +48,8 @@ class Iceberg extends Obstacle {
     if (this.detected) {
       image(icebergImage, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
-    } 
-    if(this.collided){
+    }
+    if (this.collided) {
       image(icebergCrack, this.x, this.y, this.rx, this.ry);
       imageMode(CENTER);
     }
@@ -67,7 +66,7 @@ class Mine extends Obstacle {
     this.id = "mine";
   }
 
-  public update(){}
+  public update() {}
 
   public move() {
     this.y += 2;
@@ -92,10 +91,10 @@ class SunkenShip extends Obstacle {
   constructor() {
     super();
     this.r = 150;
-    this.id = 'sunkenShip';
+    this.id = "sunkenShip";
   }
 
-  public update(){}
+  public update() {}
 
   public move() {
     this.y += 2;
