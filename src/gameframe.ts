@@ -46,7 +46,6 @@ class GameFrame implements iGameState, ObstacleArray {
     this.pauseMenu = new PauseMenu(this);
     this.mainMenu = new MainMenu(this);
 
-
     // SET THE SPAWN RATE FOR OBSTACLES AND POWERUPS
     this.spawnRateMine = 0.0005;
     this.spawnRateIceberg = 0.009;
@@ -55,7 +54,6 @@ class GameFrame implements iGameState, ObstacleArray {
     this.spawnRatePulse = 0.0003;
     this.spawnRateRange = 0.0002;
     this.spawnRateSupplyBox = 0.0005;
-
 
     this.collisionListener = new CollisionListener(this);
     this.sonarAttributes = new SonarAttributes(this);
@@ -69,7 +67,7 @@ class GameFrame implements iGameState, ObstacleArray {
     this.gameLost = new GameLost(this);
   }
 
-  public update(){
+  public update() {
     this.mainMenu.update();
     if (this.gameState === "running") {
       this.allObjects = this.obstacles.concat(this.powerUps);
@@ -78,9 +76,7 @@ class GameFrame implements iGameState, ObstacleArray {
 
       this.background.update();
 
-
       noCursor();
-
 
       this.controls.update();
       this.populate();
@@ -89,7 +85,6 @@ class GameFrame implements iGameState, ObstacleArray {
       this.submarine.update();
       this.setSpawnRate();
     }
-
 
     if (this.headsUpDisplay.depth <= 0) {
       this.gameState = "gameWon";
@@ -165,23 +160,35 @@ class GameFrame implements iGameState, ObstacleArray {
     }
   }
 
-    // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
-  public setSpawnRate(){
+  // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
+  public setSpawnRate() {
     if (this.headsUpDisplay.depth <= 750) {
       this.spawnRateIceberg = 0.01;
       this.spawnRateMine = 0.007;
+      this.spawnRatePulse = 0.0004;
+      this.spawnRateRange = 0.0003;
+      this.spawnRateSupplyBox = 0.0005;
     }
     if (this.headsUpDisplay.depth <= 500) {
       this.spawnRateIceberg = 0.04;
       this.spawnRateMine = 0.009;
+      this.spawnRatePulse = 0.0006;
+      this.spawnRateRange = 0.0004;
+      this.spawnRateSupplyBox = 0.0008;
     }
     if (this.headsUpDisplay.depth <= 250) {
       this.spawnRateIceberg = 0.07;
       this.spawnRateMine = 0.015;
+      this.spawnRatePulse = 0.0009;
+      this.spawnRateRange = 0.0007;
+      this.spawnRateSupplyBox = 0.0012;
     }
     if (this.headsUpDisplay.depth <= 100) {
       this.spawnRateIceberg = 0.1;
       this.spawnRateMine = 0.02;
+      this.spawnRatePulse = 0.001;
+      this.spawnRateRange = 0.0009;
+      this.spawnRateSupplyBox = 0.0015;
     }
     if (this.headsUpDisplay.depth <= 20) {
       this.spawnRateIceberg = 0;
@@ -192,4 +199,3 @@ class GameFrame implements iGameState, ObstacleArray {
     }
   }
 }
-  
