@@ -1,9 +1,15 @@
-class HeadsUpDisplay {
+interface Depth {
+  depth: number;
+}
+
+class HeadsUpDisplay implements Depth {
   public depth: number;
   public hullHealth: HullHealth;
+  public background: Background;
 
   public constructor(hullHealth: HullHealth) {
-    this.depth = 1000;
+    this.background = new Background(this);
+    this.depth = 2000;
     this.hullHealth = hullHealth;
   }
 

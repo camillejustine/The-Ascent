@@ -31,7 +31,7 @@ class GameFrame implements iGameState, ObstacleArray {
   public obstacles: Obstacle[];
   public allObjects: Array<Obstacle | PowerUp>;
   public sonarAttributes: SonarAttributes;
-  
+
   public constructor() {
     this.powerUps = [];
     this.obstacles = [];
@@ -51,8 +51,8 @@ class GameFrame implements iGameState, ObstacleArray {
     this.sonarAttributes = new SonarAttributes(this);
     this.submarine = new Submarine(this);
     this.controls = new Control();
-    this.background = new Background();
     this.headsUpDisplay = new HeadsUpDisplay(this.submarine);
+    this.background = new Background(this.headsUpDisplay);
     this.gameWon = new GameWon(this);
     this.gameLost = new GameLost(this);
   }
@@ -142,35 +142,35 @@ class GameFrame implements iGameState, ObstacleArray {
 
   // CHANGES SPAWNRATE BASED ON CURRENT DEPTH
   private setSpawnRate() {
-    if (this.headsUpDisplay.depth <= 750) {
+    if (this.headsUpDisplay.depth <= 1600) {
       this.spawnRateIceberg = 0.01;
       this.spawnRateMine = 0.007;
       this.spawnRatePulse = 0.0004;
       this.spawnRateRange = 0.0003;
       this.spawnRateSupplyBox = 0.0005;
     }
-    if (this.headsUpDisplay.depth <= 500) {
+    if (this.headsUpDisplay.depth <= 1200) {
       this.spawnRateIceberg = 0.04;
       this.spawnRateMine = 0.009;
       this.spawnRatePulse = 0.0006;
       this.spawnRateRange = 0.0004;
       this.spawnRateSupplyBox = 0.0008;
     }
-    if (this.headsUpDisplay.depth <= 250) {
+    if (this.headsUpDisplay.depth <= 800) {
       this.spawnRateIceberg = 0.07;
       this.spawnRateMine = 0.015;
       this.spawnRatePulse = 0.0009;
       this.spawnRateRange = 0.0007;
       this.spawnRateSupplyBox = 0.0012;
     }
-    if (this.headsUpDisplay.depth <= 100) {
+    if (this.headsUpDisplay.depth <= 400) {
       this.spawnRateIceberg = 0.1;
       this.spawnRateMine = 0.02;
       this.spawnRatePulse = 0.001;
       this.spawnRateRange = 0.0009;
       this.spawnRateSupplyBox = 0.0015;
     }
-    if (this.headsUpDisplay.depth <= 20) {
+    if (this.headsUpDisplay.depth <= 50) {
       this.spawnRateIceberg = 0;
       this.spawnRateMine = 0;
       this.spawnRatePulse = 0;
