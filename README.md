@@ -1,38 +1,20 @@
-# Slutprojektet
-Välkommen till den förinställda kodbasen för slutprojektet.
-Se filen `./src/sketch.ts` för hur ni ska börja skriva er kod!
+# The Ascent
 
-Kom ihåg att använda git!
+This is a simple game created with the P5 library in canvas for a school assignment.
+Please try it out here: https://the-ascent.netlify.app/about.html
 
-## Dokument & Artifakter
-All dokument skall finnas i projektet som faktiska filer vid inlämningen. Det finns en mapp `./documents` som alla dokumenten skall sparas i.
+## Up and running
 
-Gå in i mappen och läs vidare där!
+Make sure you have npm installed and then run npm start
 
-## Utveckling
-### Installation
-Först behöver ni köra kommandot `npm i` för att installera nödvändiga moduler (p5, typescript, etc).
+## The game
 
-### Starta projektet
-Kör kommandot `npm start` för att starta projektet och se det live i din webbläsare!
+You’re playing as the commander of a Swedish submarine named HMS Sven. By accident, you’ve managed to dive too deep into parts of the ocean where no light comes through and you need to get back up to the correct depth again.
+While ascending, you’ll face different obstacles that you must avoid at all costs.
 
-### Debugger
-Det är starkt rekomenderat att ni använder debug-verktyget i VSCode för att hitta och lösa problem. Metoden vi primärt har använt tidigare är att skriva `console.log` men vi kan bli mer effektiva!
+### How to play
 
-Debuggern låter er stanna programmet och stega rad för rad samtidigt som ni kan titta på vad variablerna innehåller. Det är speciellt användbart när ni arbetar med funktioner som anropas 60 gånger per sekund - console overload otherwise... 🤯
-
-#### Starta Debuggern
-För att starta debuggern måste du första ladda hem tilläget "Debugger for Chrome" som finns under "Extensions" här i VSCode.
-Därefter tycker du `F5` för att starta debuggern, se dock till att du har startat projektet innan (`npm start`)!
-
-Ett nytt fönster kommer att öppnas som behöver användas för att få koden att stanna vid utsatta debugg-punkter.
-
-### Potentiella problem
-Versionen av p5.js är 1.1.9 medan senaste version av typescript endast är uppdaterad till 0.9.1. Detta skulle kunna orsaka problem men framför allt kan det vara så att ni hittar något i p5's dokumention som inte finns tillgängligt i detta projektet.
-
-Typings för de globala variablerna relaterat till p5.sound fungerar tyvärr inte - exempel finns för hur ni kan kringå detta.
-
-## TODO
-Lägg till ytterliggare information som är specifikt för ert projekt!
-l
-**LYCKA TILL!**
+Navigate the deep waters with the arrow keys on your keyboard. You can use Z and X to pivot your ship left and right.
+You will face some obstacles on your way to the surface. We've heard reports of big icebergs as well as old naval mines floating around in the dark ocean. HMS Sven should withstand some hull damage from icebergs but don't push your luck with the mines. In case of emergency, look for so-called powerups. They might come in handy.
+You have to rely on your sonar to be able to see anything down there. Be careful, every move may be your last.
+Best of luck, Captain.
